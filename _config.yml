@@ -1,0 +1,37 @@
+# Site settings
+title: "Rudra's Yard"
+email: rudra.nil.basu.1996@gmail.com
+description: "Random stuff."
+baseurl: ""
+url: "http://rudranilbasu.github.io/"
+title_description: "Rudra Nil Basu - Game Designer and Programmer. Does other random stuffs"
+title_image: "https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/13524319_1069954599741227_7923496662977308722_n.jpg?oh=1b34b7ff2a9c43c0a418e84ae9aa0840&oe=58BC85AB"
+google_analytics: ""
+disqus_account: 
+github_repository: https://github.com/RudraNilBasu
+addthis_id: 
+post_limit: 5
+
+# Social usernames/URLs
+twitter_username: RudraNilBasu
+github_username:  RudraNilBasu
+instagram_username: RudraNilBasu
+linkedin_link: 
+google_plus_link: 
+stackoverflow_link: 
+xing_link:
+facebook_link: facebook.com/rudra.n.basu
+
+# Footer
+footer_left: "Made with <i class=\"fa fa-heart\"></i> by <a href=\"https://twitter.com/RudraNilBasu\">RudraNilBasu</a>"
+footer_right: "&lt;/&gt; on <a href=\"https://github.com/RudraNilBasu\">Github</a> &nbsp;<i class=\"fa fa-github-alt\"></i>"
+
+# Build settings
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: pretty
+exclude: [vendor]
