@@ -5,9 +5,105 @@
     <description>Random stuff.</description>
     <link>http://rudranilbasu.github.io//</link>
     <atom:link href="http://rudranilbasu.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 20 Nov 2016 22:16:32 +0530</pubDate>
-    <lastBuildDate>Sun, 20 Nov 2016 22:16:32 +0530</lastBuildDate>
+    <pubDate>Sun, 20 Nov 2016 22:31:07 +0530</pubDate>
+    <lastBuildDate>Sun, 20 Nov 2016 22:31:07 +0530</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
+    
+      <item>
+        <title>Algorithm Visualizer</title>
+        <description>&lt;p&gt;I was looking for some open source repositories on Github on which I could contribute, and then I came across Jason Park‘s Algorithm Visualizer on Github. This project seemed prefect to me since I was always interested in algorithm, and this seemed to be a great opportunity to enter in the field of open source contribution.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-is-algorithm-visualizer-&quot;&gt;What is Algorithm Visualizer ?&lt;/h1&gt;
+
+&lt;p&gt;As the name suggests, it is a project to visualize standard algorithms, making it easier for people to understand the algorithm by giving a visual representation.&lt;/p&gt;
+
+&lt;p&gt;The project is mostly written in javascript, and you can have a look at the project here. Till now, nearly 56 algorithms from 11 different topics are present in the project.&lt;/p&gt;
+
+&lt;h3 id=&quot;buildrun-the-project&quot;&gt;Build/Run the project&lt;/h3&gt;
+
+&lt;h3 id=&quot;build-system&quot;&gt;Build System&lt;/h3&gt;
+
+&lt;p&gt;From the wiki of Algorithm Visualizer:&lt;br /&gt;
+Our project uses gulp to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;combine all individual modules into a single file&lt;/li&gt;
+  &lt;li&gt;transpile ES6 code to ES5 with babel.js&lt;/li&gt;
+  &lt;li&gt;minimize JS and CSS code&lt;/li&gt;
+  &lt;li&gt;generate source maps&lt;/li&gt;
+  &lt;li&gt;add vendor prefixer to the css&lt;/li&gt;
+  &lt;li&gt;provide a server with live-reload&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+
+&lt;p&gt;We need gulp to install the project in our local directory. It can be installed in the following way:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# install gulp globally so you can run it from the command line
+npm install -g gulp-cli
+
+# install all dependencies
+npm install
+
+# run gulp to start the livereload server on http://localhost:8080 
+gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Check out the version of Nodejs by the command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For Node.js version below 0.12, we need to install an ES6-style Promise Polyfill. This can be done by:-&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install es6-promise
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally, add this line at the top of the gulpfile.babel.js file:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var Promise = require ('es6-promise').Promise;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-a-new-algorithm&quot;&gt;Adding a new algorithm&lt;/h3&gt;
+
+&lt;p&gt;For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “AlgorithmVisualizer/category_name/name_of_the_algorithm“, which in this case is “AlgorithmVisualizer/number_theory/sieve_of_eratosthenes“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :&lt;/p&gt;
+
+&lt;p&gt;Moving on to the folder we created for our algorithm  (“AlgorithmVisualizer/number_theory/sieve_of_eratosthenes” in this case), we have 3 types of files :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:&lt;/li&gt;
+  &lt;li&gt;Name of  the algorithm and a short description&lt;/li&gt;
+  &lt;li&gt;The complexity of the algorithm (both Runtime and Space complexities)&lt;/li&gt;
+  &lt;li&gt;Any online reference, and&lt;/li&gt;
+  &lt;li&gt;the folder in which the code can be found&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;seive_desc.jpg&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;desc.json file for seive of eratosthenes&lt;/li&gt;
+  &lt;li&gt;data.js : This is where we declare the data required for the given algorithm. Here, we declare the two 1D arrays (one will store whether the number is prime or not, and the other is for displaying purpose), the tracer and the logTracer required for the implementation.&lt;/li&gt;
+  &lt;li&gt;code.js : This is where the actual code for the algorithm is written. It takes the values from the data.js and implements the output and displays the result on the Tracer.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;seive_blog.jpg&lt;/p&gt;
+</description>
+        <pubDate>Wed, 29 Jun 2016 18:02:18 +0530</pubDate>
+        <link>http://rudranilbasu.github.io//algorithm/2016/06/29/Algorithm-Visualizer/</link>
+        <guid isPermaLink="true">http://rudranilbasu.github.io//algorithm/2016/06/29/Algorithm-Visualizer/</guid>
+        
+        <category>algorithm</category>
+        
+        <category>open source</category>
+        
+        
+        <category>algorithm</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Carte Noire</title>

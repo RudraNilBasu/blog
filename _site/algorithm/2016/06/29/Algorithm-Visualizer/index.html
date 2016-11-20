@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithm Visualizer</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+  
+  
+
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://i.imgur.com/aRQcGSi.png" alt="Thumbnail: jekyll" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">Algorithm Visualizer</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">June 29, 2016</span>
+           under algorithm
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          2 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p>I was looking for some open source repositories on Github on which I could contribute, and then I came across Jason Park‘s Algorithm Visualizer on Github. This project seemed prefect to me since I was always interested in algorithm, and this seemed to be a great opportunity to enter in the field of open source contribution.</p>
+
+<h1 id="what-is-algorithm-visualizer-">What is Algorithm Visualizer ?</h1>
+
+<p>As the name suggests, it is a project to visualize standard algorithms, making it easier for people to understand the algorithm by giving a visual representation.</p>
+
+<p>The project is mostly written in javascript, and you can have a look at the project here. Till now, nearly 56 algorithms from 11 different topics are present in the project.</p>
+
+<h3 id="buildrun-the-project">Build/Run the project</h3>
+
+<h3 id="build-system">Build System</h3>
+
+<p>From the wiki of Algorithm Visualizer:<br />
+Our project uses gulp to:</p>
+
+<ul>
+  <li>combine all individual modules into a single file</li>
+  <li>transpile ES6 code to ES5 with babel.js</li>
+  <li>minimize JS and CSS code</li>
+  <li>generate source maps</li>
+  <li>add vendor prefixer to the css</li>
+  <li>provide a server with live-reload</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+
+<p>We need gulp to install the project in our local directory. It can be installed in the following way:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># install gulp globally so you can run it from the command line
+npm install -g gulp-cli
+
+# install all dependencies
+npm install
+
+# run gulp to start the livereload server on http://localhost:8080 
+gulp
+</code></pre>
+</div>
+
+<p>Check out the version of Nodejs by the command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>node --version
+</code></pre>
+</div>
+
+<p>For Node.js version below 0.12, we need to install an ES6-style Promise Polyfill. This can be done by:-</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install es6-promise
+</code></pre>
+</div>
+
+<p>Finally, add this line at the top of the gulpfile.babel.js file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var Promise = require ('es6-promise').Promise;
+</code></pre>
+</div>
+
+<h3 id="adding-a-new-algorithm">Adding a new algorithm</h3>
+
+<p>For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “AlgorithmVisualizer/category_name/name_of_the_algorithm“, which in this case is “AlgorithmVisualizer/number_theory/sieve_of_eratosthenes“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :</p>
+
+<p>Moving on to the folder we created for our algorithm  (“AlgorithmVisualizer/number_theory/sieve_of_eratosthenes” in this case), we have 3 types of files :</p>
+
+<ul>
+  <li>desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:</li>
+  <li>Name of  the algorithm and a short description</li>
+  <li>The complexity of the algorithm (both Runtime and Space complexities)</li>
+  <li>Any online reference, and</li>
+  <li>the folder in which the code can be found</li>
+</ul>
+
+<p>seive_desc.jpg</p>
+
+<ul>
+  <li>desc.json file for seive of eratosthenes</li>
+  <li>data.js : This is where we declare the data required for the given algorithm. Here, we declare the two 1D arrays (one will store whether the number is prime or not, and the other is for displaying purpose), the tracer and the logTracer required for the implementation.</li>
+  <li>code.js : This is where the actual code for the algorithm is written. It takes the values from the data.js and implements the output and displays the result on the Tracer.</li>
+</ul>
+
+<p>seive_blog.jpg</p>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            algorithm, open source
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a>!
+      </div>
+      
+
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>
