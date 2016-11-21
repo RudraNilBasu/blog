@@ -162,7 +162,7 @@ gulp
 </code></pre>
 </div>
 
-<p>Finally, add this line at the top of the gulpfile.babel.js file:</p>
+<p>Finally, add this line at the top of the <em>gulpfile.babel.js</em> file:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>var Promise = require ('es6-promise').Promise;
 </code></pre>
@@ -170,11 +170,11 @@ gulp
 
 <h3 id="adding-a-new-algorithm">Adding a new algorithm</h3>
 
-<p>For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “AlgorithmVisualizer/category_name/name_of_the_algorithm“, which in this case is “AlgorithmVisualizer/number_theory/sieve_of_eratosthenes“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :</p>
+<p>For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “<em>AlgorithmVisualizer/category_name/name_of_the_algorithm</em>“, which in this case is “<em>AlgorithmVisualizer/number_theory/sieve_of_eratosthenes</em>“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :</p>
 
 <p><img src="https://rudranilbasublog.files.wordpress.com/2016/06/seive_category.jpg" alt="Head" /></p>
 
-<p>Moving on to the folder we created for our algorithm  (“AlgorithmVisualizer/number_theory/sieve_of_eratosthenes” in this case), we have 3 types of files :</p>
+<p>Moving on to the folder we created for our algorithm  (“<em>AlgorithmVisualizer/number_theory/sieve_of_eratosthenes</em>” in this case), we have 3 types of files :</p>
 
 <ul>
   <li>desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:
@@ -216,10 +216,17 @@ gulp
       
       <div class="content-panel feedback">
         I <i class="fa fa-heart"></i> feedback.<br />
-        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a>!
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
       </div>
       
 
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
       
 
       
@@ -230,6 +237,18 @@ gulp
 
 </div>
 
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
 
 
       </div>

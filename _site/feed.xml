@@ -5,8 +5,8 @@
     <description>Random stuff.</description>
     <link>http://rudranilbasu.github.io//</link>
     <atom:link href="http://rudranilbasu.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 21 Nov 2016 18:13:47 +0530</pubDate>
-    <lastBuildDate>Mon, 21 Nov 2016 18:13:47 +0530</lastBuildDate>
+    <pubDate>Mon, 21 Nov 2016 19:20:26 +0530</pubDate>
+    <lastBuildDate>Mon, 21 Nov 2016 19:20:26 +0530</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
     
       <item>
@@ -66,7 +66,7 @@ gulp
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Finally, add this line at the top of the gulpfile.babel.js file:&lt;/p&gt;
+&lt;p&gt;Finally, add this line at the top of the &lt;em&gt;gulpfile.babel.js&lt;/em&gt; file:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var Promise = require ('es6-promise').Promise;
 &lt;/code&gt;&lt;/pre&gt;
@@ -74,11 +74,11 @@ gulp
 
 &lt;h3 id=&quot;adding-a-new-algorithm&quot;&gt;Adding a new algorithm&lt;/h3&gt;
 
-&lt;p&gt;For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “AlgorithmVisualizer/category_name/name_of_the_algorithm“, which in this case is “AlgorithmVisualizer/number_theory/sieve_of_eratosthenes“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :&lt;/p&gt;
+&lt;p&gt;For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “&lt;em&gt;AlgorithmVisualizer/category_name/name_of_the_algorithm&lt;/em&gt;“, which in this case is “&lt;em&gt;AlgorithmVisualizer/number_theory/sieve_of_eratosthenes&lt;/em&gt;“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/06/seive_category.jpg&quot; alt=&quot;Head&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Moving on to the folder we created for our algorithm  (“AlgorithmVisualizer/number_theory/sieve_of_eratosthenes” in this case), we have 3 types of files :&lt;/p&gt;
+&lt;p&gt;Moving on to the folder we created for our algorithm  (“&lt;em&gt;AlgorithmVisualizer/number_theory/sieve_of_eratosthenes&lt;/em&gt;” in this case), we have 3 types of files :&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:

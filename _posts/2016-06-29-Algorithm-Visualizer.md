@@ -64,7 +64,7 @@ For Node.js version below 0.12, we need to install an ES6-style Promise Polyfill
 npm install es6-promise
 ```
 
-Finally, add this line at the top of the gulpfile.babel.js file:
+Finally, add this line at the top of the *gulpfile.babel.js* file:
 
 ```
 var Promise = require ('es6-promise').Promise;
@@ -72,11 +72,11 @@ var Promise = require ('es6-promise').Promise;
 
 ### Adding a new algorithm
 
-For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “AlgorithmVisualizer/category_name/name_of_the_algorithm“, which in this case is “AlgorithmVisualizer/number_theory/sieve_of_eratosthenes“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :
+For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “*AlgorithmVisualizer/category_name/name_of_the_algorithm*“, which in this case is “*AlgorithmVisualizer/number_theory/sieve_of_eratosthenes*“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :
 
 ![Head](https://rudranilbasublog.files.wordpress.com/2016/06/seive_category.jpg)
 
-Moving on to the folder we created for our algorithm  (“AlgorithmVisualizer/number_theory/sieve_of_eratosthenes” in this case), we have 3 types of files :
+Moving on to the folder we created for our algorithm  (“*AlgorithmVisualizer/number_theory/sieve_of_eratosthenes*” in this case), we have 3 types of files :
 
 * desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:
   - Name of  the algorithm and a short description
