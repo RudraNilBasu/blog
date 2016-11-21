@@ -10,15 +10,17 @@ tags:
  - open source
 ---
 
-I was looking for some open source repositories on Github on which I could contribute, and then I came across Jason Park‘s Algorithm Visualizer on Github. This project seemed prefect to me since I was always interested in algorithm, and this seemed to be a great opportunity to enter in the field of open source contribution.
+![HEAD](https://rudranilbasublog.files.wordpress.com/2016/06/algo_viz1.gif)
+
+I was looking for some open source repositories on Github on which I could contribute, and then I came across [Jason Park](https://github.com/parkjs814)‘s [Algorithm Visualizer](https://github.com/parkjs814/AlgorithmVisualizer) on Github. This project seemed prefect to me since I was always interested in algorithm, and this seemed to be a great opportunity to enter in the field of open source contribution.
 
 # What is Algorithm Visualizer ?
 
 As the name suggests, it is a project to visualize standard algorithms, making it easier for people to understand the algorithm by giving a visual representation.
 
+![Head](https://rudranilbasublog.files.wordpress.com/2016/06/algo_viz.gif)
 
-
-The project is mostly written in javascript, and you can have a look at the project here. Till now, nearly 56 algorithms from 11 different topics are present in the project.
+The project is mostly written in javascript, and you can [have a look at the project here](https://github.com/parkjs814/AlgorithmVisualizer). Till now, nearly 56 algorithms from 11 different topics are present in the project.
 
 ### Build/Run the project
 
@@ -72,20 +74,20 @@ var Promise = require ('es6-promise').Promise;
 
 For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “AlgorithmVisualizer/category_name/name_of_the_algorithm“, which in this case is “AlgorithmVisualizer/number_theory/sieve_of_eratosthenes“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :
 
-
+![Head](https://rudranilbasublog.files.wordpress.com/2016/06/seive_category.jpg)
 
 Moving on to the folder we created for our algorithm  (“AlgorithmVisualizer/number_theory/sieve_of_eratosthenes” in this case), we have 3 types of files :
 
 * desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:
-- Name of  the algorithm and a short description
-- The complexity of the algorithm (both Runtime and Space complexities)
-- Any online reference, and
-- the folder in which the code can be found
+  - Name of  the algorithm and a short description
+  - The complexity of the algorithm (both Runtime and Space complexities)
+  - Any online reference, and
+  - the folder in which the code can be found
 
-seive_desc.jpg
+![Seive](https://rudranilbasublog.files.wordpress.com/2016/06/seive_desc.jpg)
 
 - desc.json file for seive of eratosthenes
 - data.js : This is where we declare the data required for the given algorithm. Here, we declare the two 1D arrays (one will store whether the number is prime or not, and the other is for displaying purpose), the tracer and the logTracer required for the implementation.
 - code.js : This is where the actual code for the algorithm is written. It takes the values from the data.js and implements the output and displays the result on the Tracer.
 
-seive_blog.jpg
+![blog](https://rudranilbasublog.files.wordpress.com/2016/06/seive_blog.jpg?w=736)
