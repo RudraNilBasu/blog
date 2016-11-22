@@ -5,8 +5,8 @@
     <description>Random stuff.</description>
     <link>http://rudranilbasu.github.io//</link>
     <atom:link href="http://rudranilbasu.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 22 Nov 2016 20:02:40 +0530</pubDate>
-    <lastBuildDate>Tue, 22 Nov 2016 20:02:40 +0530</lastBuildDate>
+    <pubDate>Tue, 22 Nov 2016 21:39:09 +0530</pubDate>
+    <lastBuildDate>Tue, 22 Nov 2016 21:39:09 +0530</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
     
       <item>
@@ -27,11 +27,23 @@
 
 &lt;p&gt;Close it up and open your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt; file and paste the following code in it –&lt;/p&gt;
 
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;augroup templates
+	autocmd!
+	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
+aurogroup END
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg&quot; alt=&quot;hue&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And that’s it! The next time you open a new cpp file, the default template will load up as shown below.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif&quot; alt=&quot;final&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is how my template for cpp files looks like :-&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js&quot;&gt;&lt;/script&gt;
+
 </description>
         <pubDate>Sat, 10 Sep 2016 18:02:18 +0530</pubDate>
         <link>http://rudranilbasu.github.io//vim/2016/09/10/Vim-Filetype-templates/</link>

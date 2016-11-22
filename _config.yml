@@ -26,6 +26,10 @@ facebook_link: facebook.com/rudra.n.basu
 footer_left: "Made with <i class=\"fa fa-heart\"></i> by <a href=\"https://twitter.com/RudraNilBasu\">RudraNilBasu</a>"
 footer_right: "&lt;/&gt; on <a href=\"https://github.com/RudraNilBasu\">Github</a> &nbsp;<i class=\"fa fa-github-alt\"></i>"
 
+#
+gems:
+  - jekyll-gist # plugin to add github gist (https://github.com/jekyll/jekyll-gist)
+
 # Build settings
 markdown: kramdown
 

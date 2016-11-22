@@ -123,11 +123,23 @@
 
 <p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
+	autocmd!
+	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
+aurogroup END
+</code></pre>
+</div>
+
 <p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
 
 <p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
 
 <p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+
+<p>This is how my template for cpp files looks like :-</p>
+
+<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+
 </span>
 
         

@@ -21,14 +21,27 @@ With the number of C++ codes I write using vim, I got tired of writing the same 
 Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that ```template.cpp```
 
  
+
+
 ![scr](https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png)
 
 Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.
 
 Close it up and open your ```~/.vimrc``` file and paste the following code in it –
 
+```
+augroup templates
+	autocmd!
+	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
+aurogroup END
+```
+
 ![hue](https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg)
 
 And that’s it! The next time you open a new cpp file, the default template will load up as shown below.
 
 ![final](https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif)
+
+This is how my template for cpp files looks like :-
+
+<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
