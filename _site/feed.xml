@@ -5,9 +5,46 @@
     <description>Random stuff.</description>
     <link>http://rudranilbasu.github.io//</link>
     <atom:link href="http://rudranilbasu.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 21 Nov 2016 19:20:26 +0530</pubDate>
-    <lastBuildDate>Mon, 21 Nov 2016 19:20:26 +0530</lastBuildDate>
+    <pubDate>Tue, 22 Nov 2016 20:02:40 +0530</pubDate>
+    <lastBuildDate>Tue, 22 Nov 2016 20:02:40 +0530</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
+    
+      <item>
+        <title>Vim filetype templates</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif&quot; alt=&quot;HEAD&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.&lt;/p&gt;
+
+&lt;p&gt;With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-default-template-for-cpp-file&quot;&gt;Creating a default template for cpp file&lt;/h3&gt;
+
+&lt;p&gt;Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that &lt;code class=&quot;highlighter-rouge&quot;&gt;template.cpp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png&quot; alt=&quot;scr&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.&lt;/p&gt;
+
+&lt;p&gt;Close it up and open your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt; file and paste the following code in it –&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg&quot; alt=&quot;hue&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And that’s it! The next time you open a new cpp file, the default template will load up as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif&quot; alt=&quot;final&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 10 Sep 2016 18:02:18 +0530</pubDate>
+        <link>http://rudranilbasu.github.io//vim/2016/09/10/Vim-Filetype-templates/</link>
+        <guid isPermaLink="true">http://rudranilbasu.github.io//vim/2016/09/10/Vim-Filetype-templates/</guid>
+        
+        <category>vim</category>
+        
+        <category>templates</category>
+        
+        
+        <category>vim</category>
+        
+      </item>
     
       <item>
         <title>Algorithm Visualizer</title>

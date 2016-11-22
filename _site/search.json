@@ -1,6 +1,14 @@
 [
   
   {
+    "title"    : "Vim filetype templates",
+    "category" : "",
+    "tags"     : "vim, templates",
+    "url"      : "/vim/2016/09/10/Vim-Filetype-templates/",
+    "date"     : "2016-09-10 18:02:18 +0530"
+    } ,
+    
+  {
     "title"    : "Algorithm Visualizer",
     "category" : "",
     "tags"     : "algorithm, open source",
