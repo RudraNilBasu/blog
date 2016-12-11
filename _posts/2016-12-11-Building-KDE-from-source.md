@@ -23,7 +23,7 @@ Learn more about [configuring git here](https://help.github.com/articles/set-up-
 
 ### Installing dependencies
 
-1. Installing Qt
+* Installing Qt
 
 Download Qt using ```wget```: 
 ```
@@ -41,7 +41,7 @@ Qt was installed in ```/opt/``` directory:
 /opt/Qt5.7.0
 ```
 
-2. Install the KF5 Frameworks
+* Install the KF5 Frameworks
 
 For Kubuntu, the following commands were needed to run to install the dependencies
 
@@ -112,8 +112,7 @@ kdesrc-build kmines
 ```
 
 Successful build looks like this: 
-```
-Updating kde-build-metadata (to branch master)
+```Updating kde-build-metadata (to branch master)
  * Downloading projects.kde.org project database...
 
 Building kmines from kdegames (1/1)
@@ -134,9 +133,7 @@ kmines
  
 Removing 4 out of 5 old log directories...
 :-)
-Your logs are saved in /home/rudra/kde/log/2016-12-11-04
-
-```
+Your logs are saved in /home/rudra/kde/log/2016-12-11-04```
 
 **NOTE**: If you are getting error messages stating files such as ```qt5-config.cmake``` was not found, then add the directory of the qt installation (in my case it is ```/opt/Qt5.7.0/5.7/gcc_64```) to the *CMakeLists.txt* file in the source code (in my case the location is ``` ~/kde/src/kmines/CMakeLists.txt```) to set the prefix path of Qt installation.
 Add the following line: 
