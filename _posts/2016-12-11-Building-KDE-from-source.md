@@ -26,18 +26,18 @@ Learn more about [configuring git here](https://help.github.com/articles/set-up-
 * Installing Qt
 
 Download Qt using ```wget```: 
-```
+```bash
 wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
 ```
 Install Qt
 
-```
+```bash
 chmod +x qt-opensource-linux-x64-5.7.0.run
 ./qt-opensource-linux-x64-5.7.0.run
 ```
 
 Qt was installed in ```/opt/``` directory:
-```
+```bash
 /opt/Qt5.7.0
 ```
 
@@ -45,7 +45,7 @@ Qt was installed in ```/opt/``` directory:
 
 For Kubuntu, the following commands were needed to run to install the dependencies
 
-```
+```bash
 $ sudo apt-get build-dep qtbase5-dev
 
 $ sudo apt-get install libbz2-dev libxslt-dev libxml2-dev shared-mime-info oxygen-icon-theme libgif-dev libvlc-dev libvlccore-dev doxygen gperf bzr libxapian-dev fontforge libgcrypt20-dev libattr1-dev network-manager-dev libgtk-3-dev xsltproc xserver-xorg-dev xserver-xorg-input-synaptics-dev libpwquality-dev modemmanager-dev libxcb-keysyms1-dev libepoxy-dev libpolkit-agent-1-dev libnm-util-dev libnm-glib-dev libegl1-mesa-dev libxcb-xkb-dev libqt5x11extras5-dev libwww-perl libxml-parser-perl libjson-perl libboost-dev libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libarchive-dev liblmdb-dev cmake git extra-cmake-modules "libkf5.*-dev" llvm llvm-3.6 libclang-3.6-dev bison flex
@@ -54,7 +54,7 @@ For more, [read here](https://community.kde.org/Guidelines_and_HOWTOs/Build_from
 
 ### Installing kdesrc-build
 
-```
+```bash
 mkdir -p ~/kde/src
 cd ~/kde/src
 git clone kde:kdesrc-build
@@ -102,17 +102,18 @@ end global
 ### Build using kdesrc-build
 
 For building, we just have to run: 
-```
+```bash
 kdesrc-build <package-name>
 ```
 
 I was building *kmines*, and the command is: 
-```
+```bash
 kdesrc-build kmines
 ```
 
 Successful build looks like this: 
-```
+
+```bash
 Updating kde-build-metadata (to branch master)
  * Downloading projects.kde.org project database...
 
@@ -137,8 +138,9 @@ Removing 4 out of 5 old log directories...
 Your logs are saved in /home/rudra/kde/log/2016-12-11-04
 ```
 
-**NOTE**: If you are getting error messages stating files such as ```qt5-config.cmake``` was not found, then add the directory of the qt installation (in my case it is ```/opt/Qt5.7.0/5.7/gcc_64```) to the *CMakeLists.txt* file in the source code (in my case the location is ``` ~/kde/src/kmines/CMakeLists.txt```) to set the prefix path of Qt installation.
+
+**NOTE**: If you are getting error messages stating files such as `qt5-config.cmake` was not found, then add the directory of the qt installation (in my case it is `/opt/Qt5.7.0/5.7/gcc_64`) to the *CMakeLists.txt* file in the source code (in my case the location is ` ~/kde/src/kmines/CMakeLists.txt`) to set the prefix path of Qt installation.
 Add the following line: 
-```
+```cmake
 set (CMAKE_PREFIX_PATH "/opt/Qt5.7.0/5.7/gcc_64")
 ```
