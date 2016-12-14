@@ -25,10 +25,12 @@ Learn more about [configuring git here](https://help.github.com/articles/set-up-
 
 * Installing Qt
 
-Download Qt using ```wget```: 
+Download Qt using `wget`:
+
 ```bash
 wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
 ```
+
 Install Qt
 
 ```bash
@@ -67,13 +69,13 @@ ln -s $PWD/kdesrc-build ~/bin
 export PATH=~/bin:$PATH
 ```
 
-To make sure ```kdesrc-build``` is available in PATH whenever we open the terminal, we need to add the following line to the ```~/.bashrc```
+To make sure `kdesrc-build` is available in PATH whenever we open the terminal, we need to add the following line to the `~/.bashrc`
 
 ``` export PATH=~/bin:$PATH```
 
 ### Configuring kdesrc-build
 
-We need to edit the ```~/.kdesrc-buildrc``` and replace ```/path/to/kdesrc-build/kf5-qt5-build-include``` with ```~/kde/src/kdesrc-build/kf5-qt5-build-include```. Also, add ```ignore-kde-structure true``` and ```make-options -jN``` to the global section.
+We need to edit the `~/.kdesrc-buildrc` and replace `/path/to/kdesrc-build/kf5-qt5-build-include` with `~/kde/src/kdesrc-build/kf5-qt5-build-include`. Also, add `ignore-kde-structure true` and `make-options -jN` to the global section.
 
 We aldo need to point *kdesrc-build* to the correct source, build, log and install directories.
 
@@ -139,8 +141,10 @@ Your logs are saved in /home/rudra/kde/log/2016-12-11-04
 ```
 
 
-**NOTE**: If you are getting error messages stating files such as `qt5-config.cmake` was not found, then add the directory of the qt installation (in my case it is `/opt/Qt5.7.0/5.7/gcc_64`) to the *CMakeLists.txt* file in the source code (in my case the location is ` ~/kde/src/kmines/CMakeLists.txt`) to set the prefix path of Qt installation.
+**NOTE**: If you are getting error messages stating files such as `qt5-config.cmake` was not found, then add the directory of the qt installation (in my case it is `/opt/Qt5.7.0/5.7/gcc_64`) to the *CMakeLists.txt* file in the source code (in my case the location is ` ~/kde/src/kmines/CMakeLists.txt` ) to set the prefix path of Qt installation.
 Add the following line: 
+
+
 ```cmake
 set (CMAKE_PREFIX_PATH "/opt/Qt5.7.0/5.7/gcc_64")
 ```
