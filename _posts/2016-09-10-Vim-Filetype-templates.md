@@ -3,7 +3,7 @@ layout:     post
 title:      Vim filetype templates
 date:       2016-09-10 12:32:18
 summary:    VIM Filetype templates
-categories: Vim
+categories: vim
 thumbnail: jekyll
 tags:
  - vim
