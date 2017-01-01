@@ -175,9 +175,8 @@ function generateRandomNumbers() {
 
 ```
 
-
 At this stage, the activity looks like this:
 
 ![img](https://github.com/RudraNilBasu/blog/blob/gh-pages/images/GCompris/ascending_1.png?raw=true)
 
-[Next Challenge: Adding the logic to detect ascending sequence]()
+[Next Challenge: Adding the logic to detect ascending sequence](#)
