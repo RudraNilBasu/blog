@@ -9,7 +9,7 @@ tags:
  - kde
  - gcompris
 ---
-In my [previous post]( {$ post_url 2016-12-31-GCompris $} ), I talked about setting up GCOmpris, and running it using QtCreator. In this one, I will be talling about my journey towards creating a new activity for GCompris.
+In my [previous post](https://rudranilbasu.github.io/blog/kde/2016/12/31/GCompris/), I talked about setting up GCompris, and running it using QtCreator. In this one, I will be talling about my journey towards creating a new activity for GCompris.
 
 ### Basic Structure
 
@@ -179,3 +179,5 @@ function generateRandomNumbers() {
 At this stage, the activity looks like this:
 
 ![img](https://github.com/RudraNilBasu/blog/blob/gh-pages/images/GCompris/ascending_1.png?raw=true)
+
+[Next Challenge: Adding the logic to detect ascending sequence]()
