@@ -63,3 +63,4 @@ QtObject {
 ```
 
 `ansText` is a `GCText` component to display both the user's answer and the correct answer. `ok` is a button which will reload the current level if the user's answer is not the correct one.
+
