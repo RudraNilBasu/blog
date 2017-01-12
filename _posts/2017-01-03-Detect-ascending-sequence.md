@@ -64,8 +64,6 @@ QtObject {
 
 `ansText` is a `GCText` component to display both the user's answer and the correct answer. `ok` is a button which will reload the current level if the user's answer is not the correct one.
 
-<<<<<<< HEAD
-=======
 Moving on to the javascript file, the start method looks like this
 
 ```
@@ -118,4 +116,3 @@ function generateRandomNumbers() {
     }
 }
 ```
->>>>>>> e4fd95f8f5a7836f18961a04af01f3764dd28d61
