@@ -10,3 +10,6 @@ tags:
  - ggj
 ---
 
+Attended my first Global Game Jam, and it was fun!
+
+This was the first time Global Game Jam came here in Kolkata. It started off with talks on creating 3D art, monetising apps and storytelling in games.
