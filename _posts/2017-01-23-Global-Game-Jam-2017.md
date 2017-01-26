@@ -16,6 +16,8 @@ This was the first time Global Game Jam came here in Kolkata. It started off wit
 
 ![pic1](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_1.jpg)
 
+> "Art is attraction, story is for friendship and gameplay is the true love"
+
 ![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_2.jpg)
 
 ### The Start
