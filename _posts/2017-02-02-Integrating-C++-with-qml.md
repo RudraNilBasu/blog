@@ -97,10 +97,14 @@ set(gcompris_SRCS
 Then, in `main.cpp`, we integrate it with the qml . For this, we do the following:
 
 * Necessary imports: 
+
+
 ```c++
+
 #include <QQmlContext>
 
 #include "fileName.h"
+
 ```
 
 * Then, we set the contextProperty in the engine as follows:
