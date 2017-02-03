@@ -170,3 +170,7 @@ category1.qml
 category6.qml
 category10.qml
 ```
+
+For more, check out this video: 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CR2qQebqv6I?list=PLfQnJyNyt15FrjkBl6zXwKyvrH2sOFKuI" frameborder="0" allowfullscreen></iframe>
