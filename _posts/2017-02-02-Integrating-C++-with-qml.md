@@ -10,67 +10,87 @@ tags:
  - gcompris
 ---
 
-While working with adding the odd even category in the categorization activity, I found a need to integrate the qml with a C++ class. The class contains a method which returns the list of all files in a given directory, using the [dirent](https://github.com/tronkko/dirent) header.
+While working with adding the odd even category in the categorization activity, I found a need to integrate the qml with a C++ class. The class contains a method which returns the list of all files in a given directory, using ~~the [dirent](https://github.com/tronkko/dirent) header~~ QDir.
 
 ### The C++ code
 
-*fileName.h*
+*Directory.h*
 
 ```c++
-#ifndef FILENAME_H
-#define FILENAME_H
+#ifndef DIRECTORY_H
+#define DIRECTORY_H
 
-#include <dirent.h>
 #include <QString>
+#include <QStringList>
 #include <QObject>
 
-class fileName : public QObject
+/**
+ * @class Directory
+ * @short A helper component to get the names of files
+ *        present in a given location
+ * Use - call files.getFiles(":input/path/")
+ */
+
+class Directory : public QObject
 {
     Q_OBJECT
+
 public:
-    fileName();
-    Q_INVOKABLE QString getFiles(QString location);
+    /**
+     * Constructor
+    */
+    Directory();
+
+    /**
+      * Returns the names of all the files in a given path
+      *
+      * @param location : The path of the directory
+      *
+      * @returns Names of all the files present in the
+      *          given location, separated by a space
+      */
+    Q_INVOKABLE QStringList getFiles(const QString& location);
+    static void init();
+
 };
 
 #endif
-```
-
-*fileName.cpp*
 
 ```
-ffsds 
-#include "fileName.h"
 
-#include <dirent.h>
+*Directory.cpp*
+
+```c++
+#include "Directory.h"
+
 #include <QString>
-#include <string.h>
+#include <QStringList>
 #include <QObject>
+#include <QDir>
+#include <QQmlComponent>
 
-#include <QDebug>
-
-fileName::fileName()
+Directory::Directory()
 {
 }
 
-QString fileName::getFiles(QString location)
+QStringList Directory::getFiles(const QString& location)
 {
-    const char *s=location.toUtf8().constData();
-    DIR *dpdf=opendir(s);
-    struct dirent *epdf;
-
-    QString files;
-
-    if(dpdf!=NULL) {
-        while(epdf = readdir(dpdf)) {
-            if(strcmp(epdf->d_name, ".")!=0 && strcmp(epdf->d_name,"..")) {
-                // next file name = epdf->d_name
-                qDebug() << epdf->d_name;
-                files.append(QString::fromLocal8Bit((epdf->d_name)));
-                files.append(" ");
-            }
+    QStringList fileNames;
+    QDir dir(location);
+    QFileInfoList files=dir.entryInfoList();
+    foreach (QFileInfo file, files){
+        if (file.isDir()){
+        } else{
+            // if it is a file
+            fileNames.append(file.fileName());
         }
     }
-    return files;
+    return fileNames;
+}
+
+void Directory::init()
+{
+    qmlRegisterType<Directory>("GCompris", 1, 0, "directories");
 }
 ```
 The above two files are placed in `gcompris/src/core` and are added in `CMakeLists.txt`, as follows: 
@@ -89,8 +109,8 @@ set(gcompris_SRCS
    File.h
    DownloadManager.cpp
    DownloadManager.h
-   fileName.cpp
-   fileName.h
+   Directory.cpp
+   Directory.h
 )
 ```
 
@@ -109,9 +129,12 @@ Then, in `main.cpp`, we integrate it with the qml . For this, we do the followin
 
 * Then, we set the contextProperty in the engine as follows:
 
+Added Header - `#include <QQmlContext>`
 ```c++
-QScopedPointer<fileName> files(new fileName);
-engine.rootContext()->setContextProperty("files", files.data());
+Directory::init();
+
+
+engine.rootContext()->setContextProperty("files", new Directory);
 ```
 
 ### Calling from the activity
@@ -119,7 +142,7 @@ engine.rootContext()->setContextProperty("files", files.data());
 Now, with the fileName integrated, we can call the methods of the class by calling `files`, as we set the context to the engine.
 
 ```
-files.getFiles("../../GCompris-qt/src/activities/categorization/resource/board/")
+files.getFiles(":/gcompris/src/activities/categorization/resource/board/")
 ```
 
 And as an output, we get the list of files present in the directory in the console
