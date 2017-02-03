@@ -130,7 +130,9 @@ Then, in `main.cpp`, we integrate it with the qml . For this, we do the followin
 * Then, we set the contextProperty in the engine as follows:
 
 Added Header - `#include <QQmlContext>`
-```c++
+
+
+```
 Directory::init();
 
 
