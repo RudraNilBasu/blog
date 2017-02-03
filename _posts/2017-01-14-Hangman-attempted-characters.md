@@ -18,7 +18,7 @@ First merge always feels good! I was working on adding this feature for the last
 
 To add a Textfield to display the characters which were attempted by the user in the Hangman activity.
 
-![pic]()
+![pic](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_1.png)
 
 ### Explanation
 
@@ -89,3 +89,5 @@ To make it work, we call `createAttemptedText()` from:
 
 * `initSubLevel()` function, right after declaring `alreadyTypedLetters` array. At this point, the array will be empty, so we will have only the header in the text field.
 * `processKeyPress(text)` function, write after the newly typed character is pushed into the alreadyTypedLetters array. Thus, whenever a new charater is typed by the user, `createAttemptedText()` will be called. 
+
+![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_2.png)
