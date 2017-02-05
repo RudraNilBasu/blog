@@ -90,7 +90,7 @@ QStringList Directory::getFiles(const QString& location)
 
 void Directory::init()
 {
-    qmlRegisterType<Directory>("GCompris", 1, 0, "directories");
+    qmlRegisterType<Directory>("GCompris", 1, 0, "Directory");
 }
 ```
 The above two files are placed in `gcompris/src/core` and are added in `CMakeLists.txt`, as follows: 
@@ -114,6 +114,10 @@ set(gcompris_SRCS
 )
 ```
 
+From here, there are two ways to approach this: 
+
+### Procedure #1
+
 Then, in `main.cpp`, we integrate it with the qml . For this, we do the following:
 
 * Necessary imports: 
@@ -133,10 +137,9 @@ Added Header - `#include <QQmlContext>`
 
 
 ```
-Directory::init();
-
 
 engine.rootContext()->setContextProperty("files", new Directory);
+
 ```
 
 ### Calling from the activity
@@ -147,7 +150,33 @@ Now, with the fileName integrated, we can call the methods of the class by calli
 files.getFiles(":/gcompris/src/activities/categorization/resource/board/")
 ```
 
-And as an output, we get the list of files present in the directory in the console
+### Procedure #2
+
+In this case, the `main.qml` will only contain the call to the `init()` function we declared on `Directory`:
+
+```c++
+
+Directory::init();
+
+```
+
+On the qml, we create an `id` for Directory as follows: 
+
+```qml
+Directory {
+	id: directory
+}
+```
+
+And we call the function using the following way:
+
+```
+directory.getFiles(":/gcompris/src/activities/categorization/resource/board/")
+```
+
+### Output
+
+And as an output, for both the cases, we get the list of files present in the directory in the console
 
 ```
 category12.qml
@@ -171,6 +200,6 @@ category6.qml
 category10.qml
 ```
 
-For more, check out this video: 
+For more, check out this video (for procedure #1) : 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CR2qQebqv6I?list=PLfQnJyNyt15FrjkBl6zXwKyvrH2sOFKuI" frameborder="0" allowfullscreen></iframe>
