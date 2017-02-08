@@ -10,6 +10,8 @@ tags:
  - gcompris
 ---
 
+[Commit Link](https://github.com/gcompris/GCompris-qt/commit/955462b943c34fc130d1a68fcfb0e1ec6393a3f0)
+
 While working with adding the odd even category in the categorization activity, I found a need to integrate the qml with a C++ class. The class contains a method which returns the list of all files in a given directory, using ~~the [dirent](https://github.com/tronkko/dirent) header~~ QDir.
 
 ### The C++ code
