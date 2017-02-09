@@ -15,8 +15,8 @@ tags:
 
 This is a very simple problem I noticed while examining the *drawletter* and *drawnumber* activities in GCompris. The problem arives when one clicks on a node, but no line needs to be drawn (1. when it is the first node 2. when the pen is drawn away from the page (think of letter '*B*') ). In this case the node just seems to "disappear" without giving any form of visual effect.
 
-![pic1]()
-![pic2]()
+![pic1](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/number_sequence/fig_1.jpg)
+![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/number_sequence/fig_2.jpg)
 
 For this problem, I thought of an efficient solution which would enhance readability of the code and solve the problem at the same time. First I thought of adding a dot whenever a node was clicked, so that it will get covered whenever the line is drawn. But, it was then observed that the center of the line which was drawn does not pass through the center of the line between the two nodes. As a result of this, the dot won't be *"covered"* when the line is drawn over them.
 
