@@ -25,6 +25,8 @@ The previous idea was scrapped off since the new one can be used in multiple way
 
 * Blocks containing numbers will be present in one line
 * User will have to rearrange them to a specific order (ascending order in this case)
+  * As of now, the rearrangement is done by clicking on a block, and then clicking on the target block, resulting in them being swapped.
+Inspiration - [Ordering Game](http://www.mathsisfun.com/numbers/ordering-game.php)
 
 ### Workflow
 
