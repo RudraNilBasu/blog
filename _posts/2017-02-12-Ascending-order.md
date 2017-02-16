@@ -224,4 +224,8 @@ BarButton {
 
 With this, the activity will look like this: 
 
-![pic2]()
+![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending_activity_1.png)
+
+### Working
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gSPcWVt0R0s" frameborder="0" allowfullscreen></iframe>
