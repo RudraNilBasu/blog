@@ -229,3 +229,7 @@ With this, the activity will look like this:
 ### Working
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gSPcWVt0R0s" frameborder="0" allowfullscreen></iframe>
+
+With new drag and drop
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wx3GQltFn4A" frameborder="0" allowfullscreen></iframe>
