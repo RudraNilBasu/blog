@@ -232,4 +232,6 @@ With this, the activity will look like this:
 
 With new drag and drop
 
+The Final Version involve dragging and dropping the tiles in it's correct position and shifting the remaining tiles.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wx3GQltFn4A" frameborder="0" allowfullscreen></iframe>
