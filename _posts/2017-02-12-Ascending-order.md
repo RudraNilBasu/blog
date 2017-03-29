@@ -235,3 +235,72 @@ With new drag and drop
 The Final Version involve dragging and dropping the tiles in it's correct position and shifting the remaining tiles.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wx3GQltFn4A" frameborder="0" allowfullscreen></iframe>
+
+### The QML Code
+
+In the beginning, we declare a variable called `mode` to identify which mode we are currently in. As if now, there are two modes: 1. Numbers and 2. Alphabets. We are going to talk about alphabets shortly after, right now, let's concentrate on the numbers.
+
+For the numbers activity, we set the `mode` variable to `number"`
+
+```
+property string mode: "number"
+```
+
+We then create a `QtObject` which will store all the QML items we need in the javascript. It looks like the following:
+
+```
+        QtObject {
+            id: items
+            property Item main: activity.main
+            property alias background: background
+            property alias bar: bar
+            property alias bonus: bonus
+            property alias boxes: boxes
+            property alias flow: flow
+            property alias container: container
+            property alias instruction: instruction
+            property real ratio: ApplicationInfo.ratio
+            property alias score: score
+        }
+```
+
+`background`: The `Image` component which contains the background image for the activity
+`boxes`: The `Repeater` component which contains a specific number of `Rectangle` components which serves as the individual boxes for the activity.
+`flow`: The [`Flow`](http://doc.qt.io/qt-5/qml-qtquick-flow.html) component, which is responsible for positioning the Rectangles side by side
+`container`: The `Rectangle` component which defines the area under which the `flow` should be present
+`instruction`: A `GCText` component containing the instructions for each levels
+`score`: A `score` component to display the score for the current level
+
+##### The instructions
+
+The instructions is a `GCText` component which displays whether the elements for the current level should be arranged in ascending or descending order. The width of this component should be a little less than the width of it's parent and it should be anchored along with the horizontalCenter of it's parent. The text should also get wrapped accordingly, if it doesn't fit in the current screen.
+
+For creating a background of the text, we create a `Rectangle` element under it, with the gradient starting from #000 to #666 to #AAA
+
+```
+        GCText {
+            id: instruction
+            wrapMode: TextEdit.WordWrap
+            fontSize: tinySize
+            horizontalAlignment: Text.Center
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width * 0.9
+            color: 'white'
+            Rectangle {
+                z: -1
+                opacity: 0.8
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: "#000" }
+                    GradientStop { position: 0.9; color: "#666" }
+                    GradientStop { position: 1.0; color: "#AAA" }
+                }
+                radius: 10
+                border.color: 'black'
+                border.width: 1
+                anchors.centerIn: parent
+                width: parent.width * 1.1
+                height: parent.contentHeight
+            }
+        }
+
+```
