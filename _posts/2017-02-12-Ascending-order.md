@@ -226,7 +226,7 @@ With this, the activity will look like this:
 
 ![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending_activity_1.png)
 
-### Working
+# Working
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gSPcWVt0R0s" frameborder="0" allowfullscreen></iframe>
 
@@ -236,7 +236,7 @@ The Final Version involve dragging and dropping the tiles in it's correct positi
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wx3GQltFn4A" frameborder="0" allowfullscreen></iframe>
 
-### The QML Code
+# The QML Code
 
 In the beginning, we declare a variable called `mode` to identify which mode we are currently in. As if now, there are two modes: 1. Numbers and 2. Alphabets. We are going to talk about alphabets shortly after, right now, let's concentrate on the numbers.
 
@@ -264,14 +264,14 @@ We then create a `QtObject` which will store all the QML items we need in the ja
         }
 ```
 
-`background`: The `Image` component which contains the background image for the activity
-`boxes`: The `Repeater` component which contains a specific number of `Rectangle` components which serves as the individual boxes for the activity.
-`flow`: The [`Flow`](http://doc.qt.io/qt-5/qml-qtquick-flow.html) component, which is responsible for positioning the Rectangles side by side
-`container`: The `Rectangle` component which defines the area under which the `flow` should be present
-`instruction`: A `GCText` component containing the instructions for each levels
-`score`: A `score` component to display the score for the current level
+* `background`: The `Image` component which contains the background image for the activity
+* `boxes`: The `Repeater` component which contains a specific number of `Rectangle` components which serves as the individual boxes for the activity.
+* `flow`: The [`Flow`](http://doc.qt.io/qt-5/qml-qtquick-flow.html) component, which is responsible for positioning the Rectangles side by side
+* `container`: The `Rectangle` component which defines the area under which the `flow` should be present
+* `instruction`: A `GCText` component containing the instructions for each levels
+* `score`: A `score` component to display the score for the current level
 
-##### The instructions
+### The instructions
 
 The instructions is a `GCText` component which displays whether the elements for the current level should be arranged in ascending or descending order. The width of this component should be a little less than the width of it's parent and it should be anchored along with the horizontalCenter of it's parent. The text should also get wrapped accordingly, if it doesn't fit in the current screen.
 
@@ -304,3 +304,147 @@ For creating a background of the text, we create a `Rectangle` element under it,
         }
 
 ```
+
+### The items
+
+For the items, we first have an invisible container which will contain the `flow` and `boxes`. It is a transparent Rectangle, centered in the center of the screen. The width depends on the number of Rectangles in the level. This is done to make sure that the children of the `flow` element are always at the center of the screen. The width is given by the formula: 
+
+```
+width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
+```
+
+As the child of this transparent Rectangle is the `Flow`, with two variables, `onGoingAnimationCount` and `validMousePress`:
+
+* `onGoingAnimationCount`: Counts the number of on-going animations in the current level. No input will be taken as valid if the value is != 0
+* `validMousePress`: A boolean variable to determine whether we can make a valid input or not (we can't give input if there are any ongoing tasks)
+
+As the child of the `flow`, we have a `Repeater` element which will repeat few instances of a `Rectangle` type, which will be our blocks which we drag and drop in the activity.
+
+The blocks are a white `Rectangle` of width and height `65 * ApplicationInfo.ratio` with a black border. As a child of this rectangle is a `GCText`, which is the label (number or alphabet) on the blocks.
+
+For the purpose of drag and drop, we have a `MouseArea` which has `onPressed` and `onReleased` to deal with the drag and drop
+
+```
+                            onPressed: {
+                                box.beginDragPosition = Qt.point(box.x, box.y)
+                            }
+                            onReleased: {
+                                Activity.placeBlock(box, box.beginDragPosition);
+                            }
+```
+
+The `beginDragPosition` is a `point` variable under `box` and `placeBlock()` is a function on the javascript, which we will discuss shortly
+
+There are two animation component, which plays whenever there is a change in `x` and `y` positions in the blocks
+
+```
+        Rectangle {
+            id: container
+            color: "transparent"
+            width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
+            height: parent.height/2
+
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+            }
+
+            Flow {
+                id: flow
+                spacing: 10
+
+                /*
+                 * Count number of active animations in the activity
+                 * at this current time
+                 * (No input will be taken at this time)
+                 */
+                property int onGoingAnimationCount: 0
+                property bool validMousePress
+                anchors {
+                    fill: parent
+                }
+                Repeater {
+                    id: boxes
+                    model: 6
+                    Rectangle {
+                        id: box
+                        color: "white"
+                        z: mouseArea.drag.active ||  mouseArea.pressed ? 2 : 1
+                        property int boxValue: 0
+                        property point beginDragPosition
+
+                        width: 65 * ApplicationInfo.ratio
+                        height: 65 * ApplicationInfo.ratio
+                        radius: 10
+                        border{
+                            color: "black"
+                            width: 3 * ApplicationInfo.ratio
+                        }
+                        GCText {
+                            id: numText
+                            anchors.centerIn: parent
+                            text: mode == "alphabets" ? String.fromCharCode(boxValue) : boxValue.toString()
+                            font.pointSize: 20 * ApplicationInfo.ratio
+                        }
+                        MouseArea {
+                            id: mouseArea
+                            anchors.fill: parent
+                            drag.target: parent
+                            enabled: (flow.onGoingAnimationCount == 0 && flow.validMousePress == true) ? true : false
+                            onPressed: {
+                                box.beginDragPosition = Qt.point(box.x, box.y)
+                            }
+                            onReleased: {
+                                Activity.placeBlock(box, box.beginDragPosition);
+                            }
+                        }
+                        Behavior on x {
+                            PropertyAnimation {
+                                id: animationX
+                                duration: 500
+                                easing.type: Easing.InOutBack
+                                onRunningChanged: {
+                                    if(animationX.running) {
+                                        flow.onGoingAnimationCount++
+                                    } else {
+                                        flow.onGoingAnimationCount--
+                                    }
+                                }
+                            }
+                        }
+                        Behavior on y {
+                            PropertyAnimation {
+                                id: animationY
+                                duration: 500
+                                easing.type: Easing.InOutBack
+                                onRunningChanged: {
+                                    if(animationY.running) {
+                                        flow.onGoingAnimationCount++
+                                    } else {
+                                        flow.onGoingAnimationCount--
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+```
+
+For the score for each levels we use the `Score` component in-built in GCompris.
+
+```
+        Score {
+            id: score
+            anchors {
+                right: parent.right
+                top: instruction.bottom
+                bottom: undefined
+            }
+        }
+```
+
+We now move on to the javascript part, which mainly deals with the mechanism to shift the positions of the blocks on drag and drop.
+
+# The javascript code
