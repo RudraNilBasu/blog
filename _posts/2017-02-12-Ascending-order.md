@@ -10,6 +10,7 @@ tags:
  - gcompris
 ---
 
+<!--
 ### Original Idea
 
 ![pic1](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending.png)
@@ -236,6 +237,8 @@ The Final Version involve dragging and dropping the tiles in it's correct positi
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wx3GQltFn4A" frameborder="0" allowfullscreen></iframe>
 
+-->
+
 # The QML Code
 
 In the beginning, we declare a variable called `mode` to identify which mode we are currently in. As if now, there are two modes: 1. Numbers and 2. Alphabets. We are going to talk about alphabets shortly after, right now, let's concentrate on the numbers.
@@ -448,3 +451,30 @@ For the score for each levels we use the `Score` component in-built in GCompris.
 We now move on to the javascript part, which mainly deals with the mechanism to shift the positions of the blocks on drag and drop.
 
 # The javascript code
+
+### The variables
+
+```
+var currentLevel = 0
+var numberOfLevel = 4
+
+var items
+var mode
+
+// num[] will contain the random numbers
+var num = []
+var originalArrangement = []
+
+var ascendingOrder
+var thresholdDistance
+var noOfTilesInPreviousLevel
+```
+
+* `currentLevel`: The current level
+* `numberOfLevel`: The number of levels
+* `items`: The `QtObject` containing the QML objects
+* `mode`: The variable to determine the current mode of the activity ( `numbers` or `alphabets` )
+* `num`: An array containing the random numbers
+* `originalArrangement`: The original arrangement provided to the user
+* `thresholdDistance`: The minimum distance from the drop area to the closest block to allow shifting of the blocks
+* `noOfTilesInPreviousLevel`: To store the number of blocks in the previous level, used to reset variables
