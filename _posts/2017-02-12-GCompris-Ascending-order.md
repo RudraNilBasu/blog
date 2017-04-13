@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Ascending order
+title:      GCompris- Ascending order
 date:       2017-02-12 15:11:18
 summary:    Adding Ascending order in GCompris
 categories: KDE
@@ -15,14 +15,14 @@ tags:
 
 ![pic1](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending.png)
 
-Key points: 
+Key points:
 
 * Few blocks, with same width and different heights are given to the user as input
 * The user will then have to arrange the blocks in increasing order of their heights, thus creating a stair to help tux move up the stairs to reach the door.
 
 ### Revised Idea
 
-The previous idea was scrapped off since the new one can be used in multiple ways. The new one looks like: 
+The previous idea was scrapped off since the new one can be used in multiple ways. The new one looks like:
 
 * Blocks containing numbers will be present in one line
 * User will have to rearrange them to a specific order (ascending order in this case)
@@ -156,7 +156,7 @@ Rectangle {
 
 ```
 
-So this is just a basic `Flow` created within a `Rectangle` (the main container). Inside the flow there is a `Repeater` containing the `Rectangle`s which will form the blocks in the activity. Each of the `Rectangle`s has a `GCText` which contains the numbers which is sort of a "_label_" for each block. Each of these `Rectangles` (the ones insider the `Repeater`) conotains an id _box_ and 6 variables. They are: 
+So this is just a basic `Flow` created within a `Rectangle` (the main container). Inside the flow there is a `Repeater` containing the `Rectangle`s which will form the blocks in the activity. Each of the `Rectangle`s has a `GCText` which contains the numbers which is sort of a "_label_" for each block. Each of these `Rectangles` (the ones insider the `Repeater`) conotains an id _box_ and 6 variables. They are:
 
 property bool selected: false
                 property int imageX: 0
@@ -171,7 +171,7 @@ property bool selected: false
 * `animateVert` and `animateHor` (`bool`): To mark whether the block should move horizontally or vertically while it's position is being interchanged with another block.
 * `currentPos` (`real`): To contain the current x or y position of the block.
 
-Along with that, we have the instruction text: 
+Along with that, we have the instruction text:
 
 ```qml
 
@@ -223,7 +223,7 @@ BarButton {
 
 `selectBox(box)` and `checkOrder()` are two functions present in `Activity`, which is the javascript which handles the backend tasks, and it is described later.
 
-With this, the activity will look like this: 
+With this, the activity will look like this:
 
 ![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending_activity_1.png)
 
@@ -310,7 +310,7 @@ For creating a background of the text, we create a `Rectangle` element under it,
 
 ### The items
 
-For the items, we first have an invisible container which will contain the `flow` and `boxes`. It is a transparent Rectangle, centered in the center of the screen. The width depends on the number of Rectangles in the level. This is done to make sure that the children of the `flow` element are always at the center of the screen. The width is given by the formula: 
+For the items, we first have an invisible container which will contain the `flow` and `boxes`. It is a transparent Rectangle, centered in the center of the screen. The width depends on the number of Rectangles in the level. This is done to make sure that the children of the `flow` element are always at the center of the screen. The width is given by the formula:
 
 ```
 width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
