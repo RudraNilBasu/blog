@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starting off with KDE in Kubuntu 16.04</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://i.imgur.com/aRQcGSi.png" alt="Thumbnail: jekyll" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">Starting off with KDE in Kubuntu 16.04</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">December 11, 2016</span>
+           under KDE
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          3 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p>I was thinking about shifting from competitive programming to open source contrbution for a while now. Found KDE an interesting organisation,and decided to start with it. Little did I know that I would have to spend the next 1 week trying to debug the list of errors generated while building KDE softwares, dealing with Ubuntu crasing on boot up and finally moving from <a href="https://www.ubuntu.com/">Ubuntu 14.04</a> to <a href="http://www.kubuntu.org/getkubuntu/">Kubuntu 16.04</a>.</p>
+
+<p>To build KDE softwares from source, we need <em>kdesrc-build</em>.</p>
+
+<p>We use git to clone kdesrc-build to our local machine. You can install git using the command:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install git
+</code></pre>
+</div>
+
+<p>Learn more about <a href="https://help.github.com/articles/set-up-git/">configuring git here</a>.</p>
+
+<h3 id="installing-dependencies">Installing dependencies</h3>
+
+<ul>
+  <li>Installing Qt</li>
+</ul>
+
+<p>Download Qt using <code class="highlighter-rouge">wget</code>:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>wget http://download.qt.io/official_releases/qt/5.7/5.7.0/qt-opensource-linux-x64-5.7.0.run
+</code></pre>
+</div>
+
+<p>Install Qt</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>chmod +x qt-opensource-linux-x64-5.7.0.run
+./qt-opensource-linux-x64-5.7.0.run
+</code></pre>
+</div>
+
+<p>Qt was installed in <code class="highlighter-rouge">/opt/</code> directory:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>/opt/Qt5.7.0
+</code></pre>
+</div>
+
+<ul>
+  <li>Install the KF5 Frameworks</li>
+</ul>
+
+<p>For Kubuntu, the following commands were needed to run to install the dependencies</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get build-dep qtbase5-dev
+
+<span class="gp">$ </span>sudo apt-get install libbz2-dev libxslt-dev libxml2-dev shared-mime-info oxygen-icon-theme libgif-dev libvlc-dev libvlccore-dev doxygen gperf bzr libxapian-dev fontforge libgcrypt20-dev libattr1-dev network-manager-dev libgtk-3-dev xsltproc xserver-xorg-dev xserver-xorg-input-synaptics-dev libpwquality-dev modemmanager-dev libxcb-keysyms1-dev libepoxy-dev libpolkit-agent-1-dev libnm-util-dev libnm-glib-dev libegl1-mesa-dev libxcb-xkb-dev libqt5x11extras5-dev libwww-perl libxml-parser-perl libjson-perl libboost-dev libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev libarchive-dev liblmdb-dev cmake git extra-cmake-modules <span class="s2">"libkf5.*-dev"</span> llvm llvm-3.6 libclang-3.6-dev bison flex
+</code></pre>
+</div>
+<p>For more, <a href="https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Install_the_dependencies">read here</a>.</p>
+
+<h3 id="installing-kdesrc-build">Installing kdesrc-build</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>mkdir -p ~/kde/src
+<span class="nb">cd</span> ~/kde/src
+git clone kde:kdesrc-build
+<span class="nb">cd </span>kdesrc-build
+cp kdesrc-buildrc-kf5-sample ~/.kdesrc-buildrc
+
+<span class="c"># Install a symlink of kdesrc-build to a location in PATH</span>
+mkdir ~/bin
+ln -s <span class="nv">$PWD</span>/kdesrc-build ~/bin
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>
+</code></pre>
+</div>
+
+<p>To make sure <code class="highlighter-rouge">kdesrc-build</code> is available in PATH whenever we open the terminal, we need to add the following line to the <code class="highlighter-rouge">~/.bashrc</code></p>
+
+<p><code class="highlighter-rouge">export PATH=~/bin:$PATH</code></p>
+
+<h3 id="configuring-kdesrc-build">Configuring kdesrc-build</h3>
+
+<p>We need to edit the <code class="highlighter-rouge">~/.kdesrc-buildrc</code> and replace <code class="highlighter-rouge">/path/to/kdesrc-build/kf5-qt5-build-include</code> with <code class="highlighter-rouge">~/kde/src/kdesrc-build/kf5-qt5-build-include</code>. Also, add <code class="highlighter-rouge">ignore-kde-structure true</code> and <code class="highlighter-rouge">make-options -jN</code> to the global section.</p>
+
+<p>We aldo need to point <em>kdesrc-build</em> to the correct source, build, log and install directories.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>global
+  ...
+  # Do not introduce an extra directory hierarchy
+  ignore-kde-structure true
+
+  # set the number of jobs to 5; this should usually
+  # be (number-of-cpu-cores + 1)
+  make-options      -j5
+
+  # Stop kdesrc-build
+  #stop-on-failure  true
+
+  # Directory structure
+  source-dir        ~/kde/src
+  build-dir         ~/kde/build
+  log-dir           ~/kde/log
+  kdedir            ~/kde/usr
+  ...
+end global
+</code></pre>
+</div>
+
+<h3 id="build-using-kdesrc-build">Build using kdesrc-build</h3>
+
+<p>For building, we just have to run:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>kdesrc-build &lt;package-name&gt;
+</code></pre>
+</div>
+
+<p>I was building <em>kmines</em>, and the command is:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>kdesrc-build kmines
+</code></pre>
+</div>
+
+<p>Successful build looks like this:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Updating kde-build-metadata <span class="o">(</span>to branch master<span class="o">)</span>
+ <span class="k">*</span> Downloading projects.kde.org project database...
+
+Building kmines from kdegames <span class="o">(</span>1/1<span class="o">)</span>
+	Updating kmines <span class="o">(</span>to branch master<span class="o">)</span>
+	Local changes detected
+	Module updated
+	No <span class="nb">source </span>update, but the last configure failed
+	Source update <span class="nb">complete </span><span class="k">for </span>kmines: no files affected
+	Preparing build system <span class="k">for </span>kmines.
+	Removing files <span class="k">in </span>build directory <span class="k">for </span>kmines
+	Old build system cleaned, starting new build system.
+	Running cmake...
+	Compiling... succeeded <span class="o">(</span>after 15 seconds<span class="o">)</span>
+	Installing.. succeeded <span class="o">(</span>after 1 second<span class="o">)</span>
+
+<span class="o">&lt;&lt;&lt;</span>  PACKAGES SUCCESSFULLY BUILT  &gt;&gt;&gt;
+kmines
+ 
+Removing 4 out of 5 old log directories...
+:-<span class="o">)</span>
+Your logs are saved <span class="k">in</span> /home/rudra/kde/log/2016-12-11-04
+</code></pre>
+</div>
+
+<p><strong>NOTE</strong>: If you are getting error messages stating files such as <code class="highlighter-rouge">qt5-config.cmake</code> was not found, then add the directory of the qt installation (in my case it is <code class="highlighter-rouge">/opt/Qt5.7.0/5.7/gcc_64</code>) to the <em>CMakeLists.txt</em> file in the source code (in my case the location is ` ~/kde/src/kmines/CMakeLists.txt` ) to set the prefix path of Qt installation.
+Add the following line:</p>
+
+<div class="language-cmake highlighter-rouge"><pre class="highlight"><code><span class="nb">set</span> <span class="p">(</span>CMAKE_PREFIX_PATH <span class="s2">"/opt/Qt5.7.0/5.7/gcc_64"</span><span class="p">)</span>
+</code></pre>
+</div>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            KDE, Open source
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

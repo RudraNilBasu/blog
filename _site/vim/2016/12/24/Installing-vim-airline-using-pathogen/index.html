@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>Installing Vim airline using Pathogen (in Ubuntu)</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,12 +84,12 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">Installing Vim airline using Pathogen (in Ubuntu)</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
+          on <span itemprop="datePublished" content="2014-08-28">December 24, 2016</span>
            under vim
         </i></small>
       </div>
@@ -104,39 +104,35 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p><a href="https://github.com/vim-airline/vim-airline">vim-airline</a> is a “lean and mean status/tabline for vim that’s light as air”</p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<p><img src="https://raw.githubusercontent.com/wiki/vim-airline/vim-airline/screenshots/demo.gif" alt="demo" /></p>
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+<h3 id="installation">Installation</h3>
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
+<p>Goto the bundle directory, or create one if it is not already created at <code class="highlighter-rouge">.vim/bundle</code></p>
 
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
-
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
-
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
-
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+<div class="highlighter-rouge"><pre class="highlight"><code>cd ~/.vim/bundle
 </code></pre>
 </div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<p>clone vim-airline from the github repository</p>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/vim-airline/vim-airline
+</code></pre>
+</div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+<p>To allow the plugin to open up as soon as a file is started, add this to the <code class="highlighter-rouge">~/.vimrc</code> file.</p>
 
-<p>This is how my template for cpp files looks like :-</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>set laststatus=2
+</code></pre>
+</div>
 
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+<p>Add the following line to make sure to get the colors to work correctly</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>set t_Co=256
+</code></pre>
+</div>
 </span>
 
         
@@ -147,7 +143,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            vim, pathogen
           </small>
         </div>
         

@@ -3,163 +3,1462 @@
   <channel>
     <title>Rudra's Yard</title>
     <description>Random stuff.</description>
-    <link>http://rudranilbasu.github.io//</link>
-    <atom:link href="http://rudranilbasu.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 22 Nov 2016 21:39:09 +0530</pubDate>
-    <lastBuildDate>Tue, 22 Nov 2016 21:39:09 +0530</lastBuildDate>
-    <generator>Jekyll v2.5.0</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 07 May 2017 02:12:49 +0530</pubDate>
+    <lastBuildDate>Sun, 07 May 2017 02:12:49 +0530</lastBuildDate>
+    <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>Vim filetype templates</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif&quot; alt=&quot;HEAD&quot; /&gt;&lt;/p&gt;
+        <title>My Setup</title>
+        <description>&lt;p&gt;Let’s discuss about my current setup, because why not.&lt;/p&gt;
 
-&lt;p&gt;This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.&lt;/p&gt;
+&lt;p&gt;Quick facts:&lt;/p&gt;
 
-&lt;p&gt;With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Distro: Kubuntu 16.04&lt;/li&gt;
+  &lt;li&gt;Kernel version: 4.4.0-70-generic&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;creating-a-default-template-for-cpp-file&quot;&gt;Creating a default template for cpp file&lt;/h3&gt;
+&lt;h1 id=&quot;the-shell&quot;&gt;The Shell&lt;/h1&gt;
 
-&lt;p&gt;Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that &lt;code class=&quot;highlighter-rouge&quot;&gt;template.cpp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I use zsh as default shell. For configuring zsh, I use the &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot;&gt;oh-my-zsh&lt;/a&gt; framework to make it look (and work) way cooler. With that, I have the &lt;a href=&quot;https://github.com/powerline/fonts&quot;&gt;Inconsolata font&lt;/a&gt; installed, to allow the &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster&quot;&gt;agnoster&lt;/a&gt; font to work properly. For the terminal, I use terminator. With those, the results are:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png&quot; alt=&quot;scr&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/images/setup/shell_1.png&quot; alt=&quot;shell_1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.&lt;/p&gt;
+&lt;p&gt;As for the cow with the quote, it is something that pops up whenever a new instance of the terminal is opened. It is a simple script I wrote and attached it in the end of &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; (It maybe &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; if you are using bash instead of zsh):&lt;/p&gt;
 
-&lt;p&gt;Close it up and open your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.vimrc&lt;/code&gt; file and paste the following code in it –&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shuf -n 1 ~/.quotes | cowsay | lolcat
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg&quot; alt=&quot;hue&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;the-text-editor-vim&quot;&gt;The Text Editor: Vim&lt;/h1&gt;
 
-&lt;p&gt;And that’s it! The next time you open a new cpp file, the default template will load up as shown below.&lt;/p&gt;
+&lt;p&gt;I have two plugins added for Vim:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Vim-airlines&lt;/strong&gt;: A customisable plugin to add various themes in vim, which helps to improve the workflow&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;NerdTree&lt;/strong&gt;: To explore the files and documents via vim&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif&quot; alt=&quot;final&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I am also thinking of the adding &lt;code class=&quot;highlighter-rouge&quot;&gt;YouCompleteMe&lt;/code&gt; plugin in Vim, for autocomplition&lt;/p&gt;
 
-&lt;p&gt;This is how my template for cpp files looks like :-&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js&quot;&gt;&lt;/script&gt;
-
+&lt;p&gt;&lt;img src=&quot;/blog/images/setup/vim.png&quot; alt=&quot;vim_1&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sat, 10 Sep 2016 18:02:18 +0530</pubDate>
-        <link>http://rudranilbasu.github.io//vim/2016/09/10/Vim-Filetype-templates/</link>
-        <guid isPermaLink="true">http://rudranilbasu.github.io//vim/2016/09/10/Vim-Filetype-templates/</guid>
+        <pubDate>Wed, 05 Apr 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/linux/2017/04/05/My-Setup/</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/2017/04/05/My-Setup/</guid>
         
         <category>vim</category>
         
-        <category>templates</category>
+        <category>linux</category>
         
         
-        <category>vim</category>
+        <category>linux</category>
         
       </item>
     
       <item>
-        <title>Algorithm Visualizer</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/06/algo_viz1.gif&quot; alt=&quot;HEAD&quot; /&gt;&lt;/p&gt;
+        <title>GCompris- Ascending order</title>
+        <description>&lt;!--
+### Original Idea
 
-&lt;p&gt;I was looking for some open source repositories on Github on which I could contribute, and then I came across &lt;a href=&quot;https://github.com/parkjs814&quot;&gt;Jason Park&lt;/a&gt;‘s &lt;a href=&quot;https://github.com/parkjs814/AlgorithmVisualizer&quot;&gt;Algorithm Visualizer&lt;/a&gt; on Github. This project seemed prefect to me since I was always interested in algorithm, and this seemed to be a great opportunity to enter in the field of open source contribution.&lt;/p&gt;
+![pic1](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending.png)
 
-&lt;h1 id=&quot;what-is-algorithm-visualizer-&quot;&gt;What is Algorithm Visualizer ?&lt;/h1&gt;
+Key points:
 
-&lt;p&gt;As the name suggests, it is a project to visualize standard algorithms, making it easier for people to understand the algorithm by giving a visual representation.&lt;/p&gt;
+* Few blocks, with same width and different heights are given to the user as input
+* The user will then have to arrange the blocks in increasing order of their heights, thus creating a stair to help tux move up the stairs to reach the door.
 
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/06/algo_viz.gif&quot; alt=&quot;Head&quot; /&gt;&lt;/p&gt;
+### Revised Idea
 
-&lt;p&gt;The project is mostly written in javascript, and you can &lt;a href=&quot;https://github.com/parkjs814/AlgorithmVisualizer&quot;&gt;have a look at the project here&lt;/a&gt;. Till now, nearly 56 algorithms from 11 different topics are present in the project.&lt;/p&gt;
+The previous idea was scrapped off since the new one can be used in multiple ways. The new one looks like:
 
-&lt;h3 id=&quot;buildrun-the-project&quot;&gt;Build/Run the project&lt;/h3&gt;
+* Blocks containing numbers will be present in one line
+* User will have to rearrange them to a specific order (ascending order in this case)
+  * As of now, the rearrangement is done by clicking on a block, and then clicking on the target block, resulting in them being swapped.
 
-&lt;h3 id=&quot;build-system&quot;&gt;Build System&lt;/h3&gt;
 
-&lt;p&gt;From the wiki of Algorithm Visualizer:&lt;br /&gt;
-Our project uses gulp to:&lt;/p&gt;
+Inspiration - [Ordering Game](http://www.mathsisfun.com/numbers/ordering-game.php)
+
+### Workflow
+
+We use `Flow` to arrange the blocks (as `Rectangle` in this case), so that it automatically wraps out depending on the screen size.
+
+*Imports*
+
+```qml
+
+import &quot;ascending_order.js&quot; as Activity
+import &quot;qrc:/gcompris/src/core/core.js&quot; as Core
+
+```
+
+*The Grids*
+
+```qml
+
+Rectangle {
+    color: &quot;transparent&quot;
+    width: parent.width; height: parent.height/2
+
+    anchors {
+        horizontalCenter: parent.horizontalCenter
+        verticalCenter: parent.verticalCenter
+    }
+
+    Flow {
+        anchors.fill: parent
+        anchors.margins: 4
+        spacing: 10
+        Repeater {
+            id: boxes
+            model: 6
+            Rectangle {
+                id: box
+                color: selected ? &quot;lightblue&quot; : &quot;white&quot;
+                property bool selected: false
+                property int imageX: 0
+                property int pos
+                property bool animateVert: false
+                property bool animateHor: false
+                property real currentPos
+                width: 360/4 * ApplicationInfo.ratio
+                height: 360/4 * ApplicationInfo.ratio
+                radius: 10
+                border{
+                    color: &quot;black&quot;
+                    width: 10
+                }
+                GCText {
+                    id: numText
+                    anchors.centerIn: parent
+                    text: imageX.toString()
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked :{
+                        Activity.selectBox(box);
+                    }
+                }
+                Behavior on color {
+                    PropertyAnimation {
+                        duration: 300
+                        easing.type: Easing.InOutBack
+                    }
+                }
+                Behavior on x {
+                    ParallelAnimation {
+                        PropertyAnimation {
+                            duration: 500
+                            easing.type: Easing.InOutBack
+                        }
+                    }
+                }
+                Behavior on y {
+                    ParallelAnimation {
+                        PropertyAnimation {
+                            duration: 500
+                            easing.type: Easing.InOutBack
+                        }
+                    }
+                }
+                Behavior on animateVert {
+                    SequentialAnimation {
+                        PropertyAnimation {
+                            target: box
+                            property: &quot;y&quot;
+                            from: currentPos
+                            to: currentPos + (box.pos == 1 ? 20 : -20)
+                            duration: 250
+                        }
+                        PropertyAnimation {
+                            target: box
+                            property: &quot;y&quot;
+                            from: currentPos + (box.pos == 1 ? 20 : -20)
+                            to: currentPos
+                            duration: 250
+                        }
+                    }
+                }
+                Behavior on animateHor {
+                    SequentialAnimation {
+                        PropertyAnimation {
+                            target: box
+                            property: &quot;x&quot;
+                            from: currentPos
+                            to: currentPos + (box.pos == 1 ? 20 : -20)
+                            duration: 250
+                        }
+                        PropertyAnimation {
+                            target: box
+                            property: &quot;x&quot;
+                            from: currentPos + (box.pos == 1 ? 20 : -20)
+                            to: currentPos//-box.pos == 1 ? 20 : -20//0
+                            duration: 250
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+So this is just a basic `Flow` created within a `Rectangle` (the main container). Inside the flow there is a `Repeater` containing the `Rectangle`s which will form the blocks in the activity. Each of the `Rectangle`s has a `GCText` which contains the numbers which is sort of a &quot;_label_&quot; for each block. Each of these `Rectangles` (the ones insider the `Repeater`) conotains an id _box_ and 6 variables. They are:
+
+property bool selected: false
+                property int imageX: 0
+                property int pos
+                property bool animateVert: false
+                property bool animateHor: false
+                property real currentPos
+
+* `selected` (`bool`): which tells whether the given Rectangle is selected by the user or not.
+* `imageX` (`int`): the value of the given Rectangle (or the label on it).
+* `pos` (`int`): a marker used during animating the blocks to determine whether the block will move up or down while animating.
+* `animateVert` and `animateHor` (`bool`): To mark whether the block should move horizontally or vertically while it's position is being interchanged with another block.
+* `currentPos` (`real`): To contain the current x or y position of the block.
+
+Along with that, we have the instruction text:
+
+```qml
+
+GCText {
+    id: instruction
+    wrapMode: TextEdit.WordWrap
+    fontSize: tinySize
+    anchors.horizontalCenter: parent.horizontalCenter
+    text: &quot;Arrange the given numbers in ascending order&quot;
+    color: 'white'
+    Rectangle {
+        z: -1
+        opacity: 0.8
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: &quot;#000&quot; }
+            GradientStop { position: 0.9; color: &quot;#666&quot; }
+            GradientStop { position: 1.0; color: &quot;#AAA&quot; }
+        }
+        radius: 10
+        border.color: 'black'
+        border.width: 1
+        anchors.centerIn: parent
+        width: parent.width * 1.1
+        height: parent.contentHeight
+    }
+}
+
+```
+
+... and the _ok_ button:
+
+```qml
+
+BarButton {
+  id: ok
+  source: &quot;qrc:/gcompris/src/core/resource/bar_ok.svg&quot;;
+  sourceSize.width: 75 * ApplicationInfo.ratio
+  visible: true
+  anchors {
+      right: parent.right
+      bottom: parent.bottom
+      bottomMargin: 10 * ApplicationInfo.ratio
+      rightMargin: 10 * ApplicationInfo.ratio
+  }
+  onClicked: Activity.checkOrder()
+}
+
+```
+
+`selectBox(box)` and `checkOrder()` are two functions present in `Activity`, which is the javascript which handles the backend tasks, and it is described later.
+
+With this, the activity will look like this:
+
+![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending_activity_1.png)
+
+# Working
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/gSPcWVt0R0s&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+With new drag and drop
+
+The Final Version involve dragging and dropping the tiles in it's correct position and shifting the remaining tiles.
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/wx3GQltFn4A&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+--&gt;
+
+&lt;h1 id=&quot;the-qml-code&quot;&gt;The QML Code&lt;/h1&gt;
+
+&lt;p&gt;In the beginning, we declare a variable called &lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt; to identify which mode we are currently in. As if now, there are two modes: 1. Numbers and 2. Alphabets. We are going to talk about alphabets shortly after, right now, let’s concentrate on the numbers.&lt;/p&gt;
+
+&lt;p&gt;For the numbers activity, we set the &lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt; variable to &lt;code class=&quot;highlighter-rouge&quot;&gt;number&quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;property string mode: &quot;number&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We then create a &lt;code class=&quot;highlighter-rouge&quot;&gt;QtObject&lt;/code&gt; which will store all the QML items we need in the javascript. It looks like the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        QtObject {
+            id: items
+            property Item main: activity.main
+            property alias background: background
+            property alias bar: bar
+            property alias bonus: bonus
+            property alias boxes: boxes
+            property alias flow: flow
+            property alias container: container
+            property alias instruction: instruction
+            property real ratio: ApplicationInfo.ratio
+            property alias score: score
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;combine all individual modules into a single file&lt;/li&gt;
-  &lt;li&gt;transpile ES6 code to ES5 with babel.js&lt;/li&gt;
-  &lt;li&gt;minimize JS and CSS code&lt;/li&gt;
-  &lt;li&gt;generate source maps&lt;/li&gt;
-  &lt;li&gt;add vendor prefixer to the css&lt;/li&gt;
-  &lt;li&gt;provide a server with live-reload&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;background&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; component which contains the background image for the activity&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;boxes&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeater&lt;/code&gt; component which contains a specific number of &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; components which serves as the individual boxes for the activity.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt;: The &lt;a href=&quot;http://doc.qt.io/qt-5/qml-qtquick-flow.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Flow&lt;/code&gt;&lt;/a&gt; component, which is responsible for positioning the Rectangles side by side&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;container&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; component which defines the area under which the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt; should be present&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;instruction&lt;/code&gt;: A &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; component containing the instructions for each levels&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;score&lt;/code&gt;: A &lt;code class=&quot;highlighter-rouge&quot;&gt;score&lt;/code&gt; component to display the score for the current level&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+&lt;h3 id=&quot;the-instructions&quot;&gt;The instructions&lt;/h3&gt;
 
-&lt;p&gt;We need gulp to install the project in our local directory. It can be installed in the following way:&lt;/p&gt;
+&lt;p&gt;The instructions is a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; component which displays whether the elements for the current level should be arranged in ascending or descending order. The width of this component should be a little less than the width of it’s parent and it should be anchored along with the horizontalCenter of it’s parent. The text should also get wrapped accordingly, if it doesn’t fit in the current screen.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# install gulp globally so you can run it from the command line
-npm install -g gulp-cli
+&lt;p&gt;For creating a background of the text, we create a &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; element under it, with the gradient starting from #000 to #666 to #AAA&lt;/p&gt;
 
-# install all dependencies
-npm install
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        GCText {
+            id: instruction
+            wrapMode: TextEdit.WordWrap
+            fontSize: tinySize
+            horizontalAlignment: Text.Center
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width * 0.9
+            color: 'white'
+            Rectangle {
+                z: -1
+                opacity: 0.8
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: &quot;#000&quot; }
+                    GradientStop { position: 0.9; color: &quot;#666&quot; }
+                    GradientStop { position: 1.0; color: &quot;#AAA&quot; }
+                }
+                radius: 10
+                border.color: 'black'
+                border.width: 1
+                anchors.centerIn: parent
+                width: parent.width * 1.1
+                height: parent.contentHeight
+            }
+        }
 
-# run gulp to start the livereload server on http://localhost:8080 
-gulp
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Check out the version of Nodejs by the command:&lt;/p&gt;
+&lt;h3 id=&quot;the-items&quot;&gt;The items&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;node --version
+&lt;p&gt;For the items, we first have an invisible container which will contain the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;boxes&lt;/code&gt;. It is a transparent Rectangle, centered in the center of the screen. The width depends on the number of Rectangles in the level. This is done to make sure that the children of the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt; element are always at the center of the screen. The width is given by the formula:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;For Node.js version below 0.12, we need to install an ES6-style Promise Polyfill. This can be done by:-&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install es6-promise
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Finally, add this line at the top of the &lt;em&gt;gulpfile.babel.js&lt;/em&gt; file:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var Promise = require ('es6-promise').Promise;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;adding-a-new-algorithm&quot;&gt;Adding a new algorithm&lt;/h3&gt;
-
-&lt;p&gt;For adding a new algorithm, we will first have to move on to the respective category folder (or create one category folder if not present) and create a folder for that algorithm. For instance, if we want to add the Sieve of Eratosthenes,  we will have to create a folder on “&lt;em&gt;AlgorithmVisualizer/category_name/name_of_the_algorithm&lt;/em&gt;“, which in this case is “&lt;em&gt;AlgorithmVisualizer/number_theory/sieve_of_eratosthenes&lt;/em&gt;“. Also, we need to add the information on the category.json script present in the algorithm folder, as shown below :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/06/seive_category.jpg&quot; alt=&quot;Head&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Moving on to the folder we created for our algorithm  (“&lt;em&gt;AlgorithmVisualizer/number_theory/sieve_of_eratosthenes&lt;/em&gt;” in this case), we have 3 types of files :&lt;/p&gt;
+&lt;p&gt;As the child of this transparent Rectangle is the &lt;code class=&quot;highlighter-rouge&quot;&gt;Flow&lt;/code&gt;, with two variables, &lt;code class=&quot;highlighter-rouge&quot;&gt;onGoingAnimationCount&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;validMousePress&lt;/code&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;desc.json : The json script which contains the details of the algorithm which we are adding. These mainly include:
-    &lt;ul&gt;
-      &lt;li&gt;Name of  the algorithm and a short description&lt;/li&gt;
-      &lt;li&gt;The complexity of the algorithm (both Runtime and Space complexities)&lt;/li&gt;
-      &lt;li&gt;Any online reference, and&lt;/li&gt;
-      &lt;li&gt;the folder in which the code can be found&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onGoingAnimationCount&lt;/code&gt;: Counts the number of on-going animations in the current level. No input will be taken as valid if the value is != 0&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;validMousePress&lt;/code&gt;: A boolean variable to determine whether we can make a valid input or not (we can’t give input if there are any ongoing tasks)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/06/seive_desc.jpg&quot; alt=&quot;Seive&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;As the child of the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt;, we have a &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeater&lt;/code&gt; element which will repeat few instances of a &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; type, which will be our blocks which we drag and drop in the activity.&lt;/p&gt;
+
+&lt;p&gt;The blocks are a white &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; of width and height &lt;code class=&quot;highlighter-rouge&quot;&gt;65 * ApplicationInfo.ratio&lt;/code&gt; with a black border. As a child of this rectangle is a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt;, which is the label (number or alphabet) on the blocks.&lt;/p&gt;
+
+&lt;p&gt;For the purpose of drag and drop, we have a &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; which has &lt;code class=&quot;highlighter-rouge&quot;&gt;onPressed&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;onReleased&lt;/code&gt; to deal with the drag and drop&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                            onPressed: {
+                                box.beginDragPosition = Qt.point(box.x, box.y)
+                            }
+                            onReleased: {
+                                Activity.placeBlock(box, box.beginDragPosition);
+                            }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;beginDragPosition&lt;/code&gt; is a &lt;code class=&quot;highlighter-rouge&quot;&gt;point&lt;/code&gt; variable under &lt;code class=&quot;highlighter-rouge&quot;&gt;box&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;placeBlock()&lt;/code&gt; is a function on the javascript, which we will discuss shortly&lt;/p&gt;
+
+&lt;p&gt;There are two animation component, which plays whenever there is a change in &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; positions in the blocks&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        Rectangle {
+            id: container
+            color: &quot;transparent&quot;
+            width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
+            height: parent.height/2
+
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+            }
+
+            Flow {
+                id: flow
+                spacing: 10
+
+                /*
+                 * Count number of active animations in the activity
+                 * at this current time
+                 * (No input will be taken at this time)
+                 */
+                property int onGoingAnimationCount: 0
+                property bool validMousePress
+                anchors {
+                    fill: parent
+                }
+                Repeater {
+                    id: boxes
+                    model: 6
+                    Rectangle {
+                        id: box
+                        color: &quot;white&quot;
+                        z: mouseArea.drag.active ||  mouseArea.pressed ? 2 : 1
+                        property int boxValue: 0
+                        property point beginDragPosition
+
+                        width: 65 * ApplicationInfo.ratio
+                        height: 65 * ApplicationInfo.ratio
+                        radius: 10
+                        border{
+                            color: &quot;black&quot;
+                            width: 3 * ApplicationInfo.ratio
+                        }
+                        GCText {
+                            id: numText
+                            anchors.centerIn: parent
+                            text: mode == &quot;alphabets&quot; ? String.fromCharCode(boxValue) : boxValue.toString()
+                            font.pointSize: 20 * ApplicationInfo.ratio
+                        }
+                        MouseArea {
+                            id: mouseArea
+                            anchors.fill: parent
+                            drag.target: parent
+                            enabled: (flow.onGoingAnimationCount == 0 &amp;amp;&amp;amp; flow.validMousePress == true) ? true : false
+                            onPressed: {
+                                box.beginDragPosition = Qt.point(box.x, box.y)
+                            }
+                            onReleased: {
+                                Activity.placeBlock(box, box.beginDragPosition);
+                            }
+                        }
+                        Behavior on x {
+                            PropertyAnimation {
+                                id: animationX
+                                duration: 500
+                                easing.type: Easing.InOutBack
+                                onRunningChanged: {
+                                    if(animationX.running) {
+                                        flow.onGoingAnimationCount++
+                                    } else {
+                                        flow.onGoingAnimationCount--
+                                    }
+                                }
+                            }
+                        }
+                        Behavior on y {
+                            PropertyAnimation {
+                                id: animationY
+                                duration: 500
+                                easing.type: Easing.InOutBack
+                                onRunningChanged: {
+                                    if(animationY.running) {
+                                        flow.onGoingAnimationCount++
+                                    } else {
+                                        flow.onGoingAnimationCount--
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For the score for each levels we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;Score&lt;/code&gt; component in-built in GCompris.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        Score {
+            id: score
+            anchors {
+                right: parent.right
+                top: instruction.bottom
+                bottom: undefined
+            }
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We now move on to the javascript part, which mainly deals with the mechanism to shift the positions of the blocks on drag and drop.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-javascript-code&quot;&gt;The javascript code&lt;/h1&gt;
+
+&lt;h3 id=&quot;the-variables&quot;&gt;The variables&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var currentLevel = 0
+var numberOfLevel = 4
+
+var items
+var mode
+
+// num[] will contain the random numbers
+var num = []
+var originalArrangement = []
+
+var ascendingOrder
+var thresholdDistance
+var noOfTilesInPreviousLevel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;desc.json file for seive of eratosthenes&lt;/li&gt;
-  &lt;li&gt;data.js : This is where we declare the data required for the given algorithm. Here, we declare the two 1D arrays (one will store whether the number is prime or not, and the other is for displaying purpose), the tracer and the logTracer required for the implementation.&lt;/li&gt;
-  &lt;li&gt;code.js : This is where the actual code for the algorithm is written. It takes the values from the data.js and implements the output and displays the result on the Tracer.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel&lt;/code&gt;: The current level&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;numberOfLevel&lt;/code&gt;: The number of levels&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;QtObject&lt;/code&gt; containing the QML objects&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt;: The variable to determine the current mode of the activity ( &lt;code class=&quot;highlighter-rouge&quot;&gt;numbers&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;alphabets&lt;/code&gt; )&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;: An array containing the random numbers&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;originalArrangement&lt;/code&gt;: The original arrangement provided to the user&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;thresholdDistance&lt;/code&gt;: The minimum distance from the drop area to the closest block to allow shifting of the blocks&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;noOfTilesInPreviousLevel&lt;/code&gt;: To store the number of blocks in the previous level, used to reset variables&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://rudranilbasublog.files.wordpress.com/2016/06/seive_blog.jpg?w=736&quot; alt=&quot;blog&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 29 Jun 2016 18:02:18 +0530</pubDate>
-        <link>http://rudranilbasu.github.io//algorithm/2016/06/29/Algorithm-Visualizer/</link>
-        <guid isPermaLink="true">http://rudranilbasu.github.io//algorithm/2016/06/29/Algorithm-Visualizer/</guid>
+        <pubDate>Sun, 12 Feb 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/02/12/GCompris-Ascending-order/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/12/GCompris-Ascending-order/</guid>
         
-        <category>algorithm</category>
+        <category>kde</category>
         
-        <category>open source</category>
+        <category>gcompris</category>
         
         
-        <category>algorithm</category>
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>GCompris - Number sequence - addition of dots</title>
+        <description>&lt;p&gt;&lt;a href=&quot;&quot;&gt;Commit Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a very simple problem I noticed while examining the &lt;em&gt;drawletter&lt;/em&gt; and &lt;em&gt;drawnumber&lt;/em&gt; activities in GCompris. The problem arives when one clicks on a node, but no line needs to be drawn (1. when it is the first node 2. when the pen is drawn away from the page (think of letter ‘&lt;em&gt;B&lt;/em&gt;’) ). In this case the node just seems to “disappear” without giving any form of visual effect.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/number_sequence/fig_1.jpg&quot; alt=&quot;pic1&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/number_sequence/fig_2.jpg&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For this problem, I thought of an efficient solution which would enhance readability of the code and solve the problem at the same time. First I thought of adding a dot whenever a node was clicked, so that it will get covered whenever the line is drawn. But, it was then observed that the center of the line which was drawn does not pass through the center of the line between the two nodes. As a result of this, the dot won’t be &lt;em&gt;“covered”&lt;/em&gt; when the line is drawn over them.&lt;/p&gt;
+
+&lt;p&gt;So, the above idea needed to be drawn and I settled with drawing the dot whenever a line cannot be drawn, a black dot is made on that point.&lt;/p&gt;
+
+&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;NumberSequence.qml&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;First, we add the black point image (named &lt;em&gt;blackpoint.svg&lt;/em&gt; ), then add the condition for the node as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kt&quot;&gt;Image&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pointImage&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;highlight&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageOpacity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bluepoint.svg&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bluepointHighlight.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;markedAsPoint&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blackpoint.svg&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;greenpoint.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;number_sequence.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;drawSegment(pointIndex)&lt;/code&gt; function, we check whether we have to draw the point or not, and if we have to, we place the point on that node.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;// if we need to draw only a point instead of a line&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;drawletters&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;drawnumbers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;highlight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;markedAsPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* draw a point in case of -
+        1) First node
+        2) No line is to be drawn between the current node and last node
+    */&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isPointMarked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointPositions2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pointPositions2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pointPositions2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;markedAsPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scale&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;isPointMarked&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isPointMarked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointImageRepeater&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pointIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;opacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 08 Feb 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/02/08/Number-Sequence-marker/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/08/Number-Sequence-marker/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>GCompris - Integrating C++ with qml</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/commit/955462b943c34fc130d1a68fcfb0e1ec6393a3f0&quot;&gt;Commit Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;While working with adding the odd even category in the categorization activity, I found a need to integrate the qml with a C++ class. The class contains a method which returns the list of all files in a given directory, using &lt;del&gt;the &lt;a href=&quot;https://github.com/tronkko/dirent&quot;&gt;dirent&lt;/a&gt; header&lt;/del&gt; QDir.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-c-code&quot;&gt;The C++ code&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Directory.h&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#ifndef DIRECTORY_H
+#define DIRECTORY_H
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;QString&amp;gt;
+#include &amp;lt;QStringList&amp;gt;
+#include &amp;lt;QObject&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/**
+ * @class Directory
+ * @short A helper component to get the names of files
+ *        present in a given location
+ * Use - call files.getFiles(&quot;:input/path/&quot;)
+ */&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Directory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Q_OBJECT&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * Constructor
+    */&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+      * Returns the names of all the files in a given path
+      *
+      * @param location : The path of the directory
+      *
+      * @returns Names of all the files present in the
+      *          given location, separated by a space
+      */&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Q_INVOKABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QStringList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Directory.cpp&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &quot;Directory.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;QString&amp;gt;
+#include &amp;lt;QStringList&amp;gt;
+#include &amp;lt;QObject&amp;gt;
+#include &amp;lt;QDir&amp;gt;
+#include &amp;lt;QQmlComponent&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;QStringList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;QStringList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;QDir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;QFileInfoList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entryInfoList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QFileInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()){&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// if it is a file
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;fileNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;qmlRegisterType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GCompris&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Directory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The above two files are placed in &lt;code class=&quot;highlighter-rouge&quot;&gt;gcompris/src/core&lt;/code&gt; and are added in &lt;code class=&quot;highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt;, as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set(gcompris_SRCS
+   ActivityInfo.cpp
+   ActivityInfo.h
+   ActivityInfoTree.cpp
+   ActivityInfoTree.h
+   ApplicationInfo.cpp
+   ApplicationInfo.h
+   ApplicationSettings.cpp
+   ApplicationSettings.h
+   File.cpp
+   File.h
+   DownloadManager.cpp
+   DownloadManager.h
+   Directory.cpp
+   Directory.h
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;From here, there are two ways to approach this:&lt;/p&gt;
+
+&lt;h3 id=&quot;procedure-1&quot;&gt;Procedure #1&lt;/h3&gt;
+
+&lt;p&gt;Then, in &lt;code class=&quot;highlighter-rouge&quot;&gt;main.cpp&lt;/code&gt;, we integrate it with the qml . For this, we do the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Necessary imports:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;QQmlContext&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &quot;fileName.h&quot;
+&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Then, we set the contextProperty in the engine as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Added Header - &lt;code class=&quot;highlighter-rouge&quot;&gt;#include &amp;lt;QQmlContext&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+engine.rootContext()-&amp;gt;setContextProperty(&quot;files&quot;, new Directory);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;calling-from-the-activity&quot;&gt;Calling from the activity&lt;/h3&gt;
+
+&lt;p&gt;Now, with the fileName integrated, we can call the methods of the class by calling &lt;code class=&quot;highlighter-rouge&quot;&gt;files&lt;/code&gt;, as we set the context to the engine.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;files.getFiles(&quot;:/gcompris/src/activities/categorization/resource/board/&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;procedure-2&quot;&gt;Procedure #2&lt;/h3&gt;
+
+&lt;p&gt;In this case, the &lt;code class=&quot;highlighter-rouge&quot;&gt;main.qml&lt;/code&gt; will only contain the call to the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; function we declared on &lt;code class=&quot;highlighter-rouge&quot;&gt;Directory&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On the qml, we create an &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; for Directory as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;Directory&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;directory&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And we call the function using the following way:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;directory.getFiles(&quot;:/gcompris/src/activities/categorization/resource/board/&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+
+&lt;p&gt;And as an output, for both the cases, we get the list of files present in the directory in the console&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;category12.qml
+category4.qml
+category7.qml
+category16.qml
+category8.qml
+category19.qml
+category2.qml
+category11.qml
+category14.qml
+category5.qml
+category15.qml
+category13.qml
+category17.qml
+category18.qml
+category3.qml
+category9.qml
+category1.qml
+category6.qml
+category10.qml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For more, check out this video (for procedure #1) :&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/CR2qQebqv6I?list=PLfQnJyNyt15FrjkBl6zXwKyvrH2sOFKuI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+</description>
+        <pubDate>Thu, 02 Feb 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/02/02/Integrating-C++-with-qml/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/02/Integrating-C++-with-qml/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>GCompris - Odd even activity</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/commit/db7a4a9b743a3521c7c68f0b2b54719cbc9582db&quot;&gt;Commit Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The main purpose of this was to add the odd even category to the categorization activity. It seemed to be a pretty straightforward task, but one issue lead to the other and I learned a lot more than what I thought previously.&lt;/p&gt;
+
+&lt;p&gt;In the original activity, all the categories were stored in the &lt;code class=&quot;highlighter-rouge&quot;&gt;qrc:/gcompris/src/activities/categorization/resource/board/&lt;/code&gt; and were named as &lt;code class=&quot;highlighter-rouge&quot;&gt;categoryxx.qml&lt;/code&gt; were x = 1 to 16, and the number of categories were hardcoded in the activity. My work mainly included:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;adding the odd-even category&lt;/li&gt;
+  &lt;li&gt;To make sure that importing the categories dataset is not hardcoded&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Adding the odd-even category is pretty simple. We just need to create the dataset, and the background js and qml will take care of it. For the category, I made 6 levels, the first level is just one digit numbers, 2nd level is 2 digit and 3rd level is 3 digit. The next 3 levels is combinations of these, and I chose not to add too many levels to it, since the only thing that matters here is the last digit.&lt;/p&gt;
+
+&lt;p&gt;The second point is the most important part. We had a basic idea that importing the datasets should be independent of their names. So, I created a simple C++ class in the &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt; that contains a method that would take in a link to a directory and will return the names of all the files in it. I will talk about creating the C++ class and integrating it with qml in the next blog post. For this blog, we consider that we have a class &lt;code class=&quot;highlighter-rouge&quot;&gt;Directory&lt;/code&gt;, and a method &lt;code class=&quot;highlighter-rouge&quot;&gt;QStringList getFiles(Qstring)&lt;/code&gt; that takes in the location as &lt;code class=&quot;highlighter-rouge&quot;&gt;QString&lt;/code&gt; and returns the list of all files as &lt;code class=&quot;highlighter-rouge&quot;&gt;QStringList&lt;/code&gt;. We also added a variable to each of the datasets, a boolean to check if the dataset is a demo level or not (via the &lt;code class=&quot;highlighter-rouge&quot;&gt;isEmbedded&lt;/code&gt; variable).&lt;/p&gt;
+
+&lt;p&gt;We send the files from the qml to the js via the items as :&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;datasetURL&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;:/gcompris/src/activities/categorization/resource/board/&quot;&lt;/span&gt;
+
+
+&lt;span class=&quot;kt&quot;&gt;QtObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;....&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datasetURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;kt&quot;&gt;Directory&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;directory&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In the js, in the start() method, we store all the categories in the &lt;code class=&quot;highlighter-rouge&quot;&gt;categoryList[]&lt;/code&gt; array first, and store only the ones we need for now (if we are in demo mode, we need only the demo once).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascipt&quot;&gt;
+var categoryLists = []
+categoryLists = items.categories
+var isEmbeddedMode = items.file.exists(fileName) ? true : false
+
+for(var i = 0; i &amp;lt; categoryLists.length; i++) {
+  categoriesFilename = boardsUrl + &quot;board&quot; + &quot;/&quot; + categoryLists[i]
+  items.categoryReview.categoryDataset.source = categoriesFilename
+
+  if(isEmbeddedMode || (items.categoryReview.categoryDataset.item).isEmbedded ) {
+      categoriesData.push(items.categoryReview.categoryDataset.item)
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that is it. Now, we can add any dataset files in the dataset folder, and it will be imported in the activity.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Feb 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/02/01/Odd-Even-Activity/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/01/Odd-Even-Activity/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>Global Game Jam 2017</title>
+        <description>&lt;p&gt;Attended my first Global Game Jam, and it was fun!&lt;/p&gt;
+
+&lt;p&gt;This was the first time Global Game Jam came here in Kolkata. It started off with talks on creating 3D art, monetising apps and storytelling in games.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_1.jpg&quot; alt=&quot;pic1&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Art is attraction, story is for friendship and gameplay is the true love”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_2.jpg&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-start&quot;&gt;The Start&lt;/h3&gt;
+
+&lt;p&gt;The themes were announced briefly after the talks, and it was &lt;em&gt;“Waves”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_theme.jpg&quot; alt=&quot;ggj-theme&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The theme got us thinking for a while, as I didn’t expect something like that. Shortly after the team was created, we started off brainstorming different ideas. We had quite a lot of ideas, but didn’t know which one to settle with. One of the ideas were to control an object using two electromagnets, thus creating a wave like trajectory. The other one was to use the concept of reflecting sound waves to save a dog who is stuck in a maze.&lt;/p&gt;
+
+&lt;p&gt;We didn’t know which one to settle with, so we tried creating a prototype of both of the games by dividing out team into two parts, which proved to be a &lt;em&gt;HUGE MISTAKE&lt;/em&gt; from our side, as it cost us a lot of valuable time as the jam progressed.&lt;/p&gt;
+
+&lt;h3 id=&quot;progress&quot;&gt;Progress&lt;/h3&gt;
+
+&lt;p&gt;After hours of prototyping and deciding, we decided to go off with the first idea. We were already behind time, and we decided to scrap the idea of making it randomly generated, and create various levels to reach the end of the level. The mechanics came up pretty quickly, while it took some time to design the levels, but it was fun nonetheless! Taking up tries to fail miserably on the levels we created was the best part of the jam.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_levels.jpg&quot; alt=&quot;pic_turn_level&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-final-day&quot;&gt;The Final Day&lt;/h3&gt;
+
+&lt;p&gt;This is when the pressure really came on us. We had a product which was just a prototype, and the game itself was really hard. We hardly got 2 hours of sleep on the final night, and by 6:00 in the morning, mostly 10 good levels were done. Designing a proper level is definitely one of the most fun and underrated task.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/p6qU70Ai6Ezn2/giphy.gif&quot; alt=&quot;levels&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We then quickly jumped to polish the game, which was one of my biggest regrets while making this game - the final product had lots of areas where it could have been polished, and it would definitely improved the quality of the game. But besides that, I was pretty happy with what the final result.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Download Link&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://globalgamejam.org/2017/games/trapped&quot;&gt;Global Game Jam Page&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gamejolt.com/games/trapped/229317&quot;&gt;GameJolt Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Team members&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://ggj.s3.amazonaws.com/styles/game_sidebar__wide/s3/games/team_pictures/lmao_1.jpg&quot; alt=&quot;tr_team&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/rudra-nil-basu&quot;&gt;Rudra Nil Basu&lt;/a&gt; ( Programming, Design )&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/projesh&quot;&gt;Projesh Mehta&lt;/a&gt; (Programming, UI)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/kingshuk&quot;&gt;Kingshuk Chakraborty&lt;/a&gt; (Art)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To sum it up, the use of waves in the game and the level design (which &lt;em&gt;was&lt;/em&gt; difficult and had it’s flaws) was the best part of building the game, while the lack of planning and polish were the topics which I would’ve liked to change in the development of the game.&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/W02j74X4rCQ&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The most important part of this event, however, was interacting with fellow game developers in the city. This was the first time I got to talk with our fellow Kolkatans, discussing about their projects, the difficulties they faced while pursuing the journey and what they learned from it. This was just the start, next year’s Global Game Jam in Kolkata will be even bigger and better!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_team.jpg&quot; alt=&quot;team&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 23 Jan 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/games/2017/01/23/Global-Game-Jam-2017/</link>
+        <guid isPermaLink="true">http://localhost:4000/games/2017/01/23/Global-Game-Jam-2017/</guid>
+        
+        <category>games</category>
+        
+        <category>ggj</category>
+        
+        
+        <category>Games</category>
+        
+      </item>
+    
+      <item>
+        <title>Hangman - Attempted Characters</title>
+        <description>&lt;p&gt;First merge always feels good! I was working on adding this feature for the last few days, and it is done finally.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/commit/8ab75acf49431c685021f3cd0e58cf31f3fa4568&quot;&gt;Commit Link on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;task&quot;&gt;Task&lt;/h3&gt;
+
+&lt;p&gt;To add a Textfield to display the characters which were attempted by the user in the Hangman activity.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_1.png&quot; alt=&quot;pic&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Hangman.qml&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GCText {
+    id: guessedText
+    fontSize: smallSize
+    color: &quot;#FFFFFF&quot;
+    wrapMode: Text.WordWrap
+    horizontalAlignment: Text.AlignHCenter
+    width: parent.width - 2*clock.width
+    anchors {
+        horizontalCenter: parent.horizontalCenter
+    }
+    z: 12
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The textfield which displays the characters which are attempted by the user. The color of the text is white ( &lt;code class=&quot;highlighter-rouge&quot;&gt;#FFFFFF&lt;/code&gt; ), and the width is &lt;code class=&quot;highlighter-rouge&quot;&gt;width of the screen - 2*(width of the clock)&lt;/code&gt; to avoid the text and the clock to get overlapped.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Rectangle {
+    width: guessedText.width
+    height: guessedText.height
+    radius: 10
+    border.width: 1
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: &quot;#000&quot; }
+        GradientStop { position: 0.9; color: &quot;#666&quot; }
+        GradientStop { position: 1.0; color: &quot;#AAA&quot; }
+    }
+    anchors {
+        horizontalCenter: parent.horizontalCenter
+    }
+    z: 11
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is the Rectangle that will be under the text. A gradient is given to this Rectangle from black (top ) to a lighter color (bottom).&lt;/p&gt;
+
+&lt;p&gt;Also, we need to make sure that the hint image doesn’t get overlapped with the text. For that, we change the width of the imageframe to:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Item {
+        id: imageframe
+        width: Math.min(300 * ApplicationInfo.ratio,
+        background.width * 0.8,
+        hidden.y) - guessedText.height
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Hangman.js&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In the javascript file, we create the logic to generate the text in the following way:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function createAttemptedText() {
+    alreadyTypedLetters.sort()
+    items.guessedText.text = qsTr(&quot;Attempted: %1&quot;).arg(alreadyTypedLetters.join(&quot;, &quot;))
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;alreadyTypedLetters&lt;/code&gt; is an array that stores the characters that are typed by the user. We are using &lt;code class=&quot;highlighter-rouge&quot;&gt;qsTr()&lt;/code&gt; to enable translation for the given text to various other languages.&lt;/p&gt;
+
+&lt;p&gt;To make it work, we call &lt;code class=&quot;highlighter-rouge&quot;&gt;createAttemptedText()&lt;/code&gt; from:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;initSubLevel()&lt;/code&gt; function, right after declaring &lt;code class=&quot;highlighter-rouge&quot;&gt;alreadyTypedLetters&lt;/code&gt; array. At this point, the array will be empty, so we will have only the header in the text field.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;processKeyPress(text)&lt;/code&gt; function, write after the newly typed character is pushed into the alreadyTypedLetters array. Thus, whenever a new charater is typed by the user, &lt;code class=&quot;highlighter-rouge&quot;&gt;createAttemptedText()&lt;/code&gt; will be called.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_2.png&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 14 Jan 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/01/14/Hangman-attempted-characters/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/14/Hangman-attempted-characters/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>Detecting Ascending Sequence</title>
+        <description>&lt;p&gt;Just completed the basic logic for Detection of ascending order. Roughly, I created a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; item with few number of &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt;s as &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeators&lt;/code&gt;. Each of the individual Rectangles will have unique numbers for the users to choose from.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Grid {
+    id: grids
+    rows: 1
+    spacing: 12
+    Repeater {
+        id: boxes
+        model: 4
+        Rectangle {
+            property int imageX: 0
+            width: 360/2
+            height: 360/2
+            radius: 20
+            property int clicked:0
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked :{
+                    Activity.check(numText.text)
+                }
+            }
+
+            GCText {
+                id: numText
+                anchors.centerIn: parent
+                text: imageX.toString()
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(Few datas are hardcoded, it will be generalised later)&lt;/p&gt;
+
+&lt;p&gt;The object that is sent to the javascript code is given as follow:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;QtObject {
+    id: items
+    property Item main: activity.main
+    property alias background: background
+    property alias bar: bar
+    property alias bonus: bonus
+    property alias grids: grids
+    property alias boxes: boxes
+    property alias ansText: ansText
+    property alias ok: ok
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ansText&lt;/code&gt; is a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; component to display both the user’s answer and the correct answer. &lt;code class=&quot;highlighter-rouge&quot;&gt;ok&lt;/code&gt; is a button which will reload the current level if the user’s answer is not the correct one.&lt;/p&gt;
+
+&lt;p&gt;Moving on to the javascript file, the start method looks like this&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function start(items_) {
+    items = items_
+    currentLevel = 0
+    initLevel()
+}
+
+function initLevel() {
+    items.bar.level = currentLevel + 1
+    numEntered=0
+    items.ansText.text=&quot;&quot;
+    initGrids()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel&lt;/code&gt; indicates the index of the level (starting from 0), and &lt;code class=&quot;highlighter-rouge&quot;&gt;items.bar.level&lt;/code&gt; is the level number (starting from 1). &lt;code class=&quot;highlighter-rouge&quot;&gt;initGrids()&lt;/code&gt; initialises the number of grids, based of the level number.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function initGrids() {
+    items.boxes.model = 2*(items.bar.level)+1
+
+    generateRandomNumbers()
+
+    hash=[]
+    entered=[]
+    for(var i=0;i&amp;lt;items.boxes.model;i++) {
+        items.boxes.itemAt(i).imageX=num[i]
+        items.boxes.itemAt(i).color=initColor
+        hash[i]=0
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;First, we are setting the number of grids which should be in a given level. This is equal to &lt;code class=&quot;highlighter-rouge&quot;&gt;2*(levelNumber)+1&lt;/code&gt; in this case. Then we generated the same number of &lt;em&gt;unique&lt;/em&gt; random numbers within the given range and store it in &lt;code class=&quot;highlighter-rouge&quot;&gt;num[]&lt;/code&gt; array. Then we traverse through each grids individually and set their text (= the number written on them) and color. We also mark it as unvisited by making &lt;code class=&quot;highlighter-rouge&quot;&gt;hash[i]=0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function generateRandomNumbers() {
+    var n=items.boxes.model
+    // generate n random numbers and store it in num[]
+    num=[]
+    var upperBound = (items.bar.level)*100
+    while(num.length &amp;lt; n) {
+        var randomNumber=Math.ceil(Math.random()*upperBound)
+        if(num.indexOf(randomNumber) &amp;gt; -1) {
+            continue;
+        }
+        num[num.length]=randomNumber
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 03 Jan 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/01/03/Detect-ascending-sequence/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/03/Detect-ascending-sequence/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>Working with activities in GCompris</title>
+        <description>&lt;p&gt;In my &lt;a href=&quot;https://rudranilbasu.github.io/blog/kde/2016/12/31/GCompris/&quot;&gt;previous post&lt;/a&gt;, I talked about setting up GCompris, and running it using QtCreator. In this one, I will be talling about my journey towards creating a new activity for GCompris.&lt;/p&gt;
+
+&lt;h3 id=&quot;basic-structure&quot;&gt;Basic Structure&lt;/h3&gt;
+
+&lt;p&gt;The goal of this activity is to identify numbers in ascending order. Few blocks of numbers will be provided to the user, and the user will have to click all the numbers, in ascending order (i.e. the smallest number should be clicked first, and the largest number in the last).&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-the-activity&quot;&gt;Creating the activity&lt;/h3&gt;
+
+&lt;p&gt;Creating an activity in GCompris is very simple. First we create a new branch in git and shift to that branch. For that, we use:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b &quot;ascending&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Move to the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;qrc:src/activities&lt;/code&gt; and run the script &lt;code class=&quot;highlighter-rouge&quot;&gt;createit.sh&lt;/code&gt; with the name of the activity as arguments. In this case, it looks like this&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./createit &quot;ascending_order&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Open the &lt;code class=&quot;highlighter-rouge&quot;&gt;ActivityInfo.qml&lt;/code&gt; and fillup the basic setup for the activity.&lt;/p&gt;
+
+&lt;h1 id=&quot;core-functionalities&quot;&gt;Core Functionalities&lt;/h1&gt;
+
+&lt;h3 id=&quot;1-the-building-blocks&quot;&gt;1. The Building Blocks&lt;/h3&gt;
+
+&lt;p&gt;First, we need to dynamically create &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; number of &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; elements, each containing a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; element. The &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; object typically looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kt&quot;&gt;Rectangle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;imageX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;MouseArea&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;anchors.fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;onClicked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;GCText&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numText&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;anchors.centerIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imageX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; creates anchors and &lt;code class=&quot;highlighter-rouge&quot;&gt;onClicked &lt;/code&gt; options. When the Rectangle is pressed, a &lt;code class=&quot;highlighter-rouge&quot;&gt;check()&lt;/code&gt; method is called (To be discussed later).&lt;/p&gt;
+
+&lt;p&gt;The previous block of code defines only one &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; element. In order to create them dynamically, we need to enclose them in a block of &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeaters&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Grids&lt;/code&gt; (for creating grids of Rectangle)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Grid {
+    id: grids
+    rows: 1
+    spacing: 12
+    Repeater {
+        id: boxes
+        model: 4
+        Rectangle {
+            property int imageX: 0
+            width: 360/2
+            height: 360/2
+            radius: 20
+            color: &quot;blue&quot;
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Activity.check(numText.text)
+            }
+
+            GCText {
+                id: numText
+                anchors.centerIn: parent
+                text: imageX.toString()
+            }
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;2-accessing-dynamically-created-rectangles-via-js&quot;&gt;2. Accessing dynamically created Rectangles via js&lt;/h3&gt;
+
+&lt;p&gt;We create a &lt;code class=&quot;highlighter-rouge&quot;&gt;QtObject&lt;/code&gt; containing the QML objects which are to be accessed from the javascript file.&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kt&quot;&gt;QtObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;background&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;bonus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bonus&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;grids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grids&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Activity = ref. to the js file&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;onStart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;onStop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;start(items)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;stop()&lt;/code&gt; are two functions in the javascript file.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;start(items_)&lt;/code&gt; method is pretty straightforward and self explanatory&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items_&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;currentLevel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;initLevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;initLevel()&lt;/code&gt; initialises the current level number in the bar to be &lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel+1&lt;/code&gt; and calls the method to initialise the grids. For initialising the grids, we set the &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt; value of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeater&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;2*(currentLevel+1)+1&lt;/code&gt; ( &lt;em&gt;Note&lt;/em&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel&lt;/code&gt; starts from 0 ). We then call a function to generate random numbers and store it in array &lt;code class=&quot;highlighter-rouge&quot;&gt;num[]&lt;/code&gt;, and then we store these values in the Rectangles.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;initLevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentLevel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;initGrids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;initGrids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;generateRandomNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imageX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;generateRandomNumbers()&lt;/code&gt; function is also straightforward. It generates a random number from 0 to a given range (=&lt;code class=&quot;highlighter-rouge&quot;&gt;(level number)*10&lt;/code&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;generateRandomNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// generate n random numbers and store it in num[]&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;upperBound&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;randomNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;upperBound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;randomNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;randomNumber&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At this stage, the activity looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/RudraNilBasu/blog/blob/gh-pages/images/GCompris/ascending_1.png?raw=true&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;Next Challenge: Adding the logic to detect ascending sequence&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Jan 2017 21:28:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/01/01/Working-with-activities-in-GCompris/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/01/Working-with-activities-in-GCompris/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
+        
+      </item>
+    
+      <item>
+        <title>GCompris</title>
+        <description>&lt;p&gt;I finally decided to start my journey to open source contribution with KDE’s &lt;a href=&quot;https://github.com/gcompris/GCompris-qt&quot;&gt;GCompris-qt&lt;/a&gt;. It mainly uses QML and Javascript for creating the activities, and C++ for the core functionality.&lt;/p&gt;
+
+&lt;p&gt;Quoting from their docs,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;GCompris is an educaional software suite comprising of numerous activities from children aged 2-10. Some of the activities are game orientated, but nonetheless still educational.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;setting-up-gcompris-building-from-source&quot;&gt;Setting up GCompris (Building from source)&lt;/h3&gt;
+
+&lt;p&gt;In order to build GCompris from source (for Debian/Ubuntu systems), first we need to install the dependencies:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install cmake
+sudo apt-get install cmake-curses-gui # Optional
+sudo apt-get install g++
+sudo apt-get install libgl1-mesa-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Installing Qt5 and it’s libraries&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install qt5-default
+
+sudo apt-get install qtdeclarative5-dev
+
+sudo apt-get install qtmultimedia5-dev
+
+sudo apt-get install libqt5svg5-dev
+
+sudo apt-get install libqt5xmlpatterns5-dev
+
+sudo apt-get install libqt5sensors5-dev
+
+sudo apt-get install qml-module-qtquick-particles2
+
+sudo apt-get install qttools5-dev-tools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;compilation&quot;&gt;Compilation&lt;/h3&gt;
+
+&lt;p&gt;GCompris uses &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; for compilation. Minimum version of cmake is 2.8, and the recommended version is 3.5.1&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://quickgit.kde.org/?p=gcompris.git&quot;&gt;Source Code Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Get the source code:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/gcompris/GCompris-qt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Initialise the git submodules&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd gcompris
+git submodule init &amp;amp;&amp;amp; git submodule update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Download the latest version of &lt;a href=&quot;https://www.qt.io/download-open-source/#section-2&quot;&gt;Qt&lt;/a&gt; (recommended version 5.5) and open up QtCreator. Start QtCreator and open the project file &lt;code class=&quot;highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; at the root of the source code. Create a build, and run it via QtCreator.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Jan 2017 05:00:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/01/01/GCompris/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/01/GCompris/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>KDE</category>
         
       </item>
     

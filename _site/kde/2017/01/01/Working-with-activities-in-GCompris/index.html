@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Working with activities in GCompris</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://i.imgur.com/aRQcGSi.png" alt="Thumbnail: jekyll" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">Working with activities in GCompris</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">January 1, 2017</span>
+           under KDE
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          5 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p>In my <a href="https://rudranilbasu.github.io/blog/kde/2016/12/31/GCompris/">previous post</a>, I talked about setting up GCompris, and running it using QtCreator. In this one, I will be talling about my journey towards creating a new activity for GCompris.</p>
+
+<h3 id="basic-structure">Basic Structure</h3>
+
+<p>The goal of this activity is to identify numbers in ascending order. Few blocks of numbers will be provided to the user, and the user will have to click all the numbers, in ascending order (i.e. the smallest number should be clicked first, and the largest number in the last).</p>
+
+<h3 id="creating-the-activity">Creating the activity</h3>
+
+<p>Creating an activity in GCompris is very simple. First we create a new branch in git and shift to that branch. For that, we use:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git checkout -b "ascending"
+</code></pre>
+</div>
+
+<p>Move to the directory <code class="highlighter-rouge">qrc:src/activities</code> and run the script <code class="highlighter-rouge">createit.sh</code> with the name of the activity as arguments. In this case, it looks like this</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./createit "ascending_order"
+</code></pre>
+</div>
+
+<p>Open the <code class="highlighter-rouge">ActivityInfo.qml</code> and fillup the basic setup for the activity.</p>
+
+<h1 id="core-functionalities">Core Functionalities</h1>
+
+<h3 id="1-the-building-blocks">1. The Building Blocks</h3>
+
+<p>First, we need to dynamically create <code class="highlighter-rouge">n</code> number of <code class="highlighter-rouge">Rectangle</code> elements, each containing a <code class="highlighter-rouge">GCText</code> element. The <code class="highlighter-rouge">Rectangle</code> object typically looks like this:</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>
+<span class="kt">Rectangle</span> <span class="p">{</span>
+    <span class="kd">property</span> <span class="kt">int</span> <span class="nl">imageX</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="mi">360</span><span class="o">/</span><span class="mi">2</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="mi">360</span><span class="o">/</span><span class="mi">2</span>
+    <span class="nl">radius</span><span class="p">:</span> <span class="mi">20</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="s2">"blue"</span>
+
+    <span class="kt">MouseArea</span> <span class="p">{</span>
+        <span class="nl">anchors.fill</span><span class="p">:</span> <span class="nx">parent</span>
+        <span class="nl">onClicked</span><span class="p">:</span> <span class="nx">Activity</span><span class="p">.</span><span class="nx">check</span><span class="p">(</span><span class="nx">numText</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kt">GCText</span> <span class="p">{</span>
+        <span class="nl">id</span><span class="p">:</span> <span class="nx">numText</span>
+        <span class="nl">anchors.centerIn</span><span class="p">:</span> <span class="nx">parent</span>
+        <span class="nl">text</span><span class="p">:</span> <span class="nx">imageX</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">MouseArea</code> creates anchors and <code class="highlighter-rouge">onClicked </code> options. When the Rectangle is pressed, a <code class="highlighter-rouge">check()</code> method is called (To be discussed later).</p>
+
+<p>The previous block of code defines only one <code class="highlighter-rouge">Rectangle</code> element. In order to create them dynamically, we need to enclose them in a block of <code class="highlighter-rouge">Repeaters</code> and <code class="highlighter-rouge">Grids</code> (for creating grids of Rectangle)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Grid {
+    id: grids
+    rows: 1
+    spacing: 12
+    Repeater {
+        id: boxes
+        model: 4
+        Rectangle {
+            property int imageX: 0
+            width: 360/2
+            height: 360/2
+            radius: 20
+            color: "blue"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: Activity.check(numText.text)
+            }
+
+            GCText {
+                id: numText
+                anchors.centerIn: parent
+                text: imageX.toString()
+            }
+        }
+    }
+}
+
+</code></pre>
+</div>
+
+<h3 id="2-accessing-dynamically-created-rectangles-via-js">2. Accessing dynamically created Rectangles via js</h3>
+
+<p>We create a <code class="highlighter-rouge">QtObject</code> containing the QML objects which are to be accessed from the javascript file.</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>
+<span class="kt">QtObject</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">items</span>
+    <span class="kd">property</span> <span class="kt">Item</span> <span class="nl">main</span><span class="p">:</span> <span class="nx">activity</span><span class="p">.</span><span class="nx">main</span>
+    <span class="kd">property</span> <span class="kt">alias</span> <span class="nl">background</span><span class="p">:</span> <span class="nx">background</span>
+    <span class="kd">property</span> <span class="kt">alias</span> <span class="nl">bar</span><span class="p">:</span> <span class="nx">bar</span>
+    <span class="kd">property</span> <span class="kt">alias</span> <span class="nl">bonus</span><span class="p">:</span> <span class="nx">bonus</span>
+    <span class="kd">property</span> <span class="kt">alias</span> <span class="nl">grids</span><span class="p">:</span> <span class="nx">grids</span>
+    <span class="kd">property</span> <span class="kt">alias</span> <span class="nl">boxes</span><span class="p">:</span> <span class="nx">boxes</span>
+<span class="p">}</span>
+
+<span class="c1">// Activity = ref. to the js file</span>
+
+<span class="nl">onStart</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Activity</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="p">}</span>
+<span class="nl">onStop</span><span class="p">:</span> <span class="p">{</span> <span class="nx">Activity</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span> <span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">start(items)</code> and <code class="highlighter-rouge">stop()</code> are two functions in the javascript file.</p>
+
+<p>The <code class="highlighter-rouge">start(items_)</code> method is pretty straightforward and self explanatory</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">start</span><span class="p">(</span><span class="nx">items_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">items</span> <span class="o">=</span> <span class="nx">items_</span>
+    <span class="nx">currentLevel</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nx">initLevel</span><span class="p">()</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">initLevel()</code> initialises the current level number in the bar to be <code class="highlighter-rouge">currentLevel+1</code> and calls the method to initialise the grids. For initialising the grids, we set the <code class="highlighter-rouge">model</code> value of the <code class="highlighter-rouge">Repeater</code> to <code class="highlighter-rouge">2*(currentLevel+1)+1</code> ( <em>Note</em> - <code class="highlighter-rouge">currentLevel</code> starts from 0 ). We then call a function to generate random numbers and store it in array <code class="highlighter-rouge">num[]</code>, and then we store these values in the Rectangles.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">initLevel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">items</span><span class="p">.</span><span class="nx">bar</span><span class="p">.</span><span class="nx">level</span> <span class="o">=</span> <span class="nx">currentLevel</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nx">initGrids</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">initGrids</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">items</span><span class="p">.</span><span class="nx">boxes</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">bar</span><span class="p">.</span><span class="nx">level</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+    <span class="nx">items</span><span class="p">.</span><span class="nx">grids</span><span class="p">.</span><span class="nx">columns</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">boxes</span><span class="p">.</span><span class="nx">model</span>
+
+    <span class="nx">generateRandomNumbers</span><span class="p">()</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">items</span><span class="p">.</span><span class="nx">boxes</span><span class="p">.</span><span class="nx">model</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">items</span><span class="p">.</span><span class="nx">boxes</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">imageX</span><span class="o">=</span><span class="nx">num</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">generateRandomNumbers()</code> function is also straightforward. It generates a random number from 0 to a given range (=<code class="highlighter-rouge">(level number)*10</code>).</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nx">generateRandomNumbers</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">n</span><span class="o">=</span><span class="nx">items</span><span class="p">.</span><span class="nx">boxes</span><span class="p">.</span><span class="nx">model</span>
+    <span class="c1">// generate n random numbers and store it in num[]</span>
+    <span class="nx">num</span><span class="o">=</span><span class="p">[]</span>
+    <span class="kd">var</span> <span class="nx">upperBound</span> <span class="o">=</span> <span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">bar</span><span class="p">.</span><span class="nx">level</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+    <span class="k">while</span><span class="p">(</span><span class="nx">num</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomNumber</span><span class="o">=</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="nx">upperBound</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">num</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">randomNumber</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">num</span><span class="p">[</span><span class="nx">num</span><span class="p">.</span><span class="nx">length</span><span class="p">]</span><span class="o">=</span><span class="nx">randomNumber</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p>At this stage, the activity looks like this:</p>
+
+<p><img src="https://github.com/RudraNilBasu/blog/blob/gh-pages/images/GCompris/ascending_1.png?raw=true" alt="img" /></p>
+
+<p><a href="#">Next Challenge: Adding the logic to detect ascending sequence</a></p>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

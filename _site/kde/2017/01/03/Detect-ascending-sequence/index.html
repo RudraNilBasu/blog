@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>Detecting Ascending Sequence</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,19 +84,19 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">Detecting Ascending Sequence</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
-           under vim
+          on <span itemprop="datePublished" content="2014-08-28">January 3, 2017</span>
+           under KDE
         </i></small>
       </div>
 
       <div class="read-time">
         <small>
-          1 minute read
+          2 minute read
         </small>
       </div>
 
@@ -104,39 +104,112 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p>Just completed the basic logic for Detection of ascending order. Roughly, I created a <code class="highlighter-rouge">Grid</code> item with few number of <code class="highlighter-rouge">Rectangle</code>s as <code class="highlighter-rouge">Repeators</code>. Each of the individual Rectangles will have unique numbers for the users to choose from.</p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Grid {
+    id: grids
+    rows: 1
+    spacing: 12
+    Repeater {
+        id: boxes
+        model: 4
+        Rectangle {
+            property int imageX: 0
+            width: 360/2
+            height: 360/2
+            radius: 20
+            property int clicked:0
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+            MouseArea {
+                anchors.fill: parent
+                onClicked :{
+                    Activity.check(numText.text)
+                }
+            }
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
-
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
-
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
-
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
-
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+            GCText {
+                id: numText
+                anchors.centerIn: parent
+                text: imageX.toString()
+            }
+        }
+    }
+}
 </code></pre>
 </div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<p>(Few datas are hardcoded, it will be generalised later)</p>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<p>The object that is sent to the javascript code is given as follow:</p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>QtObject {
+    id: items
+    property Item main: activity.main
+    property alias background: background
+    property alias bar: bar
+    property alias bonus: bonus
+    property alias grids: grids
+    property alias boxes: boxes
+    property alias ansText: ansText
+    property alias ok: ok
+}
+</code></pre>
+</div>
 
-<p>This is how my template for cpp files looks like :-</p>
+<p><code class="highlighter-rouge">ansText</code> is a <code class="highlighter-rouge">GCText</code> component to display both the user’s answer and the correct answer. <code class="highlighter-rouge">ok</code> is a button which will reload the current level if the user’s answer is not the correct one.</p>
 
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+<p>Moving on to the javascript file, the start method looks like this</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>function start(items_) {
+    items = items_
+    currentLevel = 0
+    initLevel()
+}
+
+function initLevel() {
+    items.bar.level = currentLevel + 1
+    numEntered=0
+    items.ansText.text=""
+    initGrids()
+}
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">currentLevel</code> indicates the index of the level (starting from 0), and <code class="highlighter-rouge">items.bar.level</code> is the level number (starting from 1). <code class="highlighter-rouge">initGrids()</code> initialises the number of grids, based of the level number.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function initGrids() {
+    items.boxes.model = 2*(items.bar.level)+1
+
+    generateRandomNumbers()
+
+    hash=[]
+    entered=[]
+    for(var i=0;i&lt;items.boxes.model;i++) {
+        items.boxes.itemAt(i).imageX=num[i]
+        items.boxes.itemAt(i).color=initColor
+        hash[i]=0
+    }
+}
+</code></pre>
+</div>
+
+<p>First, we are setting the number of grids which should be in a given level. This is equal to <code class="highlighter-rouge">2*(levelNumber)+1</code> in this case. Then we generated the same number of <em>unique</em> random numbers within the given range and store it in <code class="highlighter-rouge">num[]</code> array. Then we traverse through each grids individually and set their text (= the number written on them) and color. We also mark it as unvisited by making <code class="highlighter-rouge">hash[i]=0</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function generateRandomNumbers() {
+    var n=items.boxes.model
+    // generate n random numbers and store it in num[]
+    num=[]
+    var upperBound = (items.bar.level)*100
+    while(num.length &lt; n) {
+        var randomNumber=Math.ceil(Math.random()*upperBound)
+        if(num.indexOf(randomNumber) &gt; -1) {
+            continue;
+        }
+        num[num.length]=randomNumber
+    }
+}
+</code></pre>
+</div>
 </span>
 
         
@@ -147,7 +220,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            kde, gcompris
           </small>
         </div>
         

@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>Global Game Jam 2017</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,19 +84,19 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">Global Game Jam 2017</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
-           under vim
+          on <span itemprop="datePublished" content="2014-08-28">January 23, 2017</span>
+           under Games
         </i></small>
       </div>
 
       <div class="read-time">
         <small>
-          1 minute read
+          3 minute read
         </small>
       </div>
 
@@ -104,38 +104,65 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p>Attended my first Global Game Jam, and it was fun!</p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<p>This was the first time Global Game Jam came here in Kolkata. It started off with talks on creating 3D art, monetising apps and storytelling in games.</p>
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_1.jpg" alt="pic1" /></p>
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
+<blockquote>
+  <p>“Art is attraction, story is for friendship and gameplay is the true love”</p>
+</blockquote>
 
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_2.jpg" alt="pic2" /></p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
+<h3 id="the-start">The Start</h3>
 
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
+<p>The themes were announced briefly after the talks, and it was <em>“Waves”</em></p>
 
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_theme.jpg" alt="ggj-theme" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
-</code></pre>
-</div>
+<p>The theme got us thinking for a while, as I didn’t expect something like that. Shortly after the team was created, we started off brainstorming different ideas. We had quite a lot of ideas, but didn’t know which one to settle with. One of the ideas were to control an object using two electromagnets, thus creating a wave like trajectory. The other one was to use the concept of reflecting sound waves to save a dog who is stuck in a maze.</p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<p>We didn’t know which one to settle with, so we tried creating a prototype of both of the games by dividing out team into two parts, which proved to be a <em>HUGE MISTAKE</em> from our side, as it cost us a lot of valuable time as the jam progressed.</p>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<h3 id="progress">Progress</h3>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+<p>After hours of prototyping and deciding, we decided to go off with the first idea. We were already behind time, and we decided to scrap the idea of making it randomly generated, and create various levels to reach the end of the level. The mechanics came up pretty quickly, while it took some time to design the levels, but it was fun nonetheless! Taking up tries to fail miserably on the levels we created was the best part of the jam.</p>
 
-<p>This is how my template for cpp files looks like :-</p>
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_levels.jpg" alt="pic_turn_level" /></p>
 
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+<h3 id="the-final-day">The Final Day</h3>
+
+<p>This is when the pressure really came on us. We had a product which was just a prototype, and the game itself was really hard. We hardly got 2 hours of sleep on the final night, and by 6:00 in the morning, mostly 10 good levels were done. Designing a proper level is definitely one of the most fun and underrated task.</p>
+
+<p><img src="https://media.giphy.com/media/p6qU70Ai6Ezn2/giphy.gif" alt="levels" /></p>
+
+<p>We then quickly jumped to polish the game, which was one of my biggest regrets while making this game - the final product had lots of areas where it could have been polished, and it would definitely improved the quality of the game. But besides that, I was pretty happy with what the final result.</p>
+
+<p><strong>Download Link</strong></p>
+
+<p><a href="http://globalgamejam.org/2017/games/trapped">Global Game Jam Page</a></p>
+
+<p><a href="http://gamejolt.com/games/trapped/229317">GameJolt Link</a></p>
+
+<p><strong>Team members</strong></p>
+
+<p><img src="http://ggj.s3.amazonaws.com/styles/game_sidebar__wide/s3/games/team_pictures/lmao_1.jpg" alt="tr_team" /></p>
+
+<ul>
+  <li><a href="http://globalgamejam.org/users/rudra-nil-basu">Rudra Nil Basu</a> ( Programming, Design )</li>
+  <li><a href="http://globalgamejam.org/users/projesh">Projesh Mehta</a> (Programming, UI)</li>
+  <li><a href="http://globalgamejam.org/users/kingshuk">Kingshuk Chakraborty</a> (Art)</li>
+</ul>
+
+<p>To sum it up, the use of waves in the game and the level design (which <em>was</em> difficult and had it’s flaws) was the best part of building the game, while the lack of planning and polish were the topics which I would’ve liked to change in the development of the game.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W02j74X4rCQ" frameborder="0" allowfullscreen=""></iframe>
+
+<p>The most important part of this event, however, was interacting with fellow game developers in the city. This was the first time I got to talk with our fellow Kolkatans, discussing about their projects, the difficulties they faced while pursuing the journey and what they learned from it. This was just the start, next year’s Global Game Jam in Kolkata will be even bigger and better!</p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_team.jpg" alt="team" /></p>
 
 </span>
 
@@ -147,7 +174,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            games, ggj
           </small>
         </div>
         

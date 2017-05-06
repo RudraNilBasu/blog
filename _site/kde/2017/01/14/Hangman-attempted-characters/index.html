@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>Hangman - Attempted Characters</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,19 +84,19 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">Hangman - Attempted Characters</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
-           under vim
+          on <span itemprop="datePublished" content="2014-08-28">January 14, 2017</span>
+           under KDE
         </i></small>
       </div>
 
       <div class="read-time">
         <small>
-          1 minute read
+          2 minute read
         </small>
       </div>
 
@@ -104,39 +104,88 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p>First merge always feels good! I was working on adding this feature for the last few days, and it is done finally.</p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<p><a href="https://github.com/gcompris/GCompris-qt/commit/8ab75acf49431c685021f3cd0e58cf31f3fa4568">Commit Link on Github</a></p>
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+<h3 id="task">Task</h3>
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
+<p>To add a Textfield to display the characters which were attempted by the user in the Hangman activity.</p>
 
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_1.png" alt="pic" /></p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
+<h3 id="explanation">Explanation</h3>
 
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
+<p><em>Hangman.qml</em></p>
 
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+<div class="highlighter-rouge"><pre class="highlight"><code>GCText {
+    id: guessedText
+    fontSize: smallSize
+    color: "#FFFFFF"
+    wrapMode: Text.WordWrap
+    horizontalAlignment: Text.AlignHCenter
+    width: parent.width - 2*clock.width
+    anchors {
+        horizontalCenter: parent.horizontalCenter
+    }
+    z: 12
+}
 </code></pre>
 </div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<p>The textfield which displays the characters which are attempted by the user. The color of the text is white ( <code class="highlighter-rouge">#FFFFFF</code> ), and the width is <code class="highlighter-rouge">width of the screen - 2*(width of the clock)</code> to avoid the text and the clock to get overlapped.</p>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Rectangle {
+    width: guessedText.width
+    height: guessedText.height
+    radius: 10
+    border.width: 1
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#000" }
+        GradientStop { position: 0.9; color: "#666" }
+        GradientStop { position: 1.0; color: "#AAA" }
+    }
+    anchors {
+        horizontalCenter: parent.horizontalCenter
+    }
+    z: 11
+}
+</code></pre>
+</div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+<p>This is the Rectangle that will be under the text. A gradient is given to this Rectangle from black (top ) to a lighter color (bottom).</p>
 
-<p>This is how my template for cpp files looks like :-</p>
+<p>Also, we need to make sure that the hint image doesn’t get overlapped with the text. For that, we change the width of the imageframe to:</p>
 
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+<div class="highlighter-rouge"><pre class="highlight"><code>Item {
+        id: imageframe
+        width: Math.min(300 * ApplicationInfo.ratio,
+        background.width * 0.8,
+        hidden.y) - guessedText.height
+</code></pre>
+</div>
 
+<p><em>Hangman.js</em></p>
+
+<p>In the javascript file, we create the logic to generate the text in the following way:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function createAttemptedText() {
+    alreadyTypedLetters.sort()
+    items.guessedText.text = qsTr("Attempted: %1").arg(alreadyTypedLetters.join(", "))
+}
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">alreadyTypedLetters</code> is an array that stores the characters that are typed by the user. We are using <code class="highlighter-rouge">qsTr()</code> to enable translation for the given text to various other languages.</p>
+
+<p>To make it work, we call <code class="highlighter-rouge">createAttemptedText()</code> from:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">initSubLevel()</code> function, right after declaring <code class="highlighter-rouge">alreadyTypedLetters</code> array. At this point, the array will be empty, so we will have only the header in the text field.</li>
+  <li><code class="highlighter-rouge">processKeyPress(text)</code> function, write after the newly typed character is pushed into the alreadyTypedLetters array. Thus, whenever a new charater is typed by the user, <code class="highlighter-rouge">createAttemptedText()</code> will be called.</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_2.png" alt="pic2" /></p>
 </span>
 
         
@@ -147,7 +196,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            kde, gcompris
           </small>
         </div>
         

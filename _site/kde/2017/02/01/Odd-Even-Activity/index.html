@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>GCompris - Odd even activity</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,19 +84,19 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">GCompris - Odd even activity</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
-           under vim
+          on <span itemprop="datePublished" content="2014-08-28">February 1, 2017</span>
+           under KDE
         </i></small>
       </div>
 
       <div class="read-time">
         <small>
-          1 minute read
+          2 minute read
         </small>
       </div>
 
@@ -104,39 +104,59 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p><a href="https://github.com/gcompris/GCompris-qt/commit/db7a4a9b743a3521c7c68f0b2b54719cbc9582db">Commit Link</a></p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<p>The main purpose of this was to add the odd even category to the categorization activity. It seemed to be a pretty straightforward task, but one issue lead to the other and I learned a lot more than what I thought previously.</p>
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+<p>In the original activity, all the categories were stored in the <code class="highlighter-rouge">qrc:/gcompris/src/activities/categorization/resource/board/</code> and were named as <code class="highlighter-rouge">categoryxx.qml</code> were x = 1 to 16, and the number of categories were hardcoded in the activity. My work mainly included:</p>
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
+<ul>
+  <li>adding the odd-even category</li>
+  <li>To make sure that importing the categories dataset is not hardcoded</li>
+</ul>
 
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
+<p>Adding the odd-even category is pretty simple. We just need to create the dataset, and the background js and qml will take care of it. For the category, I made 6 levels, the first level is just one digit numbers, 2nd level is 2 digit and 3rd level is 3 digit. The next 3 levels is combinations of these, and I chose not to add too many levels to it, since the only thing that matters here is the last digit.</p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
+<p>The second point is the most important part. We had a basic idea that importing the datasets should be independent of their names. So, I created a simple C++ class in the <code class="highlighter-rouge">core</code> that contains a method that would take in a link to a directory and will return the names of all the files in it. I will talk about creating the C++ class and integrating it with qml in the next blog post. For this blog, we consider that we have a class <code class="highlighter-rouge">Directory</code>, and a method <code class="highlighter-rouge">QStringList getFiles(Qstring)</code> that takes in the location as <code class="highlighter-rouge">QString</code> and returns the list of all files as <code class="highlighter-rouge">QStringList</code>. We also added a variable to each of the datasets, a boolean to check if the dataset is a demo level or not (via the <code class="highlighter-rouge">isEmbedded</code> variable).</p>
 
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
+<p>We send the files from the qml to the js via the items as :</p>
 
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code><span class="nx">property</span> <span class="nx">string</span> <span class="nx">datasetURL</span><span class="err">:</span> <span class="s2">":/gcompris/src/activities/categorization/resource/board/"</span>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+
+<span class="kt">QtObject</span> <span class="p">{</span>
+	<span class="nl">id</span><span class="p">:</span> <span class="nx">items</span>
+	<span class="kd">property</span> <span class="kt">Item</span> <span class="nl">main</span><span class="p">:</span> <span class="nx">activity</span><span class="p">.</span><span class="nx">main</span>
+	<span class="p">....</span>
+	<span class="kd">property</span> <span class="kt">var</span> <span class="nl">categories</span><span class="p">:</span> <span class="nx">directory</span><span class="p">.</span><span class="nx">getFiles</span><span class="p">(</span><span class="nx">datasetURL</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="kt">Directory</span> <span class="p">{</span>
+     <span class="nl">id</span><span class="p">:</span> <span class="nx">directory</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<p>In the js, in the start() method, we store all the categories in the <code class="highlighter-rouge">categoryList[]</code> array first, and store only the ones we need for now (if we are in demo mode, we need only the demo once).</p>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<pre><code class="language-javascipt">
+var categoryLists = []
+categoryLists = items.categories
+var isEmbeddedMode = items.file.exists(fileName) ? true : false
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+for(var i = 0; i &lt; categoryLists.length; i++) {
+  categoriesFilename = boardsUrl + "board" + "/" + categoryLists[i]
+  items.categoryReview.categoryDataset.source = categoriesFilename
 
-<p>This is how my template for cpp files looks like :-</p>
+  if(isEmbeddedMode || (items.categoryReview.categoryDataset.item).isEmbedded ) {
+      categoriesData.push(items.categoryReview.categoryDataset.item)
+  }
+}
 
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+</code></pre>
 
+<p>And that is it. Now, we can add any dataset files in the dataset folder, and it will be imported in the activity.</p>
 </span>
 
         
@@ -147,7 +167,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            kde, gcompris
           </small>
         </div>
         

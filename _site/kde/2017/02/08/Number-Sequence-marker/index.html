@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCompris - Number sequence - addition of dots</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://i.imgur.com/aRQcGSi.png" alt="Thumbnail: jekyll" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GCompris - Number sequence - addition of dots</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">February 8, 2017</span>
+           under KDE
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          3 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><a href="">Commit Link</a></p>
+
+<p>This is a very simple problem I noticed while examining the <em>drawletter</em> and <em>drawnumber</em> activities in GCompris. The problem arives when one clicks on a node, but no line needs to be drawn (1. when it is the first node 2. when the pen is drawn away from the page (think of letter ‘<em>B</em>’) ). In this case the node just seems to “disappear” without giving any form of visual effect.</p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/number_sequence/fig_1.jpg" alt="pic1" />
+<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/number_sequence/fig_2.jpg" alt="pic2" /></p>
+
+<p>For this problem, I thought of an efficient solution which would enhance readability of the code and solve the problem at the same time. First I thought of adding a dot whenever a node was clicked, so that it will get covered whenever the line is drawn. But, it was then observed that the center of the line which was drawn does not pass through the center of the line between the two nodes. As a result of this, the dot won’t be <em>“covered”</em> when the line is drawn over them.</p>
+
+<p>So, the above idea needed to be drawn and I settled with drawing the dot whenever a line cannot be drawn, a black dot is made on that point.</p>
+
+<h3 id="code">Code</h3>
+
+<p><em>NumberSequence.qml</em></p>
+
+<p>First, we add the black point image (named <em>blackpoint.svg</em> ), then add the condition for the node as follows:</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>
+<span class="kt">Image</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">pointImage</span>
+    <span class="nl">source</span><span class="p">:</span> <span class="nx">Activity</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="p">(</span><span class="nx">highlight</span> <span class="p">?</span>
+    <span class="p">(</span><span class="nx">pointImageOpacity</span> <span class="p">?</span> <span class="s2">"bluepoint.svg"</span> <span class="p">:</span> <span class="s2">"bluepointHighlight.svg"</span><span class="p">)</span> <span class="p">:</span>
+     <span class="nx">markedAsPoint</span> <span class="p">?</span> <span class="s2">"blackpoint.svg"</span> <span class="p">:</span> <span class="s2">"greenpoint.svg"</span><span class="p">)</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p><em>number_sequence.js</em></p>
+
+<p>In the <code class="highlighter-rouge">drawSegment(pointIndex)</code> function, we check whether we have to draw the point or not, and if we have to, we place the point on that node.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code>
+<span class="c1">// if we need to draw only a point instead of a line</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">mode</span> <span class="o">==</span> <span class="s2">"drawletters"</span> <span class="o">||</span> <span class="nx">mode</span> <span class="o">==</span> <span class="s2">"drawnumbers"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="p">).</span><span class="nx">highlight</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">pointIndex</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nx">markedAsPoint</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="p">}</span>
+    <span class="cm">/* draw a point in case of -
+        1) First node
+        2) No line is to be drawn between the current node and last node
+    */</span>
+    <span class="kd">var</span> <span class="nx">isPointMarked</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">pointIndex</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="nx">pointPositions2</span> <span class="o">&amp;&amp;</span> <span class="nx">pointPositions2</span><span class="p">[</span><span class="nx">pointIndex</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">pointPositions2</span><span class="p">[</span><span class="nx">pointIndex</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">pointIndex</span><span class="o">&lt;</span><span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">count</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="p">).</span><span class="nx">markedAsPoint</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="p">).</span><span class="nx">scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+            <span class="nx">isPointMarked</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">isPointMarked</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="p">).</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">items</span><span class="p">.</span><span class="nx">pointImageRepeater</span><span class="p">.</span><span class="nx">itemAt</span><span class="p">(</span><span class="nx">pointIndex</span><span class="p">).</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

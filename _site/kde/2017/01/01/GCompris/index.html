@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>GCompris</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,13 +84,13 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">GCompris</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
-           under vim
+          on <span itemprop="datePublished" content="2014-08-28">January 1, 2017</span>
+           under KDE
         </i></small>
       </div>
 
@@ -104,39 +104,63 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p>I finally decided to start my journey to open source contribution with KDE’s <a href="https://github.com/gcompris/GCompris-qt">GCompris-qt</a>. It mainly uses QML and Javascript for creating the activities, and C++ for the core functionality.</p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<p>Quoting from their docs,</p>
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+<blockquote>
+  <p>GCompris is an educaional software suite comprising of numerous activities from children aged 2-10. Some of the activities are game orientated, but nonetheless still educational.</p>
+</blockquote>
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
+<h3 id="setting-up-gcompris-building-from-source">Setting up GCompris (Building from source)</h3>
 
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
+<p>In order to build GCompris from source (for Debian/Ubuntu systems), first we need to install the dependencies:</p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
-
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
-
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install cmake
+sudo apt-get install cmake-curses-gui # Optional
+sudo apt-get install g++
+sudo apt-get install libgl1-mesa-dev
 </code></pre>
 </div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<p>Installing Qt5 and it’s libraries</p>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install qt5-default
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+sudo apt-get install qtdeclarative5-dev
 
-<p>This is how my template for cpp files looks like :-</p>
+sudo apt-get install qtmultimedia5-dev
 
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
+sudo apt-get install libqt5svg5-dev
 
+sudo apt-get install libqt5xmlpatterns5-dev
+
+sudo apt-get install libqt5sensors5-dev
+
+sudo apt-get install qml-module-qtquick-particles2
+
+sudo apt-get install qttools5-dev-tools
+</code></pre>
+</div>
+
+<h3 id="compilation">Compilation</h3>
+
+<p>GCompris uses <code class="highlighter-rouge">cmake</code> for compilation. Minimum version of cmake is 2.8, and the recommended version is 3.5.1</p>
+
+<p><a href="http://quickgit.kde.org/?p=gcompris.git">Source Code Link</a></p>
+
+<p>Get the source code:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/gcompris/GCompris-qt
+</code></pre>
+</div>
+
+<p>Initialise the git submodules</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>cd gcompris
+git submodule init &amp;&amp; git submodule update
+</code></pre>
+</div>
+
+<p>Download the latest version of <a href="https://www.qt.io/download-open-source/#section-2">Qt</a> (recommended version 5.5) and open up QtCreator. Start QtCreator and open the project file <code class="highlighter-rouge">CMakeLists.txt</code> at the root of the source code. Create a build, and run it via QtCreator.</p>
 </span>
 
         
@@ -147,7 +171,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            kde, gcompris
           </small>
         </div>
         

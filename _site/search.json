@@ -1,6 +1,102 @@
 [
   
   {
+    "title"    : "My Setup",
+    "category" : "",
+    "tags"     : "vim, linux",
+    "url"      : "/linux/2017/04/05/My-Setup/",
+    "date"     : "2017-04-05 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "GCompris- Ascending order",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/02/12/GCompris-Ascending-order/",
+    "date"     : "2017-02-12 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "GCompris - Number sequence - addition of dots",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/02/08/Number-Sequence-marker/",
+    "date"     : "2017-02-08 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "GCompris - Integrating C++ with qml",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/02/02/Integrating-C++-with-qml/",
+    "date"     : "2017-02-02 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "GCompris - Odd even activity",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/02/01/Odd-Even-Activity/",
+    "date"     : "2017-02-01 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Global Game Jam 2017",
+    "category" : "",
+    "tags"     : "games, ggj",
+    "url"      : "/games/2017/01/23/Global-Game-Jam-2017/",
+    "date"     : "2017-01-23 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Hangman - Attempted Characters",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/01/14/Hangman-attempted-characters/",
+    "date"     : "2017-01-14 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Detecting Ascending Sequence",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/01/03/Detect-ascending-sequence/",
+    "date"     : "2017-01-03 20:41:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Working with activities in GCompris",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/01/01/Working-with-activities-in-GCompris/",
+    "date"     : "2017-01-01 21:28:18 +0530"
+    } ,
+    
+  {
+    "title"    : "GCompris",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/01/01/GCompris/",
+    "date"     : "2017-01-01 05:00:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Installing Vim airline using Pathogen (in Ubuntu)",
+    "category" : "",
+    "tags"     : "vim, pathogen",
+    "url"      : "/vim/2016/12/24/Installing-vim-airline-using-pathogen/",
+    "date"     : "2016-12-24 23:31:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Starting off with KDE in Kubuntu 16.04",
+    "category" : "",
+    "tags"     : "KDE, Open source",
+    "url"      : "/kde/2016/12/11/Building-KDE-from-source/",
+    "date"     : "2016-12-11 08:59:18 +0530"
+    } ,
+    
+  {
     "title"    : "Vim filetype templates",
     "category" : "",
     "tags"     : "vim, templates",

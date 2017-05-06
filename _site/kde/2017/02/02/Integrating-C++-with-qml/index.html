@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCompris - Integrating C++ with qml</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://i.imgur.com/aRQcGSi.png" alt="Thumbnail: jekyll" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GCompris - Integrating C++ with qml</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">February 2, 2017</span>
+           under KDE
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          3 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><a href="https://github.com/gcompris/GCompris-qt/commit/955462b943c34fc130d1a68fcfb0e1ec6393a3f0">Commit Link</a></p>
+
+<p>While working with adding the odd even category in the categorization activity, I found a need to integrate the qml with a C++ class. The class contains a method which returns the list of all files in a given directory, using <del>the <a href="https://github.com/tronkko/dirent">dirent</a> header</del> QDir.</p>
+
+<h3 id="the-c-code">The C++ code</h3>
+
+<p><em>Directory.h</em></p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#ifndef DIRECTORY_H
+#define DIRECTORY_H
+</span>
+<span class="cp">#include &lt;QString&gt;
+#include &lt;QStringList&gt;
+#include &lt;QObject&gt;
+</span>
+<span class="cm">/**
+ * @class Directory
+ * @short A helper component to get the names of files
+ *        present in a given location
+ * Use - call files.getFiles(":input/path/")
+ */</span>
+
+<span class="k">class</span> <span class="nc">Directory</span> <span class="o">:</span> <span class="k">public</span> <span class="n">QObject</span>
+<span class="p">{</span>
+    <span class="n">Q_OBJECT</span>
+
+<span class="k">public</span><span class="o">:</span>
+    <span class="cm">/**
+     * Constructor
+    */</span>
+    <span class="n">Directory</span><span class="p">();</span>
+
+    <span class="cm">/**
+      * Returns the names of all the files in a given path
+      *
+      * @param location : The path of the directory
+      *
+      * @returns Names of all the files present in the
+      *          given location, separated by a space
+      */</span>
+    <span class="n">Q_INVOKABLE</span> <span class="n">QStringList</span> <span class="n">getFiles</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">location</span><span class="p">);</span>
+    <span class="k">static</span> <span class="kt">void</span> <span class="n">init</span><span class="p">();</span>
+
+<span class="p">};</span>
+
+<span class="cp">#endif
+</span>
+</code></pre>
+</div>
+
+<p><em>Directory.cpp</em></p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="cp">#include "Directory.h"
+</span>
+<span class="cp">#include &lt;QString&gt;
+#include &lt;QStringList&gt;
+#include &lt;QObject&gt;
+#include &lt;QDir&gt;
+#include &lt;QQmlComponent&gt;
+</span>
+<span class="n">Directory</span><span class="o">::</span><span class="n">Directory</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="n">QStringList</span> <span class="n">Directory</span><span class="o">::</span><span class="n">getFiles</span><span class="p">(</span><span class="k">const</span> <span class="n">QString</span><span class="o">&amp;</span> <span class="n">location</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">QStringList</span> <span class="n">fileNames</span><span class="p">;</span>
+    <span class="n">QDir</span> <span class="n">dir</span><span class="p">(</span><span class="n">location</span><span class="p">);</span>
+    <span class="n">QFileInfoList</span> <span class="n">files</span><span class="o">=</span><span class="n">dir</span><span class="p">.</span><span class="n">entryInfoList</span><span class="p">();</span>
+    <span class="n">foreach</span> <span class="p">(</span><span class="n">QFileInfo</span> <span class="n">file</span><span class="p">,</span> <span class="n">files</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">isDir</span><span class="p">()){</span>
+        <span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+            <span class="c1">// if it is a file
+</span>            <span class="n">fileNames</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">fileName</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">fileNames</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">Directory</span><span class="o">::</span><span class="n">init</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">qmlRegisterType</span><span class="o">&lt;</span><span class="n">Directory</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"GCompris"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"Directory"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<p>The above two files are placed in <code class="highlighter-rouge">gcompris/src/core</code> and are added in <code class="highlighter-rouge">CMakeLists.txt</code>, as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>set(gcompris_SRCS
+   ActivityInfo.cpp
+   ActivityInfo.h
+   ActivityInfoTree.cpp
+   ActivityInfoTree.h
+   ApplicationInfo.cpp
+   ApplicationInfo.h
+   ApplicationSettings.cpp
+   ApplicationSettings.h
+   File.cpp
+   File.h
+   DownloadManager.cpp
+   DownloadManager.h
+   Directory.cpp
+   Directory.h
+)
+</code></pre>
+</div>
+
+<p>From here, there are two ways to approach this:</p>
+
+<h3 id="procedure-1">Procedure #1</h3>
+
+<p>Then, in <code class="highlighter-rouge">main.cpp</code>, we integrate it with the qml . For this, we do the following:</p>
+
+<ul>
+  <li>Necessary imports:</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code>
+<span class="cp">#include &lt;QQmlContext&gt;
+</span>
+<span class="cp">#include "fileName.h"
+</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Then, we set the contextProperty in the engine as follows:</li>
+</ul>
+
+<p>Added Header - <code class="highlighter-rouge">#include &lt;QQmlContext&gt;</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
+engine.rootContext()-&gt;setContextProperty("files", new Directory);
+
+</code></pre>
+</div>
+
+<h3 id="calling-from-the-activity">Calling from the activity</h3>
+
+<p>Now, with the fileName integrated, we can call the methods of the class by calling <code class="highlighter-rouge">files</code>, as we set the context to the engine.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>files.getFiles(":/gcompris/src/activities/categorization/resource/board/")
+</code></pre>
+</div>
+
+<h3 id="procedure-2">Procedure #2</h3>
+
+<p>In this case, the <code class="highlighter-rouge">main.qml</code> will only contain the call to the <code class="highlighter-rouge">init()</code> function we declared on <code class="highlighter-rouge">Directory</code>:</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code>
+<span class="n">Directory</span><span class="o">::</span><span class="n">init</span><span class="p">();</span>
+
+</code></pre>
+</div>
+
+<p>On the qml, we create an <code class="highlighter-rouge">id</code> for Directory as follows:</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code><span class="kt">Directory</span> <span class="p">{</span>
+	<span class="nl">id</span><span class="p">:</span> <span class="nx">directory</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>And we call the function using the following way:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>directory.getFiles(":/gcompris/src/activities/categorization/resource/board/")
+</code></pre>
+</div>
+
+<h3 id="output">Output</h3>
+
+<p>And as an output, for both the cases, we get the list of files present in the directory in the console</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>category12.qml
+category4.qml
+category7.qml
+category16.qml
+category8.qml
+category19.qml
+category2.qml
+category11.qml
+category14.qml
+category5.qml
+category15.qml
+category13.qml
+category17.qml
+category18.qml
+category3.qml
+category9.qml
+category1.qml
+category6.qml
+category10.qml
+</code></pre>
+</div>
+
+<p>For more, check out this video (for procedure #1) :</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CR2qQebqv6I?list=PLfQnJyNyt15FrjkBl6zXwKyvrH2sOFKuI" frameborder="0" allowfullscreen=""></iframe>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

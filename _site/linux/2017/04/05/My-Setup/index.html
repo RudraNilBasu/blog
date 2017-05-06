@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vim filetype templates</title>
+<title>My Setup</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,13 +84,13 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Vim filetype templates</h1>
+      <h1 class="header" itemprop="name">My Setup</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">September 10, 2016</span>
-           under vim
+          on <span itemprop="datePublished" content="2014-08-28">April 5, 2017</span>
+           under linux
         </i></small>
       </div>
 
@@ -104,39 +104,38 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="HEAD" /></p>
+        <span itemprop="articleBody"><p>Let’s discuss about my current setup, because why not.</p>
 
-<p>This one is just a short article to demonstrate one of the powers of autocmd, with which we can set a default template for a particular file type which will open up whenever we open a file of that type.</p>
+<p>Quick facts:</p>
 
-<p>With the number of C++ codes I write using vim, I got tired of writing the same default headers every time I open up a new cpp file. Vim has a great solution to this problem, it allows us to save templates for a specific file type, and when we open a new file of that type, the default template will show up.</p>
+<ul>
+  <li>Distro: Kubuntu 16.04</li>
+  <li>Kernel version: 4.4.0-70-generic</li>
+</ul>
 
-<h3 id="creating-a-default-template-for-cpp-file">Creating a default template for cpp file</h3>
+<h1 id="the-shell">The Shell</h1>
 
-<p>Open up the terminal, and go to .vim folder in the home directory. Create a folder named “templates” and create the cpp file which will hold the template for cpp file type. Let’s call that <code class="highlighter-rouge">template.cpp</code></p>
+<p>I use zsh as default shell. For configuring zsh, I use the <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> framework to make it look (and work) way cooler. With that, I have the <a href="https://github.com/powerline/fonts">Inconsolata font</a> installed, to allow the <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster">agnoster</a> font to work properly. For the terminal, I use terminator. With those, the results are:</p>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/screenshot-from-2016-09-10-134635.png" alt="scr" /></p>
+<p><img src="/blog/images/setup/shell_1.png" alt="shell_1" /></p>
 
-<p>Open the template.cpp file using your text editting software (vim in this case), and insert the default template you want to keep for the cpp file types.</p>
+<p>As for the cow with the quote, it is something that pops up whenever a new instance of the terminal is opened. It is a simple script I wrote and attached it in the end of <code class="highlighter-rouge">~/.zshrc</code> (It maybe <code class="highlighter-rouge">~/.bashrc</code> if you are using bash instead of zsh):</p>
 
-<p>Close it up and open your <code class="highlighter-rouge">~/.vimrc</code> file and paste the following code in it –</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>augroup templates
-	autocmd!
-	autocmd BufNewFile *.cpp 0r ~/.vim/templates/template.cpp
-aurogroup END
+<div class="highlighter-rouge"><pre class="highlight"><code>shuf -n 1 ~/.quotes | cowsay | lolcat
 </code></pre>
 </div>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/hue.jpg" alt="hue" /></p>
+<h1 id="the-text-editor-vim">The Text Editor: Vim</h1>
 
-<p>And that’s it! The next time you open a new cpp file, the default template will load up as shown below.</p>
+<p>I have two plugins added for Vim:</p>
+<ul>
+  <li><strong>Vim-airlines</strong>: A customisable plugin to add various themes in vim, which helps to improve the workflow</li>
+  <li><strong>NerdTree</strong>: To explore the files and documents via vim</li>
+</ul>
 
-<p><img src="https://rudranilbasublog.files.wordpress.com/2016/09/myimage.gif" alt="final" /></p>
+<p>I am also thinking of the adding <code class="highlighter-rouge">YouCompleteMe</code> plugin in Vim, for autocomplition</p>
 
-<p>This is how my template for cpp files looks like :-</p>
-
-<script src="https://gist.github.com/RudraNilBasu/8b42bb48233424c3cbb54cfc58a6ca20.js"></script>
-
+<p><img src="/blog/images/setup/vim.png" alt="vim_1" /></p>
 </span>
 
         
@@ -147,7 +146,7 @@ aurogroup END
         <div class="tags">
           <small>
           <i class="fa fa-tags"></i>
-            vim, templates
+            vim, linux
           </small>
         </div>
         
