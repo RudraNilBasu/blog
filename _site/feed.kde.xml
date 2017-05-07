@@ -10,54 +10,6 @@
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>My Setup</title>
-        <description>&lt;p&gt;Let’s discuss about my current setup, because why not.&lt;/p&gt;
-
-&lt;p&gt;Quick facts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Distro: Kubuntu 16.04&lt;/li&gt;
-  &lt;li&gt;Kernel version: 4.4.0-70-generic&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;the-shell&quot;&gt;The Shell&lt;/h1&gt;
-
-&lt;p&gt;I use zsh as default shell. For configuring zsh, I use the &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot;&gt;oh-my-zsh&lt;/a&gt; framework to make it look (and work) way cooler. With that, I have the &lt;a href=&quot;https://github.com/powerline/fonts&quot;&gt;Inconsolata font&lt;/a&gt; installed, to allow the &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster&quot;&gt;agnoster&lt;/a&gt; font to work properly. For the terminal, I use terminator. With those, the results are:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/images/setup/shell_1.png&quot; alt=&quot;shell_1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As for the cow with the quote, it is something that pops up whenever a new instance of the terminal is opened. It is a simple script I wrote and attached it in the end of &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; (It maybe &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; if you are using bash instead of zsh):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shuf -n 1 ~/.quotes | cowsay | lolcat
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h1 id=&quot;the-text-editor-vim&quot;&gt;The Text Editor: Vim&lt;/h1&gt;
-
-&lt;p&gt;I have two plugins added for Vim:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Vim-airlines&lt;/strong&gt;: A customisable plugin to add various themes in vim, which helps to improve the workflow&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;NerdTree&lt;/strong&gt;: To explore the files and documents via vim&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I am also thinking of the adding &lt;code class=&quot;highlighter-rouge&quot;&gt;YouCompleteMe&lt;/code&gt; plugin in Vim, for autocomplition&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/images/setup/vim.png&quot; alt=&quot;vim_1&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 05 Apr 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/linux/2017/04/05/My-Setup/</link>
-        <guid isPermaLink="true">http://localhost:4000/linux/2017/04/05/My-Setup/</guid>
-        
-        <category>vim</category>
-        
-        <category>linux</category>
-        
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
         <title>GCompris- Ascending order</title>
         <description>&lt;!--
 ### Original Idea
@@ -904,82 +856,6 @@ for(var i = 0; i &amp;lt; categoryLists.length; i++) {
         
         
         <category>KDE</category>
-        
-      </item>
-    
-      <item>
-        <title>Global Game Jam 2017</title>
-        <description>&lt;p&gt;Attended my first Global Game Jam, and it was fun!&lt;/p&gt;
-
-&lt;p&gt;This was the first time Global Game Jam came here in Kolkata. It started off with talks on creating 3D art, monetising apps and storytelling in games.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_1.jpg&quot; alt=&quot;pic1&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“Art is attraction, story is for friendship and gameplay is the true love”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_2.jpg&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;the-start&quot;&gt;The Start&lt;/h3&gt;
-
-&lt;p&gt;The themes were announced briefly after the talks, and it was &lt;em&gt;“Waves”&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_theme.jpg&quot; alt=&quot;ggj-theme&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The theme got us thinking for a while, as I didn’t expect something like that. Shortly after the team was created, we started off brainstorming different ideas. We had quite a lot of ideas, but didn’t know which one to settle with. One of the ideas were to control an object using two electromagnets, thus creating a wave like trajectory. The other one was to use the concept of reflecting sound waves to save a dog who is stuck in a maze.&lt;/p&gt;
-
-&lt;p&gt;We didn’t know which one to settle with, so we tried creating a prototype of both of the games by dividing out team into two parts, which proved to be a &lt;em&gt;HUGE MISTAKE&lt;/em&gt; from our side, as it cost us a lot of valuable time as the jam progressed.&lt;/p&gt;
-
-&lt;h3 id=&quot;progress&quot;&gt;Progress&lt;/h3&gt;
-
-&lt;p&gt;After hours of prototyping and deciding, we decided to go off with the first idea. We were already behind time, and we decided to scrap the idea of making it randomly generated, and create various levels to reach the end of the level. The mechanics came up pretty quickly, while it took some time to design the levels, but it was fun nonetheless! Taking up tries to fail miserably on the levels we created was the best part of the jam.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_levels.jpg&quot; alt=&quot;pic_turn_level&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;the-final-day&quot;&gt;The Final Day&lt;/h3&gt;
-
-&lt;p&gt;This is when the pressure really came on us. We had a product which was just a prototype, and the game itself was really hard. We hardly got 2 hours of sleep on the final night, and by 6:00 in the morning, mostly 10 good levels were done. Designing a proper level is definitely one of the most fun and underrated task.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/p6qU70Ai6Ezn2/giphy.gif&quot; alt=&quot;levels&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We then quickly jumped to polish the game, which was one of my biggest regrets while making this game - the final product had lots of areas where it could have been polished, and it would definitely improved the quality of the game. But besides that, I was pretty happy with what the final result.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Download Link&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://globalgamejam.org/2017/games/trapped&quot;&gt;Global Game Jam Page&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://gamejolt.com/games/trapped/229317&quot;&gt;GameJolt Link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Team members&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ggj.s3.amazonaws.com/styles/game_sidebar__wide/s3/games/team_pictures/lmao_1.jpg&quot; alt=&quot;tr_team&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/rudra-nil-basu&quot;&gt;Rudra Nil Basu&lt;/a&gt; ( Programming, Design )&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/projesh&quot;&gt;Projesh Mehta&lt;/a&gt; (Programming, UI)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/kingshuk&quot;&gt;Kingshuk Chakraborty&lt;/a&gt; (Art)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To sum it up, the use of waves in the game and the level design (which &lt;em&gt;was&lt;/em&gt; difficult and had it’s flaws) was the best part of building the game, while the lack of planning and polish were the topics which I would’ve liked to change in the development of the game.&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/W02j74X4rCQ&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;The most important part of this event, however, was interacting with fellow game developers in the city. This was the first time I got to talk with our fellow Kolkatans, discussing about their projects, the difficulties they faced while pursuing the journey and what they learned from it. This was just the start, next year’s Global Game Jam in Kolkata will be even bigger and better!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_team.jpg&quot; alt=&quot;team&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 23 Jan 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/games/2017/01/23/Global-Game-Jam-2017/</link>
-        <guid isPermaLink="true">http://localhost:4000/games/2017/01/23/Global-Game-Jam-2017/</guid>
-        
-        <category>games</category>
-        
-        <category>ggj</category>
-        
-        
-        <category>Games</category>
         
       </item>
     
