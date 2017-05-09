@@ -21,15 +21,15 @@ My task for the GSoC period is to [finish three started activities](https://summ
 
 * **Pilot a Submarine**: This is an activity to teach how a submarine works, which was originally present in the gtk version of GCompris. It will be built from scratch, with the initial levels containing tutorials explaining how a submarine works and the utilities of different working elements. The latter levels will focus on using the ideas from the tutorial levels to check whether the child has fully understood the mechanism or not.
 
-![sub](/images/gsoc/submarine.png)
+![sub]({{ site.baseurl }}/images/gsoc/submarine.png)
 
 * **Family**: This is an activity is aimed to help children understand how they are related to their relatives. I will be improving the design of the activity to a tree like representation where the members belonging to the same generation will be in the same level of the tree.
 
-![family_initial](/images/gsoc/family.png)
+![family_initial]({{ site.baseurl }}/images/gsoc/family.png)
 
 *Current layout of the activity*
 
-![family_final](/images/gsoc/family_test_2.png)
+![family_final]({{ site.baseurl }}/images/gsoc/family_test_2.png)
 
 *Expected layout of the activity*
 
@@ -37,7 +37,7 @@ I will also extend the activity in which given a pair, the user will have to cho
 
 * **Digital Electricity**: The third and final activity is aimed at providing a real time simulation of an electric circuit. A *"free mode"* already exists, where the children can use any components to create a circuit on their own. I will be implementing levels which will help to teach the children how the individual components work in a circuit so that the activity will be easier to understand for someone who didn't have any prior experience with a specific component.
 
-![digital](/images/gsoc/digital_level_4.png)
+![digital]({{ site.baseurl }}/images/gsoc/digital_level_4.png)
 
 *Mockup of one of the levels in the Digital Electricity activity*
 
