@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      My Setup
+title:      Adding custom feed in jekyll
 date:       2017-05-08 15:11:18
 summary:    Add custom feed for specific topics in jekyll
 categories: jekyll

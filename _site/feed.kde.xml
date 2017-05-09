@@ -5,9 +5,72 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 08 May 2017 00:53:25 +0530</pubDate>
-    <lastBuildDate>Mon, 08 May 2017 00:53:25 +0530</lastBuildDate>
+    <pubDate>Tue, 09 May 2017 22:36:34 +0530</pubDate>
+    <lastBuildDate>Tue, 09 May 2017 22:36:34 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Introduction and plans for GSoC</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Hi, I am Rudra Nil Basu, a third year CS undergrad from West Bengal, India. I have been contributing to GCompris for several months by adding features and improving layouts of existing activities, which got me familiar to the codebase of the project, which further helped me to work on my own “ordering activity”: where one has to arrange a given set of numbers or alphabets in increasing or decreasing order. Of course, none of these would have been possible without the constant help from the community. Along with that, I decided to apply for this year’s Google Summer of Code and finally got selected.&lt;/p&gt;
+
+&lt;h3 id=&quot;plans-for-gsoc-period&quot;&gt;Plans for GSoC period&lt;/h3&gt;
+
+&lt;p&gt;My task for the GSoC period is to &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#6332354560786432&quot;&gt;finish three started activities&lt;/a&gt; in GCompris: &lt;em&gt;Pilot a Submarine&lt;/em&gt; , &lt;em&gt;Family&lt;/em&gt; and &lt;em&gt;Digital Electricity&lt;/em&gt;. I will also be giving updates of my work at least weekly on my &lt;a href=&quot;http://rudranilbasu.github.io/blog/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Pilot a Submarine&lt;/strong&gt;: This is an activity to teach how a submarine works, which was originally present in the gtk version of GCompris. It will be built from scratch, with the initial levels containing tutorials explaining how a submarine works and the utilities of different working elements. The latter levels will focus on using the ideas from the tutorial levels to check whether the child has fully understood the mechanism or not.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/submarine.png&quot; alt=&quot;sub&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Family&lt;/strong&gt;: This is an activity is aimed to help children understand how they are related to their relatives. I will be improving the design of the activity to a tree like representation where the members belonging to the same generation will be in the same level of the tree.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/family.png&quot; alt=&quot;family_initial&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Current layout of the activity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/family_test_2.png&quot; alt=&quot;family_final&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Expected layout of the activity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I will also extend the activity in which given a pair, the user will have to choose the correct relation.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Digital Electricity&lt;/strong&gt;: The third and final activity is aimed at providing a real time simulation of an electric circuit. A &lt;em&gt;“free mode”&lt;/em&gt; already exists, where the children can use any components to create a circuit on their own. I will be implementing levels which will help to teach the children how the individual components work in a circuit so that the activity will be easier to understand for someone who didn’t have any prior experience with a specific component.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/digital_level_4.png&quot; alt=&quot;digital&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Mockup of one of the levels in the Digital Electricity activity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I will be providing more detailed progress on the implementation of these activities in my later blog posts. Looking forward to an exciting summer ahead!&lt;/p&gt;
+
+&lt;h3 id=&quot;contact-information&quot;&gt;Contact Information&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Freenode IRC nick&lt;/strong&gt;: rudra&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Email address&lt;/strong&gt;: rudra.nil.basu.1996@gmail.com&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Twitter&lt;/strong&gt;: &lt;a href=&quot;https://twitter.com/RudraNilBasu&quot;&gt;RudraNilBasu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 09 May 2017 13:08:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/05/09/Introduction-and-plans-for-GSoC/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/09/Introduction-and-plans-for-GSoC/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        <category>gsoc</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GCompris- Ascending order</title>

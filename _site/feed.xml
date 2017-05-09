@@ -5,9 +5,88 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 08 May 2017 00:53:25 +0530</pubDate>
-    <lastBuildDate>Mon, 08 May 2017 00:53:25 +0530</lastBuildDate>
+    <pubDate>Tue, 09 May 2017 22:36:34 +0530</pubDate>
+    <lastBuildDate>Tue, 09 May 2017 22:36:34 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Introduction and plans for GSoC</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Hi, I am Rudra Nil Basu, a third year CS undergrad from West Bengal, India. I have been contributing to GCompris for several months by adding features and improving layouts of existing activities, which got me familiar to the codebase of the project, which further helped me to work on my own “ordering activity”: where one has to arrange a given set of numbers or alphabets in increasing or decreasing order. Of course, none of these would have been possible without the constant help from the community. Along with that, I decided to apply for this year’s Google Summer of Code and finally got selected.&lt;/p&gt;
+
+&lt;h3 id=&quot;plans-for-gsoc-period&quot;&gt;Plans for GSoC period&lt;/h3&gt;
+
+&lt;p&gt;My task for the GSoC period is to &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#6332354560786432&quot;&gt;finish three started activities&lt;/a&gt; in GCompris: &lt;em&gt;Pilot a Submarine&lt;/em&gt; , &lt;em&gt;Family&lt;/em&gt; and &lt;em&gt;Digital Electricity&lt;/em&gt;. I will also be giving updates of my work at least weekly on my &lt;a href=&quot;http://rudranilbasu.github.io/blog/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Pilot a Submarine&lt;/strong&gt;: This is an activity to teach how a submarine works, which was originally present in the gtk version of GCompris. It will be built from scratch, with the initial levels containing tutorials explaining how a submarine works and the utilities of different working elements. The latter levels will focus on using the ideas from the tutorial levels to check whether the child has fully understood the mechanism or not.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/submarine.png&quot; alt=&quot;sub&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Family&lt;/strong&gt;: This is an activity is aimed to help children understand how they are related to their relatives. I will be improving the design of the activity to a tree like representation where the members belonging to the same generation will be in the same level of the tree.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/family.png&quot; alt=&quot;family_initial&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Current layout of the activity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/family_test_2.png&quot; alt=&quot;family_final&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Expected layout of the activity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I will also extend the activity in which given a pair, the user will have to choose the correct relation.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Digital Electricity&lt;/strong&gt;: The third and final activity is aimed at providing a real time simulation of an electric circuit. A &lt;em&gt;“free mode”&lt;/em&gt; already exists, where the children can use any components to create a circuit on their own. I will be implementing levels which will help to teach the children how the individual components work in a circuit so that the activity will be easier to understand for someone who didn’t have any prior experience with a specific component.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/gsoc/digital_level_4.png&quot; alt=&quot;digital&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Mockup of one of the levels in the Digital Electricity activity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I will be providing more detailed progress on the implementation of these activities in my later blog posts. Looking forward to an exciting summer ahead!&lt;/p&gt;
+
+&lt;h3 id=&quot;contact-information&quot;&gt;Contact Information&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Freenode IRC nick&lt;/strong&gt;: rudra&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Email address&lt;/strong&gt;: rudra.nil.basu.1996@gmail.com&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Twitter&lt;/strong&gt;: &lt;a href=&quot;https://twitter.com/RudraNilBasu&quot;&gt;RudraNilBasu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 09 May 2017 13:08:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/05/09/Introduction-and-plans-for-GSoC/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/09/Introduction-and-plans-for-GSoC/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        <category>gsoc</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
+    
+      <item>
+        <title>Adding custom feed in jekyll</title>
+        <description>&lt;p&gt;For creating a blog on planet kde, I needed to provide a custom feed just for kde on my blog
+&lt;a href=&quot;https://devblog.dymel.pl/2017/02/09/category-rss-feed-in-jekyll/&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 May 2017 20:41:18 +0530</pubDate>
+        <link>http://localhost:4000/jekyll/2017/05/08/Adding-custom-feed-in-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/2017/05/08/Adding-custom-feed-in-jekyll/</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
     
       <item>
         <title>My Setup</title>
@@ -1193,265 +1272,6 @@ function initLevel() {
         <pubDate>Tue, 03 Jan 2017 20:41:18 +0530</pubDate>
         <link>http://localhost:4000/kde/2017/01/03/Detect-ascending-sequence/</link>
         <guid isPermaLink="true">http://localhost:4000/kde/2017/01/03/Detect-ascending-sequence/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>KDE</category>
-        
-      </item>
-    
-      <item>
-        <title>Working with activities in GCompris</title>
-        <description>&lt;p&gt;In my &lt;a href=&quot;https://rudranilbasu.github.io/blog/kde/2016/12/31/GCompris/&quot;&gt;previous post&lt;/a&gt;, I talked about setting up GCompris, and running it using QtCreator. In this one, I will be talling about my journey towards creating a new activity for GCompris.&lt;/p&gt;
-
-&lt;h3 id=&quot;basic-structure&quot;&gt;Basic Structure&lt;/h3&gt;
-
-&lt;p&gt;The goal of this activity is to identify numbers in ascending order. Few blocks of numbers will be provided to the user, and the user will have to click all the numbers, in ascending order (i.e. the smallest number should be clicked first, and the largest number in the last).&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-the-activity&quot;&gt;Creating the activity&lt;/h3&gt;
-
-&lt;p&gt;Creating an activity in GCompris is very simple. First we create a new branch in git and shift to that branch. For that, we use:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -b &quot;ascending&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Move to the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;qrc:src/activities&lt;/code&gt; and run the script &lt;code class=&quot;highlighter-rouge&quot;&gt;createit.sh&lt;/code&gt; with the name of the activity as arguments. In this case, it looks like this&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./createit &quot;ascending_order&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Open the &lt;code class=&quot;highlighter-rouge&quot;&gt;ActivityInfo.qml&lt;/code&gt; and fillup the basic setup for the activity.&lt;/p&gt;
-
-&lt;h1 id=&quot;core-functionalities&quot;&gt;Core Functionalities&lt;/h1&gt;
-
-&lt;h3 id=&quot;1-the-building-blocks&quot;&gt;1. The Building Blocks&lt;/h3&gt;
-
-&lt;p&gt;First, we need to dynamically create &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt; number of &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; elements, each containing a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; element. The &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; object typically looks like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kt&quot;&gt;Rectangle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;imageX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;360&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;MouseArea&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;anchors.fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;onClicked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;GCText&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numText&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;anchors.centerIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;imageX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; creates anchors and &lt;code class=&quot;highlighter-rouge&quot;&gt;onClicked &lt;/code&gt; options. When the Rectangle is pressed, a &lt;code class=&quot;highlighter-rouge&quot;&gt;check()&lt;/code&gt; method is called (To be discussed later).&lt;/p&gt;
-
-&lt;p&gt;The previous block of code defines only one &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; element. In order to create them dynamically, we need to enclose them in a block of &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeaters&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Grids&lt;/code&gt; (for creating grids of Rectangle)&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Grid {
-    id: grids
-    rows: 1
-    spacing: 12
-    Repeater {
-        id: boxes
-        model: 4
-        Rectangle {
-            property int imageX: 0
-            width: 360/2
-            height: 360/2
-            radius: 20
-            color: &quot;blue&quot;
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Activity.check(numText.text)
-            }
-
-            GCText {
-                id: numText
-                anchors.centerIn: parent
-                text: imageX.toString()
-            }
-        }
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;2-accessing-dynamically-created-rectangles-via-js&quot;&gt;2. Accessing dynamically created Rectangles via js&lt;/h3&gt;
-
-&lt;p&gt;We create a &lt;code class=&quot;highlighter-rouge&quot;&gt;QtObject&lt;/code&gt; containing the QML objects which are to be accessed from the javascript file.&lt;/p&gt;
-
-&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kt&quot;&gt;QtObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;background&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;bonus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bonus&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;grids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grids&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Activity = ref. to the js file&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;onStart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;onStop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;start(items)&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;stop()&lt;/code&gt; are two functions in the javascript file.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;start(items_)&lt;/code&gt; method is pretty straightforward and self explanatory&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items_&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;currentLevel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;initLevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;initLevel()&lt;/code&gt; initialises the current level number in the bar to be &lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel+1&lt;/code&gt; and calls the method to initialise the grids. For initialising the grids, we set the &lt;code class=&quot;highlighter-rouge&quot;&gt;model&lt;/code&gt; value of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeater&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;2*(currentLevel+1)+1&lt;/code&gt; ( &lt;em&gt;Note&lt;/em&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel&lt;/code&gt; starts from 0 ). We then call a function to generate random numbers and store it in array &lt;code class=&quot;highlighter-rouge&quot;&gt;num[]&lt;/code&gt;, and then we store these values in the Rectangles.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;initLevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentLevel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;initGrids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;initGrids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;generateRandomNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;itemAt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;imageX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;generateRandomNumbers()&lt;/code&gt; function is also straightforward. It generates a random number from 0 to a given range (=&lt;code class=&quot;highlighter-rouge&quot;&gt;(level number)*10&lt;/code&gt;).&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;generateRandomNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;boxes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// generate n random numbers and store it in num[]&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;upperBound&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;randomNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;upperBound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;randomNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;randomNumber&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;At this stage, the activity looks like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://github.com/RudraNilBasu/blog/blob/gh-pages/images/GCompris/ascending_1.png?raw=true&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;Next Challenge: Adding the logic to detect ascending sequence&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 Jan 2017 21:28:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/01/Working-with-activities-in-GCompris/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/01/Working-with-activities-in-GCompris/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>KDE</category>
-        
-      </item>
-    
-      <item>
-        <title>GCompris</title>
-        <description>&lt;p&gt;I finally decided to start my journey to open source contribution with KDE’s &lt;a href=&quot;https://github.com/gcompris/GCompris-qt&quot;&gt;GCompris-qt&lt;/a&gt;. It mainly uses QML and Javascript for creating the activities, and C++ for the core functionality.&lt;/p&gt;
-
-&lt;p&gt;Quoting from their docs,&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;GCompris is an educaional software suite comprising of numerous activities from children aged 2-10. Some of the activities are game orientated, but nonetheless still educational.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;setting-up-gcompris-building-from-source&quot;&gt;Setting up GCompris (Building from source)&lt;/h3&gt;
-
-&lt;p&gt;In order to build GCompris from source (for Debian/Ubuntu systems), first we need to install the dependencies:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install cmake
-sudo apt-get install cmake-curses-gui # Optional
-sudo apt-get install g++
-sudo apt-get install libgl1-mesa-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Installing Qt5 and it’s libraries&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install qt5-default
-
-sudo apt-get install qtdeclarative5-dev
-
-sudo apt-get install qtmultimedia5-dev
-
-sudo apt-get install libqt5svg5-dev
-
-sudo apt-get install libqt5xmlpatterns5-dev
-
-sudo apt-get install libqt5sensors5-dev
-
-sudo apt-get install qml-module-qtquick-particles2
-
-sudo apt-get install qttools5-dev-tools
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;compilation&quot;&gt;Compilation&lt;/h3&gt;
-
-&lt;p&gt;GCompris uses &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; for compilation. Minimum version of cmake is 2.8, and the recommended version is 3.5.1&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://quickgit.kde.org/?p=gcompris.git&quot;&gt;Source Code Link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Get the source code:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/gcompris/GCompris-qt
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Initialise the git submodules&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd gcompris
-git submodule init &amp;amp;&amp;amp; git submodule update
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Download the latest version of &lt;a href=&quot;https://www.qt.io/download-open-source/#section-2&quot;&gt;Qt&lt;/a&gt; (recommended version 5.5) and open up QtCreator. Start QtCreator and open the project file &lt;code class=&quot;highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; at the root of the source code. Create a build, and run it via QtCreator.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 Jan 2017 05:00:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/01/GCompris/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/01/GCompris/</guid>
         
         <category>kde</category>
         

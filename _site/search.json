@@ -1,6 +1,22 @@
 [
   
   {
+    "title"    : "Introduction and plans for GSoC",
+    "category" : "",
+    "tags"     : "kde, gcompris, gsoc",
+    "url"      : "/kde/2017/05/09/Introduction-and-plans-for-GSoC/",
+    "date"     : "2017-05-09 13:08:18 +0530"
+    } ,
+    
+  {
+    "title"    : "Adding custom feed in jekyll",
+    "category" : "",
+    "tags"     : "jekyll",
+    "url"      : "/jekyll/2017/05/08/Adding-custom-feed-in-jekyll/",
+    "date"     : "2017-05-08 20:41:18 +0530"
+    } ,
+    
+  {
     "title"    : "My Setup",
     "category" : "",
     "tags"     : "vim, linux",
