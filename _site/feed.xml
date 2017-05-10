@@ -5,8 +5,8 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 09 May 2017 22:45:51 +0530</pubDate>
-    <lastBuildDate>Tue, 09 May 2017 22:45:51 +0530</lastBuildDate>
+    <pubDate>Wed, 10 May 2017 19:56:01 +0530</pubDate>
+    <lastBuildDate>Wed, 10 May 2017 19:56:01 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -14,6 +14,33 @@
         <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Hi, I am Rudra Nil Basu, a third year CS undergrad from West Bengal, India. I have been contributing to GCompris for several months by adding features and improving layouts of existing activities, which got me familiar to the codebase of the project, which further helped me to work on my own “ordering activity”: where one has to arrange a given set of numbers or alphabets in increasing or decreasing order. Of course, none of these would have been possible without the constant help from the community. Along with that, I decided to apply for this year’s Google Summer of Code and finally got selected.&lt;/p&gt;
+
+&lt;h3 id=&quot;about-gcompris-and-gsoc&quot;&gt;About GCompris and GSoC&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://gcompris.net/index-en.html&quot;&gt;GCompris&lt;/a&gt; is a high-quality educational suite which aims at making learning easier for children aged 2 to 10. GCompris currently has 137 activities on various topics such as science, maths, games with which it has successfully
+created a great learning environment for children.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://gcompris.net/screenshots_qt/small/root.png&quot; alt=&quot;gcompris&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Given below is a list of categories present in GCompris and few activities belonging to that category:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;computer discovery&lt;/strong&gt;: keyboard, mouse, different mouse gestures, …&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;arithmetic&lt;/strong&gt;: table memory, enumeration, double entry table, mirror image, …&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;science&lt;/strong&gt;: the canal lock, the water cycle, the submarine, electric simulation …&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;geography&lt;/strong&gt;: place the country on the map&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;games&lt;/strong&gt;: chess, memory, connect 4, oware, sudoku …&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;reading&lt;/strong&gt;: reading practice&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;other&lt;/strong&gt;: learn to tell time, puzzle of famous paintings, vector drawing, cartoon making, …&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;However, there are few activities which were started previously but is not yet completed. I strongly believe in what GCompris stands for and during the GSoC period, I aim at taking GCompris one step forward by finishing three started activities.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developers.google.com/open-source/gsoc/resources/downloads/GSoC2017Presentation.pdf&quot;&gt;&lt;img src=&quot;https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal-800.png&quot; alt=&quot;gsoc_logo&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;Link to GSoC proposal&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The best way to learn something is by demonstration. But, it is not always possible to physically demonstrate every real world objects. To overcome that, simulation of real world objects is a useful solution. Keeping this in mind, I aim at creating simulation of real world scenarios to help children understand the working of submarines and digital circuit for this year’s Google Summer of Code.&lt;/p&gt;
 
 &lt;h3 id=&quot;plans-for-gsoc-period&quot;&gt;Plans for GSoC period&lt;/h3&gt;
 

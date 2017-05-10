@@ -4,7 +4,7 @@ title:      Introduction and plans for GSoC
 date:       2017-05-09 07:38:18
 summary:    Introduction and plans for GSoC
 categories: kde
-thumbnail: kde
+thumbnail: gsoc
 tags:
  - kde
  - gcompris
@@ -14,6 +14,33 @@ tags:
 ### Introduction
 
 Hi, I am Rudra Nil Basu, a third year CS undergrad from West Bengal, India. I have been contributing to GCompris for several months by adding features and improving layouts of existing activities, which got me familiar to the codebase of the project, which further helped me to work on my own "ordering activity": where one has to arrange a given set of numbers or alphabets in increasing or decreasing order. Of course, none of these would have been possible without the constant help from the community. Along with that, I decided to apply for this year's Google Summer of Code and finally got selected.
+
+### About GCompris and GSoC
+
+[GCompris](http://gcompris.net/index-en.html) is a high-quality educational suite which aims at making learning easier for children aged 2 to 10. GCompris currently has 137 activities on various topics such as science, maths, games with which it has successfully
+created a great learning environment for children.
+
+![gcompris](http://gcompris.net/screenshots_qt/small/root.png)
+
+Given below is a list of categories present in GCompris and few activities belonging to that category:
+
+
+* **computer discovery**: keyboard, mouse, different mouse gestures, ...
+* **arithmetic**: table memory, enumeration, double entry table, mirror image, ...
+* **science**: the canal lock, the water cycle, the submarine, electric simulation ...
+* **geography**: place the country on the map
+* **games**: chess, memory, connect 4, oware, sudoku ...
+* **reading**: reading practice
+* **other**: learn to tell time, puzzle of famous paintings, vector drawing, cartoon making, ...
+
+
+However, there are few activities which were started previously but is not yet completed. I strongly believe in what GCompris stands for and during the GSoC period, I aim at taking GCompris one step forward by finishing three started activities.
+
+[![gsoc_logo](https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal-800.png)](https://developers.google.com/open-source/gsoc/resources/downloads/GSoC2017Presentation.pdf)
+
+[Link to GSoC proposal](http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf)
+
+The best way to learn something is by demonstration. But, it is not always possible to physically demonstrate every real world objects. To overcome that, simulation of real world objects is a useful solution. Keeping this in mind, I aim at creating simulation of real world scenarios to help children understand the working of submarines and digital circuit for this year's Google Summer of Code.
 
 ### Plans for GSoC period
 
