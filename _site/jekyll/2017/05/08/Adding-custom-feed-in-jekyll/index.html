@@ -104,8 +104,33 @@
 
         
 
-        <span itemprop="articleBody"><p>For creating a blog on planet kde, I needed to provide a custom feed just for kde on my blog
-<a href="https://devblog.dymel.pl/2017/02/09/category-rss-feed-in-jekyll/">Link</a></p>
+        <span itemprop="articleBody"><p>This is a short post to show how we can add a custom feed for a specific topic in a jekyll blog.</p>
+
+<p>For creating a blog on planet kde, I needed to provide a custom feed just for kde on my blog</p>
+
+<p>The procedure is very simple. Every jekyll blog comes with a <code class="highlighter-rouge">feed.xml</code> file, which is to show all the posts in the blog. For my blog, the contents of the file are:</p>
+
+<p>If we look closely, the following line is where the solution to our problem lies:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for post in site.posts limit:10 
+</code></pre>
+</div>
+
+<p>This is to filter out all the posts with limitation set to change. To filter out posts with specific tags, first we create a duplicate <code class="highlighter-rouge">.xml</code> file (let’s call it <code class="highlighter-rouge">feed.kde.xml</code>) and change the following line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for post in site.posts limit:10
+</code></pre>
+</div>
+
+<p>to</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>for post in site.tags["kde"]
+</code></pre>
+</div>
+
+<p>And now, if we open the new xml file from our browser (which is <code class="highlighter-rouge">rudranilbasu.me/blog/feed.kde.xml</code> in my case), it will filter out only the posts with <code class="highlighter-rouge">kde</code> tags in it.</p>
+
+<p><a href="https://devblog.dymel.pl/2017/02/09/category-rss-feed-in-jekyll/">Source Link</a></p>
 </span>
 
         

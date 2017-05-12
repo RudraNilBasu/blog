@@ -5,8 +5,8 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 10 May 2017 19:56:01 +0530</pubDate>
-    <lastBuildDate>Wed, 10 May 2017 19:56:01 +0530</lastBuildDate>
+    <pubDate>Fri, 12 May 2017 20:38:54 +0530</pubDate>
+    <lastBuildDate>Fri, 12 May 2017 20:38:54 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -101,8 +101,33 @@ created a great learning environment for children.&lt;/p&gt;
     
       <item>
         <title>Adding custom feed in jekyll</title>
-        <description>&lt;p&gt;For creating a blog on planet kde, I needed to provide a custom feed just for kde on my blog
-&lt;a href=&quot;https://devblog.dymel.pl/2017/02/09/category-rss-feed-in-jekyll/&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+        <description>&lt;p&gt;This is a short post to show how we can add a custom feed for a specific topic in a jekyll blog.&lt;/p&gt;
+
+&lt;p&gt;For creating a blog on planet kde, I needed to provide a custom feed just for kde on my blog&lt;/p&gt;
+
+&lt;p&gt;The procedure is very simple. Every jekyll blog comes with a &lt;code class=&quot;highlighter-rouge&quot;&gt;feed.xml&lt;/code&gt; file, which is to show all the posts in the blog. For my blog, the contents of the file are:&lt;/p&gt;
+
+&lt;p&gt;If we look closely, the following line is where the solution to our problem lies:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for post in site.posts limit:10 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is to filter out all the posts with limitation set to change. To filter out posts with specific tags, first we create a duplicate &lt;code class=&quot;highlighter-rouge&quot;&gt;.xml&lt;/code&gt; file (let’s call it &lt;code class=&quot;highlighter-rouge&quot;&gt;feed.kde.xml&lt;/code&gt;) and change the following line:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for post in site.posts limit:10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for post in site.tags[&quot;kde&quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And now, if we open the new xml file from our browser (which is &lt;code class=&quot;highlighter-rouge&quot;&gt;rudranilbasu.me/blog/feed.kde.xml&lt;/code&gt; in my case), it will filter out only the posts with &lt;code class=&quot;highlighter-rouge&quot;&gt;kde&lt;/code&gt; tags in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://devblog.dymel.pl/2017/02/09/category-rss-feed-in-jekyll/&quot;&gt;Source Link&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 May 2017 20:41:18 +0530</pubDate>
         <link>http://localhost:4000/jekyll/2017/05/08/Adding-custom-feed-in-jekyll/</link>
