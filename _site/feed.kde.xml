@@ -5,8 +5,8 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 13 May 2017 00:29:15 +0530</pubDate>
-    <lastBuildDate>Sat, 13 May 2017 00:29:15 +0530</lastBuildDate>
+    <pubDate>Sat, 13 May 2017 00:40:03 +0530</pubDate>
+    <lastBuildDate>Sat, 13 May 2017 00:40:03 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -21,13 +21,13 @@
   &lt;li&gt;The evaluation of the answer was initially calculated via a timer. This means that whenever the answers in the input field was changed, the answer was checked with the correct answer and the resultant feedback was displayed. This was inconvinient, specially if the user is not fast enough. So a definite input was needed to confirm whether the user wants their answer to be evaluated.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../../../../images/roman_numerals/before_1.jpg&quot; alt=&quot;before_1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://rudranilbasu.me/blog/images/roman_numerals/before_1.jpg&quot; alt=&quot;before_1&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Redesigning the layout of the activity to make the activity more user-friendly, as &lt;a href=&quot;https://ilyabizyaev.wordpress.com/2017/01/13/gcompris-review/&quot;&gt;Ilya mentioned in a blog post&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../../../../images/roman_numerals/before_2.png&quot; alt=&quot;before_2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://rudranilbasu.me/blog/images/roman_numerals/before_2.png&quot; alt=&quot;before_2&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;changing-the-answer-evaluation-process&quot;&gt;Changing the answer evaluation process&lt;/h3&gt;
 
@@ -145,7 +145,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../../../../images/roman_numerals/after_1.jpg&quot; alt=&quot;after&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://rudranilbasu.me/blog/images/roman_numerals/after_1.jpg&quot; alt=&quot;after&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Overall, I was satisfied with the final result of this. The full changes can be viewed &lt;a href=&quot;https://cgit.kde.org/gcompris.git/commit/?id=0d0a6f094734ed8944ccf9bc31359397bb3007a8&quot;&gt;here&lt;/a&gt;. Any suggestions for further improvements are always welcome.&lt;/p&gt;
 </description>

@@ -18,11 +18,11 @@ The major goal of the task was to improve the following two aspects of the activ
 
 * The evaluation of the answer was initially calculated via a timer. This means that whenever the answers in the input field was changed, the answer was checked with the correct answer and the resultant feedback was displayed. This was inconvinient, specially if the user is not fast enough. So a definite input was needed to confirm whether the user wants their answer to be evaluated.
 
-![before_1](../../../../../images/roman_numerals/before_1.jpg)
+![before_1](http://rudranilbasu.me/blog/images/roman_numerals/before_1.jpg)
 
 * Redesigning the layout of the activity to make the activity more user-friendly, as [Ilya mentioned in a blog post](https://ilyabizyaev.wordpress.com/2017/01/13/gcompris-review/)
 
-![before_2](../../../../../images/roman_numerals/before_2.png)
+![before_2](http://rudranilbasu.me/blog/images/roman_numerals/before_2.png)
 
 ### Changing the answer evaluation process
 
@@ -140,6 +140,6 @@ And just turn it on/off likewise
 onHintClicked: feedback.visible = !feedback.visible
 ```
 
-![after](../../../../../images/roman_numerals/after_1.jpg)
+![after](http://rudranilbasu.me/blog/images/roman_numerals/after_1.jpg)
 
 Overall, I was satisfied with the final result of this. The full changes can be viewed [here](https://cgit.kde.org/gcompris.git/commit/?id=0d0a6f094734ed8944ccf9bc31359397bb3007a8). Any suggestions for further improvements are always welcome.
