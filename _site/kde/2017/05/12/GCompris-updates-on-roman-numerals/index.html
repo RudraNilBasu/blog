@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCompris- Changes made in roman_numerals activity</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GCompris- Changes made in roman_numerals activity</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">May 12, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          5 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p>In this post, I am going to talk about the recent design changes made in the <em>roman_numerals</em> activity.</p>
+
+<h3 id="inspiration">Inspiration</h3>
+
+<p>The major goal of the task was to improve the following two aspects of the activity:</p>
+
+<ul>
+  <li>The evaluation of the answer was initially calculated via a timer. This means that whenever the answers in the input field was changed, the answer was checked with the correct answer and the resultant feedback was displayed. This was inconvinient, specially if the user is not fast enough. So a definite input was needed to confirm whether the user wants their answer to be evaluated.</li>
+</ul>
+
+<p><img src="../../../../../images/roman_numerals/before_1.jpg" alt="before_1" /></p>
+
+<ul>
+  <li>Redesigning the layout of the activity to make the activity more user-friendly, as <a href="https://ilyabizyaev.wordpress.com/2017/01/13/gcompris-review/">Ilya mentioned in a blog post</a></li>
+</ul>
+
+<p><img src="../../../../../images/roman_numerals/before_2.png" alt="before_2" /></p>
+
+<h3 id="changing-the-answer-evaluation-process">Changing the answer evaluation process</h3>
+
+<p>For this, the simplest solution is to remove the existing timer and replace it with an OK button to compare the answer by the user with the correct answer.</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>        <span class="kt">BarButton</span> <span class="p">{</span>
+          <span class="nl">id</span><span class="p">:</span> <span class="nx">ok</span>
+          <span class="nl">source</span><span class="p">:</span> <span class="s2">"qrc:/gcompris/src/core/resource/bar_ok.svg"</span><span class="p">;</span>
+          <span class="nl">sourceSize.width</span><span class="p">:</span> <span class="mi">60</span> <span class="o">*</span> <span class="nx">ApplicationInfo</span><span class="p">.</span><span class="nx">ratio</span>
+          <span class="nl">visible</span><span class="p">:</span> <span class="kc">true</span>
+          <span class="kt">anchors</span> <span class="p">{</span>
+              <span class="nl">bottom</span><span class="p">:</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">top</span>
+              <span class="nl">right</span><span class="p">:</span> <span class="nx">score</span><span class="p">.</span><span class="nx">left</span>
+              <span class="nl">rightMargin</span><span class="p">:</span> <span class="mi">10</span> <span class="o">*</span> <span class="nx">ApplicationInfo</span><span class="p">.</span><span class="nx">ratio</span>
+              <span class="nl">bottomMargin</span><span class="p">:</span> <span class="mi">10</span> <span class="o">*</span> <span class="nx">ApplicationInfo</span><span class="p">.</span><span class="nx">ratio</span>
+          <span class="p">}</span>
+          <span class="nl">onClicked</span><span class="p">:</span> <span class="nx">items</span><span class="p">.</span><span class="nx">check</span><span class="p">()</span>
+        <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">check()</code> is a method under <code class="highlighter-rouge">items</code> which simply checks the answer by the user with the correct one ans displays the result.</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>            <span class="nx">property</span> <span class="nx">bool</span> <span class="nx">isChecking</span><span class="err">:</span> <span class="kc">false</span>
+            <span class="kd">function</span> <span class="nx">check</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">isChecking</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span>
+                <span class="p">}</span>
+                <span class="nx">isChecking</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="k">if</span><span class="p">(</span> <span class="nx">feedback</span><span class="p">.</span><span class="nx">value</span> <span class="o">==</span> <span class="nx">items</span><span class="p">.</span><span class="nx">questionValue</span> <span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">bonus</span><span class="p">.</span><span class="nx">good</span><span class="p">(</span><span class="s1">'tux'</span><span class="p">)</span>
+                <span class="p">}</span> <span class="kt">else</span> <span class="p">{</span>
+                  <span class="nx">bonus</span><span class="p">.</span><span class="nx">bad</span><span class="p">(</span><span class="s1">'tux'</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Along with the OK button, the <code class="highlighter-rouge">check()</code> method is also called the <em>Enter</em> or <em>Return</em> key is pressed, just to make things easier</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        Keys.onPressed: {
+            if ((event.key === Qt.Key_Enter) || (event.key === Qt.Key_Return)) {
+                items.check()
+            }
+        }
+</code></pre>
+</div>
+
+<h3 id="changes-in-the-overall-layout-of-the-activity">Changes in the overall layout of the activity</h3>
+
+<p>The instructions were centrally aligned and was represented in a tabular form, to make it look more user-friendly. Following this, a problem can arrive when the instruction text will need more space than allocated. For overcoming this, we use a <code class="highlighter-rouge">Flickable</code> to restrict the text to it’s given allocated space</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>            <span class="kt">Rectangle</span> <span class="p">{</span>
+                <span class="nl">color</span><span class="p">:</span> <span class="s2">"transparent"</span>
+                <span class="nl">width</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                <span class="nl">height</span><span class="p">:</span> <span class="p">(</span><span class="nx">background</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="p">(</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">height</span> <span class="o">+</span> <span class="nx">ok</span><span class="p">.</span><span class="nx">height</span> <span class="o">+</span> <span class="nx">keyboard</span><span class="p">.</span><span class="nx">height</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.1</span> <span class="p">)</span>
+                <span class="kt">Flickable</span> <span class="p">{</span>
+                    <span class="nl">width</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                    <span class="nl">height</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">height</span>
+                    <span class="nl">contentWidth</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
+                    <span class="nl">contentHeight</span><span class="p">:</span> <span class="nx">instructionContainer</span><span class="p">.</span><span class="nx">height</span>
+                    <span class="nl">anchors.margins</span><span class="p">:</span> <span class="mi">8</span>
+                    <span class="nl">anchors.fill</span><span class="p">:</span> <span class="nx">parent</span>
+                    <span class="nl">flickableDirection</span><span class="p">:</span> <span class="nx">Flickable</span><span class="p">.</span><span class="nx">VerticalFlick</span>
+                    <span class="nl">clip</span><span class="p">:</span> <span class="kc">true</span>
+                    <span class="kt">GCText</span> <span class="p">{</span>
+                        <span class="nl">id</span><span class="p">:</span> <span class="nx">instruction</span>
+                        <span class="nl">visible</span><span class="p">:</span> <span class="nx">items</span><span class="p">.</span><span class="nx">instruction</span> <span class="o">!=</span> <span class="s1">''</span>
+                        <span class="nl">wrapMode</span><span class="p">:</span> <span class="nx">TextEdit</span><span class="p">.</span><span class="nx">WordWrap</span>
+                        <span class="nl">fontSize</span><span class="p">:</span> <span class="nx">tinySize</span>
+                        <span class="nl">anchors.horizontalCenter</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">horizontalCenter</span>
+                        <span class="nl">width</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="mf">0.9</span>
+                        <span class="nl">text</span><span class="p">:</span> <span class="nx">items</span><span class="p">.</span><span class="nx">instruction</span>
+                        <span class="nl">horizontalAlignment</span><span class="p">:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignHCenter</span>
+                        <span class="nl">color</span><span class="p">:</span> <span class="s1">'white'</span>
+                        <span class="kt">Rectangle</span> <span class="p">{</span>
+                            <span class="nl">id</span><span class="p">:</span> <span class="nx">instructionContainer</span>
+                            <span class="nl">z</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                            <span class="nl">opacity</span><span class="p">:</span> <span class="mf">0.8</span>
+                            <span class="nl">gradient</span><span class="p">:</span> <span class="kt">Gradient</span> <span class="p">{</span>
+                                <span class="kt">GradientStop</span> <span class="p">{</span> <span class="nl">position</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="s2">"#000"</span> <span class="p">}</span>
+                                <span class="kt">GradientStop</span> <span class="p">{</span> <span class="nl">position</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="s2">"#666"</span> <span class="p">}</span>
+                                <span class="kt">GradientStop</span> <span class="p">{</span> <span class="nl">position</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span> <span class="s2">"#AAA"</span> <span class="p">}</span>
+                            <span class="p">}</span>
+                            <span class="nl">radius</span><span class="p">:</span> <span class="mi">10</span>
+                            <span class="nl">border.color</span><span class="p">:</span> <span class="s1">'black'</span>
+                            <span class="nl">border.width</span><span class="p">:</span> <span class="mi">1</span>
+                            <span class="nl">anchors.centerIn</span><span class="p">:</span> <span class="nx">parent</span>
+                            <span class="nl">width</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="mf">1.1</span>
+                            <span class="nl">height</span><span class="p">:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">contentHeight</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Along with this, it was decided that the dynamic conversion was not always necessary, if the user wanted to challenge themselves. For this, a simple <code class="highlighter-rouge">Hint</code> was added to the <code class="highlighter-rouge">Bar</code>, with which the user can turn the dynamic conversion on or off</p>
+
+<div class="language-diff highlighter-rouge"><pre class="highlight"><code>Bar {
+    id: bar
+    anchors.bottom: keyboard.top
+<span class="gd">-   content: BarEnumContent { value: help | home | level }
+</span><span class="gi">+   content: BarEnumContent { value: help | home | level | hint }
+</span>    onHelpClicked: {
+        displayDialog(dialogHelp)
+}
+</code></pre>
+</div>
+
+<p>And just turn it on/off likewise</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>onHintClicked: feedback.visible = !feedback.visible
+</code></pre>
+</div>
+
+<p><img src="../../../../../images/roman_numerals/after_1.jpg" alt="after" /></p>
+
+<p>Overall, I was satisfied with the final result of this. The full changes can be viewed <a href="https://cgit.kde.org/gcompris.git/commit/?id=0d0a6f094734ed8944ccf9bc31359397bb3007a8">here</a>. Any suggestions for further improvements are always welcome.</p>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

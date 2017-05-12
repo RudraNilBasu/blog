@@ -1,6 +1,14 @@
 [
   
   {
+    "title"    : "GCompris- Changes made in roman_numerals activity",
+    "category" : "",
+    "tags"     : "kde, gcompris",
+    "url"      : "/kde/2017/05/12/GCompris-updates-on-roman-numerals/",
+    "date"     : "2017-05-12 21:20:18 +0530"
+    } ,
+    
+  {
     "title"    : "Introduction and plans for GSoC",
     "category" : "",
     "tags"     : "kde, gcompris, gsoc",
