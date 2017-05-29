@@ -5,9 +5,44 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 13 May 2017 00:40:03 +0530</pubDate>
-    <lastBuildDate>Sat, 13 May 2017 00:40:03 +0530</lastBuildDate>
+    <pubDate>Mon, 29 May 2017 23:56:13 +0530</pubDate>
+    <lastBuildDate>Mon, 29 May 2017 23:56:13 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSOC 2017- Week 1 plans</title>
+        <description>&lt;p&gt;Few hours to go for the start of the coding period of GSoC, and here are my plans for the first week.&lt;/p&gt;
+
+&lt;p&gt;As mentioned in my &lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;proposal&lt;/a&gt;, I will be starting off with the &lt;em&gt;Pilot a Submarine&lt;/em&gt; activity. In this week, I will be focusing on the tutorials and the basic structure of the levels of the activity as follows (may be subject to change, depending on feedbacks):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There will be 10 levels approximately in the activity, in 3,4,3 format (first 3 = beginner level, next 4 = intermediate and last 3 = challenging)&lt;/li&gt;
+  &lt;li&gt;The initial levels will be tutorial levels. It will be mostly used to explain the various components of the submarine: the enigne, rudders and the air tanks. This will take up the 3 basic levels, with each of the components being explaned in each of the first three levels.&lt;/li&gt;
+  &lt;li&gt;The intermediate level will mostly contain items like obstacles and jewels in the form of pickups to increase the difficulty curve of the levels&lt;/li&gt;
+  &lt;li&gt;The final challenging levels (the number of levels of this types may be reduced to one, depending on the difficulty) will require the player to react a bit faster, the “gate” (from the original “Pilot a Submarine” activity) will be closing instead of opening and the player will need to complete the level before the gate closes, thus require the player to act faster compared to that of the previous intermediate levels.&lt;/li&gt;
+  &lt;li&gt;If time permits me, I will move on to implement the functionalities of the submarine using box2d. Also, I will be looking forward to improving the controls of the submarine to make it more intuitive for the children to understand. Any suggestions regarding it is always welcome!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More in depth on the progress of the implementation and mockups of the levels will be posted in the blog, as the work progresses.&lt;/p&gt;
+
+&lt;p&gt;For any feedbacks related to the plans, feel free to contact me regarding it:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Email: &lt;strong&gt;rudra.nil.basu.1996@gmail.com&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Freenode IRC nick: &lt;strong&gt;rudra&lt;/strong&gt; / &lt;strong&gt;rudra_&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 29 May 2017 10:46:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/05/29/Start-of-Coding-period/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/29/Start-of-Coding-period/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GCompris- Changes made in roman_numerals activity</title>
@@ -1264,104 +1299,6 @@ for(var i = 0; i &amp;lt; categoryLists.length; i++) {
         
         
         <category>Games</category>
-        
-      </item>
-    
-      <item>
-        <title>Hangman - Attempted Characters</title>
-        <description>&lt;p&gt;First merge always feels good! I was working on adding this feature for the last few days, and it is done finally.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/commit/8ab75acf49431c685021f3cd0e58cf31f3fa4568&quot;&gt;Commit Link on Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;task&quot;&gt;Task&lt;/h3&gt;
-
-&lt;p&gt;To add a Textfield to display the characters which were attempted by the user in the Hangman activity.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_1.png&quot; alt=&quot;pic&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Hangman.qml&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GCText {
-    id: guessedText
-    fontSize: smallSize
-    color: &quot;#FFFFFF&quot;
-    wrapMode: Text.WordWrap
-    horizontalAlignment: Text.AlignHCenter
-    width: parent.width - 2*clock.width
-    anchors {
-        horizontalCenter: parent.horizontalCenter
-    }
-    z: 12
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The textfield which displays the characters which are attempted by the user. The color of the text is white ( &lt;code class=&quot;highlighter-rouge&quot;&gt;#FFFFFF&lt;/code&gt; ), and the width is &lt;code class=&quot;highlighter-rouge&quot;&gt;width of the screen - 2*(width of the clock)&lt;/code&gt; to avoid the text and the clock to get overlapped.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Rectangle {
-    width: guessedText.width
-    height: guessedText.height
-    radius: 10
-    border.width: 1
-    gradient: Gradient {
-        GradientStop { position: 0.0; color: &quot;#000&quot; }
-        GradientStop { position: 0.9; color: &quot;#666&quot; }
-        GradientStop { position: 1.0; color: &quot;#AAA&quot; }
-    }
-    anchors {
-        horizontalCenter: parent.horizontalCenter
-    }
-    z: 11
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This is the Rectangle that will be under the text. A gradient is given to this Rectangle from black (top ) to a lighter color (bottom).&lt;/p&gt;
-
-&lt;p&gt;Also, we need to make sure that the hint image doesn’t get overlapped with the text. For that, we change the width of the imageframe to:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Item {
-        id: imageframe
-        width: Math.min(300 * ApplicationInfo.ratio,
-        background.width * 0.8,
-        hidden.y) - guessedText.height
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Hangman.js&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In the javascript file, we create the logic to generate the text in the following way:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function createAttemptedText() {
-    alreadyTypedLetters.sort()
-    items.guessedText.text = qsTr(&quot;Attempted: %1&quot;).arg(alreadyTypedLetters.join(&quot;, &quot;))
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;alreadyTypedLetters&lt;/code&gt; is an array that stores the characters that are typed by the user. We are using &lt;code class=&quot;highlighter-rouge&quot;&gt;qsTr()&lt;/code&gt; to enable translation for the given text to various other languages.&lt;/p&gt;
-
-&lt;p&gt;To make it work, we call &lt;code class=&quot;highlighter-rouge&quot;&gt;createAttemptedText()&lt;/code&gt; from:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;initSubLevel()&lt;/code&gt; function, right after declaring &lt;code class=&quot;highlighter-rouge&quot;&gt;alreadyTypedLetters&lt;/code&gt; array. At this point, the array will be empty, so we will have only the header in the text field.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;processKeyPress(text)&lt;/code&gt; function, write after the newly typed character is pushed into the alreadyTypedLetters array. Thus, whenever a new charater is typed by the user, &lt;code class=&quot;highlighter-rouge&quot;&gt;createAttemptedText()&lt;/code&gt; will be called.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_2.png&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 14 Jan 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/14/Hangman-attempted-characters/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/14/Hangman-attempted-characters/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>KDE</category>
         
       </item>
     
