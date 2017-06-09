@@ -5,9 +5,54 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 29 May 2017 23:56:13 +0530</pubDate>
-    <lastBuildDate>Mon, 29 May 2017 23:56:13 +0530</lastBuildDate>
+    <pubDate>Fri, 09 Jun 2017 23:06:17 +0530</pubDate>
+    <lastBuildDate>Fri, 09 Jun 2017 23:06:17 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSOC 2017- Week 1 post-mortem and week 2 plans</title>
+        <description>&lt;p&gt;In my &lt;a href=&quot;http://rudranilbasu.me/blog/kde/2017/05/29/Start-of-Coding-period/&quot;&gt;last weeks blog post&lt;/a&gt;, I mentioned about implementation of the basic structure of the levels. The progress are listed as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The activity consists of 10 levels as of now&lt;/li&gt;
+  &lt;li&gt;The dynamic components of the levels are added, namely: the &lt;em&gt;submarine&lt;/em&gt;, the &lt;em&gt;upper and lower gates&lt;/em&gt;, &lt;em&gt;ship&lt;/em&gt;, &lt;em&gt;whale&lt;/em&gt;, &lt;em&gt;rocks&lt;/em&gt; and &lt;em&gt;the crown&lt;/em&gt; along with the animations for the objects that require them&lt;/li&gt;
+  &lt;li&gt;Tutorials for the initial three levels&lt;/li&gt;
+  &lt;li&gt;Started out with basic movements of the submarine&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is a screenshot of a level from the activity:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://community.kde.org/images.community/9/9e/Submarine_2017_06_05.png&quot; alt=&quot;scr_week_1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The thing that is &lt;strong&gt;not&lt;/strong&gt; yet implemented:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The UI of the controls itself. As of now, the control bar of the submarine is fixed at the bottom of the screen. As a result of this, it hides gets hidden by the bar, which is disabled on start for avoiding the same reasons. I am planning to change the overall controls of the submarine compared to the gtk+ version, but as of now haven’t decided which way to go. I will start improving it once I get an idea on handling the controls which will solve the above problem along with making the controls much more intuitive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For this week, I will be working on the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Player movement using engines, rudders and ballast tanks [IN PROGRESS]&lt;/li&gt;
+  &lt;li&gt;Collision detection: collision of the submarine with the ships, gates, whale, crown and the rocks [IN PROGRESS]&lt;/li&gt;
+  &lt;li&gt;crown pickup mechanism: detect pickup of the crown and open the gate likewise&lt;/li&gt;
+  &lt;li&gt;“level failed” conditions: in case of any collisions or when the time is up (gate closes in such cases)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In later blog posts, I will be discussing the implementation of the movement and collision using &lt;a href=&quot;http://box2d.org/&quot;&gt;Box2D&lt;/a&gt; and the codebase of the activity in general.&lt;/p&gt;
+
+&lt;p&gt;Well, that’s it for now! If you wish to have a look at the codebase or follow it up, it is in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch of &lt;a href=&quot;https://cgit.kde.org/gcompris.git/&quot;&gt;gcompris&lt;/a&gt;. A mirror of the repository is also available on &lt;a href=&quot;https://github.com/gcompris/GCompris-qt&quot;&gt;Github&lt;/a&gt; (&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/tree/gsoc_rudra_submarine&quot;&gt;link for the gsoc_rudra_submarine branch&lt;/a&gt; on Github).&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 May 2017 01:00:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/05/30/GSoC-Week-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/30/GSoC-Week-2/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSOC 2017- Week 1 plans</title>

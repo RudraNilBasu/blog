@@ -5,9 +5,54 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 29 May 2017 23:56:13 +0530</pubDate>
-    <lastBuildDate>Mon, 29 May 2017 23:56:13 +0530</lastBuildDate>
+    <pubDate>Fri, 09 Jun 2017 23:06:17 +0530</pubDate>
+    <lastBuildDate>Fri, 09 Jun 2017 23:06:17 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSOC 2017- Week 1 post-mortem and week 2 plans</title>
+        <description>&lt;p&gt;In my &lt;a href=&quot;http://rudranilbasu.me/blog/kde/2017/05/29/Start-of-Coding-period/&quot;&gt;last weeks blog post&lt;/a&gt;, I mentioned about implementation of the basic structure of the levels. The progress are listed as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The activity consists of 10 levels as of now&lt;/li&gt;
+  &lt;li&gt;The dynamic components of the levels are added, namely: the &lt;em&gt;submarine&lt;/em&gt;, the &lt;em&gt;upper and lower gates&lt;/em&gt;, &lt;em&gt;ship&lt;/em&gt;, &lt;em&gt;whale&lt;/em&gt;, &lt;em&gt;rocks&lt;/em&gt; and &lt;em&gt;the crown&lt;/em&gt; along with the animations for the objects that require them&lt;/li&gt;
+  &lt;li&gt;Tutorials for the initial three levels&lt;/li&gt;
+  &lt;li&gt;Started out with basic movements of the submarine&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is a screenshot of a level from the activity:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://community.kde.org/images.community/9/9e/Submarine_2017_06_05.png&quot; alt=&quot;scr_week_1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The thing that is &lt;strong&gt;not&lt;/strong&gt; yet implemented:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The UI of the controls itself. As of now, the control bar of the submarine is fixed at the bottom of the screen. As a result of this, it hides gets hidden by the bar, which is disabled on start for avoiding the same reasons. I am planning to change the overall controls of the submarine compared to the gtk+ version, but as of now haven’t decided which way to go. I will start improving it once I get an idea on handling the controls which will solve the above problem along with making the controls much more intuitive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For this week, I will be working on the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Player movement using engines, rudders and ballast tanks [IN PROGRESS]&lt;/li&gt;
+  &lt;li&gt;Collision detection: collision of the submarine with the ships, gates, whale, crown and the rocks [IN PROGRESS]&lt;/li&gt;
+  &lt;li&gt;crown pickup mechanism: detect pickup of the crown and open the gate likewise&lt;/li&gt;
+  &lt;li&gt;“level failed” conditions: in case of any collisions or when the time is up (gate closes in such cases)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In later blog posts, I will be discussing the implementation of the movement and collision using &lt;a href=&quot;http://box2d.org/&quot;&gt;Box2D&lt;/a&gt; and the codebase of the activity in general.&lt;/p&gt;
+
+&lt;p&gt;Well, that’s it for now! If you wish to have a look at the codebase or follow it up, it is in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch of &lt;a href=&quot;https://cgit.kde.org/gcompris.git/&quot;&gt;gcompris&lt;/a&gt;. A mirror of the repository is also available on &lt;a href=&quot;https://github.com/gcompris/GCompris-qt&quot;&gt;Github&lt;/a&gt; (&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/tree/gsoc_rudra_submarine&quot;&gt;link for the gsoc_rudra_submarine branch&lt;/a&gt; on Github).&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 May 2017 01:00:18 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/05/30/GSoC-Week-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/30/GSoC-Week-2/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSOC 2017- Week 1 plans</title>
@@ -1223,82 +1268,6 @@ for(var i = 0; i &amp;lt; categoryLists.length; i++) {
         
         
         <category>KDE</category>
-        
-      </item>
-    
-      <item>
-        <title>Global Game Jam 2017</title>
-        <description>&lt;p&gt;Attended my first Global Game Jam, and it was fun!&lt;/p&gt;
-
-&lt;p&gt;This was the first time Global Game Jam came here in Kolkata. It started off with talks on creating 3D art, monetising apps and storytelling in games.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_1.jpg&quot; alt=&quot;pic1&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“Art is attraction, story is for friendship and gameplay is the true love”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_talks_2.jpg&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;the-start&quot;&gt;The Start&lt;/h3&gt;
-
-&lt;p&gt;The themes were announced briefly after the talks, and it was &lt;em&gt;“Waves”&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_theme.jpg&quot; alt=&quot;ggj-theme&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The theme got us thinking for a while, as I didn’t expect something like that. Shortly after the team was created, we started off brainstorming different ideas. We had quite a lot of ideas, but didn’t know which one to settle with. One of the ideas were to control an object using two electromagnets, thus creating a wave like trajectory. The other one was to use the concept of reflecting sound waves to save a dog who is stuck in a maze.&lt;/p&gt;
-
-&lt;p&gt;We didn’t know which one to settle with, so we tried creating a prototype of both of the games by dividing out team into two parts, which proved to be a &lt;em&gt;HUGE MISTAKE&lt;/em&gt; from our side, as it cost us a lot of valuable time as the jam progressed.&lt;/p&gt;
-
-&lt;h3 id=&quot;progress&quot;&gt;Progress&lt;/h3&gt;
-
-&lt;p&gt;After hours of prototyping and deciding, we decided to go off with the first idea. We were already behind time, and we decided to scrap the idea of making it randomly generated, and create various levels to reach the end of the level. The mechanics came up pretty quickly, while it took some time to design the levels, but it was fun nonetheless! Taking up tries to fail miserably on the levels we created was the best part of the jam.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_levels.jpg&quot; alt=&quot;pic_turn_level&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;the-final-day&quot;&gt;The Final Day&lt;/h3&gt;
-
-&lt;p&gt;This is when the pressure really came on us. We had a product which was just a prototype, and the game itself was really hard. We hardly got 2 hours of sleep on the final night, and by 6:00 in the morning, mostly 10 good levels were done. Designing a proper level is definitely one of the most fun and underrated task.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/p6qU70Ai6Ezn2/giphy.gif&quot; alt=&quot;levels&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We then quickly jumped to polish the game, which was one of my biggest regrets while making this game - the final product had lots of areas where it could have been polished, and it would definitely improved the quality of the game. But besides that, I was pretty happy with what the final result.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Download Link&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://globalgamejam.org/2017/games/trapped&quot;&gt;Global Game Jam Page&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://gamejolt.com/games/trapped/229317&quot;&gt;GameJolt Link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Team members&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://ggj.s3.amazonaws.com/styles/game_sidebar__wide/s3/games/team_pictures/lmao_1.jpg&quot; alt=&quot;tr_team&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/rudra-nil-basu&quot;&gt;Rudra Nil Basu&lt;/a&gt; ( Programming, Design )&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/projesh&quot;&gt;Projesh Mehta&lt;/a&gt; (Programming, UI)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://globalgamejam.org/users/kingshuk&quot;&gt;Kingshuk Chakraborty&lt;/a&gt; (Art)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To sum it up, the use of waves in the game and the level design (which &lt;em&gt;was&lt;/em&gt; difficult and had it’s flaws) was the best part of building the game, while the lack of planning and polish were the topics which I would’ve liked to change in the development of the game.&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/W02j74X4rCQ&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;The most important part of this event, however, was interacting with fellow game developers in the city. This was the first time I got to talk with our fellow Kolkatans, discussing about their projects, the difficulties they faced while pursuing the journey and what they learned from it. This was just the start, next year’s Global Game Jam in Kolkata will be even bigger and better!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GGJ/ggj_team.jpg&quot; alt=&quot;team&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 23 Jan 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/games/2017/01/23/Global-Game-Jam-2017/</link>
-        <guid isPermaLink="true">http://localhost:4000/games/2017/01/23/Global-Game-Jam-2017/</guid>
-        
-        <category>games</category>
-        
-        <category>ggj</category>
-        
-        
-        <category>Games</category>
         
       </item>
     

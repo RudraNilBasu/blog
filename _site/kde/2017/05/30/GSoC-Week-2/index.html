@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSOC 2017- Week 1 post-mortem and week 2 plans</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GSOC 2017- Week 1 post-mortem and week 2 plans</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">May 30, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          1 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p>In my <a href="http://rudranilbasu.me/blog/kde/2017/05/29/Start-of-Coding-period/">last weeks blog post</a>, I mentioned about implementation of the basic structure of the levels. The progress are listed as follows:</p>
+
+<ul>
+  <li>The activity consists of 10 levels as of now</li>
+  <li>The dynamic components of the levels are added, namely: the <em>submarine</em>, the <em>upper and lower gates</em>, <em>ship</em>, <em>whale</em>, <em>rocks</em> and <em>the crown</em> along with the animations for the objects that require them</li>
+  <li>Tutorials for the initial three levels</li>
+  <li>Started out with basic movements of the submarine</li>
+</ul>
+
+<p>Here is a screenshot of a level from the activity:</p>
+
+<p><img src="https://community.kde.org/images.community/9/9e/Submarine_2017_06_05.png" alt="scr_week_1" /></p>
+
+<p>The thing that is <strong>not</strong> yet implemented:</p>
+<ul>
+  <li>The UI of the controls itself. As of now, the control bar of the submarine is fixed at the bottom of the screen. As a result of this, it hides gets hidden by the bar, which is disabled on start for avoiding the same reasons. I am planning to change the overall controls of the submarine compared to the gtk+ version, but as of now haven’t decided which way to go. I will start improving it once I get an idea on handling the controls which will solve the above problem along with making the controls much more intuitive</li>
+</ul>
+
+<p>For this week, I will be working on the following:</p>
+<ul>
+  <li>Player movement using engines, rudders and ballast tanks [IN PROGRESS]</li>
+  <li>Collision detection: collision of the submarine with the ships, gates, whale, crown and the rocks [IN PROGRESS]</li>
+  <li>crown pickup mechanism: detect pickup of the crown and open the gate likewise</li>
+  <li>“level failed” conditions: in case of any collisions or when the time is up (gate closes in such cases)</li>
+</ul>
+
+<p>In later blog posts, I will be discussing the implementation of the movement and collision using <a href="http://box2d.org/">Box2D</a> and the codebase of the activity in general.</p>
+
+<p>Well, that’s it for now! If you wish to have a look at the codebase or follow it up, it is in the <a href="https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine">gsoc_rudra_submarine</a> branch of <a href="https://cgit.kde.org/gcompris.git/">gcompris</a>. A mirror of the repository is also available on <a href="https://github.com/gcompris/GCompris-qt">Github</a> (<a href="https://github.com/gcompris/GCompris-qt/tree/gsoc_rudra_submarine">link for the gsoc_rudra_submarine branch</a> on Github).</p>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>
