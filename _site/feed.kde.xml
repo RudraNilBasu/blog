@@ -5,9 +5,119 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 22 Jun 2017 02:57:55 +0530</pubDate>
-    <lastBuildDate>Thu, 22 Jun 2017 02:57:55 +0530</lastBuildDate>
+    <pubDate>Sat, 01 Jul 2017 03:25:42 +0530</pubDate>
+    <lastBuildDate>Sat, 01 Jul 2017 03:25:42 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSoC- End of first coding month- Analysis</title>
+        <description>&lt;p&gt;It has been one month since the coding period of 2017 Google Summer of Code officially began, and it was an awesome experience! In this post, I will look back at the work done in the last month, what went right and what went wrong.&lt;/p&gt;
+
+&lt;h3 id=&quot;useful-links&quot;&gt;Useful Links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC 2017 Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1529&quot;&gt;Phabricator Task Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;GSoC 2017 Status Report&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;Development branch: gsoc_rudra_submarine&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pilot-a-submarine&quot;&gt;Pilot a submarine&lt;/h3&gt;
+
+&lt;p&gt;The goal of the activity is to learn how a submarine works, focussing on the engines, rudders and the diving planes. The activity currently has:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A total of 10 levels&lt;/li&gt;
+  &lt;li&gt;Physics and collision detection using &lt;a href=&quot;http://box2d.org/&quot;&gt;box2d&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_4.png&quot; alt=&quot;collision&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The initial 3 levels are tutorial levels, giving an explanation of how each of the three components (engine, rudders and diving planes)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_1.jpg&quot; align=&quot;left&quot; hspace=&quot;20&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_2.jpg&quot; hspace=&quot;20&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pickups, in the form of jewels like it was present in the gtk+ version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_1.jpg&quot; align=&quot;left&quot; hspace=&quot;20&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_2.jpg&quot; hspace=&quot;20&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Threats in the form of rocks in the latter levels to make the activity more challenging&lt;/li&gt;
+  &lt;li&gt;A control panel in the bottom of the screen to control the submarine, which is aimed at making simple enough for children to understand quickly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-went-right&quot;&gt;What went right&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;The planning&lt;/strong&gt;: &lt;em&gt;Almost&lt;/em&gt; everything went as planned (will explain the “almost” part later). The core mechanics came up pretty quickly, allowing me to move on to the polishing/bug fixing part very soon. . Polishing generally means to go through the following cycle as many times as possible:
+    &lt;ul&gt;
+      &lt;li&gt;Coming up with an idea&lt;/li&gt;
+      &lt;li&gt;Conceptualising it&lt;/li&gt;
+      &lt;li&gt;Implementation of the idea&lt;/li&gt;
+      &lt;li&gt;Evaluation of the implemented idea&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Also, I spent quite a lot of time looking up at various resources online which helped me implement these features&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Time Management&lt;/strong&gt;: Time management has been crucial during this period. I planned to implement the basic features as fast as possible to make sure that I get enough time for testing and polishing the activity. Thankfully, the implementations were completed before the scheduled date, allowing me to jump right into the bug fixing and improvement stage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-didnt-go-right&quot;&gt;What didn’t go right&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As mentioned earlier, “almost” everything went as planned. The vertical velocity of the submarine is one exception. The vertical velocity of the submarine is affected by two components:
+    &lt;ul&gt;
+      &lt;li&gt;The Ballast Tanks and&lt;/li&gt;
+      &lt;li&gt;The Diving Planes&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Implementing the Diving plane was easy, and so was implementing the Ballast tanks. But the problem arrised while integrating the above two in a single unit. There were lots of corner cases which I didn’t expect initially. As of now, I settled with the following, which seems to work much better:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// check if the submarine is currently being operated
+// under Ballast tanks or under the diving planes
+if (submarine.y &amp;gt; 0 &amp;amp;&amp;amp; submarine.velocity.x &amp;gt; 0 &amp;amp;&amp;amp; wingsAngle != 0) {
+	// currently under the influence of diving planes
+} else {
+	// currently under the influence of Ballast tanks
+}
+
+var targetDepth // the final depth to which the submarine should dive/rise
+
+if (currently under diving planes) {
+	// multiplier determines the depth, depending on the wings angle
+	targetDepth = multiplier * maximum depth
+} else {
+	targetDepth = (amountOfWaterInTanks / totalCapacityOfTanks) * maximumDivingDepthOnFullTank
+}
+
+depthToMove = targetDepth - submarine.y
+submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;looking-forward&quot;&gt;Looking forward&lt;/h3&gt;
+
+&lt;p&gt;Currently, &lt;em&gt;Pilot a Submarine&lt;/em&gt; is under testing and bug fixing / improvements stage. After that, I will move on to start working on the &lt;em&gt;Family&lt;/em&gt; activity. If you are willing to try it out yourself, it is currently in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch. Hope you enjoy playing around with it just a fraction of how much we enjoyed making it.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 30 Jun 2017 18:29:00 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/06/30/GSoC-month-1-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/06/30/GSoC-month-1-analysis/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>Pilot a Submarine- The Submarine</title>

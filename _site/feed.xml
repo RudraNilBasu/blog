@@ -5,9 +5,119 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 22 Jun 2017 02:57:55 +0530</pubDate>
-    <lastBuildDate>Thu, 22 Jun 2017 02:57:55 +0530</lastBuildDate>
+    <pubDate>Sat, 01 Jul 2017 03:25:42 +0530</pubDate>
+    <lastBuildDate>Sat, 01 Jul 2017 03:25:42 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSoC- End of first coding month- Analysis</title>
+        <description>&lt;p&gt;It has been one month since the coding period of 2017 Google Summer of Code officially began, and it was an awesome experience! In this post, I will look back at the work done in the last month, what went right and what went wrong.&lt;/p&gt;
+
+&lt;h3 id=&quot;useful-links&quot;&gt;Useful Links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC 2017 Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1529&quot;&gt;Phabricator Task Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;GSoC 2017 Status Report&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;Development branch: gsoc_rudra_submarine&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;pilot-a-submarine&quot;&gt;Pilot a submarine&lt;/h3&gt;
+
+&lt;p&gt;The goal of the activity is to learn how a submarine works, focussing on the engines, rudders and the diving planes. The activity currently has:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A total of 10 levels&lt;/li&gt;
+  &lt;li&gt;Physics and collision detection using &lt;a href=&quot;http://box2d.org/&quot;&gt;box2d&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_4.png&quot; alt=&quot;collision&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The initial 3 levels are tutorial levels, giving an explanation of how each of the three components (engine, rudders and diving planes)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_1.jpg&quot; align=&quot;left&quot; hspace=&quot;20&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_2.jpg&quot; hspace=&quot;20&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Pickups, in the form of jewels like it was present in the gtk+ version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_1.jpg&quot; align=&quot;left&quot; hspace=&quot;20&quot; /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_2.jpg&quot; hspace=&quot;20&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Threats in the form of rocks in the latter levels to make the activity more challenging&lt;/li&gt;
+  &lt;li&gt;A control panel in the bottom of the screen to control the submarine, which is aimed at making simple enough for children to understand quickly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-went-right&quot;&gt;What went right&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;The planning&lt;/strong&gt;: &lt;em&gt;Almost&lt;/em&gt; everything went as planned (will explain the “almost” part later). The core mechanics came up pretty quickly, allowing me to move on to the polishing/bug fixing part very soon. . Polishing generally means to go through the following cycle as many times as possible:
+    &lt;ul&gt;
+      &lt;li&gt;Coming up with an idea&lt;/li&gt;
+      &lt;li&gt;Conceptualising it&lt;/li&gt;
+      &lt;li&gt;Implementation of the idea&lt;/li&gt;
+      &lt;li&gt;Evaluation of the implemented idea&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Also, I spent quite a lot of time looking up at various resources online which helped me implement these features&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Time Management&lt;/strong&gt;: Time management has been crucial during this period. I planned to implement the basic features as fast as possible to make sure that I get enough time for testing and polishing the activity. Thankfully, the implementations were completed before the scheduled date, allowing me to jump right into the bug fixing and improvement stage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-didnt-go-right&quot;&gt;What didn’t go right&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As mentioned earlier, “almost” everything went as planned. The vertical velocity of the submarine is one exception. The vertical velocity of the submarine is affected by two components:
+    &lt;ul&gt;
+      &lt;li&gt;The Ballast Tanks and&lt;/li&gt;
+      &lt;li&gt;The Diving Planes&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Implementing the Diving plane was easy, and so was implementing the Ballast tanks. But the problem arrised while integrating the above two in a single unit. There were lots of corner cases which I didn’t expect initially. As of now, I settled with the following, which seems to work much better:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// check if the submarine is currently being operated
+// under Ballast tanks or under the diving planes
+if (submarine.y &amp;gt; 0 &amp;amp;&amp;amp; submarine.velocity.x &amp;gt; 0 &amp;amp;&amp;amp; wingsAngle != 0) {
+	// currently under the influence of diving planes
+} else {
+	// currently under the influence of Ballast tanks
+}
+
+var targetDepth // the final depth to which the submarine should dive/rise
+
+if (currently under diving planes) {
+	// multiplier determines the depth, depending on the wings angle
+	targetDepth = multiplier * maximum depth
+} else {
+	targetDepth = (amountOfWaterInTanks / totalCapacityOfTanks) * maximumDivingDepthOnFullTank
+}
+
+depthToMove = targetDepth - submarine.y
+submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;looking-forward&quot;&gt;Looking forward&lt;/h3&gt;
+
+&lt;p&gt;Currently, &lt;em&gt;Pilot a Submarine&lt;/em&gt; is under testing and bug fixing / improvements stage. After that, I will move on to start working on the &lt;em&gt;Family&lt;/em&gt; activity. If you are willing to try it out yourself, it is currently in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch. Hope you enjoy playing around with it just a fraction of how much we enjoyed making it.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 30 Jun 2017 18:29:00 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/06/30/GSoC-month-1-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/06/30/GSoC-month-1-analysis/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>Pilot a Submarine- The Submarine</title>
@@ -1438,219 +1548,6 @@ var noOfTilesInPreviousLevel
         <pubDate>Wed, 08 Feb 2017 20:41:18 +0530</pubDate>
         <link>http://localhost:4000/kde/2017/02/08/Number-Sequence-marker/</link>
         <guid isPermaLink="true">http://localhost:4000/kde/2017/02/08/Number-Sequence-marker/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>KDE</category>
-        
-      </item>
-    
-      <item>
-        <title>GCompris - Integrating C++ with qml</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/commit/955462b943c34fc130d1a68fcfb0e1ec6393a3f0&quot;&gt;Commit Link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;While working with adding the odd even category in the categorization activity, I found a need to integrate the qml with a C++ class. The class contains a method which returns the list of all files in a given directory, using &lt;del&gt;the &lt;a href=&quot;https://github.com/tronkko/dirent&quot;&gt;dirent&lt;/a&gt; header&lt;/del&gt; QDir.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-c-code&quot;&gt;The C++ code&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Directory.h&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#ifndef DIRECTORY_H
-#define DIRECTORY_H
-&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;QString&amp;gt;
-#include &amp;lt;QStringList&amp;gt;
-#include &amp;lt;QObject&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;/**
- * @class Directory
- * @short A helper component to get the names of files
- *        present in a given location
- * Use - call files.getFiles(&quot;:input/path/&quot;)
- */&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Directory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QObject&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Q_OBJECT&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/**
-     * Constructor
-    */&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;cm&quot;&gt;/**
-      * Returns the names of all the files in a given path
-      *
-      * @param location : The path of the directory
-      *
-      * @returns Names of all the files present in the
-      *          given location, separated by a space
-      */&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Q_INVOKABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QStringList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;cp&quot;&gt;#endif
-&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;em&gt;Directory.cpp&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &quot;Directory.h&quot;
-&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;QString&amp;gt;
-#include &amp;lt;QStringList&amp;gt;
-#include &amp;lt;QObject&amp;gt;
-#include &amp;lt;QDir&amp;gt;
-#include &amp;lt;QQmlComponent&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;QStringList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getFiles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;QStringList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;QDir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;QFileInfoList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entryInfoList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;QFileInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()){&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// if it is a file
-&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;fileNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;qmlRegisterType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GCompris&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Directory&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The above two files are placed in &lt;code class=&quot;highlighter-rouge&quot;&gt;gcompris/src/core&lt;/code&gt; and are added in &lt;code class=&quot;highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt;, as follows:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set(gcompris_SRCS
-   ActivityInfo.cpp
-   ActivityInfo.h
-   ActivityInfoTree.cpp
-   ActivityInfoTree.h
-   ApplicationInfo.cpp
-   ApplicationInfo.h
-   ApplicationSettings.cpp
-   ApplicationSettings.h
-   File.cpp
-   File.h
-   DownloadManager.cpp
-   DownloadManager.h
-   Directory.cpp
-   Directory.h
-)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;From here, there are two ways to approach this:&lt;/p&gt;
-
-&lt;h3 id=&quot;procedure-1&quot;&gt;Procedure #1&lt;/h3&gt;
-
-&lt;p&gt;Then, in &lt;code class=&quot;highlighter-rouge&quot;&gt;main.cpp&lt;/code&gt;, we integrate it with the qml . For this, we do the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Necessary imports:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;QQmlContext&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;#include &quot;fileName.h&quot;
-&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Then, we set the contextProperty in the engine as follows:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Added Header - &lt;code class=&quot;highlighter-rouge&quot;&gt;#include &amp;lt;QQmlContext&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-engine.rootContext()-&amp;gt;setContextProperty(&quot;files&quot;, new Directory);
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;calling-from-the-activity&quot;&gt;Calling from the activity&lt;/h3&gt;
-
-&lt;p&gt;Now, with the fileName integrated, we can call the methods of the class by calling &lt;code class=&quot;highlighter-rouge&quot;&gt;files&lt;/code&gt;, as we set the context to the engine.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;files.getFiles(&quot;:/gcompris/src/activities/categorization/resource/board/&quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;procedure-2&quot;&gt;Procedure #2&lt;/h3&gt;
-
-&lt;p&gt;In this case, the &lt;code class=&quot;highlighter-rouge&quot;&gt;main.qml&lt;/code&gt; will only contain the call to the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; function we declared on &lt;code class=&quot;highlighter-rouge&quot;&gt;Directory&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;n&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;On the qml, we create an &lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; for Directory as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;Directory&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;directory&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And we call the function using the following way:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;directory.getFiles(&quot;:/gcompris/src/activities/categorization/resource/board/&quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
-
-&lt;p&gt;And as an output, for both the cases, we get the list of files present in the directory in the console&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;category12.qml
-category4.qml
-category7.qml
-category16.qml
-category8.qml
-category19.qml
-category2.qml
-category11.qml
-category14.qml
-category5.qml
-category15.qml
-category13.qml
-category17.qml
-category18.qml
-category3.qml
-category9.qml
-category1.qml
-category6.qml
-category10.qml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;For more, check out this video (for procedure #1) :&lt;/p&gt;
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/CR2qQebqv6I?list=PLfQnJyNyt15FrjkBl6zXwKyvrH2sOFKuI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-</description>
-        <pubDate>Thu, 02 Feb 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/02/02/Integrating-C++-with-qml/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/02/Integrating-C++-with-qml/</guid>
         
         <category>kde</category>
         

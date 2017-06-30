@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GSOC 2017- Week 1 plans</title>
+<title>GSoC- End of first coding month- Analysis</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,19 +84,19 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">GSOC 2017- Week 1 plans</h1>
+      <h1 class="header" itemprop="name">GSoC- End of first coding month- Analysis</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">May 29, 2017</span>
+          on <span itemprop="datePublished" content="2014-08-28">June 30, 2017</span>
            under kde
         </i></small>
       </div>
 
       <div class="read-time">
         <small>
-          1 minute read
+          3 minute read
         </small>
       </div>
 
@@ -104,25 +104,100 @@
 
         
 
-        <span itemprop="articleBody"><p>Few hours to go for the start of the coding period of GSoC, and here are my plans for the first week.</p>
+        <span itemprop="articleBody"><p>It has been one month since the coding period of 2017 Google Summer of Code officially began, and it was an awesome experience! In this post, I will look back at the work done in the last month, what went right and what went wrong.</p>
 
-<p>As mentioned in my <a href="http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf">proposal</a>, I will be starting off with the <em>Pilot a Submarine</em> activity. In this week, I will be focusing on the tutorials and the basic structure of the levels of the activity as follows (may be subject to change, depending on feedbacks):</p>
+<h3 id="useful-links">Useful Links</h3>
 
 <ul>
-  <li>There will be 10 levels approximately in the activity, in 3,4,3 format (first 3 = beginner level, next 4 = intermediate and last 3 = challenging)</li>
-  <li>The initial levels will be tutorial levels. It will be mostly used to explain the various components of the submarine: the enigne, rudders and the air tanks. This will take up the 3 basic levels, with each of the components being explaned in each of the first three levels.</li>
-  <li>The intermediate level will mostly contain items like obstacles and jewels in the form of pickups to increase the difficulty curve of the levels</li>
-  <li>The final challenging levels (the number of levels of this types may be reduced to one, depending on the difficulty) will require the player to react a bit faster, the “gate” (from the original “Pilot a Submarine” activity) will be closing instead of opening and the player will need to complete the level before the gate closes, thus require the player to act faster compared to that of the previous intermediate levels.</li>
-  <li>If time permits me, I will move on to implement the functionalities of the submarine using box2d. Also, I will be looking forward to improving the controls of the submarine to make it more intuitive for the children to understand. Any suggestions regarding it is always welcome!</li>
+  <li><a href="http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf">GSoC 2017 Proposal</a></li>
+  <li><a href="https://phabricator.kde.org/T1529">Phabricator Task Link</a></li>
+  <li><a href="https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu">GSoC 2017 Status Report</a></li>
+  <li><a href="https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine">Development branch: gsoc_rudra_submarine</a></li>
 </ul>
 
-<p>More in depth on the progress of the implementation and mockups of the levels will be posted in the blog, as the work progresses.</p>
+<h3 id="pilot-a-submarine">Pilot a submarine</h3>
 
-<p>For any feedbacks related to the plans, feel free to contact me regarding it:</p>
+<p>The goal of the activity is to learn how a submarine works, focussing on the engines, rudders and the diving planes. The activity currently has:</p>
 <ul>
-  <li>Email: <strong>rudra.nil.basu.1996@gmail.com</strong></li>
-  <li>Freenode IRC nick: <strong>rudra</strong> / <strong>rudra_</strong></li>
+  <li>A total of 10 levels</li>
+  <li>Physics and collision detection using <a href="http://box2d.org/">box2d</a></li>
 </ul>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_4.png" alt="collision" /></p>
+
+<ul>
+  <li>The initial 3 levels are tutorial levels, giving an explanation of how each of the three components (engine, rudders and diving planes)</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_1.jpg" align="left" hspace="20" />
+<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_2.jpg" hspace="20" /></p>
+
+<ul>
+  <li>Pickups, in the form of jewels like it was present in the gtk+ version</li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_1.jpg" align="left" hspace="20" />
+<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_2.jpg" hspace="20" /></p>
+
+<ul>
+  <li>Threats in the form of rocks in the latter levels to make the activity more challenging</li>
+  <li>A control panel in the bottom of the screen to control the submarine, which is aimed at making simple enough for children to understand quickly</li>
+</ul>
+
+<h3 id="what-went-right">What went right</h3>
+
+<ul>
+  <li><strong>The planning</strong>: <em>Almost</em> everything went as planned (will explain the “almost” part later). The core mechanics came up pretty quickly, allowing me to move on to the polishing/bug fixing part very soon. . Polishing generally means to go through the following cycle as many times as possible:
+    <ul>
+      <li>Coming up with an idea</li>
+      <li>Conceptualising it</li>
+      <li>Implementation of the idea</li>
+      <li>Evaluation of the implemented idea</li>
+    </ul>
+
+    <p>Also, I spent quite a lot of time looking up at various resources online which helped me implement these features</p>
+  </li>
+  <li><strong>Time Management</strong>: Time management has been crucial during this period. I planned to implement the basic features as fast as possible to make sure that I get enough time for testing and polishing the activity. Thankfully, the implementations were completed before the scheduled date, allowing me to jump right into the bug fixing and improvement stage</li>
+</ul>
+
+<h3 id="what-didnt-go-right">What didn’t go right</h3>
+
+<ul>
+  <li>As mentioned earlier, “almost” everything went as planned. The vertical velocity of the submarine is one exception. The vertical velocity of the submarine is affected by two components:
+    <ul>
+      <li>The Ballast Tanks and</li>
+      <li>The Diving Planes</li>
+    </ul>
+
+    <p>Implementing the Diving plane was easy, and so was implementing the Ballast tanks. But the problem arrised while integrating the above two in a single unit. There were lots of corner cases which I didn’t expect initially. As of now, I settled with the following, which seems to work much better:</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// check if the submarine is currently being operated
+// under Ballast tanks or under the diving planes
+if (submarine.y &gt; 0 &amp;&amp; submarine.velocity.x &gt; 0 &amp;&amp; wingsAngle != 0) {
+	// currently under the influence of diving planes
+} else {
+	// currently under the influence of Ballast tanks
+}
+
+var targetDepth // the final depth to which the submarine should dive/rise
+
+if (currently under diving planes) {
+	// multiplier determines the depth, depending on the wings angle
+	targetDepth = multiplier * maximum depth
+} else {
+	targetDepth = (amountOfWaterInTanks / totalCapacityOfTanks) * maximumDivingDepthOnFullTank
+}
+
+depthToMove = targetDepth - submarine.y
+submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
+</code></pre>
+</div>
+
+<h3 id="looking-forward">Looking forward</h3>
+
+<p>Currently, <em>Pilot a Submarine</em> is under testing and bug fixing / improvements stage. After that, I will move on to start working on the <em>Family</em> activity. If you are willing to try it out yourself, it is currently in the <a href="https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine">gsoc_rudra_submarine</a> branch. Hope you enjoy playing around with it just a fraction of how much we enjoyed making it.</p>
 </span>
 
         
