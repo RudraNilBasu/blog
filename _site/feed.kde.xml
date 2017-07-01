@@ -5,8 +5,8 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 01 Jul 2017 03:25:42 +0530</pubDate>
-    <lastBuildDate>Sat, 01 Jul 2017 03:25:42 +0530</lastBuildDate>
+    <pubDate>Sat, 01 Jul 2017 13:18:01 +0530</pubDate>
+    <lastBuildDate>Sat, 01 Jul 2017 13:18:01 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -36,15 +36,13 @@
   &lt;li&gt;The initial 3 levels are tutorial levels, giving an explanation of how each of the three components (engine, rudders and diving planes)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_1.jpg&quot; align=&quot;left&quot; hspace=&quot;20&quot; /&gt;
-&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_2.jpg&quot; hspace=&quot;20&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/submarine_tutorials.png&quot; alt=&quot;tutorial&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Pickups, in the form of jewels like it was present in the gtk+ version&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_1.jpg&quot; align=&quot;left&quot; hspace=&quot;20&quot; /&gt;
-&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_2.jpg&quot; hspace=&quot;20&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/submarine_pickups.png&quot; alt=&quot;pickups&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Threats in the form of rocks in the latter levels to make the activity more challenging&lt;/li&gt;
@@ -67,7 +65,7 @@
   &lt;li&gt;&lt;strong&gt;Time Management&lt;/strong&gt;: Time management has been crucial during this period. I planned to implement the basic features as fast as possible to make sure that I get enough time for testing and polishing the activity. Thankfully, the implementations were completed before the scheduled date, allowing me to jump right into the bug fixing and improvement stage&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;what-didnt-go-right&quot;&gt;What didn’t go right&lt;/h3&gt;
+&lt;h3 id=&quot;what-didnt-go-as-planned&quot;&gt;What didn’t go as planned&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;As mentioned earlier, “almost” everything went as planned. The vertical velocity of the submarine is one exception. The vertical velocity of the submarine is affected by two components:
@@ -106,9 +104,9 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
 
 &lt;p&gt;Currently, &lt;em&gt;Pilot a Submarine&lt;/em&gt; is under testing and bug fixing / improvements stage. After that, I will move on to start working on the &lt;em&gt;Family&lt;/em&gt; activity. If you are willing to try it out yourself, it is currently in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch. Hope you enjoy playing around with it just a fraction of how much we enjoyed making it.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 30 Jun 2017 18:29:00 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/06/30/GSoC-month-1-analysis/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/06/30/GSoC-month-1-analysis/</guid>
+        <pubDate>Sat, 01 Jul 2017 05:30:00 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/07/01/GSoC-month-1-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/01/GSoC-month-1-analysis/</guid>
         
         <category>kde</category>
         

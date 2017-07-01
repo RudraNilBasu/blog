@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      GSoC- End of first coding month- Analysis
-date:       2017-06-30 12:59:00
+date:       2017-07-01 00:00:00
 summary:    GSoC- End of first coding month- Analysis
 categories: kde
 thumbnail: kde
@@ -29,13 +29,11 @@ The goal of the activity is to learn how a submarine works, focussing on the eng
 
 * The initial 3 levels are tutorial levels, giving an explanation of how each of the three components (engine, rudders and diving planes)
 
-<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_1.jpg" align="left" hspace="20" />
-<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_tutorial_2.jpg" hspace="20" />
+![tutorial](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/submarine_tutorials.png)
 
 * Pickups, in the form of jewels like it was present in the gtk+ version
 
-<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_1.jpg" align="left" hspace="20" />
-<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/scr_pickups_2.jpg" hspace="20" />
+![pickups](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine/submarine_pickups.png)
 
 * Threats in the form of rocks in the latter levels to make the activity more challenging
 * A control panel in the bottom of the screen to control the submarine, which is aimed at making simple enough for children to understand quickly
@@ -51,7 +49,7 @@ The goal of the activity is to learn how a submarine works, focussing on the eng
   Also, I spent quite a lot of time looking up at various resources online which helped me implement these features
 * **Time Management**: Time management has been crucial during this period. I planned to implement the basic features as fast as possible to make sure that I get enough time for testing and polishing the activity. Thankfully, the implementations were completed before the scheduled date, allowing me to jump right into the bug fixing and improvement stage 
 
-### What didn't go right
+### What didn't go as planned
 
 * As mentioned earlier, "almost" everything went as planned. The vertical velocity of the submarine is one exception. The vertical velocity of the submarine is affected by two components:
   - The Ballast Tanks and
