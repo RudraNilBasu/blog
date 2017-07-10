@@ -93,3 +93,9 @@ Using these, the 9th and 10th level turned out to be like this:
 ### Moving forward
 
 For the upcoming weeks, I plan to continue on improving the layouts of the activity. Along with that, I will look forward to improve the implementation of the activity to a Grid based layout, in which instead of hardcoding the x-y coordinate values of the nodes, we will be creating a `Grid` element and the datasets will contain the (row, column) values of the nodes and the (r1, c1) to (r2, c2) values for the edges.
+
+### Relevant links
+
+* [Phabricator task](https://phabricator.kde.org/T6096)
+* [Development branch](https://cgit.kde.org/gcompris.git/log/?h=GSoC-family)
+* [KDE Status Report](https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu)
