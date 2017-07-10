@@ -1,3 +1,14 @@
+---
+layout:     post
+title:      GSoC- Phase 2 Week 1 highlights
+date:       2017-07-10 19:00:00 - 5:30:00
+summary:    GSoC- Phase 2 Week 1 highlights
+categories: kde
+thumbnail: kde
+tags:
+ - kde
+ - gcompris
+---
 ![header](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.jpg)
 
 ### Improving layout of GCompris's Family activity
@@ -43,7 +54,7 @@ QtObject {
                     },
                     // level 2
                     {
-                    	...
+                      ...
                     },
                     ...
     ]
@@ -59,11 +70,11 @@ From this, I decided to improve on the 9th and 10th levels of the activity, whic
 My goal was to connect the edges from the bottom of the node instead of connecting them horizontally. For that, instead of using fully brute-forced numbers for the edges, I used the x-y coordinates of the nodes and used the width and height values of the nodes to accurately find the start/end positions of the edges. This, however, leads to a problem: since the value of `nodeWidth` and `nodeHeight` changes with the change in width and height of the activity, the dataset needs to be reloaded whenever there is a change in screen resolution, in order to avoid some incorrect start/end positions of the edges.
 
 ```qml
-		onWidthChanged: loadDatasetDelay.start()
+    onWidthChanged: loadDatasetDelay.start()
         onHeightChanged: if (!loadDatasetDelay.running) {
                             loadDatasetDelay.start()
                          }
-		/*
+        /*
          * Adding a delay before reloading the datasets
          * needed for fast width / height changes
          */
@@ -82,5 +93,3 @@ Using these, the 9th and 10th level turned out to be like this:
 ### Moving forward
 
 For the upcoming weeks, I plan to continue on improving the layouts of the activity. Along with that, I will look forward to improve the implementation of the activity to a Grid based layout, in which instead of hardcoding the x-y coordinate values of the nodes, we will be creating a `Grid` element and the datasets will contain the (row, column) values of the nodes and the (r1, c1) to (r2, c2) values for the edges.
-
-```

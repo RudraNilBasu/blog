@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSoC- Phase 2 Week 1 highlights</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GSoC- Phase 2 Week 1 highlights</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">July 10, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          4 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.jpg" alt="header" /></p>
+
+<h3 id="improving-layout-of-gcompriss-family-activity">Improving layout of GCompris’s Family activity</h3>
+
+<p>Everything was well planned for a great start for the second phase of GSoC and I anticipated everything to go smoothly since I wouldn’t have any college exams to worry about. Soon enough, I was proven wrong almost immediately by an incoming health issue, which took a lot of working hours from my schedule. Anyways, I started out with the family activity along with continuing with the bug fixes and improvements on the submarine activity.</p>
+
+<p>My goal for this week was to convert the current layout of the family activity into a much more intuitive tree-like representation, where the family members of the same generation would lie in the same vertical layer. As an example, I created a mockup of a currently present level, which looks like the following:</p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family.png" alt="plan_1" /></p>
+
+<p>and planned to represent it in the following manner:</p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_test_2.png" alt="plan_2" /></p>
+
+<h3 id="the-implementation">The Implementation</h3>
+
+<p>To start things of, firstly I moved the entire dataset from <code class="highlighter-rouge">family.js</code> into a separate <code class="highlighter-rouge">Dataset.qml</code> file. It can be viewed in <a href="https://cgit.kde.org/gcompris.git/commit/?h=GSoC-family&amp;id=2877e0adfccabf050bec1cfd1ee33aad6f578ded">this commit</a>. The <code class="highlighter-rouge">Dataset.qml</code> roughly looks like the following:</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code><span class="kt">QtObject</span> <span class="p">{</span>
+    <span class="kd">property</span> <span class="kt">real</span> <span class="nl">nodeWidth</span><span class="p">:</span> <span class="nx">background</span><span class="p">.</span><span class="nx">nodeWidthRatio</span>
+    <span class="kd">property</span> <span class="kt">real</span> <span class="nl">nodeHeight</span><span class="p">:</span> <span class="nx">background</span><span class="p">.</span><span class="nx">nodeHeightRatio</span>
+    <span class="kd">property</span> <span class="kt">var</span> <span class="nl">levelElements</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="c1">// level 1</span>
+                    <span class="p">{</span>  <span class="na">edgeList</span><span class="p">:</span> <span class="p">[</span>
+                                   <span class="p">[</span><span class="mf">0.37</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+                                   <span class="p">[</span><span class="mf">0.51</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">]</span>
+                                <span class="p">],</span>
+                       <span class="na">nodePositions</span><span class="p">:</span> <span class="p">[</span>
+                               <span class="p">[</span><span class="mf">0.211</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">],</span>
+                               <span class="p">[</span><span class="mf">0.633</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">],</span>
+                               <span class="p">[</span><span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">]</span>
+                       <span class="p">],</span>
+                       <span class="na">captions</span><span class="p">:</span> <span class="p">[</span> <span class="p">[</span><span class="mf">0.27</span><span class="p">,</span> <span class="mf">0.57</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="mf">0.101</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
+                                <span class="p">],</span>
+                       <span class="na">nodeleave</span><span class="p">:</span> <span class="p">[</span><span class="s2">"man3.svg"</span><span class="p">,</span> <span class="s2">"lady2.svg"</span><span class="p">,</span> <span class="s2">"boy1.svg"</span><span class="p">],</span>
+                       <span class="na">currentstate</span><span class="p">:</span> <span class="p">[</span><span class="s2">"activeTo"</span><span class="p">,</span> <span class="s2">"deactive"</span><span class="p">,</span> <span class="s2">"active"</span><span class="p">],</span>
+                       <span class="na">edgeState</span><span class="p">:[</span><span class="s2">"married"</span><span class="p">,</span><span class="s2">"others"</span><span class="p">],</span>
+                       <span class="na">answer</span><span class="p">:</span> <span class="p">[</span><span class="nx">qsTr</span><span class="p">(</span><span class="s2">"Father"</span><span class="p">)],</span>
+                       <span class="na">optionss</span><span class="p">:</span> <span class="p">[</span><span class="nx">qsTr</span><span class="p">(</span><span class="s2">"Father"</span><span class="p">),</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">"Grandfather"</span><span class="p">),</span> <span class="nx">qsTr</span><span class="p">(</span><span class="s2">"Uncle"</span><span class="p">)]</span>
+
+                    <span class="p">},</span>
+                    <span class="c1">// level 2</span>
+                    <span class="p">{</span>
+                      <span class="p">...</span>
+                    <span class="p">},</span>
+                    <span class="p">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">nodeWidth</code> and <code class="highlighter-rouge">nodeHeight</code> is used to keep track of the width and height of a single node (all nodes are of same dimension), which are useful for drawing edges accurately from/to the end of a specific node. Followed by this, we have an array called <code class="highlighter-rouge">levelElements</code> which stores the <code class="highlighter-rouge">(x,y)</code> values of each nodes, <code class="highlighter-rouge">(x1, y1) and (x2, y2)</code> values of each edges (endpoints) and the properties of each nodes and edges.</p>
+
+<p>From this, I decided to improve on the 9th and 10th levels of the activity, which looked like the following:
+<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/fam_1.png" alt="family_9" /></p>
+
+<p>My goal was to connect the edges from the bottom of the node instead of connecting them horizontally. For that, instead of using fully brute-forced numbers for the edges, I used the x-y coordinates of the nodes and used the width and height values of the nodes to accurately find the start/end positions of the edges. This, however, leads to a problem: since the value of <code class="highlighter-rouge">nodeWidth</code> and <code class="highlighter-rouge">nodeHeight</code> changes with the change in width and height of the activity, the dataset needs to be reloaded whenever there is a change in screen resolution, in order to avoid some incorrect start/end positions of the edges.</p>
+
+<div class="language-qml highlighter-rouge"><pre class="highlight"><code>    <span class="nx">onWidthChanged</span><span class="err">:</span> <span class="nx">loadDatasetDelay</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+        <span class="nl">onHeightChanged</span><span class="p">:</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">loadDatasetDelay</span><span class="p">.</span><span class="nx">running</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">loadDatasetDelay</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+                         <span class="p">}</span>
+        <span class="cm">/*
+         * Adding a delay before reloading the datasets
+         * needed for fast width / height changes
+         */</span>
+        <span class="kt">Timer</span> <span class="p">{</span>
+            <span class="nl">id</span><span class="p">:</span> <span class="nx">loadDatasetDelay</span>
+            <span class="nl">running</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="nl">repeat</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="nl">interval</span><span class="p">:</span> <span class="mi">100</span>
+            <span class="nl">onTriggered</span><span class="p">:</span> <span class="nx">Activity</span><span class="p">.</span><span class="nx">loadDatasets</span><span class="p">()</span>
+        <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Using these, the 9th and 10th level turned out to be like this:
+<img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/fam_2.png" alt="family_9_final" /></p>
+
+<h3 id="moving-forward">Moving forward</h3>
+
+<p>For the upcoming weeks, I plan to continue on improving the layouts of the activity. Along with that, I will look forward to improve the implementation of the activity to a Grid based layout, in which instead of hardcoding the x-y coordinate values of the nodes, we will be creating a <code class="highlighter-rouge">Grid</code> element and the datasets will contain the (row, column) values of the nodes and the (r1, c1) to (r2, c2) values for the edges.</p>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+-->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rudranilbasu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

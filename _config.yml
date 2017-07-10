@@ -12,6 +12,9 @@ github_repository: https://github.com/RudraNilBasu
 addthis_id: 
 post_limit: 5
 
+#future: true
+timezone: Asia/Kolkata
+
 # Social usernames/URLs
 twitter_username: RudraNilBasu
 github_username:  RudraNilBasu

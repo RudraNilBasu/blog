@@ -5,9 +5,109 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 02 Jul 2017 12:23:49 +0530</pubDate>
-    <lastBuildDate>Sun, 02 Jul 2017 12:23:49 +0530</lastBuildDate>
+    <pubDate>Mon, 10 Jul 2017 19:14:45 +0530</pubDate>
+    <lastBuildDate>Mon, 10 Jul 2017 19:14:45 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSoC- Phase 2 Week 1 highlights</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.jpg&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;improving-layout-of-gcompriss-family-activity&quot;&gt;Improving layout of GCompris’s Family activity&lt;/h3&gt;
+
+&lt;p&gt;Everything was well planned for a great start for the second phase of GSoC and I anticipated everything to go smoothly since I wouldn’t have any college exams to worry about. Soon enough, I was proven wrong almost immediately by an incoming health issue, which took a lot of working hours from my schedule. Anyways, I started out with the family activity along with continuing with the bug fixes and improvements on the submarine activity.&lt;/p&gt;
+
+&lt;p&gt;My goal for this week was to convert the current layout of the family activity into a much more intuitive tree-like representation, where the family members of the same generation would lie in the same vertical layer. As an example, I created a mockup of a currently present level, which looks like the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family.png&quot; alt=&quot;plan_1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and planned to represent it in the following manner:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_test_2.png&quot; alt=&quot;plan_2&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-implementation&quot;&gt;The Implementation&lt;/h3&gt;
+
+&lt;p&gt;To start things of, firstly I moved the entire dataset from &lt;code class=&quot;highlighter-rouge&quot;&gt;family.js&lt;/code&gt; into a separate &lt;code class=&quot;highlighter-rouge&quot;&gt;Dataset.qml&lt;/code&gt; file. It can be viewed in &lt;a href=&quot;https://cgit.kde.org/gcompris.git/commit/?h=GSoC-family&amp;amp;id=2877e0adfccabf050bec1cfd1ee33aad6f578ded&quot;&gt;this commit&lt;/a&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;Dataset.qml&lt;/code&gt; roughly looks like the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;QtObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;real&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;nodeWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nodeWidthRatio&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;real&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;nodeHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nodeHeightRatio&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;levelElements&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                    &lt;span class=&quot;c1&quot;&gt;// level 1&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;na&quot;&gt;edgeList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                                   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.37&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                                   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.51&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.51&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                                &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;nodePositions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                               &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.211&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                               &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.633&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                               &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                       &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;captions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.57&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                                  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.101&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                                &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;nodeleave&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;man3.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;lady2.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;boy1.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;currentstate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;activeTo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deactive&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;active&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;edgeState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;married&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;others&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;qsTr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Father&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt;
+                       &lt;span class=&quot;na&quot;&gt;optionss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;qsTr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Father&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;qsTr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Grandfather&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;qsTr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Uncle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+
+                    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                    &lt;span class=&quot;c1&quot;&gt;// level 2&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                      &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nodeWidth&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeHeight&lt;/code&gt; is used to keep track of the width and height of a single node (all nodes are of same dimension), which are useful for drawing edges accurately from/to the end of a specific node. Followed by this, we have an array called &lt;code class=&quot;highlighter-rouge&quot;&gt;levelElements&lt;/code&gt; which stores the &lt;code class=&quot;highlighter-rouge&quot;&gt;(x,y)&lt;/code&gt; values of each nodes, &lt;code class=&quot;highlighter-rouge&quot;&gt;(x1, y1) and (x2, y2)&lt;/code&gt; values of each edges (endpoints) and the properties of each nodes and edges.&lt;/p&gt;
+
+&lt;p&gt;From this, I decided to improve on the 9th and 10th levels of the activity, which looked like the following:
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/fam_1.png&quot; alt=&quot;family_9&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My goal was to connect the edges from the bottom of the node instead of connecting them horizontally. For that, instead of using fully brute-forced numbers for the edges, I used the x-y coordinates of the nodes and used the width and height values of the nodes to accurately find the start/end positions of the edges. This, however, leads to a problem: since the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeWidth&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeHeight&lt;/code&gt; changes with the change in width and height of the activity, the dataset needs to be reloaded whenever there is a change in screen resolution, in order to avoid some incorrect start/end positions of the edges.&lt;/p&gt;
+
+&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nx&quot;&gt;onWidthChanged&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadDatasetDelay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;onHeightChanged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadDatasetDelay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;running&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;nx&quot;&gt;loadDatasetDelay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/*
+         * Adding a delay before reloading the datasets
+         * needed for fast width / height changes
+         */&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;Timer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadDatasetDelay&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;running&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;repeat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+            &lt;span class=&quot;nl&quot;&gt;onTriggered&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadDatasets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Using these, the 9th and 10th level turned out to be like this:
+&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/fam_2.png&quot; alt=&quot;family_9_final&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h3&gt;
+
+&lt;p&gt;For the upcoming weeks, I plan to continue on improving the layouts of the activity. Along with that, I will look forward to improve the implementation of the activity to a Grid based layout, in which instead of hardcoding the x-y coordinate values of the nodes, we will be creating a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; element and the datasets will contain the (row, column) values of the nodes and the (r1, c1) to (r2, c2) values for the edges.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 10 Jul 2017 19:00:00 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/07/10/GSoC-phase2-week-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/10/GSoC-phase2-week-1/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSoC- End of first coding month- Analysis</title>
