@@ -3,10 +3,10 @@
   <channel>
     <title>Rudra's Yard</title>
     <description>Random stuff.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 19 Jul 2017 17:40:19 +0530</pubDate>
-    <lastBuildDate>Wed, 19 Jul 2017 17:40:19 +0530</lastBuildDate>
+    <link>http://localhost:4000/blog/</link>
+    <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 19 Jul 2017 17:47:31 +0530</pubDate>
+    <lastBuildDate>Wed, 19 Jul 2017 17:47:31 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -111,8 +111,8 @@ readonly property real right_2: 0.7
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 19 Jul 2017 17:31:00 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/07/19/family-grid-wise-layout/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/19/family-grid-wise-layout/</guid>
+        <link>http://localhost:4000/blog/kde/2017/07/19/family-grid-wise-layout/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/07/19/family-grid-wise-layout/</guid>
         
         <category>kde</category>
         
@@ -219,8 +219,8 @@ readonly property real right_2: 0.7
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 10 Jul 2017 19:00:00 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/07/10/GSoC-phase2-week-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/10/GSoC-phase2-week-1/</guid>
+        <link>http://localhost:4000/blog/kde/2017/07/10/GSoC-phase2-week-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/07/10/GSoC-phase2-week-1/</guid>
         
         <category>kde</category>
         
@@ -327,8 +327,8 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
 &lt;p&gt;Currently, &lt;em&gt;Pilot a Submarine&lt;/em&gt; is under testing and bug fixing / improvements stage. After that, I will move on to start working on the &lt;em&gt;Family&lt;/em&gt; activity. If you are willing to try it out yourself, it is currently in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch. Hope you enjoy playing around with it just a fraction of how much we enjoyed making it.&lt;/p&gt;
 </description>
         <pubDate>Sat, 01 Jul 2017 05:30:00 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/07/01/GSoC-month-1-analysis/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/01/GSoC-month-1-analysis/</guid>
+        <link>http://localhost:4000/blog/kde/2017/07/01/GSoC-month-1-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/07/01/GSoC-month-1-analysis/</guid>
         
         <category>kde</category>
         
@@ -786,8 +786,8 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
 &lt;p&gt;That’s it for now! The two major goals to be completed next are the rotation of the submarine (in case more than one tanks are used and they are unequally filled up) and the UI for controlling the submarine. Will provide an update on it once it is completed.&lt;/p&gt;
 </description>
         <pubDate>Thu, 22 Jun 2017 02:30:00 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/06/22/Pilot-a-Submarine-The-Submarine/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/06/22/Pilot-a-Submarine-The-Submarine/</guid>
+        <link>http://localhost:4000/blog/kde/2017/06/22/Pilot-a-Submarine-The-Submarine/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/06/22/Pilot-a-Submarine-The-Submarine/</guid>
         
         <category>kde</category>
         
@@ -831,8 +831,8 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
 &lt;p&gt;Well, that’s it for now! If you wish to have a look at the codebase or follow it up, it is in the &lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_rudra_submarine&quot;&gt;gsoc_rudra_submarine&lt;/a&gt; branch of &lt;a href=&quot;https://cgit.kde.org/gcompris.git/&quot;&gt;gcompris&lt;/a&gt;. A mirror of the repository is also available on &lt;a href=&quot;https://github.com/gcompris/GCompris-qt&quot;&gt;Github&lt;/a&gt; (&lt;a href=&quot;https://github.com/gcompris/GCompris-qt/tree/gsoc_rudra_submarine&quot;&gt;link for the gsoc_rudra_submarine branch&lt;/a&gt; on Github).&lt;/p&gt;
 </description>
         <pubDate>Sat, 10 Jun 2017 01:00:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/06/10/GSoC-Week-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/06/10/GSoC-Week-2/</guid>
+        <link>http://localhost:4000/blog/kde/2017/06/10/GSoC-Week-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/06/10/GSoC-Week-2/</guid>
         
         <category>kde</category>
         
@@ -866,8 +866,8 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 29 May 2017 10:46:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/05/29/Start-of-Coding-period/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/29/Start-of-Coding-period/</guid>
+        <link>http://localhost:4000/blog/kde/2017/05/29/Start-of-Coding-period/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/29/Start-of-Coding-period/</guid>
         
         <category>kde</category>
         
@@ -1019,8 +1019,8 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
 &lt;p&gt;Overall, I was satisfied with the final result of this. The full changes can be viewed &lt;a href=&quot;https://cgit.kde.org/gcompris.git/commit/?id=0d0a6f094734ed8944ccf9bc31359397bb3007a8&quot;&gt;here&lt;/a&gt;. Any suggestions for further improvements are always welcome.&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 May 2017 21:20:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/05/12/GCompris-updates-on-roman-numerals/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/12/GCompris-updates-on-roman-numerals/</guid>
+        <link>http://localhost:4000/blog/kde/2017/05/12/GCompris-updates-on-roman-numerals/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/12/GCompris-updates-on-roman-numerals/</guid>
         
         <category>kde</category>
         
@@ -1107,8 +1107,8 @@ created a great learning environment for children.&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 09 May 2017 13:08:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/05/09/Introduction-and-plans-for-GSoC/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/05/09/Introduction-and-plans-for-GSoC/</guid>
+        <link>http://localhost:4000/blog/kde/2017/05/09/Introduction-and-plans-for-GSoC/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/09/Introduction-and-plans-for-GSoC/</guid>
         
         <category>kde</category>
         
@@ -1599,8 +1599,8 @@ var noOfTilesInPreviousLevel
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 12 Feb 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/02/12/GCompris-Ascending-order/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/12/GCompris-Ascending-order/</guid>
+        <link>http://localhost:4000/blog/kde/2017/02/12/GCompris-Ascending-order/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/02/12/GCompris-Ascending-order/</guid>
         
         <category>kde</category>
         
@@ -1677,8 +1677,8 @@ var noOfTilesInPreviousLevel
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 08 Feb 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/02/08/Number-Sequence-marker/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/08/Number-Sequence-marker/</guid>
+        <link>http://localhost:4000/blog/kde/2017/02/08/Number-Sequence-marker/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/02/08/Number-Sequence-marker/</guid>
         
         <category>kde</category>
         
@@ -1890,8 +1890,8 @@ category10.qml
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/CR2qQebqv6I?list=PLfQnJyNyt15FrjkBl6zXwKyvrH2sOFKuI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Thu, 02 Feb 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/02/02/Integrating-C++-with-qml/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/02/Integrating-C++-with-qml/</guid>
+        <link>http://localhost:4000/blog/kde/2017/02/02/Integrating-C++-with-qml/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/02/02/Integrating-C++-with-qml/</guid>
         
         <category>kde</category>
         
@@ -1959,8 +1959,8 @@ for(var i = 0; i &amp;lt; categoryLists.length; i++) {
 &lt;p&gt;And that is it. Now, we can add any dataset files in the dataset folder, and it will be imported in the activity.&lt;/p&gt;
 </description>
         <pubDate>Wed, 01 Feb 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/02/01/Odd-Even-Activity/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/01/Odd-Even-Activity/</guid>
+        <link>http://localhost:4000/blog/kde/2017/02/01/Odd-Even-Activity/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/02/01/Odd-Even-Activity/</guid>
         
         <category>kde</category>
         
@@ -2057,8 +2057,8 @@ for(var i = 0; i &amp;lt; categoryLists.length; i++) {
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/hangman/scr_2.png&quot; alt=&quot;pic2&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 14 Jan 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/14/Hangman-attempted-characters/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/14/Hangman-attempted-characters/</guid>
+        <link>http://localhost:4000/blog/kde/2017/01/14/Hangman-attempted-characters/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/01/14/Hangman-attempted-characters/</guid>
         
         <category>kde</category>
         
@@ -2179,8 +2179,8 @@ function initLevel() {
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 03 Jan 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/03/Detect-ascending-sequence/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/03/Detect-ascending-sequence/</guid>
+        <link>http://localhost:4000/blog/kde/2017/01/03/Detect-ascending-sequence/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/01/03/Detect-ascending-sequence/</guid>
         
         <category>kde</category>
         
@@ -2365,8 +2365,8 @@ function initLevel() {
 &lt;p&gt;&lt;a href=&quot;#&quot;&gt;Next Challenge: Adding the logic to detect ascending sequence&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 21:28:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/01/Working-with-activities-in-GCompris/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/01/Working-with-activities-in-GCompris/</guid>
+        <link>http://localhost:4000/blog/kde/2017/01/01/Working-with-activities-in-GCompris/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/01/01/Working-with-activities-in-GCompris/</guid>
         
         <category>kde</category>
         
@@ -2438,8 +2438,8 @@ git submodule init &amp;amp;&amp;amp; git submodule update
 &lt;p&gt;Download the latest version of &lt;a href=&quot;https://www.qt.io/download-open-source/#section-2&quot;&gt;Qt&lt;/a&gt; (recommended version 5.5) and open up QtCreator. Start QtCreator and open the project file &lt;code class=&quot;highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; at the root of the source code. Create a build, and run it via QtCreator.&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jan 2017 05:00:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/01/01/GCompris/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/01/01/GCompris/</guid>
+        <link>http://localhost:4000/blog/kde/2017/01/01/GCompris/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/01/01/GCompris/</guid>
         
         <category>kde</category>
         

@@ -4,7 +4,7 @@
     "title"    : "Family - Implementing Grid layout",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/07/19/family-grid-wise-layout/",
+    "url"      : "/blog/kde/2017/07/19/family-grid-wise-layout/",
     "date"     : "2017-07-19 17:31:00 +0530"
     } ,
     
@@ -12,7 +12,7 @@
     "title"    : "GSoC- Phase 2 Week 1 highlights",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/07/10/GSoC-phase2-week-1/",
+    "url"      : "/blog/kde/2017/07/10/GSoC-phase2-week-1/",
     "date"     : "2017-07-10 19:00:00 +0530"
     } ,
     
@@ -20,7 +20,7 @@
     "title"    : "GSoC- End of first coding month- Analysis",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/07/01/GSoC-month-1-analysis/",
+    "url"      : "/blog/kde/2017/07/01/GSoC-month-1-analysis/",
     "date"     : "2017-07-01 05:30:00 +0530"
     } ,
     
@@ -28,7 +28,7 @@
     "title"    : "Pilot a Submarine- The Submarine",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/06/22/Pilot-a-Submarine-The-Submarine/",
+    "url"      : "/blog/kde/2017/06/22/Pilot-a-Submarine-The-Submarine/",
     "date"     : "2017-06-22 02:30:00 +0530"
     } ,
     
@@ -36,7 +36,7 @@
     "title"    : "GSOC 2017- Week 1 post-mortem and week 2 plans",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/06/10/GSoC-Week-2/",
+    "url"      : "/blog/kde/2017/06/10/GSoC-Week-2/",
     "date"     : "2017-06-10 01:00:18 +0530"
     } ,
     
@@ -44,7 +44,7 @@
     "title"    : "GSOC 2017- Week 1 plans",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/05/29/Start-of-Coding-period/",
+    "url"      : "/blog/kde/2017/05/29/Start-of-Coding-period/",
     "date"     : "2017-05-29 10:46:18 +0530"
     } ,
     
@@ -52,7 +52,7 @@
     "title"    : "GCompris- Changes made in roman_numerals activity",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/05/12/GCompris-updates-on-roman-numerals/",
+    "url"      : "/blog/kde/2017/05/12/GCompris-updates-on-roman-numerals/",
     "date"     : "2017-05-12 21:20:18 +0530"
     } ,
     
@@ -60,7 +60,7 @@
     "title"    : "Introduction and plans for GSoC",
     "category" : "",
     "tags"     : "kde, gcompris, gsoc",
-    "url"      : "/kde/2017/05/09/Introduction-and-plans-for-GSoC/",
+    "url"      : "/blog/kde/2017/05/09/Introduction-and-plans-for-GSoC/",
     "date"     : "2017-05-09 13:08:18 +0530"
     } ,
     
@@ -68,7 +68,7 @@
     "title"    : "Adding custom feed in jekyll",
     "category" : "",
     "tags"     : "jekyll",
-    "url"      : "/jekyll/2017/05/08/Adding-custom-feed-in-jekyll/",
+    "url"      : "/blog/jekyll/2017/05/08/Adding-custom-feed-in-jekyll/",
     "date"     : "2017-05-08 20:41:18 +0530"
     } ,
     
@@ -76,7 +76,7 @@
     "title"    : "My Setup",
     "category" : "",
     "tags"     : "vim, linux",
-    "url"      : "/linux/2017/04/05/My-Setup/",
+    "url"      : "/blog/linux/2017/04/05/My-Setup/",
     "date"     : "2017-04-05 20:41:18 +0530"
     } ,
     
@@ -84,7 +84,7 @@
     "title"    : "GCompris- Ascending order",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/02/12/GCompris-Ascending-order/",
+    "url"      : "/blog/kde/2017/02/12/GCompris-Ascending-order/",
     "date"     : "2017-02-12 20:41:18 +0530"
     } ,
     
@@ -92,7 +92,7 @@
     "title"    : "GCompris - Number sequence - addition of dots",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/02/08/Number-Sequence-marker/",
+    "url"      : "/blog/kde/2017/02/08/Number-Sequence-marker/",
     "date"     : "2017-02-08 20:41:18 +0530"
     } ,
     
@@ -100,7 +100,7 @@
     "title"    : "GCompris - Integrating C++ with qml",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/02/02/Integrating-C++-with-qml/",
+    "url"      : "/blog/kde/2017/02/02/Integrating-C++-with-qml/",
     "date"     : "2017-02-02 20:41:18 +0530"
     } ,
     
@@ -108,7 +108,7 @@
     "title"    : "GCompris - Odd even activity",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/02/01/Odd-Even-Activity/",
+    "url"      : "/blog/kde/2017/02/01/Odd-Even-Activity/",
     "date"     : "2017-02-01 20:41:18 +0530"
     } ,
     
@@ -116,7 +116,7 @@
     "title"    : "Global Game Jam 2017",
     "category" : "",
     "tags"     : "games, ggj",
-    "url"      : "/games/2017/01/23/Global-Game-Jam-2017/",
+    "url"      : "/blog/games/2017/01/23/Global-Game-Jam-2017/",
     "date"     : "2017-01-23 20:41:18 +0530"
     } ,
     
@@ -124,7 +124,7 @@
     "title"    : "Hangman - Attempted Characters",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/01/14/Hangman-attempted-characters/",
+    "url"      : "/blog/kde/2017/01/14/Hangman-attempted-characters/",
     "date"     : "2017-01-14 20:41:18 +0530"
     } ,
     
@@ -132,7 +132,7 @@
     "title"    : "Detecting Ascending Sequence",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/01/03/Detect-ascending-sequence/",
+    "url"      : "/blog/kde/2017/01/03/Detect-ascending-sequence/",
     "date"     : "2017-01-03 20:41:18 +0530"
     } ,
     
@@ -140,7 +140,7 @@
     "title"    : "Working with activities in GCompris",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/01/01/Working-with-activities-in-GCompris/",
+    "url"      : "/blog/kde/2017/01/01/Working-with-activities-in-GCompris/",
     "date"     : "2017-01-01 21:28:18 +0530"
     } ,
     
@@ -148,7 +148,7 @@
     "title"    : "GCompris",
     "category" : "",
     "tags"     : "kde, gcompris",
-    "url"      : "/kde/2017/01/01/GCompris/",
+    "url"      : "/blog/kde/2017/01/01/GCompris/",
     "date"     : "2017-01-01 05:00:18 +0530"
     } ,
     
@@ -156,7 +156,7 @@
     "title"    : "Installing Vim airline using Pathogen (in Ubuntu)",
     "category" : "",
     "tags"     : "vim, pathogen",
-    "url"      : "/vim/2016/12/24/Installing-vim-airline-using-pathogen/",
+    "url"      : "/blog/vim/2016/12/24/Installing-vim-airline-using-pathogen/",
     "date"     : "2016-12-24 23:31:18 +0530"
     } ,
     
@@ -164,7 +164,7 @@
     "title"    : "Starting off with KDE in Kubuntu 16.04",
     "category" : "",
     "tags"     : "KDE, Open source",
-    "url"      : "/kde/2016/12/11/Building-KDE-from-source/",
+    "url"      : "/blog/kde/2016/12/11/Building-KDE-from-source/",
     "date"     : "2016-12-11 08:59:18 +0530"
     } ,
     
@@ -172,7 +172,7 @@
     "title"    : "Vim filetype templates",
     "category" : "",
     "tags"     : "vim, templates",
-    "url"      : "/vim/2016/09/10/Vim-Filetype-templates/",
+    "url"      : "/blog/vim/2016/09/10/Vim-Filetype-templates/",
     "date"     : "2016-09-10 18:02:18 +0530"
     } ,
     
@@ -180,7 +180,7 @@
     "title"    : "Algorithm Visualizer",
     "category" : "",
     "tags"     : "algorithm, open source",
-    "url"      : "/algorithm/2016/06/29/Algorithm-Visualizer/",
+    "url"      : "/blog/algorithm/2016/06/29/Algorithm-Visualizer/",
     "date"     : "2016-06-29 18:02:18 +0530"
     } 
     
