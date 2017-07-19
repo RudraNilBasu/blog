@@ -5,9 +5,123 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 10 Jul 2017 19:14:45 +0530</pubDate>
-    <lastBuildDate>Mon, 10 Jul 2017 19:14:45 +0530</lastBuildDate>
+    <pubDate>Wed, 19 Jul 2017 17:31:50 +0530</pubDate>
+    <lastBuildDate>Wed, 19 Jul 2017 17:31:50 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Family - Implementing Grid layout</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In my last &lt;a href=&quot;http://rudranilbasu.me/blog/kde/2017/07/10/GSoC-phase2-week-1/&quot;&gt;post&lt;/a&gt;, I talked about adding a grid layout to the activity. The inspiration of this layout was to remove the trial and error method of selecting (x,y) positions of a node and to implement a more efficient method of positioning the nodes. Along with that, the distance between two generations and nodes could also be maintained in a homogeneous manner, keeping the layout similar throughout the activity.&lt;/p&gt;
+
+&lt;p&gt;As it also turned out, the grid layout along with knowing the width and height of the node also helped in accurately positioning the edges, the effect of which will be shown in a few before-after screenshots later in this post&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;Vertically, the screen is divided into three equal parts (representing three generations), represented as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real gen_1: 0.10
+readonly property real gen_2: 0.40
+readonly property real gen_3: 0.70
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here, &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_2&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_3&lt;/code&gt; represent 1st, 2nd and 3rd generation.&lt;/p&gt;
+
+&lt;p&gt;Horizontally, the area was originally divided into three parts:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real left: 0.2
+readonly property real center: 0.4
+readonly property real right: 0.6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/mockup_1.jpg&quot; alt=&quot;grid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aside from this, we also divided the horizontal area into four other slots, which will be necessary as it turned out later:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real left_1: 0.1
+readonly property real left_2: 0.3
+readonly property real right_1: 0.5
+readonly property real right_2: 0.7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;the-nodes&quot;&gt;The nodes&lt;/h4&gt;
+
+&lt;p&gt;The arrangement of the nodes are very simple, in which we are avoiding the problem of arranging the nodes via trial and error of the (x,y) position. The x-coordinate can be determined by selecting the best among &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;center&lt;/code&gt; or among &lt;code class=&quot;highlighter-rouge&quot;&gt;left_x&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;right_x&lt;/code&gt; (where x = 1, 2) as mentioned above and the y-coordinate can be determined via selecting the best among &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_2&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_3&lt;/code&gt;, depending on the generation of the node.&lt;/p&gt;
+
+&lt;p&gt;As an example, for level 11, we define the &lt;code class=&quot;highlighter-rouge&quot;&gt;nodePositions&lt;/code&gt; as follow:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nodePositions: [
+        [center, gen_1],
+        [left, gen_2],
+        [right, gen_2],
+        [left, gen_3]
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As we can see from the level, it can be seen that it is very intuitive to determine the node positions for a given level, once we know the type of the node.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-edges&quot;&gt;The edges&lt;/h4&gt;
+
+&lt;p&gt;The start-end position of the edges can also be determined via the properties mentioned above along with the &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeWidth&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeHeight&lt;/code&gt; properties mentioned in the previous blog post. For level 11, we calculate the edge positions as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;edgeList: [
+        [center + nodeWidth / 2, gen_1 + nodeHeight, center + nodeWidth / 2, gen_2 + nodeHeight / 2],
+        [rightXEdge(left), nodeMidPointY(gen_2), right, nodeMidPointY(gen_2)],
+        [left + nodeWidth / 2, gen_2 + nodeHeight, left + nodeWidth / 2, gen_3]
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As a result of these, level 11 turned out to be like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_11/Screenshot%20from%202017-07-15%2019-53-46.png&quot; alt=&quot;level_11_screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-it-all-turned-up&quot;&gt;How it all turned up&lt;/h3&gt;
+
+&lt;p&gt;The layout has come a long way since it was started from the beginning of the second phase of GSoC, and here are the before and after screenshots of the family activity&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/before_1.jpg&quot; alt=&quot;level_18_before&quot; /&gt;
+&lt;em&gt;Initial layout of level 18&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/after_1.jpg&quot; alt=&quot;level_18_after&quot; /&gt;
+&lt;em&gt;Current layout of level 18&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/before_1.jpg&quot; alt=&quot;level_6_before&quot; /&gt;
+&lt;em&gt;Initial layout of level 6&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/after_1.jpg&quot; alt=&quot;level_6_after&quot; /&gt;
+&lt;em&gt;Current layout of level 6&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-next&quot;&gt;What’s Next&lt;/h3&gt;
+
+&lt;p&gt;I have started working on the extension of the Family activity, the goal of which is: given a relation, the user will have to find the pair that demonstrate the given relation. I will be documenting the progress of the activity once that is near completion, hopefully by the end of this week.&lt;/p&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T6096&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=GSoC-family&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 19 Jul 2017 17:31:00 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/07/19/family-grid-wise-layout/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/19/family-grid-wise-layout/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSoC- Phase 2 Week 1 highlights</title>
@@ -95,6 +209,14 @@
 &lt;h3 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h3&gt;
 
 &lt;p&gt;For the upcoming weeks, I plan to continue on improving the layouts of the activity. Along with that, I will look forward to improve the implementation of the activity to a Grid based layout, in which instead of hardcoding the x-y coordinate values of the nodes, we will be creating a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; element and the datasets will contain the (row, column) values of the nodes and the (r1, c1) to (r2, c2) values for the edges.&lt;/p&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T6096&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=GSoC-family&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 10 Jul 2017 19:00:00 +0530</pubDate>
         <link>http://localhost:4000/kde/2017/07/10/GSoC-phase2-week-1/</link>
@@ -1085,496 +1207,6 @@ created a great learning environment for children.&lt;/p&gt;
         
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>GCompris- Ascending order</title>
-        <description>&lt;!--
-### Original Idea
-
-![pic1](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending.png)
-
-Key points:
-
-* Few blocks, with same width and different heights are given to the user as input
-* The user will then have to arrange the blocks in increasing order of their heights, thus creating a stair to help tux move up the stairs to reach the door.
-
-### Revised Idea
-
-The previous idea was scrapped off since the new one can be used in multiple ways. The new one looks like:
-
-* Blocks containing numbers will be present in one line
-* User will have to rearrange them to a specific order (ascending order in this case)
-  * As of now, the rearrangement is done by clicking on a block, and then clicking on the target block, resulting in them being swapped.
-
-
-Inspiration - [Ordering Game](http://www.mathsisfun.com/numbers/ordering-game.php)
-
-### Workflow
-
-We use `Flow` to arrange the blocks (as `Rectangle` in this case), so that it automatically wraps out depending on the screen size.
-
-*Imports*
-
-```qml
-
-import &quot;ascending_order.js&quot; as Activity
-import &quot;qrc:/gcompris/src/core/core.js&quot; as Core
-
-```
-
-*The Grids*
-
-```qml
-
-Rectangle {
-    color: &quot;transparent&quot;
-    width: parent.width; height: parent.height/2
-
-    anchors {
-        horizontalCenter: parent.horizontalCenter
-        verticalCenter: parent.verticalCenter
-    }
-
-    Flow {
-        anchors.fill: parent
-        anchors.margins: 4
-        spacing: 10
-        Repeater {
-            id: boxes
-            model: 6
-            Rectangle {
-                id: box
-                color: selected ? &quot;lightblue&quot; : &quot;white&quot;
-                property bool selected: false
-                property int imageX: 0
-                property int pos
-                property bool animateVert: false
-                property bool animateHor: false
-                property real currentPos
-                width: 360/4 * ApplicationInfo.ratio
-                height: 360/4 * ApplicationInfo.ratio
-                radius: 10
-                border{
-                    color: &quot;black&quot;
-                    width: 10
-                }
-                GCText {
-                    id: numText
-                    anchors.centerIn: parent
-                    text: imageX.toString()
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked :{
-                        Activity.selectBox(box);
-                    }
-                }
-                Behavior on color {
-                    PropertyAnimation {
-                        duration: 300
-                        easing.type: Easing.InOutBack
-                    }
-                }
-                Behavior on x {
-                    ParallelAnimation {
-                        PropertyAnimation {
-                            duration: 500
-                            easing.type: Easing.InOutBack
-                        }
-                    }
-                }
-                Behavior on y {
-                    ParallelAnimation {
-                        PropertyAnimation {
-                            duration: 500
-                            easing.type: Easing.InOutBack
-                        }
-                    }
-                }
-                Behavior on animateVert {
-                    SequentialAnimation {
-                        PropertyAnimation {
-                            target: box
-                            property: &quot;y&quot;
-                            from: currentPos
-                            to: currentPos + (box.pos == 1 ? 20 : -20)
-                            duration: 250
-                        }
-                        PropertyAnimation {
-                            target: box
-                            property: &quot;y&quot;
-                            from: currentPos + (box.pos == 1 ? 20 : -20)
-                            to: currentPos
-                            duration: 250
-                        }
-                    }
-                }
-                Behavior on animateHor {
-                    SequentialAnimation {
-                        PropertyAnimation {
-                            target: box
-                            property: &quot;x&quot;
-                            from: currentPos
-                            to: currentPos + (box.pos == 1 ? 20 : -20)
-                            duration: 250
-                        }
-                        PropertyAnimation {
-                            target: box
-                            property: &quot;x&quot;
-                            from: currentPos + (box.pos == 1 ? 20 : -20)
-                            to: currentPos//-box.pos == 1 ? 20 : -20//0
-                            duration: 250
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-```
-
-So this is just a basic `Flow` created within a `Rectangle` (the main container). Inside the flow there is a `Repeater` containing the `Rectangle`s which will form the blocks in the activity. Each of the `Rectangle`s has a `GCText` which contains the numbers which is sort of a &quot;_label_&quot; for each block. Each of these `Rectangles` (the ones insider the `Repeater`) conotains an id _box_ and 6 variables. They are:
-
-property bool selected: false
-                property int imageX: 0
-                property int pos
-                property bool animateVert: false
-                property bool animateHor: false
-                property real currentPos
-
-* `selected` (`bool`): which tells whether the given Rectangle is selected by the user or not.
-* `imageX` (`int`): the value of the given Rectangle (or the label on it).
-* `pos` (`int`): a marker used during animating the blocks to determine whether the block will move up or down while animating.
-* `animateVert` and `animateHor` (`bool`): To mark whether the block should move horizontally or vertically while it's position is being interchanged with another block.
-* `currentPos` (`real`): To contain the current x or y position of the block.
-
-Along with that, we have the instruction text:
-
-```qml
-
-GCText {
-    id: instruction
-    wrapMode: TextEdit.WordWrap
-    fontSize: tinySize
-    anchors.horizontalCenter: parent.horizontalCenter
-    text: &quot;Arrange the given numbers in ascending order&quot;
-    color: 'white'
-    Rectangle {
-        z: -1
-        opacity: 0.8
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: &quot;#000&quot; }
-            GradientStop { position: 0.9; color: &quot;#666&quot; }
-            GradientStop { position: 1.0; color: &quot;#AAA&quot; }
-        }
-        radius: 10
-        border.color: 'black'
-        border.width: 1
-        anchors.centerIn: parent
-        width: parent.width * 1.1
-        height: parent.contentHeight
-    }
-}
-
-```
-
-... and the _ok_ button:
-
-```qml
-
-BarButton {
-  id: ok
-  source: &quot;qrc:/gcompris/src/core/resource/bar_ok.svg&quot;;
-  sourceSize.width: 75 * ApplicationInfo.ratio
-  visible: true
-  anchors {
-      right: parent.right
-      bottom: parent.bottom
-      bottomMargin: 10 * ApplicationInfo.ratio
-      rightMargin: 10 * ApplicationInfo.ratio
-  }
-  onClicked: Activity.checkOrder()
-}
-
-```
-
-`selectBox(box)` and `checkOrder()` are two functions present in `Activity`, which is the javascript which handles the backend tasks, and it is described later.
-
-With this, the activity will look like this:
-
-![pic2](https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/GCompris/ascending_activity_1.png)
-
-# Working
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/gSPcWVt0R0s&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-
-With new drag and drop
-
-The Final Version involve dragging and dropping the tiles in it's correct position and shifting the remaining tiles.
-
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/wx3GQltFn4A&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-
---&gt;
-
-&lt;h1 id=&quot;the-qml-code&quot;&gt;The QML Code&lt;/h1&gt;
-
-&lt;p&gt;In the beginning, we declare a variable called &lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt; to identify which mode we are currently in. As if now, there are two modes: 1. Numbers and 2. Alphabets. We are going to talk about alphabets shortly after, right now, let’s concentrate on the numbers.&lt;/p&gt;
-
-&lt;p&gt;For the numbers activity, we set the &lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt; variable to &lt;code class=&quot;highlighter-rouge&quot;&gt;number&quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;property string mode: &quot;number&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We then create a &lt;code class=&quot;highlighter-rouge&quot;&gt;QtObject&lt;/code&gt; which will store all the QML items we need in the javascript. It looks like the following:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        QtObject {
-            id: items
-            property Item main: activity.main
-            property alias background: background
-            property alias bar: bar
-            property alias bonus: bonus
-            property alias boxes: boxes
-            property alias flow: flow
-            property alias container: container
-            property alias instruction: instruction
-            property real ratio: ApplicationInfo.ratio
-            property alias score: score
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;background&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Image&lt;/code&gt; component which contains the background image for the activity&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;boxes&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeater&lt;/code&gt; component which contains a specific number of &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; components which serves as the individual boxes for the activity.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt;: The &lt;a href=&quot;http://doc.qt.io/qt-5/qml-qtquick-flow.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Flow&lt;/code&gt;&lt;/a&gt; component, which is responsible for positioning the Rectangles side by side&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;container&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; component which defines the area under which the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt; should be present&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;instruction&lt;/code&gt;: A &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; component containing the instructions for each levels&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;score&lt;/code&gt;: A &lt;code class=&quot;highlighter-rouge&quot;&gt;score&lt;/code&gt; component to display the score for the current level&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;the-instructions&quot;&gt;The instructions&lt;/h3&gt;
-
-&lt;p&gt;The instructions is a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt; component which displays whether the elements for the current level should be arranged in ascending or descending order. The width of this component should be a little less than the width of it’s parent and it should be anchored along with the horizontalCenter of it’s parent. The text should also get wrapped accordingly, if it doesn’t fit in the current screen.&lt;/p&gt;
-
-&lt;p&gt;For creating a background of the text, we create a &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; element under it, with the gradient starting from #000 to #666 to #AAA&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        GCText {
-            id: instruction
-            wrapMode: TextEdit.WordWrap
-            fontSize: tinySize
-            horizontalAlignment: Text.Center
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: parent.width * 0.9
-            color: 'white'
-            Rectangle {
-                z: -1
-                opacity: 0.8
-                gradient: Gradient {
-                    GradientStop { position: 0.0; color: &quot;#000&quot; }
-                    GradientStop { position: 0.9; color: &quot;#666&quot; }
-                    GradientStop { position: 1.0; color: &quot;#AAA&quot; }
-                }
-                radius: 10
-                border.color: 'black'
-                border.width: 1
-                anchors.centerIn: parent
-                width: parent.width * 1.1
-                height: parent.contentHeight
-            }
-        }
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;the-items&quot;&gt;The items&lt;/h3&gt;
-
-&lt;p&gt;For the items, we first have an invisible container which will contain the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;boxes&lt;/code&gt;. It is a transparent Rectangle, centered in the center of the screen. The width depends on the number of Rectangles in the level. This is done to make sure that the children of the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt; element are always at the center of the screen. The width is given by the formula:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;As the child of this transparent Rectangle is the &lt;code class=&quot;highlighter-rouge&quot;&gt;Flow&lt;/code&gt;, with two variables, &lt;code class=&quot;highlighter-rouge&quot;&gt;onGoingAnimationCount&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;validMousePress&lt;/code&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onGoingAnimationCount&lt;/code&gt;: Counts the number of on-going animations in the current level. No input will be taken as valid if the value is != 0&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;validMousePress&lt;/code&gt;: A boolean variable to determine whether we can make a valid input or not (we can’t give input if there are any ongoing tasks)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As the child of the &lt;code class=&quot;highlighter-rouge&quot;&gt;flow&lt;/code&gt;, we have a &lt;code class=&quot;highlighter-rouge&quot;&gt;Repeater&lt;/code&gt; element which will repeat few instances of a &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; type, which will be our blocks which we drag and drop in the activity.&lt;/p&gt;
-
-&lt;p&gt;The blocks are a white &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; of width and height &lt;code class=&quot;highlighter-rouge&quot;&gt;65 * ApplicationInfo.ratio&lt;/code&gt; with a black border. As a child of this rectangle is a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCText&lt;/code&gt;, which is the label (number or alphabet) on the blocks.&lt;/p&gt;
-
-&lt;p&gt;For the purpose of drag and drop, we have a &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; which has &lt;code class=&quot;highlighter-rouge&quot;&gt;onPressed&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;onReleased&lt;/code&gt; to deal with the drag and drop&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                            onPressed: {
-                                box.beginDragPosition = Qt.point(box.x, box.y)
-                            }
-                            onReleased: {
-                                Activity.placeBlock(box, box.beginDragPosition);
-                            }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;beginDragPosition&lt;/code&gt; is a &lt;code class=&quot;highlighter-rouge&quot;&gt;point&lt;/code&gt; variable under &lt;code class=&quot;highlighter-rouge&quot;&gt;box&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;placeBlock()&lt;/code&gt; is a function on the javascript, which we will discuss shortly&lt;/p&gt;
-
-&lt;p&gt;There are two animation component, which plays whenever there is a change in &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; positions in the blocks&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        Rectangle {
-            id: container
-            color: &quot;transparent&quot;
-            width: Math.min(parent.width, ((boxes.itemAt(0)).width*boxes.model)+(boxes.model-1)*flow.spacing)
-            height: parent.height/2
-
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                verticalCenter: parent.verticalCenter
-            }
-
-            Flow {
-                id: flow
-                spacing: 10
-
-                /*
-                 * Count number of active animations in the activity
-                 * at this current time
-                 * (No input will be taken at this time)
-                 */
-                property int onGoingAnimationCount: 0
-                property bool validMousePress
-                anchors {
-                    fill: parent
-                }
-                Repeater {
-                    id: boxes
-                    model: 6
-                    Rectangle {
-                        id: box
-                        color: &quot;white&quot;
-                        z: mouseArea.drag.active ||  mouseArea.pressed ? 2 : 1
-                        property int boxValue: 0
-                        property point beginDragPosition
-
-                        width: 65 * ApplicationInfo.ratio
-                        height: 65 * ApplicationInfo.ratio
-                        radius: 10
-                        border{
-                            color: &quot;black&quot;
-                            width: 3 * ApplicationInfo.ratio
-                        }
-                        GCText {
-                            id: numText
-                            anchors.centerIn: parent
-                            text: mode == &quot;alphabets&quot; ? String.fromCharCode(boxValue) : boxValue.toString()
-                            font.pointSize: 20 * ApplicationInfo.ratio
-                        }
-                        MouseArea {
-                            id: mouseArea
-                            anchors.fill: parent
-                            drag.target: parent
-                            enabled: (flow.onGoingAnimationCount == 0 &amp;amp;&amp;amp; flow.validMousePress == true) ? true : false
-                            onPressed: {
-                                box.beginDragPosition = Qt.point(box.x, box.y)
-                            }
-                            onReleased: {
-                                Activity.placeBlock(box, box.beginDragPosition);
-                            }
-                        }
-                        Behavior on x {
-                            PropertyAnimation {
-                                id: animationX
-                                duration: 500
-                                easing.type: Easing.InOutBack
-                                onRunningChanged: {
-                                    if(animationX.running) {
-                                        flow.onGoingAnimationCount++
-                                    } else {
-                                        flow.onGoingAnimationCount--
-                                    }
-                                }
-                            }
-                        }
-                        Behavior on y {
-                            PropertyAnimation {
-                                id: animationY
-                                duration: 500
-                                easing.type: Easing.InOutBack
-                                onRunningChanged: {
-                                    if(animationY.running) {
-                                        flow.onGoingAnimationCount++
-                                    } else {
-                                        flow.onGoingAnimationCount--
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;For the score for each levels we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;Score&lt;/code&gt; component in-built in GCompris.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        Score {
-            id: score
-            anchors {
-                right: parent.right
-                top: instruction.bottom
-                bottom: undefined
-            }
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We now move on to the javascript part, which mainly deals with the mechanism to shift the positions of the blocks on drag and drop.&lt;/p&gt;
-
-&lt;h1 id=&quot;the-javascript-code&quot;&gt;The javascript code&lt;/h1&gt;
-
-&lt;h3 id=&quot;the-variables&quot;&gt;The variables&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var currentLevel = 0
-var numberOfLevel = 4
-
-var items
-var mode
-
-// num[] will contain the random numbers
-var num = []
-var originalArrangement = []
-
-var ascendingOrder
-var thresholdDistance
-var noOfTilesInPreviousLevel
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;currentLevel&lt;/code&gt;: The current level&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;numberOfLevel&lt;/code&gt;: The number of levels&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;QtObject&lt;/code&gt; containing the QML objects&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mode&lt;/code&gt;: The variable to determine the current mode of the activity ( &lt;code class=&quot;highlighter-rouge&quot;&gt;numbers&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;alphabets&lt;/code&gt; )&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;num&lt;/code&gt;: An array containing the random numbers&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;originalArrangement&lt;/code&gt;: The original arrangement provided to the user&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;thresholdDistance&lt;/code&gt;: The minimum distance from the drop area to the closest block to allow shifting of the blocks&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;noOfTilesInPreviousLevel&lt;/code&gt;: To store the number of blocks in the previous level, used to reset variables&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 12 Feb 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/kde/2017/02/12/GCompris-Ascending-order/</link>
-        <guid isPermaLink="true">http://localhost:4000/kde/2017/02/12/GCompris-Ascending-order/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>KDE</category>
         
       </item>
     

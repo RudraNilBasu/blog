@@ -5,9 +5,123 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 10 Jul 2017 19:14:45 +0530</pubDate>
-    <lastBuildDate>Mon, 10 Jul 2017 19:14:45 +0530</lastBuildDate>
+    <pubDate>Wed, 19 Jul 2017 17:31:50 +0530</pubDate>
+    <lastBuildDate>Wed, 19 Jul 2017 17:31:50 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Family - Implementing Grid layout</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In my last &lt;a href=&quot;http://rudranilbasu.me/blog/kde/2017/07/10/GSoC-phase2-week-1/&quot;&gt;post&lt;/a&gt;, I talked about adding a grid layout to the activity. The inspiration of this layout was to remove the trial and error method of selecting (x,y) positions of a node and to implement a more efficient method of positioning the nodes. Along with that, the distance between two generations and nodes could also be maintained in a homogeneous manner, keeping the layout similar throughout the activity.&lt;/p&gt;
+
+&lt;p&gt;As it also turned out, the grid layout along with knowing the width and height of the node also helped in accurately positioning the edges, the effect of which will be shown in a few before-after screenshots later in this post&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;Vertically, the screen is divided into three equal parts (representing three generations), represented as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real gen_1: 0.10
+readonly property real gen_2: 0.40
+readonly property real gen_3: 0.70
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here, &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_2&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_3&lt;/code&gt; represent 1st, 2nd and 3rd generation.&lt;/p&gt;
+
+&lt;p&gt;Horizontally, the area was originally divided into three parts:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real left: 0.2
+readonly property real center: 0.4
+readonly property real right: 0.6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/mockup_1.jpg&quot; alt=&quot;grid&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aside from this, we also divided the horizontal area into four other slots, which will be necessary as it turned out later:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real left_1: 0.1
+readonly property real left_2: 0.3
+readonly property real right_1: 0.5
+readonly property real right_2: 0.7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;the-nodes&quot;&gt;The nodes&lt;/h4&gt;
+
+&lt;p&gt;The arrangement of the nodes are very simple, in which we are avoiding the problem of arranging the nodes via trial and error of the (x,y) position. The x-coordinate can be determined by selecting the best among &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;center&lt;/code&gt; or among &lt;code class=&quot;highlighter-rouge&quot;&gt;left_x&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;right_x&lt;/code&gt; (where x = 1, 2) as mentioned above and the y-coordinate can be determined via selecting the best among &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_1&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_2&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;gen_3&lt;/code&gt;, depending on the generation of the node.&lt;/p&gt;
+
+&lt;p&gt;As an example, for level 11, we define the &lt;code class=&quot;highlighter-rouge&quot;&gt;nodePositions&lt;/code&gt; as follow:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nodePositions: [
+        [center, gen_1],
+        [left, gen_2],
+        [right, gen_2],
+        [left, gen_3]
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As we can see from the level, it can be seen that it is very intuitive to determine the node positions for a given level, once we know the type of the node.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-edges&quot;&gt;The edges&lt;/h4&gt;
+
+&lt;p&gt;The start-end position of the edges can also be determined via the properties mentioned above along with the &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeWidth&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeHeight&lt;/code&gt; properties mentioned in the previous blog post. For level 11, we calculate the edge positions as:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;edgeList: [
+        [center + nodeWidth / 2, gen_1 + nodeHeight, center + nodeWidth / 2, gen_2 + nodeHeight / 2],
+        [rightXEdge(left), nodeMidPointY(gen_2), right, nodeMidPointY(gen_2)],
+        [left + nodeWidth / 2, gen_2 + nodeHeight, left + nodeWidth / 2, gen_3]
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As a result of these, level 11 turned out to be like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_11/Screenshot%20from%202017-07-15%2019-53-46.png&quot; alt=&quot;level_11_screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-it-all-turned-up&quot;&gt;How it all turned up&lt;/h3&gt;
+
+&lt;p&gt;The layout has come a long way since it was started from the beginning of the second phase of GSoC, and here are the before and after screenshots of the family activity&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/before_1.jpg&quot; alt=&quot;level_18_before&quot; /&gt;
+&lt;em&gt;Initial layout of level 18&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/after_1.jpg&quot; alt=&quot;level_18_after&quot; /&gt;
+&lt;em&gt;Current layout of level 18&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/before_1.jpg&quot; alt=&quot;level_6_before&quot; /&gt;
+&lt;em&gt;Initial layout of level 6&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/after_1.jpg&quot; alt=&quot;level_6_after&quot; /&gt;
+&lt;em&gt;Current layout of level 6&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-next&quot;&gt;What’s Next&lt;/h3&gt;
+
+&lt;p&gt;I have started working on the extension of the Family activity, the goal of which is: given a relation, the user will have to find the pair that demonstrate the given relation. I will be documenting the progress of the activity once that is near completion, hopefully by the end of this week.&lt;/p&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T6096&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=GSoC-family&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 19 Jul 2017 17:31:00 +0530</pubDate>
+        <link>http://localhost:4000/kde/2017/07/19/family-grid-wise-layout/</link>
+        <guid isPermaLink="true">http://localhost:4000/kde/2017/07/19/family-grid-wise-layout/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSoC- Phase 2 Week 1 highlights</title>
@@ -95,6 +209,14 @@
 &lt;h3 id=&quot;moving-forward&quot;&gt;Moving forward&lt;/h3&gt;
 
 &lt;p&gt;For the upcoming weeks, I plan to continue on improving the layouts of the activity. Along with that, I will look forward to improve the implementation of the activity to a Grid based layout, in which instead of hardcoding the x-y coordinate values of the nodes, we will be creating a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; element and the datasets will contain the (row, column) values of the nodes and the (r1, c1) to (r2, c2) values for the edges.&lt;/p&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T6096&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=GSoC-family&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 10 Jul 2017 19:00:00 +0530</pubDate>
         <link>http://localhost:4000/kde/2017/07/10/GSoC-phase2-week-1/</link>

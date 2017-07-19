@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family - Implementing Grid layout</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">Family - Implementing Grid layout</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">July 19, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          3 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.png" alt="header" /></p>
+
+<p>In my last <a href="http://rudranilbasu.me/blog/kde/2017/07/10/GSoC-phase2-week-1/">post</a>, I talked about adding a grid layout to the activity. The inspiration of this layout was to remove the trial and error method of selecting (x,y) positions of a node and to implement a more efficient method of positioning the nodes. Along with that, the distance between two generations and nodes could also be maintained in a homogeneous manner, keeping the layout similar throughout the activity.</p>
+
+<p>As it also turned out, the grid layout along with knowing the width and height of the node also helped in accurately positioning the edges, the effect of which will be shown in a few before-after screenshots later in this post</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p>Vertically, the screen is divided into three equal parts (representing three generations), represented as:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>readonly property real gen_1: 0.10
+readonly property real gen_2: 0.40
+readonly property real gen_3: 0.70
+</code></pre>
+</div>
+
+<p>Here, <code class="highlighter-rouge">gen_1</code>, <code class="highlighter-rouge">gen_2</code> and <code class="highlighter-rouge">gen_3</code> represent 1st, 2nd and 3rd generation.</p>
+
+<p>Horizontally, the area was originally divided into three parts:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>readonly property real left: 0.2
+readonly property real center: 0.4
+readonly property real right: 0.6
+</code></pre>
+</div>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/mockup_1.jpg" alt="grid" /></p>
+
+<p>Aside from this, we also divided the horizontal area into four other slots, which will be necessary as it turned out later:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>readonly property real left_1: 0.1
+readonly property real left_2: 0.3
+readonly property real right_1: 0.5
+readonly property real right_2: 0.7
+</code></pre>
+</div>
+
+<h4 id="the-nodes">The nodes</h4>
+
+<p>The arrangement of the nodes are very simple, in which we are avoiding the problem of arranging the nodes via trial and error of the (x,y) position. The x-coordinate can be determined by selecting the best among <code class="highlighter-rouge">left</code>, <code class="highlighter-rouge">right</code> and <code class="highlighter-rouge">center</code> or among <code class="highlighter-rouge">left_x</code> or <code class="highlighter-rouge">right_x</code> (where x = 1, 2) as mentioned above and the y-coordinate can be determined via selecting the best among <code class="highlighter-rouge">gen_1</code>, <code class="highlighter-rouge">gen_2</code> or <code class="highlighter-rouge">gen_3</code>, depending on the generation of the node.</p>
+
+<p>As an example, for level 11, we define the <code class="highlighter-rouge">nodePositions</code> as follow:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>nodePositions: [
+        [center, gen_1],
+        [left, gen_2],
+        [right, gen_2],
+        [left, gen_3]
+]
+</code></pre>
+</div>
+
+<p>As we can see from the level, it can be seen that it is very intuitive to determine the node positions for a given level, once we know the type of the node.</p>
+
+<h4 id="the-edges">The edges</h4>
+
+<p>The start-end position of the edges can also be determined via the properties mentioned above along with the <code class="highlighter-rouge">nodeWidth</code> and <code class="highlighter-rouge">nodeHeight</code> properties mentioned in the previous blog post. For level 11, we calculate the edge positions as:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>edgeList: [
+        [center + nodeWidth / 2, gen_1 + nodeHeight, center + nodeWidth / 2, gen_2 + nodeHeight / 2],
+        [rightXEdge(left), nodeMidPointY(gen_2), right, nodeMidPointY(gen_2)],
+        [left + nodeWidth / 2, gen_2 + nodeHeight, left + nodeWidth / 2, gen_3]
+]
+</code></pre>
+</div>
+
+<p>As a result of these, level 11 turned out to be like this:</p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_11/Screenshot%20from%202017-07-15%2019-53-46.png" alt="level_11_screenshot" /></p>
+
+<h3 id="how-it-all-turned-up">How it all turned up</h3>
+
+<p>The layout has come a long way since it was started from the beginning of the second phase of GSoC, and here are the before and after screenshots of the family activity</p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/before_1.jpg" alt="level_18_before" />
+<em>Initial layout of level 18</em></p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/after_1.jpg" alt="level_18_after" />
+<em>Current layout of level 18</em></p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/before_1.jpg" alt="level_6_before" />
+<em>Initial layout of level 6</em></p>
+
+<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/after_1.jpg" alt="level_6_after" />
+<em>Current layout of level 6</em></p>
+
+<h3 id="whats-next">What’s Next</h3>
+
+<p>I have started working on the extension of the Family activity, the goal of which is: given a relation, the user will have to find the pair that demonstrate the given relation. I will be documenting the progress of the activity once that is near completion, hopefully by the end of this week.</p>
+
+<h3 id="relevant-links">Relevant links</h3>
+
+<ul>
+  <li><a href="http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf">GSoC Proposal</a></li>
+  <li><a href="https://phabricator.kde.org/T6096">Phabricator task</a></li>
+  <li><a href="https://cgit.kde.org/gcompris.git/log/?h=GSoC-family">Development branch</a></li>
+  <li><a href="https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu">KDE Status Report</a></li>
+</ul>
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+-->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rudranilbasu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>
