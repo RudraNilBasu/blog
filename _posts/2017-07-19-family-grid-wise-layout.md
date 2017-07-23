@@ -40,11 +40,13 @@ readonly property real right: 0.6
 Aside from this, we also divided the horizontal area into four other slots, which will be necessary as it turned out later:
 
 ```
-readonly property real left_1: 0.1
-readonly property real left_2: 0.3
-readonly property real right_1: 0.5
-readonly property real right_2: 0.7
+readonly property real left_ext: 0.1
+readonly property real left_int: 0.3
+readonly property real right_int: 0.5
+readonly property real right_ext: 0.7
 ```
+
+Here, `left_int` and `right_int` represent left and right on the interior side compared to `left` and `right` respectively. Similarly, `right_ext` and `left_ext` represent left and right exterior, compared to `left` and `right` respectively.
 
 #### The nodes
 
