@@ -4,7 +4,7 @@
     <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Family - Implementing Grid layout</title>
+<title>Family - Find relatives</title>
 <meta name="description" content="Random stuff.">
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -84,12 +84,12 @@
       </div>
       
 
-      <h1 class="header" itemprop="name">Family - Implementing Grid layout</h1>
+      <h1 class="header" itemprop="name">Family - Find relatives</h1>
 
       <div class="author">
         <small><i>
           
-          on <span itemprop="datePublished" content="2014-08-28">July 19, 2017</span>
+          on <span itemprop="datePublished" content="2014-08-28">July 27, 2017</span>
            under kde
         </i></small>
       </div>
@@ -104,97 +104,85 @@
 
         
 
-        <span itemprop="articleBody"><p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/family_header.png" alt="header" /></p>
+        <span itemprop="articleBody"><p><img src="/blog/images/gsoc/headers/family_find_relatives_header.png" alt="header" /></p>
 
-<p>In my last <a href="http://rudranilbasu.me/blog/kde/2017/07/10/GSoC-phase2-week-1/">post</a>, I talked about adding a grid layout to the activity. The inspiration of this layout was to remove the trial and error method of selecting (x,y) positions of a node and to implement a more efficient method of positioning the nodes. Along with that, the distance between two generations and nodes could also be maintained in a homogeneous manner, keeping the layout similar throughout the activity.</p>
+<p><em>Family_find_relatives</em> is an extension of the <em>Family</em> activity which is aimed at providing a bit more challenge for someone who has already finished the family activity. The goal of this activity is: given a relation, the user will have to select a pair of node that correctly represents the given relation.</p>
 
-<p>As it also turned out, the grid layout along with knowing the width and height of the node also helped in accurately positioning the edges, the effect of which will be shown in a few before-after screenshots later in this post</p>
+<h3 id="apparent-solution">Apparent Solution</h3>
+
+<p>The implementation of the activity initially seems to be a straightforward one. We will just store the pair of nodes which are selected, and if one of them is of the type “active” and the other is of the type “activeTo”, then the answer will be marked as correct, else incorrect.</p>
+
+<p>But on closer look, it can be seen that this approach is flawed. It may be possible that there are more than one existing pairs which satisfy the given relation and whose <code class="highlighter-rouge">state</code> may be “deactive”.</p>
+
+<p><img src="/blog/images/gsoc/family/find_relatives/scr_1.png" alt="img_prob" />
+<em>There are three pairs which can satisfy the given relation</em></p>
 
 <h3 id="implementation">Implementation</h3>
 
-<p>Vertically, the screen is divided into three equal parts (representing three generations), represented as:</p>
+<h4 id="pair-matching">Pair matching</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>readonly property real gen_1: 0.10
-readonly property real gen_2: 0.40
-readonly property real gen_3: 0.70
+<p>To overcome the above problem, we add another property for every node in the current level.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>readonly property int pair_1: -1
+readonly property int pair_2: 1
+readonly property int no_pair: 0
 </code></pre>
 </div>
 
-<p>Here, <code class="highlighter-rouge">gen_1</code>, <code class="highlighter-rouge">gen_2</code> and <code class="highlighter-rouge">gen_3</code> represent 1st, 2nd and 3rd generation.</p>
+<p>We add the above properties in the <code class="highlighter-rouge">Dataset.qml</code> file, to keep a track of which nodes can take part in the pairing process, using the following logic:</p>
+<ul>
+  <li>All nodes in a given level has a <code class="highlighter-rouge">nodeWeight</code> value, which can be either <code class="highlighter-rouge">no_pair</code>, <code class="highlighter-rouge">pair_1</code> or <code class="highlighter-rouge">pair_2</code></li>
+  <li>For a selected pair of nodes to be a correct one, one of the node value should be of the type <code class="highlighter-rouge">pair_1</code> and the other should be of the type <code class="highlighter-rouge">pair_2</code>. Any other combination is marked as a “Wrong Answer”</li>
+</ul>
 
-<p>Horizontally, the area was originally divided into three parts:</p>
+<p><img src="/blog/images/gsoc/family/find_relatives/result.gif" alt="result" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>readonly property real left: 0.2
-readonly property real center: 0.4
-readonly property real right: 0.6
+<h4 id="randomising-levels">Randomising levels</h4>
+
+<p>After testing the activity several times, it was noticed that the activity gets predictable once the original <em>family</em> activity is already played by the user. To overcome this, we decided to shuffle the levels everytime the activity is loaded. This is implemented by:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">shuffle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">items</span><span class="p">.</span><span class="nx">mode</span> <span class="o">==</span> <span class="s2">"normal"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// not required for normal mode</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numberOfLevel</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">shuffledLevelIndex</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">shuffledLevelIndex</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">tmp</span><span class="p">,</span> <span class="nx">randomIndex</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="nx">currentIndex</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">randomIndex</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">currentIndex</span><span class="p">)</span>
+        <span class="nx">currentIndex</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="nx">tmp</span> <span class="o">=</span> <span class="nx">shuffledLevelIndex</span><span class="p">[</span><span class="nx">currentIndex</span><span class="p">]</span>
+        <span class="nx">shuffledLevelIndex</span><span class="p">[</span><span class="nx">currentIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">shuffledLevelIndex</span><span class="p">[</span><span class="nx">randomIndex</span><span class="p">]</span>
+        <span class="nx">shuffledLevelIndex</span><span class="p">[</span><span class="nx">randomIndex</span><span class="p">]</span> <span class="o">=</span> <span class="nx">tmp</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/mockup_1.jpg" alt="grid" /></p>
+<p><code class="highlighter-rouge">shuffledIndex[]</code> contains the indices of the levels and when we have to load data from a dataset, we do it by:</p>
 
-<p>Aside from this, we also divided the horizontal area into four other slots, which will be necessary as it turned out later:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>// get the index of the level to load
+levelToLoad = items.mode == "normal" ? currentLevel : shuffledLevelIndex[currentLevel]
 
-<div class="highlighter-rouge"><pre class="highlight"><code>readonly property real left_ext: 0.1
-readonly property real left_int: 0.3
-readonly property real right_int: 0.5
-readonly property real right_ext: 0.7
+// load the appropriate dataset by the index
+var levelTree = items.dataset.levelElements[levelToLoad]
 </code></pre>
 </div>
 
-<p>Here, <code class="highlighter-rouge">left_int</code> and <code class="highlighter-rouge">right_int</code> represent left and right on the interior side compared to <code class="highlighter-rouge">left</code> and <code class="highlighter-rouge">right</code> respectively. Similarly, <code class="highlighter-rouge">right_ext</code> and <code class="highlighter-rouge">left_ext</code> represent left and right exterior, compared to <code class="highlighter-rouge">left</code> and <code class="highlighter-rouge">right</code> respectively.</p>
+<p>As a result, the levels will get shuffled to a new combination everytime the activity is started.</p>
 
-<h4 id="the-nodes">The nodes</h4>
+<h3 id="whats-next">What’s next</h3>
 
-<p>The arrangement of the nodes are very simple, in which we are avoiding the problem of arranging the nodes via trial and error of the (x,y) position. The x-coordinate can be determined by selecting the best among <code class="highlighter-rouge">left</code>, <code class="highlighter-rouge">right</code> and <code class="highlighter-rouge">center</code> or among <code class="highlighter-rouge">left_x</code> or <code class="highlighter-rouge">right_x</code> (where x = 1, 2) as mentioned above and the y-coordinate can be determined via selecting the best among <code class="highlighter-rouge">gen_1</code>, <code class="highlighter-rouge">gen_2</code> or <code class="highlighter-rouge">gen_3</code>, depending on the generation of the node.</p>
-
-<p>As an example, for level 11, we define the <code class="highlighter-rouge">nodePositions</code> as follow:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>nodePositions: [
-        [center, gen_1],
-        [left, gen_2],
-        [right, gen_2],
-        [left, gen_3]
-]
-</code></pre>
-</div>
-
-<p>As we can see from the level, it can be seen that it is very intuitive to determine the node positions for a given level, once we know the type of the node.</p>
-
-<h4 id="the-edges">The edges</h4>
-
-<p>The start-end position of the edges can also be determined via the properties mentioned above along with the <code class="highlighter-rouge">nodeWidth</code> and <code class="highlighter-rouge">nodeHeight</code> properties mentioned in the previous blog post. For level 11, we calculate the edge positions as:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>edgeList: [
-        [center + nodeWidth / 2, gen_1 + nodeHeight, center + nodeWidth / 2, gen_2 + nodeHeight / 2],
-        [rightXEdge(left), nodeMidPointY(gen_2), right, nodeMidPointY(gen_2)],
-        [left + nodeWidth / 2, gen_2 + nodeHeight, left + nodeWidth / 2, gen_3]
-]
-</code></pre>
-</div>
-
-<p>As a result of these, level 11 turned out to be like this:</p>
-
-<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_11/Screenshot%20from%202017-07-15%2019-53-46.png" alt="level_11_screenshot" /></p>
-
-<h3 id="how-it-all-turned-up">How it all turned up</h3>
-
-<p>The layout has come a long way since it was started from the beginning of the second phase of GSoC, and here are the before and after screenshots of the family activity</p>
-
-<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/before_1.jpg" alt="level_18_before" />
-<em>Initial layout of level 18</em></p>
-
-<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_18/after_1.jpg" alt="level_18_after" />
-<em>Current layout of level 18</em></p>
-
-<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/before_1.jpg" alt="level_6_before" />
-<em>Initial layout of level 6</em></p>
-
-<p><img src="https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family/diffs/level_6/after_1.jpg" alt="level_6_after" />
-<em>Current layout of level 6</em></p>
-
-<h3 id="whats-next">What’s Next</h3>
-
-<p>I have started working on the extension of the Family activity, the goal of which is: given a relation, the user will have to find the pair that demonstrate the given relation. I will be documenting the progress of the activity once that is near completion, hopefully by the end of this week.</p>
+<ul>
+  <li>Both of the <em>family</em> and <em>family_find_relatives</em> activities are currently being tested heavily for possible improvements/bug fixes</li>
+  <li>We are currently in the second evaluation phase of GSoC. I will be writting an analysis of the second coding period, looking back at what went right and what didn’t go as planned throughout the period</li>
+</ul>
 
 <h3 id="relevant-links">Relevant links</h3>
 

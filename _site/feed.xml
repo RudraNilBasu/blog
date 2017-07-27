@@ -5,9 +5,113 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 19 Jul 2017 17:47:31 +0530</pubDate>
-    <lastBuildDate>Wed, 19 Jul 2017 17:47:31 +0530</lastBuildDate>
+    <pubDate>Thu, 27 Jul 2017 12:35:42 +0530</pubDate>
+    <lastBuildDate>Thu, 27 Jul 2017 12:35:42 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Family - Find relatives</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/headers/family_find_relatives_header.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Family_find_relatives&lt;/em&gt; is an extension of the &lt;em&gt;Family&lt;/em&gt; activity which is aimed at providing a bit more challenge for someone who has already finished the family activity. The goal of this activity is: given a relation, the user will have to select a pair of node that correctly represents the given relation.&lt;/p&gt;
+
+&lt;h3 id=&quot;apparent-solution&quot;&gt;Apparent Solution&lt;/h3&gt;
+
+&lt;p&gt;The implementation of the activity initially seems to be a straightforward one. We will just store the pair of nodes which are selected, and if one of them is of the type “active” and the other is of the type “activeTo”, then the answer will be marked as correct, else incorrect.&lt;/p&gt;
+
+&lt;p&gt;But on closer look, it can be seen that this approach is flawed. It may be possible that there are more than one existing pairs which satisfy the given relation and whose &lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt; may be “deactive”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/family/find_relatives/scr_1.png&quot; alt=&quot;img_prob&quot; /&gt;
+&lt;em&gt;There are three pairs which can satisfy the given relation&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;h4 id=&quot;pair-matching&quot;&gt;Pair matching&lt;/h4&gt;
+
+&lt;p&gt;To overcome the above problem, we add another property for every node in the current level.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property int pair_1: -1
+readonly property int pair_2: 1
+readonly property int no_pair: 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We add the above properties in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dataset.qml&lt;/code&gt; file, to keep a track of which nodes can take part in the pairing process, using the following logic:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;All nodes in a given level has a &lt;code class=&quot;highlighter-rouge&quot;&gt;nodeWeight&lt;/code&gt; value, which can be either &lt;code class=&quot;highlighter-rouge&quot;&gt;no_pair&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;pair_1&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;pair_2&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;For a selected pair of nodes to be a correct one, one of the node value should be of the type &lt;code class=&quot;highlighter-rouge&quot;&gt;pair_1&lt;/code&gt; and the other should be of the type &lt;code class=&quot;highlighter-rouge&quot;&gt;pair_2&lt;/code&gt;. Any other combination is marked as a “Wrong Answer”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/family/find_relatives/result.gif&quot; alt=&quot;result&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;randomising-levels&quot;&gt;Randomising levels&lt;/h4&gt;
+
+&lt;p&gt;After testing the activity several times, it was noticed that the activity gets predictable once the original &lt;em&gt;family&lt;/em&gt; activity is already played by the user. To overcome this, we decided to shuffle the levels everytime the activity is loaded. This is implemented by:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;normal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// not required for normal mode&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numberOfLevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;shuffledLevelIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shuffledLevelIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;randomIndex&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;randomIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;currentIndex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shuffledLevelIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;shuffledLevelIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shuffledLevelIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;randomIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;shuffledLevelIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;randomIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tmp&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;shuffledIndex[]&lt;/code&gt; contains the indices of the levels and when we have to load data from a dataset, we do it by:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// get the index of the level to load
+levelToLoad = items.mode == &quot;normal&quot; ? currentLevel : shuffledLevelIndex[currentLevel]
+
+// load the appropriate dataset by the index
+var levelTree = items.dataset.levelElements[levelToLoad]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As a result, the levels will get shuffled to a new combination everytime the activity is started.&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-next&quot;&gt;What’s next&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Both of the &lt;em&gt;family&lt;/em&gt; and &lt;em&gt;family_find_relatives&lt;/em&gt; activities are currently being tested heavily for possible improvements/bug fixes&lt;/li&gt;
+  &lt;li&gt;We are currently in the second evaluation phase of GSoC. I will be writting an analysis of the second coding period, looking back at what went right and what didn’t go as planned throughout the period&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T6096&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=GSoC-family&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 27 Jul 2017 12:30:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/07/27/family-find-relatives/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/07/27/family-find-relatives/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>Family - Implementing Grid layout</title>
@@ -41,12 +145,14 @@ readonly property real right: 0.6
 
 &lt;p&gt;Aside from this, we also divided the horizontal area into four other slots, which will be necessary as it turned out later:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real left_1: 0.1
-readonly property real left_2: 0.3
-readonly property real right_1: 0.5
-readonly property real right_2: 0.7
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;readonly property real left_ext: 0.1
+readonly property real left_int: 0.3
+readonly property real right_int: 0.5
+readonly property real right_ext: 0.7
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;p&gt;Here, &lt;code class=&quot;highlighter-rouge&quot;&gt;left_int&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;right_int&lt;/code&gt; represent left and right on the interior side compared to &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; respectively. Similarly, &lt;code class=&quot;highlighter-rouge&quot;&gt;right_ext&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;left_ext&lt;/code&gt; represent left and right exterior, compared to &lt;code class=&quot;highlighter-rouge&quot;&gt;left&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;right&lt;/code&gt; respectively.&lt;/p&gt;
 
 &lt;h4 id=&quot;the-nodes&quot;&gt;The nodes&lt;/h4&gt;
 
@@ -1159,54 +1265,6 @@ created a great learning environment for children.&lt;/p&gt;
         
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>My Setup</title>
-        <description>&lt;p&gt;Let’s discuss about my current setup, because why not.&lt;/p&gt;
-
-&lt;p&gt;Quick facts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Distro: Kubuntu 16.04&lt;/li&gt;
-  &lt;li&gt;Kernel version: 4.4.0-70-generic&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;the-shell&quot;&gt;The Shell&lt;/h1&gt;
-
-&lt;p&gt;I use zsh as default shell. For configuring zsh, I use the &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot;&gt;oh-my-zsh&lt;/a&gt; framework to make it look (and work) way cooler. With that, I have the &lt;a href=&quot;https://github.com/powerline/fonts&quot;&gt;Inconsolata font&lt;/a&gt; installed, to allow the &lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh/wiki/Themes#agnoster&quot;&gt;agnoster&lt;/a&gt; font to work properly. For the terminal, I use terminator. With those, the results are:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/images/setup/shell_1.png&quot; alt=&quot;shell_1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As for the cow with the quote, it is something that pops up whenever a new instance of the terminal is opened. It is a simple script I wrote and attached it in the end of &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.zshrc&lt;/code&gt; (It maybe &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; if you are using bash instead of zsh):&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shuf -n 1 ~/.quotes | cowsay | lolcat
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h1 id=&quot;the-text-editor-vim&quot;&gt;The Text Editor: Vim&lt;/h1&gt;
-
-&lt;p&gt;I have two plugins added for Vim:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Vim-airlines&lt;/strong&gt;: A customisable plugin to add various themes in vim, which helps to improve the workflow&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;NerdTree&lt;/strong&gt;: To explore the files and documents via vim&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I am also thinking of the adding &lt;code class=&quot;highlighter-rouge&quot;&gt;YouCompleteMe&lt;/code&gt; plugin in Vim, for autocomplition&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/images/setup/vim.png&quot; alt=&quot;vim_1&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 05 Apr 2017 20:41:18 +0530</pubDate>
-        <link>http://localhost:4000/blog/linux/2017/04/05/My-Setup/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/linux/2017/04/05/My-Setup/</guid>
-        
-        <category>vim</category>
-        
-        <category>linux</category>
-        
-        
-        <category>linux</category>
         
       </item>
     
