@@ -5,9 +5,56 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 27 Jul 2017 12:35:42 +0530</pubDate>
-    <lastBuildDate>Thu, 27 Jul 2017 12:35:42 +0530</lastBuildDate>
+    <pubDate>Fri, 28 Jul 2017 21:27:03 +0530</pubDate>
+    <lastBuildDate>Fri, 28 Jul 2017 21:27:03 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSoC Second phase analysis</title>
+        <description>&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello everyone, with the second evaluation results just few &lt;del&gt;hours&lt;/del&gt; minutes away, I am going to look back at the whole month in general, to reflect on what I have done, and what I should’ve done.&lt;/p&gt;
+
+&lt;p&gt;The month took a rough start with me getting ill from the very start of the month. I decided to get the relatively “easy” job done within the first month, so that I can fully focus on the topics that require much more concentration once I start recovering. I started out by &lt;a href=&quot;/blog/kde/2017/07/10/GSoC-phase2-week-1/&quot;&gt;refactoring the code and using nodeWidth and nodeHeight&lt;/a&gt; and keeping the same generation node within the same vertical level. Also, I made sure that the changes get reflected with change in the dimensions of the activity.&lt;/p&gt;
+
+&lt;p&gt;The progress for the first week was slow (though I didn’t expect it to go too well either), but by the end of the week, I had a clear idea on what to do next, and keeping up with the plans and an improving health kept my heads up.&lt;/p&gt;
+
+&lt;p&gt;The next few weeks went much better than I expected. I started out with &lt;a href=&quot;(/blog/kde/2017/07/19/family-grid-wise-layout/)&quot;&gt;implementing the Grid layout&lt;/a&gt; that I had planned the past weekend and it worked wonderfully well, with minimal errors, to my surprise. It also turned out that using the specific layout along with the width and height of each node allowed the nodes and edges to fit perfectly well (more on that on the specified blog post).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/family/diffs/level_6/after_1.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Having completed the original &lt;em&gt;Family&lt;/em&gt; activity, I quickly switched on to &lt;a href=&quot;/blog/kde/2017/07/27/family-find-relatives/&quot;&gt;implementing the family_find_relatives&lt;/a&gt; activity. The implementation looked quick, I realised that there was a major bug in the implementation, that there can be more than one answer for a particular level (which made the overall activity much more interesting, though). I had to redo most of the implementation, but in the end it was worth it.&lt;/p&gt;
+
+&lt;p&gt;With the end of the third week, I had plenty of time to test both of the activities, and in doing so, I realised that the pair matching activity became very predictable once the &lt;em&gt;Family&lt;/em&gt; activity was completed. So after discussing with my mentors, we decided to randomise the levels by shuffling it every time the activity is loaded. The end result was very satisfactory.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/family/find_relatives/result.gif&quot; alt=&quot;result&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;in-conclusion&quot;&gt;In conclusion…&lt;/h1&gt;
+
+&lt;p&gt;Overall, I am happy with how the activities turned out. Roughly 2/3 of the total project is complete, and I am glad that inspite of a rough start, I managed to keep up to date with my proposed timeline.&lt;/p&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T6096&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=GSoC-family&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 28 Jul 2017 21:20:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/07/28/GSoC-second-phase-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/07/28/GSoC-second-phase-analysis/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>Family - Find relatives</title>
