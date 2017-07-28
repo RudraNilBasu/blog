@@ -10,7 +10,6 @@ tags:
  - gcompris
 ---
 
-![header]()
 
 Hello everyone, with the second evaluation results just few ~~hours~~ minutes away, I am going to look back at the whole month in general, to reflect on what I have done, and what I should've done.
 
