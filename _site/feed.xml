@@ -5,9 +5,152 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 28 Jul 2017 21:28:17 +0530</pubDate>
-    <lastBuildDate>Fri, 28 Jul 2017 21:28:17 +0530</lastBuildDate>
+    <pubDate>Mon, 07 Aug 2017 20:30:51 +0530</pubDate>
+    <lastBuildDate>Mon, 07 Aug 2017 20:30:51 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GCompris- Digital Electricity</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/digital_electricity_header.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;The &lt;em&gt;Digital Electricity&lt;/em&gt; activity in GCompris aims at creating and simulating a digital electric schema. Currently, there exists a &lt;em&gt;“Free Mode”&lt;/em&gt;, where a user can freely create and check the working of a circuit on their own. During the final month of the GSoC period, I will be adding a &lt;em&gt;“Tutorial Mode”&lt;/em&gt; alongside the existing &lt;em&gt;free mode&lt;/em&gt;. The tutorial mode is aimed at teaching the users how the individual components work in a digital circuit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/scr_1.png&quot; alt=&quot;scr_1&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;implementation&quot;&gt;Implementation&lt;/h1&gt;
+
+&lt;h3 id=&quot;interchanging-modes-in-the-activity&quot;&gt;Interchanging modes in the activity&lt;/h3&gt;
+
+&lt;p&gt;Interchanging between the “Free Mode” and “Tutorial Mode” can be done using the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; option present in the bar.The &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; option will provide a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCComboBox&lt;/code&gt; from which the user can select the mode they want the activity to run on.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;               Item {
+                    property alias modesComboBox: modesComboBox
+
+                    property var availableModes: [
+                        { &quot;text&quot;: qsTr(&quot;Tutorial Mode&quot;), &quot;value&quot;: &quot;tutorial&quot; },
+                        { &quot;text&quot;: qsTr(&quot;Free Mode&quot;), &quot;value&quot;: &quot;free&quot; },
+                    ]
+
+                    Flow {
+                        id: flow
+                        spacing: 5
+                        width: dialogActivityConfig.width
+                        GCComboBox {
+                            id: modesComboBox
+                            model: availableModes
+                            background: dialogActivityConfig
+                            label: qsTr(&quot;Select your Mode&quot;)
+                        }
+                    }
+                }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Whenever the choosed option is changed, the option will be saved in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dataToSave&lt;/code&gt; variable whenever the &lt;code class=&quot;highlighter-rouge&quot;&gt;saveData&lt;/code&gt; signal is released:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (newMode !== activity.mode) {
+    activity.mode = newMode;
+    dataToSave = {&quot;modes&quot;: activity.mode};
+    Activity.reset()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Whenever the activity is loaded and the &lt;code class=&quot;highlighter-rouge&quot;&gt;loadData&lt;/code&gt; signal is released, the &lt;code class=&quot;highlighter-rouge&quot;&gt;activity.mode&lt;/code&gt; variable (which stores the current mode of the activity) assumes the value present in &lt;code class=&quot;highlighter-rouge&quot;&gt;dataToSave[&quot;modes&quot;]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;During the &lt;em&gt;Free Mode&lt;/em&gt;, there will only be one level, due to which the “level” bit is turned off when the activity is in the tutorial mode:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; content: BarEnumContent { value: help | home | ( activity.isTutorialMode ? level : 0) | reload | config}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;loading-tutorial-levels-from-the-dataset&quot;&gt;Loading tutorial levels from the dataset&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-dataset&quot;&gt;The dataset&lt;/h4&gt;
+
+&lt;p&gt;We maintain a &lt;code class=&quot;highlighter-rouge&quot;&gt;Dataset.qml&lt;/code&gt; file to store the details of each of the tutorial levels. The general structure of a dataset file contains:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Definition of each components, containing the basic informations such as image name, source, width, height and information about the component. It typically looks like:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    property var andGate: {
+        'imageName': 'gateAnd.svg',
+        'componentSource': 'AndGate.qml',
+        'width': 0.15,
+        'height': 0.12,
+        'toolTipText': qsTr(&quot;AND gate&quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Definition of each tutorial levels, containing the list of the above components required for each levels stored in the &lt;code class=&quot;highlighter-rouge&quot;&gt;tutorialLevels&lt;/code&gt; array&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;loading-from-the-dataset&quot;&gt;Loading from the dataset&lt;/h4&gt;
+
+&lt;p&gt;Loading from the dataset for each tutorial levels is done by traversing the &lt;code class=&quot;highlighter-rouge&quot;&gt;tutorialLevels[currentLevel]&lt;/code&gt; elements and create the respective elements dynamically and appending it in the &lt;code class=&quot;highlighter-rouge&quot;&gt;availablePieces&lt;/code&gt; Item (if they are input components) or dynamically created using Qt.createcomponent() (if they are needed to be inserted to the play area directly):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        var levelProperties = items.tutorialDataset.tutorialLevels[currentLevel - 1]
+        for (var i = 0; i &amp;lt; levelProperties.totalInputComponents; i++) {
+            items.availablePieces.model.append( {
+                &quot;imgName&quot;: levelProperties.imageName[i],
+                &quot;componentSrc&quot;: levelProperties.componentSource[i],
+                &quot;imgWidth&quot;: levelProperties.imgWidth[i] * sizeMultiplier,
+                &quot;imgHeight&quot;: levelProperties.imgHeight[i] * sizeMultiplier,
+                &quot;toolTipText&quot;: levelProperties.toolTipText[i]
+            })
+        }
+
+        for (var i = levelProperties.totalInputComponents; i &amp;lt; levelProperties.imageName.length; i++) {
+            var index = components.length
+            var staticElectricalComponent = Qt.createComponent(&quot;qrc:/gcompris/src/activities/digital_electricity/components/&quot; + levelProperties.componentSource[i])
+            components[index] = staticElectricalComponent.createObject(
+                        items.playArea, {
+                          &quot;index&quot;: index,
+                          &quot;posX&quot;: levelProperties.playAreaComponentPositionX[i],
+                          &quot;posY&quot;: levelProperties.playAreaComponentPositionY[i],
+                          &quot;imgSrc&quot;: levelProperties.imageName[i],
+                          &quot;toolTipTxt&quot;: levelProperties.toolTipText[i],
+                          &quot;imgWidth&quot;: levelProperties.imgWidth[i],
+                          &quot;imgHeight&quot;: levelProperties.imgHeight[i]
+                        });
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;future-plans&quot;&gt;Future plans&lt;/h1&gt;
+
+&lt;p&gt;For the next week, my plans are roughly:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Creating the logic for checking the answers in the tutorial mode&lt;/li&gt;
+  &lt;li&gt;Implementing wires which will be connected to few of the components in the play area&lt;/li&gt;
+  &lt;li&gt;Adding more levels and electrical components&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1524&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 07 Aug 2017 20:30:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/08/07/Digital-electricity/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/08/07/Digital-electricity/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSoC Second phase analysis</title>
@@ -1176,96 +1319,6 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
         <category>kde</category>
         
         <category>gcompris</category>
-        
-        
-        <category>kde</category>
-        
-      </item>
-    
-      <item>
-        <title>Introduction and plans for GSoC</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;Hi, I am Rudra Nil Basu, a third year CS undergrad from West Bengal, India. I have been contributing to GCompris for several months by adding features and improving layouts of existing activities, which got me familiar to the codebase of the project, which further helped me to work on my own “ordering activity”: where one has to arrange a given set of numbers or alphabets in increasing or decreasing order. Of course, none of these would have been possible without the constant help from the community. Along with that, I decided to apply for this year’s Google Summer of Code and finally got selected.&lt;/p&gt;
-
-&lt;h3 id=&quot;about-gcompris-and-gsoc&quot;&gt;About GCompris and GSoC&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://gcompris.net/index-en.html&quot;&gt;GCompris&lt;/a&gt; is a high-quality educational suite which aims at making learning easier for children aged 2 to 10. GCompris currently has 137 activities on various topics such as science, maths, games with which it has successfully
-created a great learning environment for children.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://gcompris.net/screenshots_qt/small/root.png&quot; alt=&quot;gcompris&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Given below is a list of categories present in GCompris and few activities belonging to that category:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;computer discovery&lt;/strong&gt;: keyboard, mouse, different mouse gestures, …&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;arithmetic&lt;/strong&gt;: table memory, enumeration, double entry table, mirror image, …&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;science&lt;/strong&gt;: the canal lock, the water cycle, the submarine, electric simulation …&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;geography&lt;/strong&gt;: place the country on the map&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;games&lt;/strong&gt;: chess, memory, connect 4, oware, sudoku …&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;reading&lt;/strong&gt;: reading practice&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;other&lt;/strong&gt;: learn to tell time, puzzle of famous paintings, vector drawing, cartoon making, …&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;However, there are few activities which were started previously but is not yet completed. I strongly believe in what GCompris stands for and during the GSoC period, I aim at taking GCompris one step forward by finishing three started activities.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developers.google.com/open-source/gsoc/resources/downloads/GSoC2017Presentation.pdf&quot;&gt;&lt;img src=&quot;https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal-800.png&quot; alt=&quot;gsoc_logo&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;Link to GSoC proposal&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The best way to learn something is by demonstration. But, it is not always possible to physically demonstrate every real world objects. To overcome that, simulation of real world objects is a useful solution. Keeping this in mind, I aim at creating simulation of real world scenarios to help children understand the working of submarines and digital circuit for this year’s Google Summer of Code.&lt;/p&gt;
-
-&lt;h3 id=&quot;plans-for-gsoc-period&quot;&gt;Plans for GSoC period&lt;/h3&gt;
-
-&lt;p&gt;My task for the GSoC period is to &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#6332354560786432&quot;&gt;finish three started activities&lt;/a&gt; in GCompris: &lt;em&gt;Pilot a Submarine&lt;/em&gt; , &lt;em&gt;Family&lt;/em&gt; and &lt;em&gt;Digital Electricity&lt;/em&gt;. I will also be giving updates of my work at least weekly on my &lt;a href=&quot;http://rudranilbasu.github.io/blog/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Pilot a Submarine&lt;/strong&gt;: This is an activity to teach how a submarine works, which was originally present in the gtk version of GCompris. It will be built from scratch, with the initial levels containing tutorials explaining how a submarine works and the utilities of different working elements. The latter levels will focus on using the ideas from the tutorial levels to check whether the child has fully understood the mechanism or not.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/submarine.png&quot; alt=&quot;sub&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Family&lt;/strong&gt;: This is an activity is aimed to help children understand how they are related to their relatives. I will be improving the design of the activity to a tree like representation where the members belonging to the same generation will be in the same level of the tree.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family.png&quot; alt=&quot;family_initial&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Current layout of the activity&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/family_test_2.png&quot; alt=&quot;family_final&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Expected layout of the activity&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I will also extend the activity in which given a pair, the user will have to choose the correct relation.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Digital Electricity&lt;/strong&gt;: The third and final activity is aimed at providing a real time simulation of an electric circuit. A &lt;em&gt;“free mode”&lt;/em&gt; already exists, where the children can use any components to create a circuit on their own. I will be implementing levels which will help to teach the children how the individual components work in a circuit so that the activity will be easier to understand for someone who didn’t have any prior experience with a specific component.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/RudraNilBasu/blog/gh-pages/images/gsoc/digital_level_4.png&quot; alt=&quot;digital&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Mockup of one of the levels in the Digital Electricity activity&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I will be providing more detailed progress on the implementation of these activities in my later blog posts. Looking forward to an exciting summer ahead!&lt;/p&gt;
-
-&lt;h3 id=&quot;contact-information&quot;&gt;Contact Information&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Freenode IRC nick&lt;/strong&gt;: rudra&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Email address&lt;/strong&gt;: rudra.nil.basu.1996@gmail.com&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Twitter&lt;/strong&gt;: &lt;a href=&quot;https://twitter.com/RudraNilBasu&quot;&gt;RudraNilBasu&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 09 May 2017 13:08:18 +0530</pubDate>
-        <link>http://localhost:4000/blog/kde/2017/05/09/Introduction-and-plans-for-GSoC/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/09/Introduction-and-plans-for-GSoC/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        <category>gsoc</category>
         
         
         <category>kde</category>

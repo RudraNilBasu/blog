@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCompris- Digital Electricity</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/blog/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/blog/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/blog/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/blog/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/blog/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/blog/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/blog/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/blog/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/blog/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/blog/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/blog/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/blog/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/blog/favicons/manifest.json">
+<link rel="shortcut icon" href="/blog/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/blog/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/blog/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/blog/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/blog/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/blog/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/blog/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GCompris- Digital Electricity</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">August 7, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          3 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><img src="/blog/images/gsoc/digital_electricity/digital_electricity_header.png" alt="header" /></p>
+
+<h1 id="overview">Overview</h1>
+
+<p>The <em>Digital Electricity</em> activity in GCompris aims at creating and simulating a digital electric schema. Currently, there exists a <em>“Free Mode”</em>, where a user can freely create and check the working of a circuit on their own. During the final month of the GSoC period, I will be adding a <em>“Tutorial Mode”</em> alongside the existing <em>free mode</em>. The tutorial mode is aimed at teaching the users how the individual components work in a digital circuit.</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/scr_1.png" alt="scr_1" /></p>
+
+<h1 id="implementation">Implementation</h1>
+
+<h3 id="interchanging-modes-in-the-activity">Interchanging modes in the activity</h3>
+
+<p>Interchanging between the “Free Mode” and “Tutorial Mode” can be done using the <code class="highlighter-rouge">config</code> option present in the bar.The <code class="highlighter-rouge">config</code> option will provide a <code class="highlighter-rouge">GCComboBox</code> from which the user can select the mode they want the activity to run on.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>               Item {
+                    property alias modesComboBox: modesComboBox
+
+                    property var availableModes: [
+                        { "text": qsTr("Tutorial Mode"), "value": "tutorial" },
+                        { "text": qsTr("Free Mode"), "value": "free" },
+                    ]
+
+                    Flow {
+                        id: flow
+                        spacing: 5
+                        width: dialogActivityConfig.width
+                        GCComboBox {
+                            id: modesComboBox
+                            model: availableModes
+                            background: dialogActivityConfig
+                            label: qsTr("Select your Mode")
+                        }
+                    }
+                }
+</code></pre>
+</div>
+
+<p>Whenever the choosed option is changed, the option will be saved in the <code class="highlighter-rouge">dataToSave</code> variable whenever the <code class="highlighter-rouge">saveData</code> signal is released:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if (newMode !== activity.mode) {
+    activity.mode = newMode;
+    dataToSave = {"modes": activity.mode};
+    Activity.reset()
+}
+</code></pre>
+</div>
+
+<p>Whenever the activity is loaded and the <code class="highlighter-rouge">loadData</code> signal is released, the <code class="highlighter-rouge">activity.mode</code> variable (which stores the current mode of the activity) assumes the value present in <code class="highlighter-rouge">dataToSave["modes"]</code></p>
+
+<p>During the <em>Free Mode</em>, there will only be one level, due to which the “level” bit is turned off when the activity is in the tutorial mode:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> content: BarEnumContent { value: help | home | ( activity.isTutorialMode ? level : 0) | reload | config}
+</code></pre>
+</div>
+
+<h3 id="loading-tutorial-levels-from-the-dataset">Loading tutorial levels from the dataset</h3>
+
+<h4 id="the-dataset">The dataset</h4>
+
+<p>We maintain a <code class="highlighter-rouge">Dataset.qml</code> file to store the details of each of the tutorial levels. The general structure of a dataset file contains:</p>
+<ul>
+  <li>Definition of each components, containing the basic informations such as image name, source, width, height and information about the component. It typically looks like:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    property var andGate: {
+        'imageName': 'gateAnd.svg',
+        'componentSource': 'AndGate.qml',
+        'width': 0.15,
+        'height': 0.12,
+        'toolTipText': qsTr("AND gate")
+    }
+</code></pre>
+</div>
+<ul>
+  <li>Definition of each tutorial levels, containing the list of the above components required for each levels stored in the <code class="highlighter-rouge">tutorialLevels</code> array</li>
+</ul>
+
+<h4 id="loading-from-the-dataset">Loading from the dataset</h4>
+
+<p>Loading from the dataset for each tutorial levels is done by traversing the <code class="highlighter-rouge">tutorialLevels[currentLevel]</code> elements and create the respective elements dynamically and appending it in the <code class="highlighter-rouge">availablePieces</code> Item (if they are input components) or dynamically created using Qt.createcomponent() (if they are needed to be inserted to the play area directly):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        var levelProperties = items.tutorialDataset.tutorialLevels[currentLevel - 1]
+        for (var i = 0; i &lt; levelProperties.totalInputComponents; i++) {
+            items.availablePieces.model.append( {
+                "imgName": levelProperties.imageName[i],
+                "componentSrc": levelProperties.componentSource[i],
+                "imgWidth": levelProperties.imgWidth[i] * sizeMultiplier,
+                "imgHeight": levelProperties.imgHeight[i] * sizeMultiplier,
+                "toolTipText": levelProperties.toolTipText[i]
+            })
+        }
+
+        for (var i = levelProperties.totalInputComponents; i &lt; levelProperties.imageName.length; i++) {
+            var index = components.length
+            var staticElectricalComponent = Qt.createComponent("qrc:/gcompris/src/activities/digital_electricity/components/" + levelProperties.componentSource[i])
+            components[index] = staticElectricalComponent.createObject(
+                        items.playArea, {
+                          "index": index,
+                          "posX": levelProperties.playAreaComponentPositionX[i],
+                          "posY": levelProperties.playAreaComponentPositionY[i],
+                          "imgSrc": levelProperties.imageName[i],
+                          "toolTipTxt": levelProperties.toolTipText[i],
+                          "imgWidth": levelProperties.imgWidth[i],
+                          "imgHeight": levelProperties.imgHeight[i]
+                        });
+        }
+</code></pre>
+</div>
+
+<h1 id="future-plans">Future plans</h1>
+
+<p>For the next week, my plans are roughly:</p>
+<ul>
+  <li>Creating the logic for checking the answers in the tutorial mode</li>
+  <li>Implementing wires which will be connected to few of the components in the play area</li>
+  <li>Adding more levels and electrical components</li>
+</ul>
+
+<h3 id="relevant-links">Relevant links</h3>
+
+<ul>
+  <li><a href="http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf">GSoC Proposal</a></li>
+  <li><a href="https://phabricator.kde.org/T1524">Phabricator task</a></li>
+  <li><a href="https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity">Development branch</a></li>
+  <li><a href="https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu">KDE Status Report</a></li>
+</ul>
+
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+-->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rudranilbasu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/blog/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

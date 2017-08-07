@@ -5,9 +5,152 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 28 Jul 2017 21:28:17 +0530</pubDate>
-    <lastBuildDate>Fri, 28 Jul 2017 21:28:17 +0530</lastBuildDate>
+    <pubDate>Mon, 07 Aug 2017 20:30:51 +0530</pubDate>
+    <lastBuildDate>Mon, 07 Aug 2017 20:30:51 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GCompris- Digital Electricity</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/digital_electricity_header.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+
+&lt;p&gt;The &lt;em&gt;Digital Electricity&lt;/em&gt; activity in GCompris aims at creating and simulating a digital electric schema. Currently, there exists a &lt;em&gt;“Free Mode”&lt;/em&gt;, where a user can freely create and check the working of a circuit on their own. During the final month of the GSoC period, I will be adding a &lt;em&gt;“Tutorial Mode”&lt;/em&gt; alongside the existing &lt;em&gt;free mode&lt;/em&gt;. The tutorial mode is aimed at teaching the users how the individual components work in a digital circuit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/scr_1.png&quot; alt=&quot;scr_1&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;implementation&quot;&gt;Implementation&lt;/h1&gt;
+
+&lt;h3 id=&quot;interchanging-modes-in-the-activity&quot;&gt;Interchanging modes in the activity&lt;/h3&gt;
+
+&lt;p&gt;Interchanging between the “Free Mode” and “Tutorial Mode” can be done using the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; option present in the bar.The &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; option will provide a &lt;code class=&quot;highlighter-rouge&quot;&gt;GCComboBox&lt;/code&gt; from which the user can select the mode they want the activity to run on.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;               Item {
+                    property alias modesComboBox: modesComboBox
+
+                    property var availableModes: [
+                        { &quot;text&quot;: qsTr(&quot;Tutorial Mode&quot;), &quot;value&quot;: &quot;tutorial&quot; },
+                        { &quot;text&quot;: qsTr(&quot;Free Mode&quot;), &quot;value&quot;: &quot;free&quot; },
+                    ]
+
+                    Flow {
+                        id: flow
+                        spacing: 5
+                        width: dialogActivityConfig.width
+                        GCComboBox {
+                            id: modesComboBox
+                            model: availableModes
+                            background: dialogActivityConfig
+                            label: qsTr(&quot;Select your Mode&quot;)
+                        }
+                    }
+                }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Whenever the choosed option is changed, the option will be saved in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dataToSave&lt;/code&gt; variable whenever the &lt;code class=&quot;highlighter-rouge&quot;&gt;saveData&lt;/code&gt; signal is released:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (newMode !== activity.mode) {
+    activity.mode = newMode;
+    dataToSave = {&quot;modes&quot;: activity.mode};
+    Activity.reset()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Whenever the activity is loaded and the &lt;code class=&quot;highlighter-rouge&quot;&gt;loadData&lt;/code&gt; signal is released, the &lt;code class=&quot;highlighter-rouge&quot;&gt;activity.mode&lt;/code&gt; variable (which stores the current mode of the activity) assumes the value present in &lt;code class=&quot;highlighter-rouge&quot;&gt;dataToSave[&quot;modes&quot;]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;During the &lt;em&gt;Free Mode&lt;/em&gt;, there will only be one level, due to which the “level” bit is turned off when the activity is in the tutorial mode:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; content: BarEnumContent { value: help | home | ( activity.isTutorialMode ? level : 0) | reload | config}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;loading-tutorial-levels-from-the-dataset&quot;&gt;Loading tutorial levels from the dataset&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-dataset&quot;&gt;The dataset&lt;/h4&gt;
+
+&lt;p&gt;We maintain a &lt;code class=&quot;highlighter-rouge&quot;&gt;Dataset.qml&lt;/code&gt; file to store the details of each of the tutorial levels. The general structure of a dataset file contains:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Definition of each components, containing the basic informations such as image name, source, width, height and information about the component. It typically looks like:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    property var andGate: {
+        'imageName': 'gateAnd.svg',
+        'componentSource': 'AndGate.qml',
+        'width': 0.15,
+        'height': 0.12,
+        'toolTipText': qsTr(&quot;AND gate&quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Definition of each tutorial levels, containing the list of the above components required for each levels stored in the &lt;code class=&quot;highlighter-rouge&quot;&gt;tutorialLevels&lt;/code&gt; array&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;loading-from-the-dataset&quot;&gt;Loading from the dataset&lt;/h4&gt;
+
+&lt;p&gt;Loading from the dataset for each tutorial levels is done by traversing the &lt;code class=&quot;highlighter-rouge&quot;&gt;tutorialLevels[currentLevel]&lt;/code&gt; elements and create the respective elements dynamically and appending it in the &lt;code class=&quot;highlighter-rouge&quot;&gt;availablePieces&lt;/code&gt; Item (if they are input components) or dynamically created using Qt.createcomponent() (if they are needed to be inserted to the play area directly):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        var levelProperties = items.tutorialDataset.tutorialLevels[currentLevel - 1]
+        for (var i = 0; i &amp;lt; levelProperties.totalInputComponents; i++) {
+            items.availablePieces.model.append( {
+                &quot;imgName&quot;: levelProperties.imageName[i],
+                &quot;componentSrc&quot;: levelProperties.componentSource[i],
+                &quot;imgWidth&quot;: levelProperties.imgWidth[i] * sizeMultiplier,
+                &quot;imgHeight&quot;: levelProperties.imgHeight[i] * sizeMultiplier,
+                &quot;toolTipText&quot;: levelProperties.toolTipText[i]
+            })
+        }
+
+        for (var i = levelProperties.totalInputComponents; i &amp;lt; levelProperties.imageName.length; i++) {
+            var index = components.length
+            var staticElectricalComponent = Qt.createComponent(&quot;qrc:/gcompris/src/activities/digital_electricity/components/&quot; + levelProperties.componentSource[i])
+            components[index] = staticElectricalComponent.createObject(
+                        items.playArea, {
+                          &quot;index&quot;: index,
+                          &quot;posX&quot;: levelProperties.playAreaComponentPositionX[i],
+                          &quot;posY&quot;: levelProperties.playAreaComponentPositionY[i],
+                          &quot;imgSrc&quot;: levelProperties.imageName[i],
+                          &quot;toolTipTxt&quot;: levelProperties.toolTipText[i],
+                          &quot;imgWidth&quot;: levelProperties.imgWidth[i],
+                          &quot;imgHeight&quot;: levelProperties.imgHeight[i]
+                        });
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;future-plans&quot;&gt;Future plans&lt;/h1&gt;
+
+&lt;p&gt;For the next week, my plans are roughly:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Creating the logic for checking the answers in the tutorial mode&lt;/li&gt;
+  &lt;li&gt;Implementing wires which will be connected to few of the components in the play area&lt;/li&gt;
+  &lt;li&gt;Adding more levels and electrical components&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1524&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 07 Aug 2017 20:30:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/08/07/Digital-electricity/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/08/07/Digital-electricity/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GSoC Second phase analysis</title>
