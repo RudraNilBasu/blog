@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCompris- Digital Electricity Tutorial mode</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/blog/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/blog/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/blog/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/blog/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/blog/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/blog/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/blog/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/blog/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/blog/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/blog/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/blog/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/blog/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/blog/favicons/manifest.json">
+<link rel="shortcut icon" href="/blog/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/blog/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/blog/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/blog/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/blog/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/blog/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/blog/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GCompris- Digital Electricity Tutorial mode</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">August 15, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          4 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><img src="/blog/images/gsoc/digital_electricity/digital_electricity_tutorial_mode.png" alt="header" /></p>
+
+<p>The last week was mostly spent in creating more tutorial levels, optimising the tutorial dataset, ability to create wires in the playArea for tutorial mode when the level loads and checking the correctness of the answer provided by the user.</p>
+
+<h1 id="the-dataset">The Dataset</h1>
+
+<p>The dataset for the tutorial mode is now updated to the following:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+                    </span><span class="err">inputComponentList:</span><span class="w"> </span><span class="err">[zero,</span><span class="w"> </span><span class="err">one],</span><span class="w">
+                    </span><span class="err">playAreaComponentList:</span><span class="w"> </span><span class="err">[orGate,</span><span class="w"> </span><span class="err">digitalLight],</span><span class="w">
+                    </span><span class="err">determiningComponentsIndex:</span><span class="w"> </span><span class="err">[1],</span><span class="w">
+                    </span><span class="err">wires:</span><span class="w"> </span><span class="err">[</span><span class="w"> </span><span class="err">[0,</span><span class="w"> </span><span class="err">0,</span><span class="w"> </span><span class="err">1,</span><span class="w"> </span><span class="err">0]</span><span class="w"> </span><span class="err">],</span><span class="w">
+                    </span><span class="err">playAreaComponentPositionX:</span><span class="w"> </span><span class="err">[0.4,</span><span class="w"> </span><span class="err">0.6],</span><span class="w">
+                    </span><span class="err">playAreaComponentPositionY:</span><span class="w"> </span><span class="err">[0.3,</span><span class="w"> </span><span class="err">0.3],</span><span class="w">
+                    </span><span class="err">introMessage:</span><span class="w"> </span><span class="err">[</span><span class="w">
+                            </span><span class="err">qsTr(</span><span class="nt">"The OR Gate produces an output of 1 when at least one of the input terminal is of value 1"</span><span class="err">),</span><span class="w">
+                            </span><span class="err">qsTr(</span><span class="nt">"Turn the Digital light on using an OR gate and the inputs provided"</span><span class="err">)</span><span class="w">
+                    </span><span class="err">]</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<ul>
+  <li>The <code class="highlighter-rouge">inputComponentList</code> denotes the items that are provided to the user and can be used any number of times. It is present in the <code class="highlighter-rouge">ListWidget</code> component.</li>
+  <li><code class="highlighter-rouge">playAreaComponentList</code> denotes the items which are provided to the user in the <code class="highlighter-rouge">playArea</code>. It’s position can be changed, but it cannot be deleted.</li>
+  <li>The <code class="highlighter-rouge">wires</code> is an array denoting the wires which should be pre-defined in the <code class="highlighter-rouge">playArea</code>, it is defined in the following manner:
+    <div class="highlighter-rouge"><pre class="highlight"><code>[from_component_index, from_component_terminal_number, to_component_index, to_component_terminal_number]
+
+from_component_index: The index of the component from the playAreaComponentList, from which the wire is to be drawn
+from_component_terminal_number: The terminal number of the above component from which the wire is to be drawn
+to_component_index: The index of the component from the playAreaComponentList, to which the wire is to be drawn
+to_component_terminal_number: The terminal number of the above component to which the wire is to be drawn
+</code></pre>
+    </div>
+  </li>
+  <li><code class="highlighter-rouge">playAreaComponentPositionX/Y</code>: The x/y position in the <code class="highlighter-rouge">playArea</code> where the component is to placed</li>
+  <li><code class="highlighter-rouge">introMessage</code>: The message which is to be shown in the beginning of the tutorial level. If no message is required, it is kept blank.</li>
+</ul>
+
+<h1 id="making-playarea-components-indestructible">Making playArea components indestructible</h1>
+
+<p>The components in the <code class="highlighter-rouge">playArea</code> is made indestructible by adding a property <code class="highlighter-rouge">destructible</code> (bool) to the electrical components, and the <code class="highlighter-rouge">MouseArea</code> is enabled via:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MouseArea {
+        ...
+        enabled: destructible
+        ...
+}
+</code></pre>
+</div>
+
+<p>This property is disabled for the <code class="highlighter-rouge">playArea</code> components, by adding:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"destructible": false
+</code></pre>
+</div>
+
+<p>while creating.</p>
+
+<h1 id="adding-wires">Adding wires</h1>
+
+<p>Pre-defined wires in the <code class="highlighter-rouge">playArea</code> is added by traversing the <code class="highlighter-rouge">wires[]</code> array and creating wires accordingly by calling the <code class="highlighter-rouge">createWire(from_component, to_component, destructible)</code> method.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        // creating wires
+        for (i = 0; i &lt; levelProperties.wires.length; i++) {
+            var terminal_number = levelProperties.wires[i][1]
+            var outTerminal = components[levelProperties.wires[i][0]].outputTerminals.itemAt(terminal_number)
+
+            terminal_number = levelProperties.wires[i][3]
+            var inTerminal = components[levelProperties.wires[i][2]].inputTerminals.itemAt(terminal_number)
+
+            createWire(inTerminal, outTerminal, false)
+        }
+</code></pre>
+</div>
+
+<p>Similar to the previous topic <code class="highlighter-rouge">destructible</code> decides whether the wire can be deleted by the “delete” tool or not, which is set to false for <code class="highlighter-rouge">playArea</code> wires.</p>
+
+<h1 id="checking-answers">Checking answers</h1>
+
+<p>The answer checking process is divided into two parts:</p>
+<ul>
+  <li>The levels which only check if the bulb is on or not</li>
+  <li>The levels which asks the user to create a circuit so that the bulb glows only under certain conditions</li>
+</ul>
+
+<p>The first case is very easy, which is achieved by checking the value of the bulb when the OK button is clicked.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        if (determiningComponents[0].inputTerminals.itemAt(0).value == 1)
+            items.bonus.good('tux')
+        else
+            items.bonus.bad('tux')
+</code></pre>
+</div>
+
+<p>For the second case, we traverse through all the possible scenario for the input, check it with the output whether it passes the test. If the configuration passes all the tests, the answer is declared as correct, else it is marked as incorrect:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>        var digitalLight = determiningComponents[2]
+        var switch1 = determiningComponents[0]
+        var switch2 = determiningComponents[1]
+
+        var switch1InitialState = switch1.imgSrc
+        var switch2InitialState = switch2.imgSrc
+
+        for (var A = 0; A &lt;= 1; A++) {
+            for (var B = 0; B &lt;= 1; B++) {
+                switch1.imgSrc = A == 1 ? "switchOn.svg" : "switchOff.svg"
+                switch2.imgSrc = B == 1 ? "switchOn.svg" : "switchOff.svg"
+
+                updateComponent(switch1.index)
+                updateComponent(switch2.index)
+
+                var operationResult = A ^ B
+
+                if (operationResult != digitalLight.inputTerminals.itemAt(0).value) {
+                    switch1.imgSrc = switch1InitialState
+                    switch2.imgSrc = switch2InitialState
+                    updateComponent(switch1.index)
+                    updateComponent(switch2.index)
+                    items.bonus.bad('tux')
+                    return
+                }
+            }
+        }
+        items.bonus.good('tux')
+</code></pre>
+</div>
+
+<h1 id="future-plans">Future plans</h1>
+
+<p>For the next week, my plans are roughly:</p>
+<ul>
+  <li>Create more levels, with a proper difficulty curve for each of the components provided.</li>
+  <li>Add an option for “hint”, so that the user can seek help when they are stuck.</li>
+</ul>
+
+<h3 id="relevant-links">Relevant links</h3>
+
+<ul>
+  <li><a href="http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf">GSoC Proposal</a></li>
+  <li><a href="https://phabricator.kde.org/T1524">Phabricator task</a></li>
+  <li><a href="https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity">Development branch</a></li>
+  <li><a href="https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu">KDE Status Report</a></li>
+</ul>
+
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+-->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rudranilbasu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/blog/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

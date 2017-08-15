@@ -5,9 +5,171 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 Aug 2017 20:30:51 +0530</pubDate>
-    <lastBuildDate>Mon, 07 Aug 2017 20:30:51 +0530</lastBuildDate>
+    <pubDate>Tue, 15 Aug 2017 23:06:02 +0530</pubDate>
+    <lastBuildDate>Tue, 15 Aug 2017 23:06:02 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GCompris- Digital Electricity Tutorial mode</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/digital_electricity_tutorial_mode.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The last week was mostly spent in creating more tutorial levels, optimising the tutorial dataset, ability to create wires in the playArea for tutorial mode when the level loads and checking the correctness of the answer provided by the user.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-dataset&quot;&gt;The Dataset&lt;/h1&gt;
+
+&lt;p&gt;The dataset for the tutorial mode is now updated to the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;inputComponentList:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[zero,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;one],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;playAreaComponentList:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[orGate,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;digitalLight],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;determiningComponentsIndex:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[1],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;wires:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[0,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;playAreaComponentPositionX:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[0.4,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0.6],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;playAreaComponentPositionY:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[0.3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0.3],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;introMessage:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                            &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;qsTr(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;The OR Gate produces an output of 1 when at least one of the input terminal is of value 1&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                            &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;qsTr(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Turn the Digital light on using an OR gate and the inputs provided&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;inputComponentList&lt;/code&gt; denotes the items that are provided to the user and can be used any number of times. It is present in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ListWidget&lt;/code&gt; component.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;playAreaComponentList&lt;/code&gt; denotes the items which are provided to the user in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt;. It’s position can be changed, but it cannot be deleted.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;wires&lt;/code&gt; is an array denoting the wires which should be pre-defined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt;, it is defined in the following manner:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[from_component_index, from_component_terminal_number, to_component_index, to_component_terminal_number]
+
+from_component_index: The index of the component from the playAreaComponentList, from which the wire is to be drawn
+from_component_terminal_number: The terminal number of the above component from which the wire is to be drawn
+to_component_index: The index of the component from the playAreaComponentList, to which the wire is to be drawn
+to_component_terminal_number: The terminal number of the above component to which the wire is to be drawn
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;playAreaComponentPositionX/Y&lt;/code&gt;: The x/y position in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; where the component is to placed&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;introMessage&lt;/code&gt;: The message which is to be shown in the beginning of the tutorial level. If no message is required, it is kept blank.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;making-playarea-components-indestructible&quot;&gt;Making playArea components indestructible&lt;/h1&gt;
+
+&lt;p&gt;The components in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; is made indestructible by adding a property &lt;code class=&quot;highlighter-rouge&quot;&gt;destructible&lt;/code&gt; (bool) to the electrical components, and the &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; is enabled via:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MouseArea {
+        ...
+        enabled: destructible
+        ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This property is disabled for the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; components, by adding:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;destructible&quot;: false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;while creating.&lt;/p&gt;
+
+&lt;h1 id=&quot;adding-wires&quot;&gt;Adding wires&lt;/h1&gt;
+
+&lt;p&gt;Pre-defined wires in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; is added by traversing the &lt;code class=&quot;highlighter-rouge&quot;&gt;wires[]&lt;/code&gt; array and creating wires accordingly by calling the &lt;code class=&quot;highlighter-rouge&quot;&gt;createWire(from_component, to_component, destructible)&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        // creating wires
+        for (i = 0; i &amp;lt; levelProperties.wires.length; i++) {
+            var terminal_number = levelProperties.wires[i][1]
+            var outTerminal = components[levelProperties.wires[i][0]].outputTerminals.itemAt(terminal_number)
+
+            terminal_number = levelProperties.wires[i][3]
+            var inTerminal = components[levelProperties.wires[i][2]].inputTerminals.itemAt(terminal_number)
+
+            createWire(inTerminal, outTerminal, false)
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Similar to the previous topic &lt;code class=&quot;highlighter-rouge&quot;&gt;destructible&lt;/code&gt; decides whether the wire can be deleted by the “delete” tool or not, which is set to false for &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; wires.&lt;/p&gt;
+
+&lt;h1 id=&quot;checking-answers&quot;&gt;Checking answers&lt;/h1&gt;
+
+&lt;p&gt;The answer checking process is divided into two parts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The levels which only check if the bulb is on or not&lt;/li&gt;
+  &lt;li&gt;The levels which asks the user to create a circuit so that the bulb glows only under certain conditions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first case is very easy, which is achieved by checking the value of the bulb when the OK button is clicked.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        if (determiningComponents[0].inputTerminals.itemAt(0).value == 1)
+            items.bonus.good('tux')
+        else
+            items.bonus.bad('tux')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For the second case, we traverse through all the possible scenario for the input, check it with the output whether it passes the test. If the configuration passes all the tests, the answer is declared as correct, else it is marked as incorrect:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        var digitalLight = determiningComponents[2]
+        var switch1 = determiningComponents[0]
+        var switch2 = determiningComponents[1]
+
+        var switch1InitialState = switch1.imgSrc
+        var switch2InitialState = switch2.imgSrc
+
+        for (var A = 0; A &amp;lt;= 1; A++) {
+            for (var B = 0; B &amp;lt;= 1; B++) {
+                switch1.imgSrc = A == 1 ? &quot;switchOn.svg&quot; : &quot;switchOff.svg&quot;
+                switch2.imgSrc = B == 1 ? &quot;switchOn.svg&quot; : &quot;switchOff.svg&quot;
+
+                updateComponent(switch1.index)
+                updateComponent(switch2.index)
+
+                var operationResult = A ^ B
+
+                if (operationResult != digitalLight.inputTerminals.itemAt(0).value) {
+                    switch1.imgSrc = switch1InitialState
+                    switch2.imgSrc = switch2InitialState
+                    updateComponent(switch1.index)
+                    updateComponent(switch2.index)
+                    items.bonus.bad('tux')
+                    return
+                }
+            }
+        }
+        items.bonus.good('tux')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;future-plans&quot;&gt;Future plans&lt;/h1&gt;
+
+&lt;p&gt;For the next week, my plans are roughly:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create more levels, with a proper difficulty curve for each of the components provided.&lt;/li&gt;
+  &lt;li&gt;Add an option for “hint”, so that the user can seek help when they are stuck.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1524&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 15 Aug 2017 22:15:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/08/15/Digital-electricity-tutorial-mode/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/08/15/Digital-electricity-tutorial-mode/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GCompris- Digital Electricity</title>
@@ -1162,159 +1324,6 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
         <pubDate>Mon, 29 May 2017 10:46:18 +0530</pubDate>
         <link>http://localhost:4000/blog/kde/2017/05/29/Start-of-Coding-period/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/29/Start-of-Coding-period/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>kde</category>
-        
-      </item>
-    
-      <item>
-        <title>GCompris- Changes made in roman_numerals activity</title>
-        <description>&lt;p&gt;In this post, I am going to talk about the recent design changes made in the &lt;em&gt;roman_numerals&lt;/em&gt; activity.&lt;/p&gt;
-
-&lt;h3 id=&quot;inspiration&quot;&gt;Inspiration&lt;/h3&gt;
-
-&lt;p&gt;The major goal of the task was to improve the following two aspects of the activity:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The evaluation of the answer was initially calculated via a timer. This means that whenever the answers in the input field was changed, the answer was checked with the correct answer and the resultant feedback was displayed. This was inconvinient, specially if the user is not fast enough. So a definite input was needed to confirm whether the user wants their answer to be evaluated.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://rudranilbasu.me/blog/images/roman_numerals/before_1.jpg&quot; alt=&quot;before_1&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Redesigning the layout of the activity to make the activity more user-friendly, as &lt;a href=&quot;https://ilyabizyaev.wordpress.com/2017/01/13/gcompris-review/&quot;&gt;Ilya mentioned in a blog post&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://rudranilbasu.me/blog/images/roman_numerals/before_2.png&quot; alt=&quot;before_2&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;changing-the-answer-evaluation-process&quot;&gt;Changing the answer evaluation process&lt;/h3&gt;
-
-&lt;p&gt;For this, the simplest solution is to remove the existing timer and replace it with an OK button to compare the answer by the user with the correct answer.&lt;/p&gt;
-
-&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        &lt;span class=&quot;kt&quot;&gt;BarButton&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ok&lt;/span&gt;
-          &lt;span class=&quot;nl&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;qrc:/gcompris/src/core/resource/bar_ok.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-          &lt;span class=&quot;nl&quot;&gt;sourceSize.width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ApplicationInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
-          &lt;span class=&quot;nl&quot;&gt;visible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-          &lt;span class=&quot;kt&quot;&gt;anchors&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-              &lt;span class=&quot;nl&quot;&gt;bottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;top&lt;/span&gt;
-              &lt;span class=&quot;nl&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;
-              &lt;span class=&quot;nl&quot;&gt;rightMargin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ApplicationInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
-              &lt;span class=&quot;nl&quot;&gt;bottomMargin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ApplicationInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ratio&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-          &lt;span class=&quot;nl&quot;&gt;onClicked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;check()&lt;/code&gt; is a method under &lt;code class=&quot;highlighter-rouge&quot;&gt;items&lt;/code&gt; which simply checks the answer by the user with the correct one ans displays the result.&lt;/p&gt;
-
-&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;            &lt;span class=&quot;nx&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isChecking&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-            &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isChecking&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;isChecking&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;feedback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;questionValue&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;nx&quot;&gt;bonus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;good&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tux'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                  &lt;span class=&quot;nx&quot;&gt;bonus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'tux'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Along with the OK button, the &lt;code class=&quot;highlighter-rouge&quot;&gt;check()&lt;/code&gt; method is also called the &lt;em&gt;Enter&lt;/em&gt; or &lt;em&gt;Return&lt;/em&gt; key is pressed, just to make things easier&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        Keys.onPressed: {
-            if ((event.key === Qt.Key_Enter) || (event.key === Qt.Key_Return)) {
-                items.check()
-            }
-        }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;changes-in-the-overall-layout-of-the-activity&quot;&gt;Changes in the overall layout of the activity&lt;/h3&gt;
-
-&lt;p&gt;The instructions were centrally aligned and was represented in a tabular form, to make it look more user-friendly. Following this, a problem can arrive when the instruction text will need more space than allocated. For overcoming this, we use a &lt;code class=&quot;highlighter-rouge&quot;&gt;Flickable&lt;/code&gt; to restrict the text to it’s given allocated space&lt;/p&gt;
-
-&lt;div class=&quot;language-qml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;            &lt;span class=&quot;kt&quot;&gt;Rectangle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;transparent&quot;&lt;/span&gt;
-                &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;
-                &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;keyboard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;kt&quot;&gt;Flickable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;contentWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;contentHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instructionContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;anchors.margins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;anchors.fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;flickableDirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Flickable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;VerticalFlick&lt;/span&gt;
-                    &lt;span class=&quot;nl&quot;&gt;clip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-                    &lt;span class=&quot;kt&quot;&gt;GCText&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instruction&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;visible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;instruction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;wrapMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TextEdit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;WordWrap&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tinySize&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;anchors.horizontalCenter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;horizontalCenter&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.9&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;instruction&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;horizontalAlignment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;AlignHCenter&lt;/span&gt;
-                        &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'white'&lt;/span&gt;
-                        &lt;span class=&quot;kt&quot;&gt;Rectangle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instructionContainer&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.8&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;gradient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Gradient&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                                &lt;span class=&quot;kt&quot;&gt;GradientStop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#000&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                                &lt;span class=&quot;kt&quot;&gt;GradientStop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#666&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                                &lt;span class=&quot;kt&quot;&gt;GradientStop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#AAA&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;border.color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'black'&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;border.width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;anchors.centerIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.1&lt;/span&gt;
-                            &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contentHeight&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Along with this, it was decided that the dynamic conversion was not always necessary, if the user wanted to challenge themselves. For this, a simple &lt;code class=&quot;highlighter-rouge&quot;&gt;Hint&lt;/code&gt; was added to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Bar&lt;/code&gt;, with which the user can turn the dynamic conversion on or off&lt;/p&gt;
-
-&lt;div class=&quot;language-diff highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Bar {
-    id: bar
-    anchors.bottom: keyboard.top
-&lt;span class=&quot;gd&quot;&gt;-   content: BarEnumContent { value: help | home | level }
-&lt;/span&gt;&lt;span class=&quot;gi&quot;&gt;+   content: BarEnumContent { value: help | home | level | hint }
-&lt;/span&gt;    onHelpClicked: {
-        displayDialog(dialogHelp)
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;And just turn it on/off likewise&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;onHintClicked: feedback.visible = !feedback.visible
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://rudranilbasu.me/blog/images/roman_numerals/after_1.jpg&quot; alt=&quot;after&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Overall, I was satisfied with the final result of this. The full changes can be viewed &lt;a href=&quot;https://cgit.kde.org/gcompris.git/commit/?id=0d0a6f094734ed8944ccf9bc31359397bb3007a8&quot;&gt;here&lt;/a&gt;. Any suggestions for further improvements are always welcome.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 12 May 2017 21:20:18 +0530</pubDate>
-        <link>http://localhost:4000/blog/kde/2017/05/12/GCompris-updates-on-roman-numerals/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/12/GCompris-updates-on-roman-numerals/</guid>
         
         <category>kde</category>
         

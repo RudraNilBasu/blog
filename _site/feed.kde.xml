@@ -5,9 +5,171 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 Aug 2017 20:30:51 +0530</pubDate>
-    <lastBuildDate>Mon, 07 Aug 2017 20:30:51 +0530</lastBuildDate>
+    <pubDate>Tue, 15 Aug 2017 23:06:02 +0530</pubDate>
+    <lastBuildDate>Tue, 15 Aug 2017 23:06:02 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GCompris- Digital Electricity Tutorial mode</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/digital_electricity_tutorial_mode.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The last week was mostly spent in creating more tutorial levels, optimising the tutorial dataset, ability to create wires in the playArea for tutorial mode when the level loads and checking the correctness of the answer provided by the user.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-dataset&quot;&gt;The Dataset&lt;/h1&gt;
+
+&lt;p&gt;The dataset for the tutorial mode is now updated to the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;inputComponentList:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[zero,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;one],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;playAreaComponentList:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[orGate,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;digitalLight],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;determiningComponentsIndex:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[1],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;wires:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[0,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;playAreaComponentPositionX:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[0.4,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0.6],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;playAreaComponentPositionY:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[0.3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;0.3],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;introMessage:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                            &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;qsTr(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;The OR Gate produces an output of 1 when at least one of the input terminal is of value 1&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                            &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;qsTr(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;Turn the Digital light on using an OR gate and the inputs provided&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;inputComponentList&lt;/code&gt; denotes the items that are provided to the user and can be used any number of times. It is present in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ListWidget&lt;/code&gt; component.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;playAreaComponentList&lt;/code&gt; denotes the items which are provided to the user in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt;. It’s position can be changed, but it cannot be deleted.&lt;/li&gt;
+  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;wires&lt;/code&gt; is an array denoting the wires which should be pre-defined in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt;, it is defined in the following manner:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[from_component_index, from_component_terminal_number, to_component_index, to_component_terminal_number]
+
+from_component_index: The index of the component from the playAreaComponentList, from which the wire is to be drawn
+from_component_terminal_number: The terminal number of the above component from which the wire is to be drawn
+to_component_index: The index of the component from the playAreaComponentList, to which the wire is to be drawn
+to_component_terminal_number: The terminal number of the above component to which the wire is to be drawn
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;playAreaComponentPositionX/Y&lt;/code&gt;: The x/y position in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; where the component is to placed&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;introMessage&lt;/code&gt;: The message which is to be shown in the beginning of the tutorial level. If no message is required, it is kept blank.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;making-playarea-components-indestructible&quot;&gt;Making playArea components indestructible&lt;/h1&gt;
+
+&lt;p&gt;The components in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; is made indestructible by adding a property &lt;code class=&quot;highlighter-rouge&quot;&gt;destructible&lt;/code&gt; (bool) to the electrical components, and the &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; is enabled via:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MouseArea {
+        ...
+        enabled: destructible
+        ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This property is disabled for the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; components, by adding:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;destructible&quot;: false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;while creating.&lt;/p&gt;
+
+&lt;h1 id=&quot;adding-wires&quot;&gt;Adding wires&lt;/h1&gt;
+
+&lt;p&gt;Pre-defined wires in the &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; is added by traversing the &lt;code class=&quot;highlighter-rouge&quot;&gt;wires[]&lt;/code&gt; array and creating wires accordingly by calling the &lt;code class=&quot;highlighter-rouge&quot;&gt;createWire(from_component, to_component, destructible)&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        // creating wires
+        for (i = 0; i &amp;lt; levelProperties.wires.length; i++) {
+            var terminal_number = levelProperties.wires[i][1]
+            var outTerminal = components[levelProperties.wires[i][0]].outputTerminals.itemAt(terminal_number)
+
+            terminal_number = levelProperties.wires[i][3]
+            var inTerminal = components[levelProperties.wires[i][2]].inputTerminals.itemAt(terminal_number)
+
+            createWire(inTerminal, outTerminal, false)
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Similar to the previous topic &lt;code class=&quot;highlighter-rouge&quot;&gt;destructible&lt;/code&gt; decides whether the wire can be deleted by the “delete” tool or not, which is set to false for &lt;code class=&quot;highlighter-rouge&quot;&gt;playArea&lt;/code&gt; wires.&lt;/p&gt;
+
+&lt;h1 id=&quot;checking-answers&quot;&gt;Checking answers&lt;/h1&gt;
+
+&lt;p&gt;The answer checking process is divided into two parts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The levels which only check if the bulb is on or not&lt;/li&gt;
+  &lt;li&gt;The levels which asks the user to create a circuit so that the bulb glows only under certain conditions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first case is very easy, which is achieved by checking the value of the bulb when the OK button is clicked.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        if (determiningComponents[0].inputTerminals.itemAt(0).value == 1)
+            items.bonus.good('tux')
+        else
+            items.bonus.bad('tux')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;For the second case, we traverse through all the possible scenario for the input, check it with the output whether it passes the test. If the configuration passes all the tests, the answer is declared as correct, else it is marked as incorrect:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        var digitalLight = determiningComponents[2]
+        var switch1 = determiningComponents[0]
+        var switch2 = determiningComponents[1]
+
+        var switch1InitialState = switch1.imgSrc
+        var switch2InitialState = switch2.imgSrc
+
+        for (var A = 0; A &amp;lt;= 1; A++) {
+            for (var B = 0; B &amp;lt;= 1; B++) {
+                switch1.imgSrc = A == 1 ? &quot;switchOn.svg&quot; : &quot;switchOff.svg&quot;
+                switch2.imgSrc = B == 1 ? &quot;switchOn.svg&quot; : &quot;switchOff.svg&quot;
+
+                updateComponent(switch1.index)
+                updateComponent(switch2.index)
+
+                var operationResult = A ^ B
+
+                if (operationResult != digitalLight.inputTerminals.itemAt(0).value) {
+                    switch1.imgSrc = switch1InitialState
+                    switch2.imgSrc = switch2InitialState
+                    updateComponent(switch1.index)
+                    updateComponent(switch2.index)
+                    items.bonus.bad('tux')
+                    return
+                }
+            }
+        }
+        items.bonus.good('tux')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;future-plans&quot;&gt;Future plans&lt;/h1&gt;
+
+&lt;p&gt;For the next week, my plans are roughly:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Create more levels, with a proper difficulty curve for each of the components provided.&lt;/li&gt;
+  &lt;li&gt;Add an option for “hint”, so that the user can seek help when they are stuck.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1524&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 15 Aug 2017 22:15:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/08/15/Digital-electricity-tutorial-mode/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/08/15/Digital-electricity-tutorial-mode/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GCompris- Digital Electricity</title>
