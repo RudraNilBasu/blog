@@ -5,9 +5,67 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 15 Aug 2017 23:06:02 +0530</pubDate>
-    <lastBuildDate>Tue, 15 Aug 2017 23:06:02 +0530</lastBuildDate>
+    <pubDate>Wed, 23 Aug 2017 23:25:58 +0530</pubDate>
+    <lastBuildDate>Wed, 23 Aug 2017 23:25:58 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GCompris- Digital Electricity Tutorial levels</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/digital_electricity_tutorial_mode.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In one of my previous posts, I talked about creating tutorial level properties on the dataset and importing it in the js to add the level. In this post, I will be going through the design process of the levels in the tutorial mode of the digital_electricity activity of GCompris.&lt;/p&gt;
+
+&lt;p&gt;Designing of the levels was less about creating some arbitary puzzles, rather, it is more about allowing the user to discover things that already exist.&lt;/p&gt;
+
+&lt;p&gt;The levels are of three types:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Easy: Mainly aimed at introducing the users to a new component&lt;/li&gt;
+  &lt;li&gt;Medium: Using the introduced components, the user is asked to solve a particular problem.&lt;/li&gt;
+  &lt;li&gt;Challenging: 1 or 2 levels are aimed at this level, whose goal is to allow the user to discover certain facts about the components or the digital world itself.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The final job as a designer of the problems, was to make sure that the ramifications of the changes are explored to the fullest, via adding components/wires making immune to deletion and to allow the player to provide a setup to discover the underlying facts of the components by themselves.&lt;/p&gt;
+
+&lt;p&gt;As an example, one of the levels require the user to light the bulb only when both of the switches are turned on. Since all the basic gates are provided, the user will very easily use an AND gate for the problem.&lt;/p&gt;
+
+&lt;p&gt;On one of the later problems, the exact same problem is provided, but only this time, the sole gate provided is the NAND gate, forcing the user to find a solution to it with that specific gate only, along with teaching them how conversion of basic gates to universal gates work.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“A puzzle is not about the puzzle. It is a communication of an idea between the designer and the user. Solving the puzzle is the player’s way of saying “I Understand”. “&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;future-plans&quot;&gt;Future plans&lt;/h1&gt;
+
+&lt;p&gt;In an unfortunate turn of events, I (yet again :( ) fell sick coming into the final week on GSoC, the updates may get a bit slow, but they are roughly as follows:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Completing movement on the playArea via swipe for mobile devices.&lt;/li&gt;
+  &lt;li&gt;Finding a solution to represent the “Tools” icons, so that they do not appear to slow for mobile devices.&lt;/li&gt;
+  &lt;li&gt;Few other fixes/improvements.&lt;/li&gt;
+  &lt;li&gt;Writting a report on the final month of GSoC (and the whole 3 month period as a whole)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1524&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 23 Aug 2017 20:18:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/08/23/Digital-electricity-tutorial-levels/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/08/23/Digital-electricity-tutorial-levels/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GCompris- Digital Electricity Tutorial mode</title>
@@ -1289,41 +1347,6 @@ submarine.velocity.y = maxVerticalSpeed * (depthToMove / totalDepth)
         <pubDate>Sat, 10 Jun 2017 01:00:18 +0530</pubDate>
         <link>http://localhost:4000/blog/kde/2017/06/10/GSoC-Week-2/</link>
         <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/06/10/GSoC-Week-2/</guid>
-        
-        <category>kde</category>
-        
-        <category>gcompris</category>
-        
-        
-        <category>kde</category>
-        
-      </item>
-    
-      <item>
-        <title>GSOC 2017- Week 1 plans</title>
-        <description>&lt;p&gt;Few hours to go for the start of the coding period of GSoC, and here are my plans for the first week.&lt;/p&gt;
-
-&lt;p&gt;As mentioned in my &lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;proposal&lt;/a&gt;, I will be starting off with the &lt;em&gt;Pilot a Submarine&lt;/em&gt; activity. In this week, I will be focusing on the tutorials and the basic structure of the levels of the activity as follows (may be subject to change, depending on feedbacks):&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;There will be 10 levels approximately in the activity, in 3,4,3 format (first 3 = beginner level, next 4 = intermediate and last 3 = challenging)&lt;/li&gt;
-  &lt;li&gt;The initial levels will be tutorial levels. It will be mostly used to explain the various components of the submarine: the enigne, rudders and the air tanks. This will take up the 3 basic levels, with each of the components being explaned in each of the first three levels.&lt;/li&gt;
-  &lt;li&gt;The intermediate level will mostly contain items like obstacles and jewels in the form of pickups to increase the difficulty curve of the levels&lt;/li&gt;
-  &lt;li&gt;The final challenging levels (the number of levels of this types may be reduced to one, depending on the difficulty) will require the player to react a bit faster, the “gate” (from the original “Pilot a Submarine” activity) will be closing instead of opening and the player will need to complete the level before the gate closes, thus require the player to act faster compared to that of the previous intermediate levels.&lt;/li&gt;
-  &lt;li&gt;If time permits me, I will move on to implement the functionalities of the submarine using box2d. Also, I will be looking forward to improving the controls of the submarine to make it more intuitive for the children to understand. Any suggestions regarding it is always welcome!&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;More in depth on the progress of the implementation and mockups of the levels will be posted in the blog, as the work progresses.&lt;/p&gt;
-
-&lt;p&gt;For any feedbacks related to the plans, feel free to contact me regarding it:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Email: &lt;strong&gt;rudra.nil.basu.1996@gmail.com&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Freenode IRC nick: &lt;strong&gt;rudra&lt;/strong&gt; / &lt;strong&gt;rudra_&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 29 May 2017 10:46:18 +0530</pubDate>
-        <link>http://localhost:4000/blog/kde/2017/05/29/Start-of-Coding-period/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/05/29/Start-of-Coding-period/</guid>
         
         <category>kde</category>
         
