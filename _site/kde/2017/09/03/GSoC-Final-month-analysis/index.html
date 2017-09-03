@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSoC- Final month analysis</title>
+<meta name="description" content="Random stuff.">
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="/blog/css/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/blog/css/jquery.mmenu.all.css" />
+<link rel="stylesheet" href="/blog/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/blog/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/blog/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/blog/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/blog/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/blog/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/blog/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/blog/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/blog/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/blog/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/blog/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/blog/favicons/manifest.json">
+<link rel="shortcut icon" href="/blog/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/blog/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/blog/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+
+
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>Rudra's Yard</p>
+
+    <ul class="pages">
+      <li><a href="/blog/"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="/blog/posts/"><i class="fa fa-archive"></i> All Posts</a></li>
+      <li><a href="/blog/search/"><i class="fa fa-search"></i> Search</a></li>
+    </ul>
+
+    <p class="links">
+  <a href="https://www.twitter.com/RudraNilBasu" target="_new"><i class="fa fa-twitter"></i></a>
+  <a href="https://in.linkedin.com/in/rudra-nil-basu-7a1679a4" target="_new"><i class="fa fa-linkedin"></i></a>
+  
+  
+  <a href="facebook.com/rudra.n.basu" target="_new"><i class="fa fa-facebook"></i></a>
+  <a href="https://github.com/RudraNilBasu" target="_new"><i class="fa fa-github-alt"></i></a>
+  
+  <a href="https://www.instagram.com/RudraNilBasu" target="_new"><i class="fa fa-instagram"></i></a>
+  <a href="/blog/feed.xml" target="_new"><i class="fa fa-rss"></i></a>
+</p>
+
+  </div>
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      
+
+<div class="container-fluid single">
+  <div class="row">
+
+    <div itemscope itemtype="http://schema.org/Article" class="col-md-12 article">
+      
+      <div class="thumb">
+        <img itemprop="image" src="https://www.kde.org/stuff/clipart/klogo-official-lineart_detailed-3000x3000.png" alt="Thumbnail: kde" />
+      </div>
+      
+
+      <h1 class="header" itemprop="name">GSoC- Final month analysis</h1>
+
+      <div class="author">
+        <small><i>
+          
+          on <span itemprop="datePublished" content="2014-08-28">September 3, 2017</span>
+           under kde
+        </i></small>
+      </div>
+
+      <div class="read-time">
+        <small>
+          4 minute read
+        </small>
+      </div>
+
+      <div class="content-panel content">
+
+        
+
+        <span itemprop="articleBody"><p><img src="/blog/images/gsoc/gsoc_logo.png" alt="header" /></p>
+
+<p>So, the final month of GSoC just wrapped up, and in this post I will be talking about the last month, the implementation of tutorial mode for the Digital Electricity activity.</p>
+
+<p>I started off the month with separating the two modes of the activity, with the help of an additional <code class="highlighter-rouge">config</code> option in the bar.</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/modes.png" alt="config" /></p>
+
+<p>Whenever the selected value is changed, the current mode is saved in <code class="highlighter-rouge">dataToSave["modes"]</code> using the <code class="highlighter-rouge">saveData</code> signal, to ensure that the user can start of with the mode in which they left off, as the current mode is set to the value stored in the <code class="highlighter-rouge">dataToSave["modes"]</code> variable whenever the activity is loaded.</p>
+
+<p>Next, I moved on to create a dataset which will essentially contain some values which is to be provided to the activity for every level, with the goal of removing redundancy in the code. It mainly consists of:</p>
+<ul>
+  <li>a list of all the components present in the activity</li>
+  <li>data required for each of the tutorial levels</li>
+</ul>
+
+<p>Creating and importing data from the dataset went really smoothly, using which pre-loaded components were placed for the tutorial levels. The pre-loaded components (the electrical components and the wires) were made immune to deletion by disabling the <code class="highlighter-rouge">MouseArea</code> component.</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/tutorial_elements.png" alt="tuts" /></p>
+
+<p>By the next week, I started implementing levels with various types, maintaining a constant difficulty curve. Regarding the levels, instead of keeping the difficulty of the levels increase gradually, I thought of varying the difficulty curve, so that once the user has solved a hard puzzle, they are rewarded with a <em>relatively</em> easy one.</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/graph_2.jpg" alt="graph_2" /></p>
+
+<p><em>Constant increase in difficulty</em></p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/graph_1.jpg" alt="graph_1" /></p>
+
+<p><em>Rewarding the user with an easy level for a difficult one</em></p>
+
+<p>By this time, the biggest task that remained on the checklist was comparing the user’s answers and checking the correctness. We came up with a number of approaches to solve the problem and ended up with the following one, with the goal of keeping a good balance between readability, optimisation and low redundancy:</p>
+<ul>
+  <li>The levels are divided into few similar parts:
+    <ul>
+      <li>lightTheBulb: The levels with the goal to light the given bulb</li>
+      <li>equation1Variable: The levels which asks the user to solve a puzzle based on an equation with 1 variable</li>
+      <li>equation2Variables: Solving a similar equation using 2 variables</li>
+      <li>equation3Variables: Solving a similar equation using 3 variables</li>
+      <li>others: Special levels, which needs to be dealt with separately</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Implementing the first type was very easy, we just needed to check the values of the bulb when the “OK” button was pressed and display the results accordingly.</p>
+
+<p>For the levels requiring the player to solve a specific equation, the general algorithm was:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- Store the current state of the switches
+- Loop through all the possible input scenarios
+  - for each input combinations, check the answer via result() function
+  - if the expected answer and current answer are not the same, restore previous state and return
+- display correct answer and move on to the next level
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">result()</code> function is present in the dataset for each levels of “equationXVariables” type, which takes the input as arguments and returns the calculated result specific to that level. As an example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>result: function(A, B, C) {
+        return A | (B &amp; C)
+}
+</code></pre>
+</div>
+
+<p>The final task in the todo list was to come up with a way to access the toolbars for devices with small screen size, which was too small to be targetted correctly as shown below:</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/toolbar_initial.png" alt="toolbar_initial" /></p>
+
+<p>The solution we came up was, to replace the four icons with one single “Tools” button, on clicking which will bring up a menu of toolbar options. The goal of this implementation was to keep a balance between ease of accecibility and number of inputs required to access a specific tool. The final result was something like this:</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/toolbar_final.png" alt="toolbar_final" /></p>
+
+<p>On further testing, we thought that it would be nice to have an option of zooming in and out of the playArea, in order to allow the player to create and test bigger circuits. The zooming was implemented via multiplying the width, height and the position of each component by <code class="highlighter-rouge">currentZoom</code> component. For moving around the area, we take in the player input and move the components relative to it, providing the following result:</p>
+
+<p><img src="/blog/images/gsoc/digital_electricity/zoom.gif" alt="toolbar_final" /></p>
+
+<h3 id="what-is-remaining">What is remaining?</h3>
+
+<p>Besides from finding and fixing bugs, the only major task that remains ahead for the activity is to ensure the traversal along the playArea in touch screen devices as well, which currently only supports the input via arrow keys. The idea as of now, is to implement swipe along the playArea as the source of input. Will post an update once the implementation starts rolling out.</p>
+
+<hr />
+
+<p>This concludes the overview of the final month of GSoC, it was a fun ride and I will be back with another post covering the whole GSoC experience in general in the coming week.</p>
+
+<h3 id="relevant-links">Relevant links</h3>
+
+<ul>
+  <li><a href="http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf">GSoC Proposal</a></li>
+  <li><a href="https://phabricator.kde.org/T1524">Phabricator task</a></li>
+  <li><a href="https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity">Development branch</a></li>
+  <li><a href="https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu">KDE Status Report</a></li>
+</ul>
+
+</span>
+
+        
+
+        
+
+        
+        <div class="tags">
+          <small>
+          <i class="fa fa-tags"></i>
+            kde, gcompris
+          </small>
+        </div>
+        
+
+      </div>
+
+      
+      <div class="content-panel feedback">
+        I <i class="fa fa-heart"></i> feedback.<br />
+        Let me know what you think of this article on twitter <a href="http://www.twitter.com/RudraNilBasu">@RudraNilBasu</a> or leave a comment below!
+      </div>
+      
+
+      
+      <div class="content-panel comments">
+        <div id="disqus_thread">
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      </div>
+      
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+<!--
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+function disqus_config() { this.experiment.enable_scroll_container = true; }
+var disqus_shortname = "r_n_b"; // required: replace example with your forum shortname
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+-->
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://rudranilbasu.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/RudraNilBasu">RudraNilBasu</a>
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/RudraNilBasu">Github</a> &nbsp;<i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/blog/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
+</script>
+
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
+</html>

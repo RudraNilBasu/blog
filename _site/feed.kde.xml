@@ -5,9 +5,117 @@
     <description>Random stuff.</description>
     <link>http://localhost:4000/blog/</link>
     <atom:link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 23 Aug 2017 23:25:58 +0530</pubDate>
-    <lastBuildDate>Wed, 23 Aug 2017 23:25:58 +0530</lastBuildDate>
+    <pubDate>Sun, 03 Sep 2017 21:52:38 +0530</pubDate>
+    <lastBuildDate>Sun, 03 Sep 2017 21:52:38 +0530</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>GSoC- Final month analysis</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/gsoc_logo.png&quot; alt=&quot;header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, the final month of GSoC just wrapped up, and in this post I will be talking about the last month, the implementation of tutorial mode for the Digital Electricity activity.&lt;/p&gt;
+
+&lt;p&gt;I started off the month with separating the two modes of the activity, with the help of an additional &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; option in the bar.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/modes.png&quot; alt=&quot;config&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Whenever the selected value is changed, the current mode is saved in &lt;code class=&quot;highlighter-rouge&quot;&gt;dataToSave[&quot;modes&quot;]&lt;/code&gt; using the &lt;code class=&quot;highlighter-rouge&quot;&gt;saveData&lt;/code&gt; signal, to ensure that the user can start of with the mode in which they left off, as the current mode is set to the value stored in the &lt;code class=&quot;highlighter-rouge&quot;&gt;dataToSave[&quot;modes&quot;]&lt;/code&gt; variable whenever the activity is loaded.&lt;/p&gt;
+
+&lt;p&gt;Next, I moved on to create a dataset which will essentially contain some values which is to be provided to the activity for every level, with the goal of removing redundancy in the code. It mainly consists of:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a list of all the components present in the activity&lt;/li&gt;
+  &lt;li&gt;data required for each of the tutorial levels&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Creating and importing data from the dataset went really smoothly, using which pre-loaded components were placed for the tutorial levels. The pre-loaded components (the electrical components and the wires) were made immune to deletion by disabling the &lt;code class=&quot;highlighter-rouge&quot;&gt;MouseArea&lt;/code&gt; component.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/tutorial_elements.png&quot; alt=&quot;tuts&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By the next week, I started implementing levels with various types, maintaining a constant difficulty curve. Regarding the levels, instead of keeping the difficulty of the levels increase gradually, I thought of varying the difficulty curve, so that once the user has solved a hard puzzle, they are rewarded with a &lt;em&gt;relatively&lt;/em&gt; easy one.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/graph_2.jpg&quot; alt=&quot;graph_2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Constant increase in difficulty&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/graph_1.jpg&quot; alt=&quot;graph_1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Rewarding the user with an easy level for a difficult one&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;By this time, the biggest task that remained on the checklist was comparing the user’s answers and checking the correctness. We came up with a number of approaches to solve the problem and ended up with the following one, with the goal of keeping a good balance between readability, optimisation and low redundancy:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The levels are divided into few similar parts:
+    &lt;ul&gt;
+      &lt;li&gt;lightTheBulb: The levels with the goal to light the given bulb&lt;/li&gt;
+      &lt;li&gt;equation1Variable: The levels which asks the user to solve a puzzle based on an equation with 1 variable&lt;/li&gt;
+      &lt;li&gt;equation2Variables: Solving a similar equation using 2 variables&lt;/li&gt;
+      &lt;li&gt;equation3Variables: Solving a similar equation using 3 variables&lt;/li&gt;
+      &lt;li&gt;others: Special levels, which needs to be dealt with separately&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Implementing the first type was very easy, we just needed to check the values of the bulb when the “OK” button was pressed and display the results accordingly.&lt;/p&gt;
+
+&lt;p&gt;For the levels requiring the player to solve a specific equation, the general algorithm was:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- Store the current state of the switches
+- Loop through all the possible input scenarios
+  - for each input combinations, check the answer via result() function
+  - if the expected answer and current answer are not the same, restore previous state and return
+- display correct answer and move on to the next level
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;result()&lt;/code&gt; function is present in the dataset for each levels of “equationXVariables” type, which takes the input as arguments and returns the calculated result specific to that level. As an example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result: function(A, B, C) {
+        return A | (B &amp;amp; C)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The final task in the todo list was to come up with a way to access the toolbars for devices with small screen size, which was too small to be targetted correctly as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/toolbar_initial.png&quot; alt=&quot;toolbar_initial&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The solution we came up was, to replace the four icons with one single “Tools” button, on clicking which will bring up a menu of toolbar options. The goal of this implementation was to keep a balance between ease of accecibility and number of inputs required to access a specific tool. The final result was something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/toolbar_final.png&quot; alt=&quot;toolbar_final&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On further testing, we thought that it would be nice to have an option of zooming in and out of the playArea, in order to allow the player to create and test bigger circuits. The zooming was implemented via multiplying the width, height and the position of each component by &lt;code class=&quot;highlighter-rouge&quot;&gt;currentZoom&lt;/code&gt; component. For moving around the area, we take in the player input and move the components relative to it, providing the following result:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/images/gsoc/digital_electricity/zoom.gif&quot; alt=&quot;toolbar_final&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-remaining&quot;&gt;What is remaining?&lt;/h3&gt;
+
+&lt;p&gt;Besides from finding and fixing bugs, the only major task that remains ahead for the activity is to ensure the traversal along the playArea in touch screen devices as well, which currently only supports the input via arrow keys. The idea as of now, is to implement swipe along the playArea as the source of input. Will post an update once the implementation starts rolling out.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;This concludes the overview of the final month of GSoC, it was a fun ride and I will be back with another post covering the whole GSoC experience in general in the coming week.&lt;/p&gt;
+
+&lt;h3 id=&quot;relevant-links&quot;&gt;Relevant links&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://rudranilbasu.me/docs/gsoc_2017_proposal.pdf&quot;&gt;GSoC Proposal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://phabricator.kde.org/T1524&quot;&gt;Phabricator task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cgit.kde.org/gcompris.git/log/?h=gsoc_pulkit_digital_electricity&quot;&gt;Development branch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://community.kde.org/GSoC/2017/StatusReports/RudraNilBasu&quot;&gt;KDE Status Report&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 03 Sep 2017 21:51:00 +0530</pubDate>
+        <link>http://localhost:4000/blog/kde/2017/09/03/GSoC-Final-month-analysis/</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/kde/2017/09/03/GSoC-Final-month-analysis/</guid>
+        
+        <category>kde</category>
+        
+        <category>gcompris</category>
+        
+        
+        <category>kde</category>
+        
+      </item>
     
       <item>
         <title>GCompris- Digital Electricity Tutorial levels</title>
