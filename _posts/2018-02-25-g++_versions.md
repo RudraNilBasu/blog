@@ -12,6 +12,7 @@ tags:
 
 # Managing multiple g++ versions
 
+Multiple versions of g++ are maintained by creating a symlink of the g++ version you wish to have with `/usr/bin/g++`.
 
 ```
 sudo ln -s /usr/bin/g++-7 /usr/bin/g++
