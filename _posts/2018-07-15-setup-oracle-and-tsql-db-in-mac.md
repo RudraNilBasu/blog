@@ -1,5 +1,3 @@
-setup-oracle-and-tsql-db-in-mac.
-
 ---
 layout:     post
 title:      Setup Oracle and T-SQL DB on Mac (using Docker)
