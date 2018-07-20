@@ -27,3 +27,7 @@ tags:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PZn9a9-Gyc0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+### Extras
+
+A list of tech talks on HackerNews: https://news.ycombinator.com/item?id=16838460
+
