@@ -10,3 +10,8 @@ tags:
  - editor
 ---
 
+### Interesting links
+
+* [Vim: You're using it wrong](https://antjanus.com/blog/thoughts-and-opinions/use-vim/)
+* [Learn Vimscript the hard way](http://learnvimscriptthehardway.stevelosh.com/)
+
