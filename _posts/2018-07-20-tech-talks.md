@@ -27,6 +27,16 @@ tags:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PZn9a9-Gyc0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+[Jonathan Blow - Truth In Game Design](https://youtu.be/C5FUtrmO7gI)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/C5FUtrmO7gI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+[The Implementation of Rewind in Braid](https://youtu.be/8dinUbg2h70)
+
+([My current watchtime](https://youtu.be/8dinUbg2h70?t=1169))
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8dinUbg2h70" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ### Extras
 
 A list of tech talks on HackerNews: https://news.ycombinator.com/item?id=16838460
