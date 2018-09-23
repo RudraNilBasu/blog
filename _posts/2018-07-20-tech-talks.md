@@ -37,6 +37,10 @@ tags:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8dinUbg2h70" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+[Jonathan Blow on Software Quality at the CSUA GM2](https://youtu.be/k56wra39lwA)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/k56wra39lwA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ### Extras
 
 A list of tech talks on HackerNews: https://news.ycombinator.com/item?id=16838460
